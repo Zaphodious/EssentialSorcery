@@ -4,6 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 
+import com.kenai.essentialsorcery.block.ModBlocks;
 import com.kenai.essentialsorcery.core.Reference;
 import com.kenai.essentialsorcery.item.ModItems;
 
