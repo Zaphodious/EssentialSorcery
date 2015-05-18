@@ -11,6 +11,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemHoe;
@@ -45,7 +46,8 @@ public class TapSetter extends Item {
 			World worldIn, BlockPos pos, EnumFacing side, float hitX,
 			float hitY, float hitZ) {
 		try {
-			return this.getItemFromBlock(ModBlocks.dragon_tap).onItemUse(stack, playerIn, worldIn, pos, side, hitX, hitY, hitZ);
+			return this.getItemFromBlock(ModBlocks.dragon_tap).onItemUse(new ItemStack(Items.apple), playerIn, worldIn, pos, side, hitX, hitY, hitZ);
+			// The new stack of apples is a hack to prevent this item from being used up when the player is in survival. If you know how to make it better, please do! :-D
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
