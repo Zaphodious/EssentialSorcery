@@ -15,41 +15,42 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TapSetter extends Item {
-	
-	Block block;
+
 
 	public TapSetter(String unlocalizedName) {
 		super();
-		
-		
-		this.block = ModBlocks.dragon_tap;
+
 		this.setUnlocalizedName(unlocalizedName);
 		this.setCreativeTab(CreativeTabs.tabMaterials);
 	}
-	
-	//public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ) {
-	//	return Item.getItemFromBlock(block).onItemUse(stack, playerIn, worldIn, pos, side, hitX, hitY, hitZ);
+
+	// public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World
+	// worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float
+	// hitZ) {
+	// return Item.getItemFromBlock(block).onItemUse(stack, playerIn, worldIn,
+	// pos, side, hitX, hitY, hitZ);
+
+	// }
+
+	public boolean onItemUse(ItemStack stack, EntityPlayer playerIn,
+			World worldIn, BlockPos pos, EnumFacing side, float hitX,
+			float hitY, float hitZ) {
+		try {
+			return this.getItemFromBlock(ModBlocks.dragon_tap).onItemUse(stack, playerIn, worldIn, pos, side, hitX, hitY, hitZ);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return false;
 		
-	//}
-	
-    public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ)
-    {
-    	
-    	
-    	try {
-    		return Item.getItemFromBlock(block).onItemUse(stack, playerIn, worldIn, pos, side, hitX, hitY, hitZ);
-    	} catch (Exception exc) {
-    		System.out.println("Yep, here's the error: " + exc.toString());
-    	}
-    	return false;
-    }
-    
-    
-    
+	}
 	
 }
