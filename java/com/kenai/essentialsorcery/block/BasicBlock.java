@@ -22,6 +22,9 @@ public class BasicBlock extends Block {
         this(unlocalizedName, 2.0f, 10.0f);
     }
 	
-	
+	@Override
+	public boolean isOpaqueCube() {
+		return false;
+	}
 	
 }

@@ -14,6 +14,7 @@ import net.minecraft.world.World;
 
 import com.kenai.essentialsorcery.block.ModBlocks;
 import com.kenai.essentialsorcery.block.states.TapState;
+import com.kenai.essentialsorcery.util.Setter;
 
 public class TapSetter extends Item {
 
@@ -44,7 +45,8 @@ public class TapSetter extends Item {
             System.out.println(iblockstate);
             
             if (block == ModBlocks.dragon_tap && !iblockstate.equals(ModBlocks.dragon_tap_set.getDefaultState())) {
-            	worldIn.setBlockState(pos, ModBlocks.dragon_tap_set.getDefaultState());
+
+            	Setter.dragonToSet(worldIn, pos);
             	//DragonTap dragonTap = (DragonTap) block;
             	//System.out.println(block.getDefaultState());
             	//dragonTap.setState(TapState.SET);

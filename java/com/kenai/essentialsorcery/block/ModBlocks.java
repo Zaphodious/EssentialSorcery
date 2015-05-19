@@ -10,13 +10,19 @@ public final class ModBlocks {
 
 	public static DragonTap dragon_tap;
 	public static DragonTap dragon_tap_set;
+	public static DragonTap dragon_tap_spent;
 	
 	public static void createBlocks() {
 		
 		GameRegistry.registerBlock(dragon_tap = new DragonTap("dragon_tap"), ItemBlockMeta.class, "dragon_tap");
 		System.out.println("registered " + dragon_tap.getUnlocalizedName());
+		dragon_tap.setLightOpacity(0);
 		
 		dragon_tap_set = dragon_tap.setState(TapState.SET);
+		dragon_tap_set.setLightLevel(1);
+		
+		dragon_tap_spent = new DragonTap("dragon_tap_spent");
+		dragon_tap_spent.setState(TapState.SPENT);
 	}
 	
 	private static Block reg(Block block) {
