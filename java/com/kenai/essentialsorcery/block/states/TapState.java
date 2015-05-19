@@ -1,8 +1,12 @@
 package com.kenai.essentialsorcery.block.states;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.util.IStringSerializable;
 
-public enum TapState implements IStringSerializable{
+public enum TapState implements IStringSerializable, IProperty{
 	
 	
 	PLACED(0, "placed"),
@@ -24,6 +28,26 @@ public enum TapState implements IStringSerializable{
 
 	public int getID() {
 		return ID;
+	}
+
+	@Override
+	public Collection getAllowedValues() {
+		Collection<TapState> toReturn = new ArrayList<TapState>();
+		toReturn.add(PLACED);
+		toReturn.add(SET);
+		toReturn.add(SPENT);
+		return toReturn;
+	}
+
+	@Override
+	public Class getValueClass() {
+		return this.getClass();
+	}
+
+	@Override
+	public String getName(Comparable value) {
+		// TODO Auto-generated method stub
+		return value.toString();
 	}
 	
 }

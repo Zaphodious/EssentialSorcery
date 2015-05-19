@@ -27,6 +27,11 @@ public class DragonTap extends BasicBlock implements IMetaBlockName {
 		
 	}
 
+	public DragonTap setState(TapState newState) {
+		this.setDefaultState(this.blockState.getBaseState().withProperty(TYPE, newState));
+		return this;
+	}
+	
 	
 	@Override protected BlockState createBlockState() {
 		return new BlockState(this, new IProperty[] { TYPE });
@@ -76,4 +81,6 @@ public class DragonTap extends BasicBlock implements IMetaBlockName {
 		
 		return toReturn;
 	}
+	
+	
 }
