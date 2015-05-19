@@ -1,5 +1,6 @@
 package com.kenai.essentialsorcery.item;
 
+import spellcasting.BiomeSorter;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -40,6 +41,8 @@ public class TapSetter extends Item {
 			World worldIn, BlockPos pos, EnumFacing side, float hitX,
 			float hitY, float hitZ) {
 		try {
+			BiomeSorter sorter = new BiomeSorter();
+			sorter.getBiome(worldIn, pos);
 			IBlockState iblockstate = worldIn.getBlockState(pos);
             Block block = iblockstate.getBlock();
             System.out.println(iblockstate);
