@@ -12,6 +12,7 @@ public final class ItemRenderRegister {
 
 	public static void registerItemRenderer() {
 		reg(ModItems.tapSetter, 0);
+		reg(ModItems.testWand, 0);
 	}
 	
 	private static void reg(Item item, int meta) {

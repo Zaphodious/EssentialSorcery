@@ -14,11 +14,13 @@ public class CommonProxy {
 	EssentialEventHandler events = new EssentialEventHandler();
 
 	public void preInit(FMLPreInitializationEvent e) {
+		Reference.SORTER.fillBiomeList();
 		FMLCommonHandler.instance().bus().register(events);
 		MinecraftForge.EVENT_BUS.register(events);
 		
 		ModItems.createItems();
 		ModBlocks.createBlocks();
+		Reference.SORTER.fillBiomeList();
     }
 
     public void init(FMLInitializationEvent e) {

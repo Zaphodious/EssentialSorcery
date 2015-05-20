@@ -13,9 +13,10 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
+import com.kenai.essentialsorcery.block.DragonTap;
 import com.kenai.essentialsorcery.block.ModBlocks;
 import com.kenai.essentialsorcery.block.states.TapState;
-import com.kenai.essentialsorcery.util.Setter;
+import com.kenai.essentialsorcery.core.Reference;
 
 public class TapSetter extends Item {
 
@@ -29,27 +30,28 @@ public class TapSetter extends Item {
         this.setMaxDamage(8);
 	}
 
-	// public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World
-	// worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float
-	// hitZ) {
-	// return Item.getItemFromBlock(block).onItemUse(stack, playerIn, worldIn,
-	// pos, side, hitX, hitY, hitZ);
+	
 
-	// }
-
+	
+	
 	public boolean onItemUse(ItemStack stack, EntityPlayer playerIn,
 			World worldIn, BlockPos pos, EnumFacing side, float hitX,
 			float hitY, float hitZ) {
 		try {
-			BiomeSorter sorter = new BiomeSorter();
-			sorter.getBiome(worldIn, pos);
+			// First, this gets the blockstate for whatever block it's been used on.
+			// If it's not a Dragon Tap (or its a "set" Dragon Tap), it places a dragon tap and the setter takes a point of damage.
+			// If it's not a "set" dragon tap, it sets it.
+			
+			
+			
+			Reference.SORTER.getBiomeID(worldIn, pos);
 			IBlockState iblockstate = worldIn.getBlockState(pos);
             Block block = iblockstate.getBlock();
             System.out.println(iblockstate);
             
             if (block == ModBlocks.dragon_tap && !iblockstate.equals(ModBlocks.dragon_tap_set.getDefaultState())) {
-
-            	Setter.dragonToSet(worldIn, pos);
+            	
+            	DragonTap.dragonToSet(worldIn, pos);
             	//DragonTap dragonTap = (DragonTap) block;
             	//System.out.println(block.getDefaultState());
             	//dragonTap.setState(TapState.SET);

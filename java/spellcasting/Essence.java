@@ -4,7 +4,7 @@ public class Essence {
 
 	Element element;
 	int amount;
-	public Essence(Element element, int amount) {
+	public Essence(int amount, Element element) {
 		super();
 		this.element = element;
 		this.amount = amount;

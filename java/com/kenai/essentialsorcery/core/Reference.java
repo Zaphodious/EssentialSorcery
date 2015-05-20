@@ -1,5 +1,7 @@
 package com.kenai.essentialsorcery.core;
 
+import spellcasting.BiomeSorter;
+
 public class Reference {
 
 	public static final String MODID = "essentialsorcery";
@@ -8,4 +10,6 @@ public class Reference {
     public static final String CLIENT_PROXY = "com.kenai.essentialsorcery.core.ClientProxy";
     public static final String SERVER_PROXY = "com.kenai.essentialsorcery.core.ServerProxy";
 
+    public static final BiomeSorter SORTER = new BiomeSorter();
+    
 }

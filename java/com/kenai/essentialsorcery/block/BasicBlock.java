@@ -9,7 +9,7 @@ public class BasicBlock extends Block {
 	protected BasicBlock(String unlocalizedName, Material material, float hardness, float resistance) {
 		super(material);
 		this.setUnlocalizedName(unlocalizedName);
-        this.setCreativeTab(CreativeTabs.tabBlock);
+        //this.setCreativeTab(CreativeTabs.tabBlock);
         this.setHardness(hardness);
         this.setResistance(resistance);
 	}

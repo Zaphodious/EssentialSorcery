@@ -3,6 +3,10 @@ package com.kenai.essentialsorcery.block;
 import java.util.List;
 import java.util.Random;
 
+import spellcasting.Element;
+import spellcasting.Essence;
+import spellcasting.GivesEssence;
+import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockState;
@@ -18,10 +22,10 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.kenai.essentialsorcery.block.states.TapState;
+import com.kenai.essentialsorcery.core.Reference;
 import com.kenai.essentialsorcery.item.IMetaBlockName;
-import com.kenai.essentialsorcery.util.Setter;
 
-public class DragonTap extends BasicBlock implements IMetaBlockName {
+public class DragonTap extends BasicBlock implements IMetaBlockName, GivesEssence {
 
 	public static final PropertyEnum TYPE = PropertyEnum.create("type", com.kenai.essentialsorcery.block.states.TapState.class);
 	
@@ -36,6 +40,8 @@ public class DragonTap extends BasicBlock implements IMetaBlockName {
 		this.setDefaultState(this.blockState.getBaseState().withProperty(TYPE, newState));
 		return this;
 	}
+	
+	
 	
 	
 	
@@ -108,11 +114,54 @@ public class DragonTap extends BasicBlock implements IMetaBlockName {
 		}
 	}
 	
+	public static void dragonToSet(World worldIn, BlockPos pos) {
+		worldIn.setBlockState(pos, ModBlocks.dragon_tap.blockState.getBaseState().withProperty(TYPE, TapState.SET));
+	}
+	
+	public static void dragonToSpent(World worldIn, BlockPos pos) {
+		worldIn.setBlockState(pos, ModBlocks.dragon_tap.blockState.getBaseState().withProperty(TYPE, TapState.SPENT));
+	}
+	
 	public void refreshTap(World worldIn, BlockPos pos) {
-		Setter.dragonToSet(worldIn, pos);
+		this.dragonToSet(worldIn, pos);
 	}
 	
 	public void refreshAllTaps(World worldIn) {
 		
 	}
+
+	@Override
+	public Essence getEssence(World worldIn, BlockPos pos) {
+		
+		
+		return new Essence(1, this.getElement(worldIn, pos));
+	}
+
+	@Override
+	public Element getElement(World worldIn, BlockPos pos) {
+		
+		return Reference.SORTER.getBiomeElement(worldIn, pos);
+	}
+
+	@Override
+	public Boolean canTap(World worldIn, BlockPos pos) {
+		IBlockState iblockstate = worldIn.getBlockState(pos);
+        Block block = iblockstate.getBlock();
+        int meta = block.getMetaFromState(iblockstate);
+        System.out.println("This block's meta is " + meta);
+        if (meta == 1) {
+        	return true;
+        }
+		
+		return false;
+	}
+
+	public Boolean tap(World worldIn, BlockPos pos) {
+		if (worldIn.getBlockState(pos) == this.getStateFromMeta(1)) {
+			this.dragonToSpent(worldIn, pos);
+		}
+		
+		return false;
+	}
+	
 }

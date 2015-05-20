@@ -6,7 +6,8 @@ public enum Element {
 	WATER(1, "water"),
 	EARTH(2, "earth"),
 	AIR(3, "air"),
-	WOOD(4, "wood");
+	WOOD(4, "wood"),
+	NEUTRAL(5, "neutral");
 	
 	private int ID;
 	private String name;
@@ -15,5 +16,15 @@ public enum Element {
 		this.ID = ID;
 		this.name = name;
 	}
+
+	public int getID() {
+		return ID;
+	}
+
+	public String getName() {
+		return name;
+	}
+	
+	
 	
 }
