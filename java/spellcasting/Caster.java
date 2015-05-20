@@ -84,6 +84,16 @@ public abstract class Caster extends Item {
 	public void setElement(Element element) {
 		this.element = element;
 	}
+	
+	public boolean useEssence(int req, ItemStack stack) {
+		if (stack.getItemDamage() + req > stack.getMaxDamage()) {
+			return false;
+		}
+		
+		stack.setItemDamage(stack.getItemDamage() + req);
+		
+		return true;
+	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
