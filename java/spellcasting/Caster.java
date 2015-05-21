@@ -61,8 +61,8 @@ public abstract class Caster extends Item {
 								// function stops.
 			}
 
-			stack.setItemDamage(stack.getItemDamage() - newEssence.getAmount());
-			DragonTap.dragonToSpent(worldIn, pos);
+			//stack.setItemDamage(stack.getItemDamage() - newEssence.getAmount());
+			//DragonTap.dragonToSpent(worldIn, pos);
 			// stack.damageItem(newEssence.getAmount(), playerIn);
 			// this.setDamage(stack, this.getDamage(stack) -
 			// newEssence.getAmount());

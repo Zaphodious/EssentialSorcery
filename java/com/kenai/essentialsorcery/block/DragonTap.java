@@ -98,11 +98,11 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 			// stack.damageItem(newEssence.getAmount(), playerIn);
 			// this.setDamage(stack, this.getDamage(stack) -
 			// newEssence.getAmount());
-			return false;
+			return true;
 		}
 		
 		
-		return true;// super.onBlockActivated(worldIn, pos, state, playerIn,
+		return false;// super.onBlockActivated(worldIn, pos, state, playerIn,
 					// side, hitX, hitY, hitZ);
 		//
 		
