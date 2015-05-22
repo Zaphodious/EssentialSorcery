@@ -1,8 +1,5 @@
 package com.kenai.essentialsorcery.item;
 
-import spellcasting.BiomeSorter;
-import spellcasting.Caster;
-import spellcasting.Element;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -21,6 +18,9 @@ import net.minecraft.world.World;
 import com.kenai.essentialsorcery.block.ModBlocks;
 import com.kenai.essentialsorcery.block.states.TapState;
 import com.kenai.essentialsorcery.core.Reference;
+import com.kenai.essentialsorcery.spellcasting.BiomeSorter;
+import com.kenai.essentialsorcery.spellcasting.Caster;
+import com.kenai.essentialsorcery.spellcasting.Element;
 
 public class TestWand extends Caster {
 

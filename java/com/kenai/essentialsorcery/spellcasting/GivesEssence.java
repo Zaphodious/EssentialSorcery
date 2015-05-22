@@ -1,4 +1,4 @@
-package spellcasting;
+package com.kenai.essentialsorcery.spellcasting;
 
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;

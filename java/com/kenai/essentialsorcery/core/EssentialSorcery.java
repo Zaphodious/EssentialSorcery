@@ -9,13 +9,13 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION)
-public class Main {
+public class EssentialSorcery {
 
 	@SidedProxy(clientSide=Reference.CLIENT_PROXY, serverSide=Reference.SERVER_PROXY)
 	public static CommonProxy proxy;
 	
     @Instance
-    public static Main instance = new Main();
+    public static EssentialSorcery instance = new EssentialSorcery();
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent e) {

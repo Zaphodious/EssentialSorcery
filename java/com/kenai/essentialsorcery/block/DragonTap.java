@@ -3,11 +3,8 @@ package com.kenai.essentialsorcery.block;
 import java.util.List;
 import java.util.Random;
 
-import spellcasting.Caster;
-import spellcasting.Element;
-import spellcasting.Essence;
-import spellcasting.GivesEssence;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockState;
@@ -28,6 +25,10 @@ import com.kenai.essentialsorcery.block.states.TapState;
 import com.kenai.essentialsorcery.core.Reference;
 import com.kenai.essentialsorcery.item.IMetaBlockName;
 import com.kenai.essentialsorcery.item.ModItems;
+import com.kenai.essentialsorcery.spellcasting.Caster;
+import com.kenai.essentialsorcery.spellcasting.Element;
+import com.kenai.essentialsorcery.spellcasting.Essence;
+import com.kenai.essentialsorcery.spellcasting.GivesEssence;
 
 public class DragonTap extends BasicBlock implements IMetaBlockName,
 		GivesEssence {
@@ -157,13 +158,15 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 		} else if (stack.getItemDamage() == 2) {
 			toReturn = "spent";
 		}
+		
+		System.out.println("The special name for" + stack.toString() + " is " + toReturn);
 
 		return toReturn;
 	}
 
 	@SideOnly(Side.CLIENT)
 	public EnumWorldBlockLayer getBlockLayer() {
-		return EnumWorldBlockLayer.TRANSLUCENT;
+		return EnumWorldBlockLayer.CUTOUT;
 	}
 
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state,
@@ -231,4 +234,32 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 		return false;
 	}
 
+
+
+
+    public String getUnlocalizedName(ItemStack itemStack) {
+ 
+        String name;
+        switch(itemStack.getItemDamage()) {
+ 
+            case 0:
+                name = "firstMeta";
+                break;
+            case 1:
+                name = "secondMeta";
+                break;
+            case 2:
+                name = "thirdMeta";
+                break;
+            case 3:
+                name = "forthMeta";
+                break;
+            case 4:
+                name = "fifthMeta";
+                break;
+            default:
+                name = "noMeta";
+        }
+        return getUnlocalizedName() + "." + name;
+    }
 }

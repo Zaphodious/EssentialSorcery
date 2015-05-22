@@ -1,4 +1,4 @@
-package spellcasting;
+package com.kenai.essentialsorcery.spellcasting;
 
 public class Essence {
 

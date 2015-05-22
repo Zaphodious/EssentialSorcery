@@ -13,9 +13,10 @@ public final class ItemRenderRegister {
 	public static void registerItemRenderer() {
 		reg(ModItems.tapSetter, 0);
 		reg(ModItems.testWand, 0);
+		reg(Item.getItemFromBlock(ModBlocks.dragon_tap), 0);
 	}
 	
-	private static void reg(Item item, int meta) {
+	public static void reg(Item item, int meta) {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, meta, new ModelResourceLocation(Reference.MODID + ":" + item.getUnlocalizedName().substring(5), "inventory"));
 	}
 	

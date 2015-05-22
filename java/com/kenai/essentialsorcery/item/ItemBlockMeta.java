@@ -23,6 +23,8 @@ public class ItemBlockMeta extends ItemBlock {
 
     @Override
     public String getUnlocalizedName(ItemStack stack) {
-        return super.getUnlocalizedName(stack) + "." + ((IMetaBlockName)this.block).getSpecialName(stack);
+    	String toReturn = super.getUnlocalizedName(stack) + "." + ((IMetaBlockName)this.block).getSpecialName(stack);
+    	System.out.println("This is the name that we got from getUnlocalizedName: " + toReturn);
+        return toReturn;
     }
 }

@@ -3,6 +3,7 @@ package com.kenai.essentialsorcery.block;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemStack;
 
 public class BasicBlock extends Block {
 
@@ -26,6 +27,8 @@ public class BasicBlock extends Block {
 	public boolean isOpaqueCube() {
 		return false;
 	}
+
+	
 	
 	
 	

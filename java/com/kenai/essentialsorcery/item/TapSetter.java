@@ -1,6 +1,5 @@
 package com.kenai.essentialsorcery.item;
 
-import spellcasting.BiomeSorter;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -17,6 +16,7 @@ import com.kenai.essentialsorcery.block.DragonTap;
 import com.kenai.essentialsorcery.block.ModBlocks;
 import com.kenai.essentialsorcery.block.states.TapState;
 import com.kenai.essentialsorcery.core.Reference;
+import com.kenai.essentialsorcery.spellcasting.BiomeSorter;
 
 public class TapSetter extends Item {
 

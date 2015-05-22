@@ -1,6 +1,6 @@
 package com.kenai.essentialsorcery.core;
 
-import spellcasting.BiomeSorter;
+import com.kenai.essentialsorcery.spellcasting.BiomeSorter;
 
 public class Reference {
 

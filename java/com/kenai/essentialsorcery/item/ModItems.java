@@ -1,6 +1,7 @@
 package com.kenai.essentialsorcery.item;
 
-import spellcasting.Element;
+import com.kenai.essentialsorcery.spellcasting.Element;
+
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
