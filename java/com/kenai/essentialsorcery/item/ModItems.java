@@ -9,9 +9,11 @@ public final class ModItems {
 	
 	public static Item tapSetter;
 	public static Item testWand;
+	public static Item dragonTapPlacer;
 
 	public static void createItems() {
 		GameRegistry.registerItem(tapSetter = new TapSetter("tap_setter"), "tap_setter");
+		GameRegistry.registerItem(dragonTapPlacer = new DragonTapPlacer("dragon_tap_placer"), "dragon_tap_placer");
 		GameRegistry.registerItem(testWand = new TestWand("test_wand", 8, Element.NEUTRAL), "test_wand");
 	}
 	

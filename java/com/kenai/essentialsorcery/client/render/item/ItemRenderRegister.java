@@ -13,7 +13,7 @@ public final class ItemRenderRegister {
 	public static void registerItemRenderer() {
 		reg(ModItems.tapSetter, 0);
 		reg(ModItems.testWand, 0);
-		reg(Item.getItemFromBlock(ModBlocks.dragon_tap), 0);
+		reg(ModItems.dragonTapPlacer, 0);
 	}
 	
 	public static void reg(Item item, int meta) {

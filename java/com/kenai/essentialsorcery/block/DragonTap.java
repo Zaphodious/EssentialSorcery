@@ -234,32 +234,17 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#getItemDropped(net.minecraft.block.state.IBlockState, java.util.Random, int)
+	 */
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		// TODO Auto-generated method stub
+		return ModItems.dragonTapPlacer;
+	}
 
 
 
-    public String getUnlocalizedName(ItemStack itemStack) {
- 
-        String name;
-        switch(itemStack.getItemDamage()) {
- 
-            case 0:
-                name = "firstMeta";
-                break;
-            case 1:
-                name = "secondMeta";
-                break;
-            case 2:
-                name = "thirdMeta";
-                break;
-            case 3:
-                name = "forthMeta";
-                break;
-            case 4:
-                name = "fifthMeta";
-                break;
-            default:
-                name = "noMeta";
-        }
-        return getUnlocalizedName() + "." + name;
-    }
+
+    
 }

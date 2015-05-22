@@ -5,6 +5,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.model.ModelLoader;
 
 import com.kenai.essentialsorcery.block.ModBlocks;
 import com.kenai.essentialsorcery.client.render.item.ItemRenderRegister;
@@ -29,10 +30,10 @@ public final class BlockRenderRegister {
 	public static void reg(Block block, int meta, String file) {
 	    //Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
 	    //.register(Item.getItemFromBlock(block), meta, new ModelResourceLocation(Reference.MODID + ":item/" + file, "inventory"));
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(block), meta, new ModelResourceLocation(Reference.MODID + ":" + file, "inventory"));
-	    //Item item = Item.getItemFromBlock(block);
+		//Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(block), meta, new ModelResourceLocation(Reference.MODID + ":" + file, "inventory"));
+	    Item item = Item.getItemFromBlock(block);
 	    //Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, meta, new ModelResourceLocation(Reference.MODID + ":" + item.getUnlocalizedName().substring(5), "inventory"));
-	    
+	    ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Reference.MODID + ":" + file, "inventory"));
 	    //ItemRenderRegister.reg(item, meta);
 	    System.out.println("Ran " + Reference.MODID + ":" +  block.getUnlocalizedName().substring(5) + " through the render reg.");
 
