@@ -17,6 +17,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -25,7 +26,7 @@ import com.kenai.essentialsorcery.block.states.TapState;
 import com.kenai.essentialsorcery.core.Reference;
 import com.kenai.essentialsorcery.item.IMetaBlockName;
 import com.kenai.essentialsorcery.item.ModItems;
-import com.kenai.essentialsorcery.spellcasting.Caster;
+import com.kenai.essentialsorcery.spellcasting.AcceptsEssence;
 import com.kenai.essentialsorcery.spellcasting.Element;
 import com.kenai.essentialsorcery.spellcasting.Essence;
 import com.kenai.essentialsorcery.spellcasting.GivesEssence;
@@ -33,7 +34,7 @@ import com.kenai.essentialsorcery.spellcasting.GivesEssence;
 public class DragonTap extends BasicBlock implements IMetaBlockName,
 		GivesEssence {
 
-	public static final PropertyEnum TYPE = PropertyEnum.create("type",
+	private static final PropertyEnum TYPE = PropertyEnum.create("type",
 			com.kenai.essentialsorcery.block.states.TapState.class);
 
 	public DragonTap(String unlocalizedName) {
@@ -56,30 +57,33 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 			float hitX, float hitY, float hitZ) {
 		ItemStack stack = playerIn.getCurrentEquippedItem();
 		Item item = stack.getItem();
-		Caster caster = null;
-		GivesEssence giver = (GivesEssence) worldIn.getBlockState(pos).getBlock();
+		AcceptsEssence caster = null;
+		GivesEssence giver = (GivesEssence) worldIn.getBlockState(pos)
+				.getBlock();
 
-		if ( item == ModItems.tapSetter) {
+		if (item == ModItems.tapSetter
+				&& (state.equals(this.getStateFromMeta(0)) || playerIn.capabilities.isCreativeMode)) {
 			this.dragonToSet(worldIn, pos);
 			return true;
 		}
 
 		try { // If this block doesn't implement the GivesEssence interface, the
 				// function stops.
-			caster = (Caster) item;
+			caster = (AcceptsEssence) item;
 		} catch (Exception e) {
-			System.out.println(item.toString() + "Didn't pass the caster test.");
+			System.out
+					.println(item.toString() + "Didn't pass the caster test.");
 			return false;
 		}
 
 		if (caster.getElement() != this.getElement(worldIn, pos)
 				&& caster.getElement() != Element.NEUTRAL) {
-			System.out.println(item.toString() + "Didn't pass the element test.");
+			System.out.println(item.toString()
+					+ "Didn't pass the element test.");
 			return false; // If this block doesn't give the right type of
 							// essence, the function stops.
 		}
-		
-		
+
 		if (giver.canTap(worldIn, pos)) {
 
 			Essence newEssence = this.getEssence(worldIn, pos);
@@ -101,13 +105,10 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 			// newEssence.getAmount());
 			return true;
 		}
-		
-		
+
 		return false;// super.onBlockActivated(worldIn, pos, state, playerIn,
-					// side, hitX, hitY, hitZ);
+						// side, hitX, hitY, hitZ);
 		//
-		
-		
 
 	}
 
@@ -158,8 +159,9 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 		} else if (stack.getItemDamage() == 2) {
 			toReturn = "spent";
 		}
-		
-		System.out.println("The special name for" + stack.toString() + " is " + toReturn);
+
+		System.out.println("The special name for" + stack.toString() + " is "
+				+ toReturn);
 
 		return toReturn;
 	}
@@ -184,12 +186,12 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 	}
 
 	public static void dragonToSet(World worldIn, BlockPos pos) {
-		worldIn.setBlockState(pos, ModBlocks.dragon_tap.blockState
+		worldIn.setBlockState(pos, ModBlocks.dragon_tap.getBlockState()
 				.getBaseState().withProperty(TYPE, TapState.SET));
 	}
 
 	public static void dragonToSpent(World worldIn, BlockPos pos) {
-		worldIn.setBlockState(pos, ModBlocks.dragon_tap.blockState
+		worldIn.setBlockState(pos, ModBlocks.dragon_tap.getBlockState()
 				.getBaseState().withProperty(TYPE, TapState.SPENT));
 	}
 
@@ -234,17 +236,48 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 		return false;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.block.Block#getItemDropped(net.minecraft.block.state.IBlockState, java.util.Random, int)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.block.Block#getItemDropped(net.minecraft.block.state.
+	 * IBlockState, java.util.Random, int)
 	 */
+	
+	
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		// TODO Auto-generated method stub
 		return ModItems.dragonTapPlacer;
 	}
+	
+	public boolean renderAsNormalBlock()
+	{
+	    return false;
+	}
+	
+	public boolean isFullCube()
+    {
+        return false;
+    }
+	
+	public int getLightOpacity(World world, int x, int y, int z) 
+	{
+	    return 0;
+	}
+	
+	
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#getLightValue(net.minecraft.world.IBlockAccess, net.minecraft.util.BlockPos)
+	 */
+	@Override
+	public int getLightValue(IBlockAccess world, BlockPos pos) {
+		// TODO Auto-generated method stub
+		if (world.getBlockState(pos).equals(this.getStateFromMeta(1))) {
+			return 5;
+		}
+		
+		return 0;
+	}
 
-
-
-    
 }

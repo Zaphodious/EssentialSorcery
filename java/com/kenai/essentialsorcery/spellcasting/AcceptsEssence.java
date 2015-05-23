@@ -16,11 +16,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public abstract class Caster extends Item {
+public abstract class AcceptsEssence extends Item {
 
 	protected Element element;
 
-	public Caster(int maxPool, Element element) {
+	public AcceptsEssence(int maxPool, Element element) {
 		super();
 		this.element = element;
 		this.setMaxDamage(maxPool);

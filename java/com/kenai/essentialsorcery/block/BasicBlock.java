@@ -3,7 +3,10 @@ package com.kenai.essentialsorcery.block;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
+import net.minecraft.world.World;
 
 public class BasicBlock extends Block {
 
@@ -27,6 +30,13 @@ public class BasicBlock extends Block {
 	public boolean isOpaqueCube() {
 		return false;
 	}
+
+	public boolean hasTileEntity(int metadata) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	
 
 	
 	

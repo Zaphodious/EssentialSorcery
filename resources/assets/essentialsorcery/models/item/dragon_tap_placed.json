@@ -1,5 +1,5 @@
 {
-    "parent":"essentialsorcery:block/dagon_tap_placed",
+    "parent":"essentialsorcery:blocks/dagon_tap_placed",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

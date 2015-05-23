@@ -1,8 +1,8 @@
 {
     "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
     "textures": {
-        "particle": "essentialsorcery:block/reddarkbox",
-        "0": "essentialsorcery:block/reddarkbox",
+        "particle": "essentialsorcery:block/redbox",
+        "0": "essentialsorcery:block/redbox",
         "1": "essentialsorcery:block/blackngold"
     },
     "elements": [

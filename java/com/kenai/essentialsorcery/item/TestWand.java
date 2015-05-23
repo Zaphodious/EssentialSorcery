@@ -19,10 +19,10 @@ import com.kenai.essentialsorcery.block.ModBlocks;
 import com.kenai.essentialsorcery.block.states.TapState;
 import com.kenai.essentialsorcery.core.Reference;
 import com.kenai.essentialsorcery.spellcasting.BiomeSorter;
-import com.kenai.essentialsorcery.spellcasting.Caster;
+import com.kenai.essentialsorcery.spellcasting.AcceptsEssence;
 import com.kenai.essentialsorcery.spellcasting.Element;
 
-public class TestWand extends Caster {
+public class TestWand extends AcceptsEssence {
 
 	public TestWand(String unlocalizedName, int maxPool, Element element) {
 		super(maxPool, element);

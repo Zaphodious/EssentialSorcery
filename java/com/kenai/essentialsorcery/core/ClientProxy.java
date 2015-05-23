@@ -1,5 +1,6 @@
 package com.kenai.essentialsorcery.core;
 
+import com.kenai.essentialsorcery.block.ModBlocks;
 import com.kenai.essentialsorcery.client.render.block.BlockRenderRegister;
 import com.kenai.essentialsorcery.client.render.item.ItemRenderRegister;
 
@@ -18,6 +19,7 @@ public class ClientProxy extends CommonProxy {
     public void init(FMLInitializationEvent e) {
         super.init(e);
         
+        //ModBlocks.registerRenders();
         ItemRenderRegister.registerItemRenderer();
         BlockRenderRegister.registerBlockRenderer();
     }
