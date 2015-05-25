@@ -160,8 +160,8 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 			toReturn = "spent";
 		}
 
-		System.out.println("The special name for" + stack.toString() + " is "
-				+ toReturn);
+		/*System.out.println("The special name for" + stack.toString() + " is "
+				+ toReturn);*/
 
 		return toReturn;
 	}
