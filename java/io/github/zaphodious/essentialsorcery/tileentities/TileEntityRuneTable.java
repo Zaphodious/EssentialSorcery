@@ -197,7 +197,6 @@ public class TileEntityRuneTable extends TileEntityLockable implements ISidedInv
 
 
 
-	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
 		return "runeTable";
@@ -270,6 +269,17 @@ public class TileEntityRuneTable extends TileEntityLockable implements ISidedInv
 			EnumFacing direction) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+
+
+
+
+
+	@Override
+	public String getCommandSenderName() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

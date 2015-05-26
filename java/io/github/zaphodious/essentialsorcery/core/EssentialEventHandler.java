@@ -7,7 +7,7 @@ public class EssentialEventHandler {
 
 	public void resetTapsAfterSleep(PlayerWakeUpEvent e) {
 		World world = e.entityPlayer.getEntityWorld();
-		System.out.println(e.entityPlayer.getName() + " slept!");
+		System.out.println(e.entityPlayer.getDisplayName() + " slept!");
 	}
 	
 }

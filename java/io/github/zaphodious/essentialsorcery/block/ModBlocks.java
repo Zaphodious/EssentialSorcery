@@ -14,11 +14,13 @@ public final class ModBlocks {
 
 	public static DragonTap dragon_tap;
 	public static Block rune_table;
+	public static Block testing_table;
 	
 	public static void createBlocks() {
 		
 		GameRegistry.registerBlock(dragon_tap = new DragonTap("dragon_tap"), ItemBlockMeta.class, "dragon_tap");
 		GameRegistry.registerBlock(rune_table = new RuneTable("rune_table"), "rune_table");
+		GameRegistry.registerBlock(testing_table = new TestingTable("testing_table"), "testing_table");
 		
 		
 		System.out.println("registered " + dragon_tap.getUnlocalizedName());
