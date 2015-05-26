@@ -21,10 +21,7 @@ public class GuiRuneDesk  extends GuiContainer
                +":textures/client/gui/rune_table.png");
     private final InventoryPlayer inventoryPlayer;
     private final IInventory tileRuneDesk;
-    /** The X size of the inventory window in pixels. */
-    protected int xSize = 176;
-    /** The Y size of the inventory window in pixels. */
-    protected int ySize = 132;
+
 
     public GuiRuneDesk(InventoryPlayer parInventoryPlayer, 
           TileEntityRuneTable parInventoryRuneTable)
@@ -33,15 +30,17 @@ public class GuiRuneDesk  extends GuiContainer
               parInventoryRuneTable));
         inventoryPlayer = parInventoryPlayer;
         tileRuneDesk = parInventoryRuneTable;
+        super.xSize = 176;
+        super.ySize = 132;
     }
 
     @Override
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
     {
         String s = tileRuneDesk.getDisplayName().getUnformattedText();
-        fontRendererObj.drawString(s, 6, 24, 4210752);
+        fontRendererObj.drawString(s, 6, 04, 4210752);
         fontRendererObj.drawString(inventoryPlayer.getDisplayName()
-              .getUnformattedText(), 6, 52 + 2, 4210752);
+              .getUnformattedText(), 6, 32 + 2, 4210752);
     }
 
     /**

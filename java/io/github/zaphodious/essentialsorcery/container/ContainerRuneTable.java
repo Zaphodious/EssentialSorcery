@@ -23,13 +23,13 @@ public class ContainerRuneTable extends Container {
 			for (int j = 0; j < 3; j++) {
 				System.out.println("crafting slot " + (j + i * 3) + " added");
 				addSlotToContainer(new Slot(tileEntity, j + i * 3, 60 + j * 20,
-						25 + i * 20));
+						8 + i * 20));
 			}
 		}
 		
-		addSlotToContainer(new Slot(tileEntity, 6, 19, 36));
-		addSlotToContainer(new Slot(tileEntity, 7, 148, 35));
-		addSlotToContainer(new Slot(tileEntity, 0, 0, 0));
+		addSlotToContainer(new Slot(tileEntity, 6, 19, 19));
+		addSlotToContainer(new Slot(tileEntity, 7, 148, 18));
+		addSlotToContainer(new Slot(tileEntity, -1, 0, 0));
 		this.bindPlayerInventory(inventoryPlayer);
 	}
 
@@ -51,13 +51,13 @@ public class ContainerRuneTable extends Container {
 			for (int j = 0; j < 9; j++) {
 				int index = j + i * 9 + 9;
 				addSlotToContainer(new Slot(inventoryPlayer,index,
-						8 + j * 18, 67 + i * 18));
+						8 + j * 18, 50 + i * 18));
 				System.out.println("inventory slot " + (index) + " added");
 			}
 		}
 
 		for (int i = 0; i < 9; i++) {
-			addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 125));
+			addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 108));
 			System.out.println("hot bar slot " + i + " added");
 		}
 	}
