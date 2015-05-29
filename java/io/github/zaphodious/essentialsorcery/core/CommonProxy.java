@@ -1,7 +1,6 @@
 package io.github.zaphodious.essentialsorcery.core;
 
 import io.github.zaphodious.essentialsorcery.block.ModBlocks;
-import io.github.zaphodious.essentialsorcery.gui.GuiHandler;
 import io.github.zaphodious.essentialsorcery.item.ModItems;
 import io.github.zaphodious.essentialsorcery.tileentities.ModTileEntities;
 import net.minecraftforge.common.MinecraftForge;
@@ -29,7 +28,8 @@ public class CommonProxy {
 
     public void init(FMLInitializationEvent e) {
     	ModTileEntities.registerTileEntities();
-        NetworkRegistry.INSTANCE.registerGuiHandler(EssentialSorcery.instance, new GuiHandler());
+    	ModTileEntities.regGUIs();
+        //NetworkRegistry.INSTANCE.registerGuiHandler(EssentialSorcery.instance, new MachineGUIRegistry());
     }
 
     public void postInit(FMLPostInitializationEvent e) {

@@ -1,5 +1,8 @@
 {
     "variants": {
-        "normal": {"model": "essentialsorcery:rune_table"}
+        "facing=east": {"model": "essentialsorcery:rune_table"},
+        "facing=north": {"model": "essentialsorcery:rune_table"},
+        "facing=south": {"model": "essentialsorcery:rune_table"},
+        "facing=west": {"model": "essentialsorcery:rune_table"}
     }
 }
