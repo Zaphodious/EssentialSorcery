@@ -1,5 +1,6 @@
 package io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes;
 
+import io.github.zaphodious.essentialsorcery.core.Reference;
 import net.minecraft.item.Item;
 
 public abstract class RuneShape extends Item implements Rune {
@@ -8,7 +9,8 @@ public abstract class RuneShape extends Item implements Rune {
 	protected String name;
 	
 	protected RuneShape(int id, String name) {
-		// TODO Auto-generated constructor stub
+		this.setCreativeTab(Reference.tabEssential);
+		this.setUnlocalizedName(name);
 	}
 
 	/* (non-Javadoc)

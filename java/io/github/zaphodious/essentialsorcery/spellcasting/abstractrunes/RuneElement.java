@@ -1,18 +1,22 @@
 package io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes;
 
 import net.minecraft.item.Item;
+import io.github.zaphodious.essentialsorcery.core.Reference;
 import io.github.zaphodious.essentialsorcery.spellcasting.EssenceAccepter;
 import io.github.zaphodious.essentialsorcery.spellcasting.Element;
 
-public abstract class RuneElement extends EssenceAccepter implements Rune {
+public abstract class RuneElement extends Item implements Rune {
 
 	protected Element element;
 	protected int id;
 	protected String name;
 	
-	protected RuneElement(int id, String name, Element element, int maxCapacity) {
-		super(maxCapacity, element);
-		// TODO Auto-generated constructor stub
+	protected RuneElement(int id, String name, Element element) {
+		this.element = element;
+		this.name = name;
+		this.id = id;
+		this.setCreativeTab(Reference.tabEssential);
+		this.setUnlocalizedName(name);
 	}
 
 	/* (non-Javadoc)
@@ -33,6 +37,8 @@ public abstract class RuneElement extends EssenceAccepter implements Rune {
 		return 0;
 	}
 
-	
+	public Element getElement() {
+		return this.element;
+	}
 	
 }

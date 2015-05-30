@@ -12,4 +12,5 @@ public class Reference {
 
     public static final BiomeSorter SORTER = new BiomeSorter();
     
+    public static final EssentialTab tabEssential = new EssentialTab("tabEssential");
 }

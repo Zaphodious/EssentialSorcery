@@ -24,7 +24,7 @@ public class TapSetter extends Item {
 		super();
 
 		this.setUnlocalizedName(unlocalizedName);
-		this.setCreativeTab(CreativeTabs.tabMaterials);
+		this.setCreativeTab(Reference.tabEssential);
 		this.maxStackSize = 1;
         this.setMaxDamage(8);
 	}

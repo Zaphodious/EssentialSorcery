@@ -1,13 +1,17 @@
 package io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes;
 
-public abstract class RuneEffect implements Rune {
+import io.github.zaphodious.essentialsorcery.core.Reference;
+import net.minecraft.item.Item;
+
+public abstract class RuneEffect extends Item implements Rune {
 
 	protected int id;
 	protected String name;
 	
 	public RuneEffect(int id, String name) {
 		this.id = id;
-		this.name = name;
+		this.setUnlocalizedName(name);
+		this.setCreativeTab(Reference.tabEssential);
 	}
 	
 	

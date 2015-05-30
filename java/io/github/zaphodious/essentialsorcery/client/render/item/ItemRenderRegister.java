@@ -14,6 +14,18 @@ public final class ItemRenderRegister {
 		reg(ModItems.testWand, 0);
 		reg(ModItems.dragonTapPlacer, 0);
 		reg(ModItems.runeTablePlacer, 0);
+		
+		reg(ModItems.rune_air, 0);
+		reg(ModItems.rune_earth, 0);
+		reg(ModItems.rune_fire, 0);
+		reg(ModItems.rune_water, 0);
+		reg(ModItems.rune_wood, 0);
+		
+		reg(ModItems.rune_attack, 0);
+		reg(ModItems.rune_defend, 0);
+		
+		reg(ModItems.rune_projectile, 0);
+		reg(ModItems.rune_self, 0);
 	}
 	
 	public static void reg(Item item, int meta) {

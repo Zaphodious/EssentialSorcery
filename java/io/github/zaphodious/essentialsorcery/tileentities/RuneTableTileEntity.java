@@ -1,9 +1,7 @@
 package io.github.zaphodious.essentialsorcery.tileentities;
 
-import java.util.HashMap;
-
-import io.github.zaphodious.essentialsorcery.block.ModBlocks;
 import io.github.zaphodious.essentialsorcery.item.ModItems;
+import io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.Rune;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -46,6 +44,12 @@ public class RuneTableTileEntity extends TileEntitySimplePowerConsumer {
 		for (int i = 2; i < 8; i++) {
 			if (inventory[i] != null) {
 				NBTTagCompound compound = new NBTTagCompound();
+				try {
+					Rune newRune = (Rune) inventory[i].getItem();
+					
+				} catch (Exception e) {
+					
+				}
 				
 				inventory[i].writeToNBT(compound);
 				String testName = inventory[i].getUnlocalizedName();
@@ -62,6 +66,26 @@ public class RuneTableTileEntity extends TileEntitySimplePowerConsumer {
 		
 	}
 	
+	private boolean writeRuneToNBT(int i) {
+		try {
+			Rune newRune = (Rune) inventory[i].getItem();
+			
+		} catch (Exception e) { //If this doesn't implement the "rune" interface, we skip it.
+			return false;
+		}
+		
+		String runeIndex;
+		
+		switch (i) {
+		
+		
+		
+		
+		
+		}
+		
+		return true;
+	}
 	
 	@Override
 	public String getCommandSenderName() {
