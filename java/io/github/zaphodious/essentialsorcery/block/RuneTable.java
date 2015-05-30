@@ -8,6 +8,7 @@ import io.github.zaphodious.essentialsorcery.tileentities.TileEntityRuneTable;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -23,6 +24,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IChatComponent;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.IInteractionObject;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidContainerRegistry;
@@ -39,21 +41,94 @@ public class RuneTable extends BlockSimplePowerConsumer {
 		// TODO Auto-generated constructor stub
 	}
 	
-	/*public boolean onBlockActivated(World worldIn, BlockPos pos,
+	
+	
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#canPlaceBlockOnSide(net.minecraft.world.World, net.minecraft.util.BlockPos, net.minecraft.util.EnumFacing)
+	 */
+	@Override
+	public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos,
+			EnumFacing side) {
+		// TODO Auto-generated method stub
+		
+		
+		
+		
+		
+		
+		return super.canPlaceBlockOnSide(worldIn, pos, side);
+	}
+
+
+
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#canPlaceTorchOnTop(net.minecraft.world.IBlockAccess, net.minecraft.util.BlockPos)
+	 */
+	@Override
+	public boolean canPlaceTorchOnTop(IBlockAccess world, BlockPos pos) {
+		// TODO Auto-generated method stub
+		return true;
+		
+		//return super.canPlaceTorchOnTop(world, pos);
+	}
+
+
+
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#isBlockSolid(net.minecraft.world.IBlockAccess, net.minecraft.util.BlockPos, net.minecraft.util.EnumFacing)
+	 */
+	@Override
+	public boolean isSideSolid(IBlockAccess worldIn, BlockPos pos,
+			EnumFacing side) {
+		// TODO Auto-generated method stub
+		
+		if (side == EnumFacing.UP) {
+			return true;
+		}
+		
+		return super.isBlockSolid(worldIn, pos, side);
+	}
+
+
+
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#onNeighborBlockChange(net.minecraft.world.World, net.minecraft.util.BlockPos, net.minecraft.block.state.IBlockState, net.minecraft.block.Block)
+	 */
+	@Override
+	public void onNeighborBlockChange(World worldIn, BlockPos pos,
+			IBlockState state, Block neighborBlock) {
+		// TODO Auto-generated method stub
+		
+RuneTableTileEntity rtte = (RuneTableTileEntity) worldIn.getTileEntity(pos);
+		
+		if (worldIn.isBlockPowered(pos)) {
+			rtte.makeTheSpell();
+		}
+		
+		super.onNeighborBlockChange(worldIn, pos, state, neighborBlock);
+	}
+
+
+
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos,
 			IBlockState state, EntityPlayer playerIn, EnumFacing side,
 			float hitX, float hitY, float hitZ) {
-		if (!worldIn.isRemote)
-        {
-            return true;
-        }
-        else
-        {
-            
-            playerIn.openGui(EssentialSorcery.instance, GUIs.RUNE_DESK.ordinal(), worldIn, pos.getX(), pos.getY(), pos.getZ());
-            return true;
-        }
+		
+		boolean toReturn = false;
+		
+		if (playerIn.getCurrentEquippedItem() == null) {
+			toReturn = super.onBlockActivated(worldIn, pos, state, playerIn, side, hitX, hitY, hitZ);
+		} else if (playerIn.getCurrentEquippedItem().getItem() == Item.getItemFromBlock(Blocks.wooden_button) && side == EnumFacing.UP) {
+			System.out.println("the button should have placed");
+		} else {
+			toReturn = super.onBlockActivated(worldIn, pos, state, playerIn, side, hitX, hitY, hitZ);
+		}
+		
+		return toReturn;
+		
     }
-	
+	/*
 	@Override
 	public boolean isOpaqueCube() {
 		return false;

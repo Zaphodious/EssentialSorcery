@@ -4,10 +4,11 @@ import io.github.zaphodious.essentialsorcery.block.states.TapState;
 import io.github.zaphodious.essentialsorcery.core.Reference;
 import io.github.zaphodious.essentialsorcery.item.IMetaBlockName;
 import io.github.zaphodious.essentialsorcery.item.ModItems;
-import io.github.zaphodious.essentialsorcery.spellcasting.AcceptsEssence;
+import io.github.zaphodious.essentialsorcery.spellcasting.EssenceAccepter;
 import io.github.zaphodious.essentialsorcery.spellcasting.Element;
 import io.github.zaphodious.essentialsorcery.spellcasting.Essence;
 import io.github.zaphodious.essentialsorcery.spellcasting.GivesEssence;
+import io.github.zaphodious.essentialsorcery.spellcasting.UsesEssence;
 
 import java.util.List;
 import java.util.Random;
@@ -57,7 +58,7 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 			float hitX, float hitY, float hitZ) {
 		ItemStack stack = playerIn.getCurrentEquippedItem();
 		Item item = stack.getItem();
-		AcceptsEssence caster = null;
+		UsesEssence caster = null;
 		GivesEssence giver = (GivesEssence) worldIn.getBlockState(pos)
 				.getBlock();
 
@@ -69,7 +70,7 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 
 		try { // If this block doesn't implement the GivesEssence interface, the
 				// function stops.
-			caster = (AcceptsEssence) item;
+			caster = (UsesEssence) item;
 		} catch (Exception e) {
 			System.out
 					.println(item.toString() + "Didn't pass the caster test.");
@@ -249,7 +250,7 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 		// TODO Auto-generated method stub
 		return ModItems.dragonTapPlacer;
 	}
-	
+	 
 	public boolean renderAsNormalBlock()
 	{
 	    return false;

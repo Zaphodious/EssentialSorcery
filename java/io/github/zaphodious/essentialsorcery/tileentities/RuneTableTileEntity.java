@@ -1,9 +1,13 @@
 package io.github.zaphodious.essentialsorcery.tileentities;
 
+import java.util.HashMap;
+
 import io.github.zaphodious.essentialsorcery.block.ModBlocks;
 import io.github.zaphodious.essentialsorcery.item.ModItems;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import cyano.poweradvantage.api.ConduitType;
 import cyano.poweradvantage.api.simple.TileEntitySimplePowerConsumer;
 
@@ -24,8 +28,41 @@ public class RuneTableTileEntity extends TileEntitySimplePowerConsumer {
 		progress = 0;
 		dataSyncArray = new int[2];
 		
+		
 	}
 
+	
+	public boolean makeTheSpell() {
+		
+		inventory[1] = new ItemStack(ModItems.testWand);
+		
+		
+		
+		
+		NBTTagList runes = new NBTTagList();
+		inventory[1].setTagCompound(new NBTTagCompound());
+		NBTTagCompound tbttc = inventory[1].getTagCompound();
+		
+		for (int i = 2; i < 8; i++) {
+			if (inventory[i] != null) {
+				NBTTagCompound compound = new NBTTagCompound();
+				
+				inventory[i].writeToNBT(compound);
+				String testName = inventory[i].getUnlocalizedName();
+				ItemStack testItem = inventory[i];
+				inventory[1].getTagCompound().setTag(inventory[i].getUnlocalizedName(), compound);
+			}
+		}
+		
+		
+		// for(ItemStack rune : runeStacks) { NBTTagCompound c = new NBTTagCompound(); rune.writeToNBT(c); runes.appendTag(c); }
+		inventory[1].setStackDisplayName("Iron Fisted Warrior Wand");
+		this.sync();
+		return true;
+		
+	}
+	
+	
 	@Override
 	public String getCommandSenderName() {
 		// TODO Auto-generated method stub
@@ -64,17 +101,11 @@ public class RuneTableTileEntity extends TileEntitySimplePowerConsumer {
 		
 		if (isServerWorld) {
 			
-			if (	inventory[0] != null
-				&& 	inventory[1] == null
-				/*&& 	this.getEnergy() >= 1*/	) {
+			/*if (inventory[0] == null) {
+				//inventory[1] = null;
 			
-				
-				
-			/*this.subtractEnergy(1, this.getType());
-			progress++;
-			
-			if ( progress >= 3 ) {*/
-				inventory[1] = new ItemStack(ModItems.testWand);
+			} else {
+				inventory[1] = inventory[0].copy();
 				//inventory[0].stackSize--;
 				progress = 0;
 				if (inventory[0].stackSize <= 0) {
@@ -84,12 +115,28 @@ public class RuneTableTileEntity extends TileEntitySimplePowerConsumer {
 			
 			//}
 				
-			
+		
 			
 			this.sync();
-			}
+			}*/
 		}
 		
+	}
+	
+	/*This method builds the spell, first getting a HashMap that includes the board itself and
+	all of the runes used in creation, followed by a number that indicates how many Effect Runes
+	are being passed.*/
+	
+	public boolean setInventory() {
+		ItemStack boardStack = inventory[1];
+		
+		
+		boardStack.setTagCompound(new NBTTagCompound());
+		NBTTagCompound compound = new NBTTagCompound();
+		new ItemStack(Items.apple).writeToNBT(compound);
+		boardStack.getTagCompound().setTag("apple", compound);
+		
+		return false;
 	}
 
 	@Override

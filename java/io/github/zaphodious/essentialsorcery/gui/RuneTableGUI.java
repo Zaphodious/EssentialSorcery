@@ -17,10 +17,12 @@ public class RuneTableGUI extends SimpleMachineGUI {
 		
 		System.out.println(this.guiDisplayImage);
 		// TODO Auto-generated constructor stub
-		
+		addButtons();
 		
 	}
 
-	
+	public void addButtons() {
+		System.out.println("addButtons() was called! :-D");
+	}
 
 }

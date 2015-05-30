@@ -1,8 +1,5 @@
 package io.github.zaphodious.essentialsorcery.spellcasting;
 
-import io.github.zaphodious.essentialsorcery.block.DragonTap;
-import io.github.zaphodious.essentialsorcery.block.ModBlocks;
-
 import java.util.List;
 
 import net.minecraft.block.Block;
@@ -16,17 +13,17 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public abstract class AcceptsEssence extends Item {
+public abstract class EssenceAccepter extends Item implements UsesEssence{
 
 	protected Element element;
 
-	public AcceptsEssence(int maxPool, Element element) {
+	public EssenceAccepter(int maxPool, Element element) {
 		super();
 		this.element = element;
 		this.setMaxDamage(maxPool);
 	}
 
-	protected boolean useTap(World worldIn, BlockPos pos, ItemStack stack,
+	public boolean useTap(World worldIn, BlockPos pos, ItemStack stack,
 			EntityPlayer playerIn) {
 		GivesEssence giver = null;
 		// get the specific block

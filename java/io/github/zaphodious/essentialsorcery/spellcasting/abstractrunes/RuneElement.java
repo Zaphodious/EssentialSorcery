@@ -1,10 +1,10 @@
 package io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes;
 
 import net.minecraft.item.Item;
-import io.github.zaphodious.essentialsorcery.spellcasting.AcceptsEssence;
+import io.github.zaphodious.essentialsorcery.spellcasting.EssenceAccepter;
 import io.github.zaphodious.essentialsorcery.spellcasting.Element;
 
-public abstract class RuneElement extends AcceptsEssence implements Rune {
+public abstract class RuneElement extends EssenceAccepter implements Rune {
 
 	protected Element element;
 	protected int id;
