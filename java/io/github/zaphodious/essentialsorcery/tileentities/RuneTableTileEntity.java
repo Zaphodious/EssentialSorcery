@@ -2,6 +2,9 @@ package io.github.zaphodious.essentialsorcery.tileentities;
 
 import io.github.zaphodious.essentialsorcery.item.ModItems;
 import io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.Rune;
+import io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneEffect;
+import io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneElement;
+import io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneShape;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -32,10 +35,19 @@ public class RuneTableTileEntity extends TileEntitySimplePowerConsumer {
 	
 	public boolean makeTheSpell() {
 		
+		try { // make sure that the inventory contains at least one element, one shape, and one effect in the correct slots, or else nothing happens.
+			RuneElement runeTestElement = (RuneElement) inventory[2].getItem();
+			RuneShape runeTestShape = (RuneShape) inventory[3].getItem();
+			RuneEffect runeTestEffect = (RuneEffect) inventory[4].getItem();
+		} catch (Exception e) {
+			System.out.println("Things weren't in the correct place. Error: " + e );
+			return false;
+		}
+		
 		inventory[1] = new ItemStack(ModItems.testWand);
 		
 		
-		
+		String displayString = "";
 		
 		NBTTagList runes = new NBTTagList();
 		inventory[1].setTagCompound(new NBTTagCompound());
@@ -43,46 +55,61 @@ public class RuneTableTileEntity extends TileEntitySimplePowerConsumer {
 		
 		for (int i = 2; i < 8; i++) {
 			if (inventory[i] != null) {
-				NBTTagCompound compound = new NBTTagCompound();
-				try {
-					Rune newRune = (Rune) inventory[i].getItem();
-					
-				} catch (Exception e) {
-					
+				boolean isRune = this.writeRuneToNBT(i);
+				if (isRune) {
+					Rune thisRune = (Rune) inventory[i].getItem();
+					displayString += " " + thisRune.getTitleString();
 				}
-				
-				inventory[i].writeToNBT(compound);
-				String testName = inventory[i].getUnlocalizedName();
-				ItemStack testItem = inventory[i];
-				inventory[1].getTagCompound().setTag(inventory[i].getUnlocalizedName(), compound);
 			}
 		}
 		
-		
 		// for(ItemStack rune : runeStacks) { NBTTagCompound c = new NBTTagCompound(); rune.writeToNBT(c); runes.appendTag(c); }
-		inventory[1].setStackDisplayName("Iron Fisted Warrior Wand");
+		inventory[1].setStackDisplayName("Spell of" + displayString);
 		this.sync();
 		return true;
 		
 	}
 	
 	private boolean writeRuneToNBT(int i) {
+		System.out.println("The 'i' passed to writeRuneToNBT is " + i);
 		try {
 			Rune newRune = (Rune) inventory[i].getItem();
 			
 		} catch (Exception e) { //If this doesn't implement the "rune" interface, we skip it.
+			System.out.println(inventory[i].toString() + "isn't a Rune");
 			return false;
 		}
 		
-		String runeIndex;
+		System.out.println("successfully turned " + inventory[i] + " into a rune-type");
+		
+		String runeIndex = "useless";
 		
 		switch (i) {
 		
 		
-		
-		
+		case 2: runeIndex = "element";
+			break;
+		case 3: runeIndex = "shape";
+			break;
+		case 4: runeIndex = "effect1";
+			break;
+		case 5: runeIndex = "effect2";
+			break;
+		case 6: runeIndex = "effect3";
+			break;
+		case 7: runeIndex = "effect4";
+			break;
 		
 		}
+			
+			NBTTagCompound compound = new NBTTagCompound();
+			inventory[i].writeToNBT(compound);
+			ItemStack testItem = inventory[i];
+			inventory[1].getTagCompound().setTag(runeIndex, compound);
+			System.out.println("put " + inventory[1].getTagCompound().getTag(runeIndex) + " into the wand. The runeIndex is " + runeIndex);
+		
+		
+		
 		
 		return true;
 	}
