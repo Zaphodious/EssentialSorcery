@@ -4,8 +4,8 @@ import io.github.zaphodious.essentialsorcery.spellcasting.Element;
 import io.github.zaphodious.essentialsorcery.spellcasting.Essence;
 import io.github.zaphodious.essentialsorcery.spellcasting.GivesEssence;
 import io.github.zaphodious.essentialsorcery.spellcasting.UsesEssence;
+import io.github.zaphodious.essentialsorcery.spellcasting.targeting.TargetingProjectile;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -87,6 +87,10 @@ public class TestWand extends Item implements UsesEssence {
 
 	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn,
 			EntityPlayer playerIn) {
+		
+		if (!worldIn.isRemote) {
+			worldIn.spawnEntityInWorld(new TargetingProjectile(worldIn, playerIn));
+		}
 
 		if (itemStackIn.hasTagCompound()) {
 			Set<String> keySet = new HashSet<String>();

@@ -2,6 +2,7 @@ package io.github.zaphodious.essentialsorcery.core;
 
 import io.github.zaphodious.essentialsorcery.block.ModBlocks;
 import io.github.zaphodious.essentialsorcery.client.render.block.BlockRenderRegister;
+import io.github.zaphodious.essentialsorcery.client.render.entity.EntityRenderRegister;
 import io.github.zaphodious.essentialsorcery.client.render.item.ItemRenderRegister;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -21,6 +22,7 @@ public class ClientProxy extends CommonProxy {
         //ModBlocks.registerRenders();
         ItemRenderRegister.registerItemRenderer();
         BlockRenderRegister.registerBlockRenderer();
+        EntityRenderRegister.renderEntities();
     }
 
     @Override
