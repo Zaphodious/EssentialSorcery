@@ -13,6 +13,7 @@ public class ClientProxy extends CommonProxy {
 	@Override
     public void preInit(FMLPreInitializationEvent e) {
         super.preInit(e);
+        
     }
 
     @Override
@@ -28,6 +29,7 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void postInit(FMLPostInitializationEvent e) {
         super.postInit(e);
+        
     }
 	
 }

@@ -1,16 +1,18 @@
 package io.github.zaphodious.essentialsorcery.client.render.entity;
 
+import io.github.zaphodious.essentialsorcery.item.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderArrow;
 import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.init.Items;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class EntityRenderRegister {
 
 	public static void renderEntities() {
 		RenderManager render = Minecraft.getMinecraft().getRenderManager();
-		Render renderer = new RenderArrow(render);
+		Render renderer = new RenderTargetingProjectile(Items.fish);
 		RenderingRegistry.registerEntityRenderingHandler(io.github.zaphodious.essentialsorcery.spellcasting.targeting.TargetingProjectile.class, renderer);
 	}
 	

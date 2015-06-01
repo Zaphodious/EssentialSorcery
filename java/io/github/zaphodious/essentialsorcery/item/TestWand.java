@@ -4,10 +4,12 @@ import io.github.zaphodious.essentialsorcery.spellcasting.Element;
 import io.github.zaphodious.essentialsorcery.spellcasting.Essence;
 import io.github.zaphodious.essentialsorcery.spellcasting.GivesEssence;
 import io.github.zaphodious.essentialsorcery.spellcasting.UsesEssence;
-import io.github.zaphodious.essentialsorcery.spellcasting.targeting.TargetingProjectile;
+import io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneShape;
+import io.github.zaphodious.essentialsorcery.spellcasting.targeting.RuneHelper;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import net.minecraft.block.Block;
@@ -87,16 +89,28 @@ public class TestWand extends Item implements UsesEssence {
 
 	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn,
 			EntityPlayer playerIn) {
+		try {
+			if (!worldIn.isRemote) {
+			if (itemStackIn.hasTagCompound()) {
+				ItemStack newStack = (ItemStack) ItemStack.loadItemStackFromNBT(itemStackIn.getTagCompound().getCompoundTag("shape"));
+				RuneShape shapeRune = (RuneShape) newStack.getItem();
+				try {
+					Map<String, ItemStack> runeMap = RuneHelper.getRuneMap(itemStackIn);
+					shapeRune.deployTargetingEntity(runeMap, worldIn, playerIn);
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+				
+			}
+			//worldIn.spawnEntityInWorld(new TargetingProjectile(worldIn, playerIn));
+			//worldIn.spawnEntityInWorld(new EntitySnowball(worldIn, playerIn));
+		}
+		} catch (Exception e) {
+			System.out.println("Oops, the projectile didn't fire. Error is: " + e);
+		}
 		
-		if (!worldIn.isRemote) {
-			worldIn.spawnEntityInWorld(new TargetingProjectile(worldIn, playerIn));
-		}
 
-		if (itemStackIn.hasTagCompound()) {
-			Set<String> keySet = new HashSet<String>();
-			keySet = (itemStackIn.getTagCompound().getKeySet());
-			System.out.println(keySet);
-		}
+		
 		
 		/*ItemStack appleStack;
 		try {

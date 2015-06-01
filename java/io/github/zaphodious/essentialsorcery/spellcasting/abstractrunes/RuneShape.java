@@ -1,7 +1,13 @@
 package io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes;
 
 import io.github.zaphodious.essentialsorcery.core.Reference;
+
+import java.util.Map;
+
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 public abstract class RuneShape extends Item implements Rune {
 
@@ -31,6 +37,7 @@ public abstract class RuneShape extends Item implements Rune {
 		return id;
 	}
 	
-	
+	public abstract boolean deployTargetingEntity(Map<String,ItemStack> runeMap, World worldIn,
+			EntityPlayer playerIn);
 
 }

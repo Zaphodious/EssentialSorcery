@@ -1,7 +1,16 @@
 package io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes;
 
+import java.util.Map;
+
 import io.github.zaphodious.essentialsorcery.core.Reference;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.world.World;
+import io.github.zaphodious.essentialsorcery.spellcasting.*;
 
 public abstract class RuneEffect extends Item implements Rune {
 
@@ -34,11 +43,39 @@ public abstract class RuneEffect extends Item implements Rune {
 		return id;
 	}
 
-
-	public abstract boolean fireEffect();
-	public abstract boolean waterEffect();
-	public abstract boolean airEffect();
-	public abstract boolean earthEffect();
-	public abstract boolean woodEffect();
+	public boolean makeMagic(Entity entity, World worldIn, EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn, BlockPos pos, MovingObjectPosition p_70184_1_) {
+		
+		
+		
+			
+			RuneElement elementRune = (RuneElement) runeMapIn.get("element").getItem();
+			
+			switch (elementRune.getElement()) {
+			case AIR: this.airEffect(entity, worldIn, throwerIn, runeMapIn, pos, p_70184_1_);
+				break;
+			case EARTH: this.earthEffect(entity, worldIn, throwerIn, runeMapIn, pos, p_70184_1_);
+				break;
+			case FIRE: this.fireEffect(entity, worldIn, throwerIn, runeMapIn, pos, p_70184_1_);
+				break;
+			case NEUTRAL: this.fireEffect(entity, worldIn, throwerIn, runeMapIn, pos, p_70184_1_);
+				break;
+			case WATER: this.waterEffect(entity, worldIn, throwerIn, runeMapIn, pos, p_70184_1_);
+				break;
+			case WOOD: this.woodEffect(entity, worldIn, throwerIn, runeMapIn, pos, p_70184_1_);
+				break;
+			default: this.fireEffect(entity, worldIn, throwerIn, runeMapIn, pos, p_70184_1_);
+				break;
+			}
+		
+		
+		return true;
+		
+	}
+	
+	public abstract boolean fireEffect(Entity entity, World worldIn, EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn, BlockPos pos, MovingObjectPosition p_70184_1_);
+	public abstract boolean waterEffect(Entity entity, World worldIn, EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn, BlockPos pos, MovingObjectPosition p_70184_1_);
+	public abstract boolean airEffect(Entity entity, World worldIn, EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn, BlockPos pos, MovingObjectPosition p_70184_1_);
+	public abstract boolean earthEffect(Entity entity, World worldIn, EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn, BlockPos pos, MovingObjectPosition p_70184_1_);
+	public abstract boolean woodEffect(Entity entity, World worldIn, EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn, BlockPos pos, MovingObjectPosition p_70184_1_);
 	
 }

@@ -2,25 +2,43 @@ package io.github.zaphodious.essentialsorcery.client.render.entity;
  
 
 import io.github.zaphodious.essentialsorcery.core.EssentialSorcery;
+import io.github.zaphodious.essentialsorcery.item.ModItems;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.RenderArrow;
+import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.Item;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
  
-public class TargetingProjectile extends RenderArrow {
+public class RenderTargetingProjectile extends RenderSnowball {
  
  
-public TargetingProjectile(RenderManager renderManagerIn) {
-		super(renderManagerIn);
+public RenderTargetingProjectile(Item itemIn) {
+		super(Minecraft.getMinecraft().getRenderManager(), itemIn, Minecraft.getMinecraft().getRenderItem());
+		
 		// TODO Auto-generated constructor stub
 	}
 
+/* (non-Javadoc)
+ * @see net.minecraft.client.renderer.entity.RenderArrow#doRender(net.minecraft.entity.Entity, double, double, double, float, float)
+ */
 @Override
+public void doRender(Entity entity, double x, double y, double z,
+		float entityYaw, float partialTicks) {
+	// TODO Auto-generated method stub
+	super.doRender(entity, x, y, z, entityYaw, partialTicks);
+}
+
+
+
+/*@Override
 public void doRender(Entity entity, double x, double y, double z, float par8, float par9) {
 this.bindEntityTexture(entity);	
 GL11.glPushMatrix();
@@ -86,6 +104,6 @@ GL11.glPopMatrix();
 @Override
 protected ResourceLocation getEntityTexture(Entity var1) {
 return new ResourceLocation(DoctorForge.modid+":textures/entity/doctorwho/laser.png");
-}
+}*/
  
 }
