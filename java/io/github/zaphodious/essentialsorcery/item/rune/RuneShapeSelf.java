@@ -1,5 +1,12 @@
 package io.github.zaphodious.essentialsorcery.item.rune;
 
+import java.util.Map;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.world.World;
+import io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneEffect;
 import io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneShape;
 
 public class RuneShapeSelf extends RuneShape {
@@ -14,5 +21,20 @@ public class RuneShapeSelf extends RuneShape {
 		// TODO Auto-generated method stub
 		return "Self-Inflicted";
 	}
+
+	@Override
+	public boolean deployTargetingEntity(Map<String, ItemStack> runeMap,
+			World worldIn, EntityPlayer playerIn) {
+		// TODO Auto-generated method stub
+		
+		RuneEffect effectRune = (RuneEffect) runeMap.get("effect1")
+				.getItem();
+		effectRune.makeMagic(playerIn, worldIn, playerIn,
+				runeMap, playerIn.getPosition(), new MovingObjectPosition(playerIn), "effect1");
+		
+		return false;
+	}
+	
+	
 
 }

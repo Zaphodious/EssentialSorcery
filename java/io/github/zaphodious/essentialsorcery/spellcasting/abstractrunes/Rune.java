@@ -6,5 +6,6 @@ public interface Rune {
 	public int getID();
 	public String getTitleString();
 	public String getUnlocalizedName();
+	public int getPowerLevel();
 	
 }

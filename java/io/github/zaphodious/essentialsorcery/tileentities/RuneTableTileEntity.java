@@ -1,6 +1,7 @@
 package io.github.zaphodious.essentialsorcery.tileentities;
 
 import io.github.zaphodious.essentialsorcery.item.ModItems;
+import io.github.zaphodious.essentialsorcery.spellcasting.RuneHelper;
 import io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.Rune;
 import io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneEffect;
 import io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneElement;
@@ -62,6 +63,20 @@ public class RuneTableTileEntity extends TileEntitySimplePowerConsumer {
 				}
 			}
 		}
+		
+		displayString += " lvl ";
+		int spellLevel = 0;
+		
+		for (int i = 4; i < 8; i++) {
+			if (inventory[i] != null) {
+				boolean isRune = this.writeRuneToNBT(i);
+				if (isRune) {
+					spellLevel += RuneHelper.totalEffectRunesIn(inventory[i]);
+				}
+			}
+		}
+		
+		displayString += "" + spellLevel;
 		
 		// for(ItemStack rune : runeStacks) { NBTTagCompound c = new NBTTagCompound(); rune.writeToNBT(c); runes.appendTag(c); }
 		inventory[1].setStackDisplayName("Spell of" + displayString);

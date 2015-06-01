@@ -43,7 +43,7 @@ public abstract class RuneEffect extends Item implements Rune {
 		return id;
 	}
 
-	public boolean makeMagic(Entity entity, World worldIn, EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn, BlockPos pos, MovingObjectPosition p_70184_1_) {
+	public boolean makeMagic(Entity entity, World worldIn, EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn, BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey) {
 		
 		
 		
@@ -51,19 +51,19 @@ public abstract class RuneEffect extends Item implements Rune {
 			RuneElement elementRune = (RuneElement) runeMapIn.get("element").getItem();
 			
 			switch (elementRune.getElement()) {
-			case AIR: this.airEffect(entity, worldIn, throwerIn, runeMapIn, pos, p_70184_1_);
+			case AIR: this.airEffect(entity, worldIn, throwerIn, runeMapIn, pos, movObjPos, thisRuneKey);
 				break;
-			case EARTH: this.earthEffect(entity, worldIn, throwerIn, runeMapIn, pos, p_70184_1_);
+			case EARTH: this.earthEffect(entity, worldIn, throwerIn, runeMapIn, pos, movObjPos, thisRuneKey);
 				break;
-			case FIRE: this.fireEffect(entity, worldIn, throwerIn, runeMapIn, pos, p_70184_1_);
+			case FIRE: this.fireEffect(entity, worldIn, throwerIn, runeMapIn, pos, movObjPos, thisRuneKey);
 				break;
-			case NEUTRAL: this.fireEffect(entity, worldIn, throwerIn, runeMapIn, pos, p_70184_1_);
+			case NEUTRAL: this.fireEffect(entity, worldIn, throwerIn, runeMapIn, pos, movObjPos, thisRuneKey);
 				break;
-			case WATER: this.waterEffect(entity, worldIn, throwerIn, runeMapIn, pos, p_70184_1_);
+			case WATER: this.waterEffect(entity, worldIn, throwerIn, runeMapIn, pos, movObjPos, thisRuneKey);
 				break;
-			case WOOD: this.woodEffect(entity, worldIn, throwerIn, runeMapIn, pos, p_70184_1_);
+			case WOOD: this.woodEffect(entity, worldIn, throwerIn, runeMapIn, pos, movObjPos, thisRuneKey);
 				break;
-			default: this.fireEffect(entity, worldIn, throwerIn, runeMapIn, pos, p_70184_1_);
+			default: this.fireEffect(entity, worldIn, throwerIn, runeMapIn, pos, movObjPos, thisRuneKey);
 				break;
 			}
 		
@@ -72,10 +72,14 @@ public abstract class RuneEffect extends Item implements Rune {
 		
 	}
 	
-	public abstract boolean fireEffect(Entity entity, World worldIn, EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn, BlockPos pos, MovingObjectPosition p_70184_1_);
-	public abstract boolean waterEffect(Entity entity, World worldIn, EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn, BlockPos pos, MovingObjectPosition p_70184_1_);
-	public abstract boolean airEffect(Entity entity, World worldIn, EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn, BlockPos pos, MovingObjectPosition p_70184_1_);
-	public abstract boolean earthEffect(Entity entity, World worldIn, EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn, BlockPos pos, MovingObjectPosition p_70184_1_);
-	public abstract boolean woodEffect(Entity entity, World worldIn, EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn, BlockPos pos, MovingObjectPosition p_70184_1_);
+	public abstract boolean fireEffect(Entity entity, World worldIn, EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn, BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey);
+	public abstract boolean waterEffect(Entity entity, World worldIn, EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn, BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey);
+	public abstract boolean airEffect(Entity entity, World worldIn, EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn, BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey);
+	public abstract boolean earthEffect(Entity entity, World worldIn, EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn, BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey);
+	public abstract boolean woodEffect(Entity entity, World worldIn, EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn, BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey);
+	
+	public int getPowerLevel() {
+		return 1;
+	}
 	
 }

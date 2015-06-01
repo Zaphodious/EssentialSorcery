@@ -40,4 +40,8 @@ public abstract class RuneShape extends Item implements Rune {
 	public abstract boolean deployTargetingEntity(Map<String,ItemStack> runeMap, World worldIn,
 			EntityPlayer playerIn);
 
+	
+	public int getPowerLevel() {
+		return 1;
+	}
 }

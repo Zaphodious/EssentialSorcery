@@ -93,7 +93,7 @@ public class TargetingProjectile extends EntityThrowable {
 	            RuneEffect effectRune = (RuneEffect) runeMap.get("effect1")
 					.getItem();
 			effectRune.makeMagic(this, super.worldObj, super.getThrower(),
-					runeMap, this.getPosition(), p_70184_1_);
+					runeMap, this.getPosition(), p_70184_1_, "effect1");
 			
 			
 

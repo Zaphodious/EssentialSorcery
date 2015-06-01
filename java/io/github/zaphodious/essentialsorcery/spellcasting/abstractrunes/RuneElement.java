@@ -41,4 +41,7 @@ public abstract class RuneElement extends Item implements Rune {
 		return this.element;
 	}
 	
+	public int getPowerLevel() {
+		return 1;
+	}
 }

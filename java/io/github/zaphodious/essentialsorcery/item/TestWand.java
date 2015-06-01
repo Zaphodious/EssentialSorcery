@@ -3,9 +3,9 @@ package io.github.zaphodious.essentialsorcery.item;
 import io.github.zaphodious.essentialsorcery.spellcasting.Element;
 import io.github.zaphodious.essentialsorcery.spellcasting.Essence;
 import io.github.zaphodious.essentialsorcery.spellcasting.GivesEssence;
+import io.github.zaphodious.essentialsorcery.spellcasting.RuneHelper;
 import io.github.zaphodious.essentialsorcery.spellcasting.UsesEssence;
 import io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneShape;
-import io.github.zaphodious.essentialsorcery.spellcasting.targeting.RuneHelper;
 
 import java.util.HashSet;
 import java.util.List;
