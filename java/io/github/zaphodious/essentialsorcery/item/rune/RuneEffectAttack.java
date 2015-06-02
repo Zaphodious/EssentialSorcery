@@ -27,6 +27,26 @@ public class RuneEffectAttack extends RuneEffect {
 		// TODO Auto-generated method stub
 		return "Aggression";
 	}
+	
+	
+
+	/* (non-Javadoc)
+	 * @see io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneEffect#makeMagic(net.minecraft.entity.Entity, net.minecraft.world.World, net.minecraft.entity.EntityLivingBase, java.util.Map, net.minecraft.util.BlockPos, net.minecraft.util.MovingObjectPosition, java.lang.String)
+	 */
+	@Override
+	public boolean makeMagic(Entity entity, World worldIn,
+			EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn,
+			BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey) {
+		// TODO Auto-generated method stub
+		if (movObjPos.entityHit != null)
+        {
+			return super.makeMagic(entity, worldIn, throwerIn, runeMapIn, pos, movObjPos,
+				thisRuneKey);
+        }
+		
+		return false;
+		
+	}
 
 	@Override
 	public boolean fireEffect(Entity entity, World worldIn,

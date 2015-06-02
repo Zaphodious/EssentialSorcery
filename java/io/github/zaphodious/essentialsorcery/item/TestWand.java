@@ -240,6 +240,18 @@ public class TestWand extends Item implements UsesEssence {
 		return true;
 	}
 
+
+
+	
+
+
+
+	
+
+
+
+	
+
 	
 
 }

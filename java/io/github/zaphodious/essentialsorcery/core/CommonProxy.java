@@ -2,6 +2,7 @@ package io.github.zaphodious.essentialsorcery.core;
 
 import io.github.zaphodious.essentialsorcery.block.ModBlocks;
 import io.github.zaphodious.essentialsorcery.item.ModItems;
+import io.github.zaphodious.essentialsorcery.spellcasting.targeting.RegTargetingEntities;
 import io.github.zaphodious.essentialsorcery.spellcasting.targeting.TargetingProjectile;
 import io.github.zaphodious.essentialsorcery.tileentities.ModTileEntities;
 import net.minecraftforge.common.MinecraftForge;
@@ -32,7 +33,7 @@ public class CommonProxy {
     	ModTileEntities.registerTileEntities();
     	ModTileEntities.regGUIs();
         //NetworkRegistry.INSTANCE.registerGuiHandler(EssentialSorcery.instance, new MachineGUIRegistry());
-    	EntityRegistry.registerModEntity(TargetingProjectile.class, "PlasmaBolt", 2, EssentialSorcery.instance, 50, 1, true);
+    	RegTargetingEntities.Reg();
     }
 
     public void postInit(FMLPostInitializationEvent e) {

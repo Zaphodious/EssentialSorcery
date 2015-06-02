@@ -28,6 +28,24 @@ public class RuneEffectDefend extends RuneEffect {
 		return "Defense";
 	}
 
+	/* (non-Javadoc)
+	 * @see io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneEffect#makeMagic(net.minecraft.entity.Entity, net.minecraft.world.World, net.minecraft.entity.EntityLivingBase, java.util.Map, net.minecraft.util.BlockPos, net.minecraft.util.MovingObjectPosition, java.lang.String)
+	 */
+	@Override
+	public boolean makeMagic(Entity entity, World worldIn,
+			EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn,
+			BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey) {
+		// TODO Auto-generated method stub
+		if (movObjPos.entityHit != null)
+        {
+			return super.makeMagic(entity, worldIn, throwerIn, runeMapIn, pos, movObjPos,
+				thisRuneKey);
+        }
+		
+		return false;
+		
+	}
+	
 	@Override
 	public boolean fireEffect(Entity entity, World worldIn,
 			EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn,
@@ -73,6 +91,18 @@ public class RuneEffectDefend extends RuneEffect {
 			EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn,
 			BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey) {
 		// TODO Auto-generated method stub
+		int spellStrength = RuneHelper.totalEffectRunesIn(runeMapIn
+				.get(thisRuneKey));
+		try {
+			EntityPlayer hitPlayer = (EntityPlayer) movObjPos.entityHit;
+			
+			hitPlayer.addPotionEffect(new PotionEffect(Potion.jump.getId(), spellStrength*20, (spellStrength/5)*2, false, true));
+			
+			return true;
+			
+		} catch (Exception e) {
+			
+		}
 		return false;
 	}
 
@@ -104,7 +134,7 @@ public class RuneEffectDefend extends RuneEffect {
 		int spellStrength = RuneHelper.totalEffectRunesIn(runeMapIn
 				.get(thisRuneKey));
 		
-		try {
+		/*try {
 			EntityPlayer hitPlayer = (EntityPlayer) movObjPos.entityHit;
 			
 			int foodlevel = hitPlayer.getFoodStats().getFoodLevel();
@@ -112,17 +142,17 @@ public class RuneEffectDefend extends RuneEffect {
 			
 		} catch (Exception e) {
 			
-		}
-		/*try {
+		}*/
+		try {
 			EntityPlayer hitPlayer = (EntityPlayer) movObjPos.entityHit;
 			
-			hitPlayer.addPotionEffect(new PotionEffect(Potion.jump.getId(), spellStrength*20, (spellStrength/5)*2, false, true));
+			hitPlayer.addPotionEffect(new PotionEffect(Potion.invisibility.getId(), spellStrength*200, (spellStrength/5)*2, false, true));
 			
 			return true;
 			
 		} catch (Exception e) {
 			
-		}*/
+		}
 		return false;
 	}
 

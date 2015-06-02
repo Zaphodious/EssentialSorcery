@@ -1,14 +1,22 @@
 package io.github.zaphodious.essentialsorcery.spellcasting.runeboards;
 
+import io.github.zaphodious.essentialsorcery.core.Reference;
 import io.github.zaphodious.essentialsorcery.spellcasting.Element;
 import io.github.zaphodious.essentialsorcery.spellcasting.Essence;
 import io.github.zaphodious.essentialsorcery.spellcasting.GivesEssence;
+import io.github.zaphodious.essentialsorcery.spellcasting.RuneHelper;
 import io.github.zaphodious.essentialsorcery.spellcasting.UsesEssence;
+import io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneShape;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -17,12 +25,73 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
-abstract class BasicBoard extends Item implements UsesEssence {
+public abstract class BasicBoard extends Item implements UsesEssence {
 
 	Element element;
 	
 	
+	private ItemStack[] inventory;
 	
+	protected BasicBoard(String unlocalizedName, int maxPool, Element element) {
+		this.element = element;
+		this.setUnlocalizedName(unlocalizedName);
+		this.setCreativeTab(Reference.tabEssential);
+		this.maxStackSize = 1;
+		this.setMaxDamage(maxPool);
+		inventory = new ItemStack[6];
+	}
+	
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#addInformation(net.minecraft.item.ItemStack, net.minecraft.entity.player.EntityPlayer, java.util.List, boolean)
+	 */
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer playerIn,
+			List tooltip, boolean advanced) {
+		// TODO Auto-generated method stub
+		if (stack.hasTagCompound()) {
+			Set<String> keySet = new HashSet<String>();
+			keySet = (stack.getTagCompound().getKeySet());
+			NBTTagCompound nbttc = stack.getTagCompound();
+			//System.out.println(keySet);
+			for (String string : keySet) {
+				//System.out.println(string);
+				ItemStack newStack = (ItemStack) ItemStack.loadItemStackFromNBT(stack.getTagCompound().getCompoundTag(string));
+				if (newStack != null) {
+					tooltip.add(newStack.toString());
+				}
+				
+				newStack = null;
+			}
+		}
+		super.addInformation(stack, playerIn, tooltip, advanced);
+		
+		
+		
+	}
+
+
+
+	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn,
+			EntityPlayer playerIn) {
+		try {
+			if (!worldIn.isRemote) {
+			if (itemStackIn.hasTagCompound()) {
+				ItemStack newStack = (ItemStack) ItemStack.loadItemStackFromNBT(itemStackIn.getTagCompound().getCompoundTag("shape"));
+				RuneShape shapeRune = (RuneShape) newStack.getItem();
+				try {
+					Map<String, ItemStack> runeMap = RuneHelper.getRuneMap(itemStackIn);
+					shapeRune.deployTargetingEntity(runeMap, worldIn, playerIn);
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+				
+			}
+		}
+		} catch (Exception e) {
+			System.out.println("Oops, the projectile didn't fire. Error is: " + e);
+		}
+		return itemStackIn;
+	}
 	
 
 	@Override

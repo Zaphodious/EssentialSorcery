@@ -9,11 +9,13 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
-public class TargetingProjectile extends EntityThrowable {
+public abstract class TargetingProjectile extends EntityThrowable {
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -35,9 +37,28 @@ public class TargetingProjectile extends EntityThrowable {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	
+
+	/* (non-Javadoc)
+	 * @see net.minecraft.entity.projectile.EntityThrowable#onUpdate()
+	 */
+	@Override
+	public void onUpdate() {
+		// TODO Auto-generated method stub
+		this.worldObj.spawnParticle(EnumParticleTypes.SPELL_WITCH, this.getPosition().getX(), this.getPosition().getY(), this.getPosition().getZ(), -.5F, -.5F, -.5F, 1);
+		if (this.ticksExisted > 600) {
+			this.setDead();
+		}
+		super.onUpdate();
+	}
+	
+	
+
+
 
 	private static final String __OBFID = "CL_00001722";
-	private Map<String, ItemStack> runeMap;
+	protected Map<String, ItemStack> runeMap;
 
 	public TargetingProjectile(World worldIn) {
 		super(worldIn);
@@ -46,6 +67,7 @@ public class TargetingProjectile extends EntityThrowable {
 
 	public TargetingProjectile(World worldIn, EntityLivingBase throwerIn) {
 		super(worldIn, throwerIn);
+		this.setSize(0.5F, 0.5F);;
 
 	}
 
@@ -69,7 +91,7 @@ public class TargetingProjectile extends EntityThrowable {
 	/**
 	 * Called when this EntityThrowable hits a block or entity.
 	 */
-	protected void onImpact(MovingObjectPosition p_70184_1_) {
+	public void onImpact(MovingObjectPosition p_70184_1_) {
 		if (!worldObj.isRemote) {
 			System.out.println(runeMap.toString());
 			System.out.println("Hey, we hit something at " + this.posX + ","
@@ -86,8 +108,7 @@ public class TargetingProjectile extends EntityThrowable {
 
 			System.out.println("");
 			
-			if (p_70184_1_.entityHit != null)
-	        {
+			
 	            byte b0 = 0;
 
 	            RuneEffect effectRune = (RuneEffect) runeMap.get("effect1")
@@ -98,7 +119,7 @@ public class TargetingProjectile extends EntityThrowable {
 			
 
 	            
-	        }
+	        
 
 			
 		}

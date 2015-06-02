@@ -40,7 +40,7 @@ public class RuneHelper {
 		for (String key : runeMap.keySet()) {
 			ItemStack runeStack = runeMap.get(key);
 			Rune rune = (Rune) runeStack.getItem();
-			runeNumber += runeStack.stackSize * rune.getPowerLevel();
+			runeNumber += runeStack.stackSize + rune.getPowerLevel();
 		}
 
 		return runeNumber;
@@ -51,7 +51,7 @@ public class RuneHelper {
 		int runeNumber = 0;
 
 		Rune rune = (Rune) runeStack.getItem();
-		runeNumber += runeStack.stackSize * rune.getPowerLevel();
+		runeNumber += runeStack.stackSize;
 
 		return runeNumber;
 

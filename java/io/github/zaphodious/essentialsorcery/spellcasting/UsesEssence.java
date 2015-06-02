@@ -1,6 +1,7 @@
 package io.github.zaphodious.essentialsorcery.spellcasting;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
@@ -22,6 +23,6 @@ public interface UsesEssence {
 	
 	public int getDamage(ItemStack stack);
 	
-	
+	public Item setMaxDamage(int maxDamageIn);
 	
 }

@@ -15,6 +15,12 @@ public final class ItemRenderRegister {
 		reg(ModItems.dragonTapPlacer, 0);
 		reg(ModItems.runeTablePlacer, 0);
 		
+		reg(ModItems.prettyBallRed, 0);
+		reg(ModItems.prettyBallBlue, 0);
+		reg(ModItems.prettyBallGreen, 0);
+		reg(ModItems.prettyBallYellow, 0);
+		reg(ModItems.prettyBallBrown, 0);
+		
 		reg(ModItems.rune_air, 0);
 		reg(ModItems.rune_earth, 0);
 		reg(ModItems.rune_fire, 0);
@@ -23,6 +29,7 @@ public final class ItemRenderRegister {
 		
 		reg(ModItems.rune_attack, 0);
 		reg(ModItems.rune_defend, 0);
+		reg(ModItems.rune_spawn_vanilla, 0);
 		
 		reg(ModItems.rune_projectile, 0);
 		reg(ModItems.rune_self, 0);
