@@ -13,12 +13,14 @@ import io.github.zaphodious.essentialsorcery.item.rune.RuneElementWood;
 import io.github.zaphodious.essentialsorcery.item.rune.RuneShapeProjectile;
 import io.github.zaphodious.essentialsorcery.item.rune.RuneShapeSelf;
 import io.github.zaphodious.essentialsorcery.item.runeglove.GloveLeather;
+import io.github.zaphodious.essentialsorcery.item.runeglove.GloveStone;
 import io.github.zaphodious.essentialsorcery.item.runeglove.GloveWood;
 import io.github.zaphodious.essentialsorcery.spellcasting.Element;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public final class ModItems {
+	
 	
 	public static Item tapSetter;
 	public static Item testWand;
@@ -61,6 +63,12 @@ public final class ModItems {
 	public static GloveLeather glove_leather_fire;
 	public static GloveLeather glove_leather_water;
 	public static GloveLeather glove_leather_wood;
+	
+	public static GloveStone glove_stone_air;
+	public static GloveStone glove_stone_earth;
+	public static GloveStone glove_stoner_fire;
+	public static GloveStone glove_stone_water;
+	public static GloveStone glove_stone_wood;
 	
 
 	public static void createItems() {

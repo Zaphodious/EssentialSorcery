@@ -21,7 +21,7 @@ public class Reference {
     
     public static final int[] MANA_COST_ARRAY = makeManaCosts();
     
-    public static final ArrayList<Item> BOARD_ARRAY = ModItems.getBoardRegistery();
+    
 
 
 private static int[] makeManaCosts() {

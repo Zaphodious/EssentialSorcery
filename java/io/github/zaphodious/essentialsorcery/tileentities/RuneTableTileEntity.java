@@ -130,10 +130,13 @@ public class RuneTableTileEntity extends TileEntitySimplePowerConsumer {
 	
 	private ItemStack figureOutWhichBoard() {
 		ItemStack toReturn = new ItemStack(ModItems.glove_wood_fire);
-		for (Item item : Reference.BOARD_ARRAY) {
+		for (Item item : ModItems.getBoardRegistery()) {
 			BasicBoard board = (BasicBoard) item;
-			if (board.getMaterialLevel().getItem() == inventory[0].getItem() && board.getElement() == getElementRune().getElement()) {
-				toReturn = new ItemStack(item);
+			if (board.getMaterialLevel().getItem() == inventory[0].getItem()) {
+				if (board.getElement() == getElementRune().getElement()) {
+					toReturn = new ItemStack(item);
+				}
+				
 			}
 		}
 		
