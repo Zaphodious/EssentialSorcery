@@ -17,7 +17,21 @@ public abstract class RuneElement extends Item implements Rune {
 		this.id = id;
 		this.setCreativeTab(Reference.tabEssential);
 		this.setUnlocalizedName(name);
+		this.setMaxStackSize(1);
 	}
+
+	
+	
+	/* (non-Javadoc)
+	 * @see io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.Rune#isEffectRune()
+	 */
+	@Override
+	public boolean isEffectRune() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
 
 	/* (non-Javadoc)
 	 * @see io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.Rune#getName()

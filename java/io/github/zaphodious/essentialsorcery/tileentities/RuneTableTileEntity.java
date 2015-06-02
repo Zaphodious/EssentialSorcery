@@ -1,12 +1,16 @@
 package io.github.zaphodious.essentialsorcery.tileentities;
 
+import io.github.zaphodious.essentialsorcery.core.Reference;
 import io.github.zaphodious.essentialsorcery.item.ModItems;
+import io.github.zaphodious.essentialsorcery.spellcasting.MaterialLevel;
 import io.github.zaphodious.essentialsorcery.spellcasting.RuneHelper;
 import io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.Rune;
 import io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneEffect;
 import io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneElement;
 import io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneShape;
+import io.github.zaphodious.essentialsorcery.spellcasting.runeboards.BasicBoard;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -30,11 +34,20 @@ public class RuneTableTileEntity extends TileEntitySimplePowerConsumer {
 		progress = 0;
 		dataSyncArray = new int[2];
 		
-		
 	}
 
 	
+	
+	
 	public boolean makeTheSpell() {
+		
+		
+		// 42 is the maximum power level for runes. So, if the total power level is above 42, it won't make a rune!
+		if (RuneHelper.totalPowerLevelIn(inventory) > 42) {
+			return false;
+		}
+		
+		
 		
 		try { // make sure that the inventory contains at least one element, one shape, and one effect in the correct slots, or else nothing happens.
 			RuneElement runeTestElement = (RuneElement) inventory[2].getItem();
@@ -45,7 +58,28 @@ public class RuneTableTileEntity extends TileEntitySimplePowerConsumer {
 			return false;
 		}
 		
-		inventory[1] = new ItemStack(ModItems.testWand);
+		
+		int materialFactor = 0;
+		
+		try {
+			for (MaterialLevel level : MaterialLevel.values()) {
+			if (inventory[0].getItem() == level.getItem()) {
+				materialFactor = level.getLevel();
+				
+			}
+		} 
+			
+		} catch (Exception e) {
+			return false;
+		}
+		
+		if (materialFactor == 0 || materialFactor < RuneHelper.totalPowerLevelIn(inventory)) {
+			return false;
+		}
+		
+		
+		
+		inventory[1] = this.figureOutWhichBoard();
 		
 		
 		String displayString = "";
@@ -83,6 +117,28 @@ public class RuneTableTileEntity extends TileEntitySimplePowerConsumer {
 		this.sync();
 		return true;
 		
+	}
+	
+	private RuneElement getElementRune(){
+		RuneElement elementRune = null;
+		try {
+			elementRune = (RuneElement) inventory[2].getItem();
+		} catch (Exception e) {
+		}
+		return elementRune;
+	}
+	
+	private ItemStack figureOutWhichBoard() {
+		ItemStack toReturn = new ItemStack(ModItems.glove_wood_fire);
+		for (Item item : Reference.BOARD_ARRAY) {
+			BasicBoard board = (BasicBoard) item;
+			if (board.getMaterialLevel().getItem() == inventory[0].getItem() && board.getElement() == getElementRune().getElement()) {
+				toReturn = new ItemStack(item);
+			}
+		}
+		
+		
+		return toReturn;
 	}
 	
 	private boolean writeRuneToNBT(int i) {

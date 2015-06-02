@@ -36,7 +36,7 @@ public class TapSetter extends Item {
 	public boolean onItemUse(ItemStack stack, EntityPlayer playerIn,
 			World worldIn, BlockPos pos, EnumFacing side, float hitX,
 			float hitY, float hitZ) {
-		try {
+		/*try {
 			// First, this gets the blockstate for whatever block it's been used on.
 			// If it's not a Dragon Tap (or its a "set" Dragon Tap), it places a dragon tap and the setter takes a point of damage.
 			// If it's not a "set" dragon tap, it sets it.
@@ -63,7 +63,7 @@ public class TapSetter extends Item {
 			
 		} catch (Exception e) {
 			System.out.println("doh! The TapSetter messed up. Here's the error: " + e.toString());
-		}
+		}*/
 		return false;
 		
 	}

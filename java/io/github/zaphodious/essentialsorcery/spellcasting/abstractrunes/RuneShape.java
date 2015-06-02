@@ -17,6 +17,7 @@ public abstract class RuneShape extends Item implements Rune {
 	protected RuneShape(int id, String name) {
 		this.setCreativeTab(Reference.tabEssential);
 		this.setUnlocalizedName(name);
+		this.setMaxStackSize(1);
 	}
 
 	/* (non-Javadoc)
@@ -26,6 +27,17 @@ public abstract class RuneShape extends Item implements Rune {
 	public String getName() {
 		// TODO Auto-generated method stub
 		return name;
+	}
+	
+	
+
+	/* (non-Javadoc)
+	 * @see io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.Rune#isEffectRune()
+	 */
+	@Override
+	public boolean isEffectRune() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	/* (non-Javadoc)

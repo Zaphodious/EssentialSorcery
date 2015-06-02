@@ -7,5 +7,6 @@ public interface Rune {
 	public String getTitleString();
 	public String getUnlocalizedName();
 	public int getPowerLevel();
+	public boolean isEffectRune();
 	
 }

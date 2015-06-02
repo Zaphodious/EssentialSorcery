@@ -25,4 +25,8 @@ public interface UsesEssence {
 	
 	public Item setMaxDamage(int maxDamageIn);
 	
+	public int getCost();
+	
+	public void setCost();
+	
 }

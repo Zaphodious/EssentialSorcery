@@ -1,6 +1,11 @@
 package io.github.zaphodious.essentialsorcery.core;
 
+import io.github.zaphodious.essentialsorcery.item.ModItems;
 import io.github.zaphodious.essentialsorcery.spellcasting.BiomeSorter;
+
+import java.util.ArrayList;
+
+import net.minecraft.item.Item;
 
 public class Reference {
 
@@ -13,4 +18,24 @@ public class Reference {
     public static final BiomeSorter SORTER = new BiomeSorter();
     
     public static final EssentialTab tabEssential = new EssentialTab("tabEssential");
+    
+    public static final int[] MANA_COST_ARRAY = makeManaCosts();
+    
+    public static final ArrayList<Item> BOARD_ARRAY = ModItems.getBoardRegistery();
+
+
+private static int[] makeManaCosts() {
+	int[] manaCostAt = new int[43];
+    manaCostAt[0] = 0;
+    manaCostAt[1] = 1;
+    
+    for (int i = 2; i <= 42; i++) {
+        manaCostAt[i] = manaCostAt[(i-1)] + manaCostAt[(i-2)];
+    }
+    
+    return manaCostAt;
+}
+
+
+
 }

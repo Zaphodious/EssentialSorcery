@@ -43,21 +43,7 @@ public class RuneTable extends BlockSimplePowerConsumer {
 	
 	
 	
-	/* (non-Javadoc)
-	 * @see net.minecraft.block.Block#canPlaceBlockOnSide(net.minecraft.world.World, net.minecraft.util.BlockPos, net.minecraft.util.EnumFacing)
-	 */
-	@Override
-	public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos,
-			EnumFacing side) {
-		// TODO Auto-generated method stub
-		
-		
-		
-		
-		
-		
-		return super.canPlaceBlockOnSide(worldIn, pos, side);
-	}
+
 
 
 
@@ -74,20 +60,8 @@ public class RuneTable extends BlockSimplePowerConsumer {
 
 
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.block.Block#isBlockSolid(net.minecraft.world.IBlockAccess, net.minecraft.util.BlockPos, net.minecraft.util.EnumFacing)
-	 */
-	@Override
-	public boolean isSideSolid(IBlockAccess worldIn, BlockPos pos,
-			EnumFacing side) {
-		// TODO Auto-generated method stub
-		
-		if (side == EnumFacing.UP) {
-			return true;
-		}
-		
-		return super.isBlockSolid(worldIn, pos, side);
-	}
+
+	
 
 
 
@@ -99,7 +73,7 @@ public class RuneTable extends BlockSimplePowerConsumer {
 			IBlockState state, Block neighborBlock) {
 		// TODO Auto-generated method stub
 		
-RuneTableTileEntity rtte = (RuneTableTileEntity) worldIn.getTileEntity(pos);
+		RuneTableTileEntity rtte = (RuneTableTileEntity) worldIn.getTileEntity(pos);
 		
 		if (worldIn.isBlockPowered(pos)) {
 			rtte.makeTheSpell();
@@ -116,11 +90,12 @@ RuneTableTileEntity rtte = (RuneTableTileEntity) worldIn.getTileEntity(pos);
 			float hitX, float hitY, float hitZ) {
 		
 		boolean toReturn = false;
-		
 		if (playerIn.getCurrentEquippedItem() == null) {
 			toReturn = super.onBlockActivated(worldIn, pos, state, playerIn, side, hitX, hitY, hitZ);
-		} else if (playerIn.getCurrentEquippedItem().getItem() == Item.getItemFromBlock(Blocks.wooden_button) && side == EnumFacing.UP) {
-			System.out.println("the button should have placed");
+		} else if (playerIn.getCurrentEquippedItem().getItem() == ModItems.tapSetter) {
+			RuneTableTileEntity rtte = (RuneTableTileEntity) worldIn.getTileEntity(pos);
+			System.out.println("spell result is " + rtte.makeTheSpell());
+			return true;
 		} else {
 			toReturn = super.onBlockActivated(worldIn, pos, state, playerIn, side, hitX, hitY, hitZ);
 		}

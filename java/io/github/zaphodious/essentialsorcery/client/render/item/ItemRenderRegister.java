@@ -33,6 +33,19 @@ public final class ItemRenderRegister {
 		
 		reg(ModItems.rune_projectile, 0);
 		reg(ModItems.rune_self, 0);
+		
+		
+		reg(ModItems.glove_wood_air, 0);
+		reg(ModItems.glove_wood_earth, 0);
+		reg(ModItems.glove_wood_fire, 0);
+		reg(ModItems.glove_wood_water, 0);
+		reg(ModItems.glove_wood_wood, 0);
+		
+		reg(ModItems.glove_leather_air, 0);
+		reg(ModItems.glove_leather_earth, 0);
+		reg(ModItems.glove_leather_fire, 0);
+		reg(ModItems.glove_leather_water, 0);
+		reg(ModItems.glove_leather_wood, 0);
 	}
 	
 	public static void reg(Item item, int meta) {

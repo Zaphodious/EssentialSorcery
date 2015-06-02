@@ -4,11 +4,11 @@ import io.github.zaphodious.essentialsorcery.core.Reference;
 import io.github.zaphodious.essentialsorcery.spellcasting.Element;
 import io.github.zaphodious.essentialsorcery.spellcasting.Essence;
 import io.github.zaphodious.essentialsorcery.spellcasting.GivesEssence;
+import io.github.zaphodious.essentialsorcery.spellcasting.MaterialLevel;
 import io.github.zaphodious.essentialsorcery.spellcasting.RuneHelper;
 import io.github.zaphodious.essentialsorcery.spellcasting.UsesEssence;
 import io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneShape;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -16,9 +16,7 @@ import java.util.Set;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -27,20 +25,35 @@ import net.minecraft.world.World;
 
 public abstract class BasicBoard extends Item implements UsesEssence {
 
+	
+
 	Element element;
+	MaterialLevel materialLevel;
 	
 	
 	private ItemStack[] inventory;
 	
-	protected BasicBoard(String unlocalizedName, int maxPool, Element element) {
+	protected BasicBoard(String unlocalizedName, MaterialLevel materialLevel, Element element) {
 		this.element = element;
 		this.setUnlocalizedName(unlocalizedName);
-		this.setCreativeTab(Reference.tabEssential);
+		//this.setCreativeTab(Reference.tabEssential);
 		this.maxStackSize = 1;
-		this.setMaxDamage(maxPool);
+		this.materialLevel = materialLevel;
+		this.setMaxDamage(Reference.MANA_COST_ARRAY[materialLevel.getLevel()]);
 		inventory = new ItemStack[6];
 	}
 	
+	
+	
+	/**
+	 * @return the materialLevel
+	 */
+	public MaterialLevel getMaterialLevel() {
+		return materialLevel;
+	}
+
+
+
 	/* (non-Javadoc)
 	 * @see net.minecraft.item.Item#addInformation(net.minecraft.item.ItemStack, net.minecraft.entity.player.EntityPlayer, java.util.List, boolean)
 	 */
@@ -167,6 +180,24 @@ public abstract class BasicBoard extends Item implements UsesEssence {
 															// skips to the end.
 		return false;
 
+	}
+	
+	/* (non-Javadoc)
+	 * @see io.github.zaphodious.essentialsorcery.spellcasting.UsesEssence#getCost()
+	 */
+	@Override
+	public int getCost() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see io.github.zaphodious.essentialsorcery.spellcasting.UsesEssence#setCost()
+	 */
+	@Override
+	public void setCost() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

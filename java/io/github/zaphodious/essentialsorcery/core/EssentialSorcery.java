@@ -7,6 +7,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.common.config.Configuration;
 
 @Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION)
 public class EssentialSorcery {
@@ -19,8 +20,11 @@ public class EssentialSorcery {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent e) {
+    	Configuration config = new Configuration(e.getSuggestedConfigurationFile());
+    	config.load();
     	this.proxy.preInit(e);
     	System.out.println("called method: preInit");
+    	config.save();
     }
 
     @EventHandler

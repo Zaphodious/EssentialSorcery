@@ -27,10 +27,16 @@ public class RuneShapeSelf extends RuneShape {
 			World worldIn, EntityPlayer playerIn) {
 		// TODO Auto-generated method stub
 		
-		RuneEffect effectRune = (RuneEffect) runeMap.get("effect1")
-				.getItem();
-		effectRune.makeMagic(playerIn, worldIn, playerIn,
-				runeMap, playerIn.getPosition(), new MovingObjectPosition(playerIn), "effect1");
+		for (String key : runeMap.keySet()) {
+			if (key.contains("effect")) {
+				RuneEffect effectRune = (RuneEffect) runeMap.get(key)
+						.getItem();
+				effectRune.makeMagic(playerIn, worldIn, playerIn,
+						runeMap, playerIn.getPosition(), new MovingObjectPosition(playerIn), key);
+			}
+		}
+		
+		
 		
 		return false;
 	}
