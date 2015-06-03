@@ -1,6 +1,7 @@
 package io.github.zaphodious.essentialsorcery.core;
 
 import io.github.zaphodious.essentialsorcery.block.ModBlocks;
+import io.github.zaphodious.essentialsorcery.event.Events;
 import io.github.zaphodious.essentialsorcery.item.ModItems;
 import io.github.zaphodious.essentialsorcery.spellcasting.targeting.RegTargetingEntities;
 import io.github.zaphodious.essentialsorcery.spellcasting.targeting.TargetingProjectile;
@@ -20,6 +21,7 @@ public class CommonProxy {
 	public void preInit(FMLPreInitializationEvent e) {
 		ModBlocks.createBlocks();
 		ModItems.createItems();
+		ModItems.putRunesIntoDropList();
 		
 		Reference.SORTER.fillBiomeList();
 		FMLCommonHandler.instance().bus().register(events);
@@ -37,7 +39,7 @@ public class CommonProxy {
     }
 
     public void postInit(FMLPostInitializationEvent e) {
-
+    	MinecraftForge.EVENT_BUS.register(new Events());
     }
 	
 }

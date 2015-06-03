@@ -17,7 +17,10 @@ import io.github.zaphodious.essentialsorcery.item.runeglove.GloveIron;
 import io.github.zaphodious.essentialsorcery.item.runeglove.GloveLeather;
 import io.github.zaphodious.essentialsorcery.item.runeglove.GloveStone;
 import io.github.zaphodious.essentialsorcery.item.runeglove.GloveWood;
+import io.github.zaphodious.essentialsorcery.spellcasting.DropChance;
 import io.github.zaphodious.essentialsorcery.spellcasting.Element;
+import io.github.zaphodious.essentialsorcery.spellcasting.RuneHelper;
+import io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneElement;
 
 import java.util.ArrayList;
 
@@ -161,6 +164,28 @@ public final class ModItems {
 		GameRegistry.registerItem(glove_diamond_fire = new GloveDiamond("glove_diamond_fire",Element.FIRE), "glove_diamond_fire");
 		GameRegistry.registerItem(glove_diamond_water = new GloveDiamond("glove_diamond_water",Element.WATER), "glove_diamond_water");
 		GameRegistry.registerItem(glove_diamond_wood = new GloveDiamond("glove_diamond_wood",Element.WOOD), "glove_diamond_wood");
+	}
+	
+	public static void putRunesIntoDropList() {
+		RuneHelper.addRuneToDropList(rune_attack, DropChance.COMMON);
+		RuneHelper.addRuneToDropList(rune_defend, DropChance.COMMON);
+		RuneHelper.addRuneToDropList(rune_transport, DropChance.COMMON);
+		RuneHelper.addRuneToDropList(rune_spawn_vanilla, DropChance.UNCOMMON);
+		RuneHelper.addRuneToDropList(rune_projectile, DropChance.RARE);
+		RuneHelper.addRuneToDropList(rune_self, DropChance.RARE);
+	}
+	
+	public static ArrayList<RuneElement> getElementRunes() {
+		ArrayList<RuneElement> toReturn = new ArrayList<RuneElement>();
+		
+		toReturn.add(rune_air);
+		toReturn.add(rune_earth);
+		toReturn.add(rune_fire);
+		toReturn.add(rune_water);
+		toReturn.add(rune_wood);
+		
+		
+		return toReturn;
 	}
 	
 	public static ArrayList<Item> getBoardRegistery(){

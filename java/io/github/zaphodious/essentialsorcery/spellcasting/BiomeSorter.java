@@ -117,4 +117,13 @@ public class BiomeSorter {
 		
 		return biomes.get(biomeID);
 	}
+
+	/**
+	 * @return the biomes
+	 */
+	public Map<Integer, Element> getBiomes() {
+		return biomes;
+	}
+	
+	
 }
