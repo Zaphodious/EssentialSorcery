@@ -7,7 +7,7 @@ import io.github.zaphodious.essentialsorcery.spellcasting.runeboards.BasicBoard;
 
 public class GloveGold extends BasicBoard {
 
-	protected GloveGold(String unlocalizedName, Element element) {
+	public GloveGold(String unlocalizedName, Element element) {
 		super(unlocalizedName, MaterialLevel.GOLD, element);
 		// TODO Auto-generated constructor stub
 	}

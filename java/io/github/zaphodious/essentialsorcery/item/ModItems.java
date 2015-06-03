@@ -1,7 +1,5 @@
 package io.github.zaphodious.essentialsorcery.item;
 
-import java.util.ArrayList;
-
 import io.github.zaphodious.essentialsorcery.item.rune.RuneEffectAttack;
 import io.github.zaphodious.essentialsorcery.item.rune.RuneEffectDefend;
 import io.github.zaphodious.essentialsorcery.item.rune.RuneEffectSpawnVanilla;
@@ -12,10 +10,16 @@ import io.github.zaphodious.essentialsorcery.item.rune.RuneElementWater;
 import io.github.zaphodious.essentialsorcery.item.rune.RuneElementWood;
 import io.github.zaphodious.essentialsorcery.item.rune.RuneShapeProjectile;
 import io.github.zaphodious.essentialsorcery.item.rune.RuneShapeSelf;
+import io.github.zaphodious.essentialsorcery.item.runeglove.GloveDiamond;
+import io.github.zaphodious.essentialsorcery.item.runeglove.GloveGold;
+import io.github.zaphodious.essentialsorcery.item.runeglove.GloveIron;
 import io.github.zaphodious.essentialsorcery.item.runeglove.GloveLeather;
 import io.github.zaphodious.essentialsorcery.item.runeglove.GloveStone;
 import io.github.zaphodious.essentialsorcery.item.runeglove.GloveWood;
 import io.github.zaphodious.essentialsorcery.spellcasting.Element;
+
+import java.util.ArrayList;
+
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -66,9 +70,27 @@ public final class ModItems {
 	
 	public static GloveStone glove_stone_air;
 	public static GloveStone glove_stone_earth;
-	public static GloveStone glove_stoner_fire;
+	public static GloveStone glove_stone_fire;
 	public static GloveStone glove_stone_water;
 	public static GloveStone glove_stone_wood;
+	
+	public static GloveIron glove_iron_air;
+	public static GloveIron glove_iron_earth;
+	public static GloveIron glove_iron_fire;
+	public static GloveIron glove_iron_water;
+	public static GloveIron glove_iron_wood;
+	
+	public static GloveGold glove_gold_air;
+	public static GloveGold glove_gold_earth;
+	public static GloveGold glove_gold_fire;
+	public static GloveGold glove_gold_water;
+	public static GloveGold glove_gold_wood;
+	
+	public static GloveDiamond glove_diamond_air;
+	public static GloveDiamond glove_diamond_earth;
+	public static GloveDiamond glove_diamond_fire;
+	public static GloveDiamond glove_diamond_water;
+	public static GloveDiamond glove_diamond_wood;
 	
 
 	public static void createItems() {
@@ -112,6 +134,30 @@ public final class ModItems {
 		GameRegistry.registerItem(glove_leather_fire = new GloveLeather("glove_leather_fire",Element.FIRE), "glove_leather_fire");
 		GameRegistry.registerItem(glove_leather_water = new GloveLeather("glove_leather_water",Element.WATER), "glove_leather_water");
 		GameRegistry.registerItem(glove_leather_wood = new GloveLeather("glove_leather_wood",Element.WOOD), "glove_leather_wood");
+		
+		GameRegistry.registerItem(glove_stone_air = new GloveStone("glove_stone_air",Element.AIR), "glove_stone_air");
+		GameRegistry.registerItem(glove_stone_earth = new GloveStone("glove_stone_earth",Element.EARTH), "glove_stone_earth");
+		GameRegistry.registerItem(glove_stone_fire = new GloveStone("glove_stone_fire",Element.FIRE), "glove_stone_fire");
+		GameRegistry.registerItem(glove_stone_water = new GloveStone("glove_stone_water",Element.WATER), "glove_stone_water");
+		GameRegistry.registerItem(glove_stone_wood = new GloveStone("glove_stone_wood",Element.WOOD), "glove_stone_wood");
+		
+		GameRegistry.registerItem(glove_iron_air = new GloveIron("glove_iron_air",Element.AIR), "glove_iron_air");
+		GameRegistry.registerItem(glove_iron_earth = new GloveIron("glove_iron_earth",Element.EARTH), "glove_iron_earth");
+		GameRegistry.registerItem(glove_iron_fire = new GloveIron("glove_iron_fire",Element.FIRE), "glove_iron_fire");
+		GameRegistry.registerItem(glove_iron_water = new GloveIron("glove_iron_water",Element.WATER), "glove_iron_water");
+		GameRegistry.registerItem(glove_iron_wood = new GloveIron("glove_iron_wood",Element.WOOD), "glove_iron_wood");
+		
+		GameRegistry.registerItem(glove_gold_air = new GloveGold("glove_gold_air",Element.AIR), "glove_gold_air");
+		GameRegistry.registerItem(glove_gold_earth = new GloveGold("glove_gold_earth",Element.EARTH), "glove_gold_earth");
+		GameRegistry.registerItem(glove_gold_fire = new GloveGold("glove_gold_fire",Element.FIRE), "glove_gold_fire");
+		GameRegistry.registerItem(glove_gold_water = new GloveGold("glove_gold_water",Element.WATER), "glove_gold_water");
+		GameRegistry.registerItem(glove_gold_wood = new GloveGold("glove_gold_wood",Element.WOOD), "glove_gold_wood");
+		
+		GameRegistry.registerItem(glove_diamond_air = new GloveDiamond("glove_diamond_air",Element.AIR), "glove_diamond_air");
+		GameRegistry.registerItem(glove_diamond_earth = new GloveDiamond("glove_diamond_earth",Element.EARTH), "glove_diamond_earth");
+		GameRegistry.registerItem(glove_diamond_fire = new GloveDiamond("glove_diamond_fire",Element.FIRE), "glove_diamond_fire");
+		GameRegistry.registerItem(glove_diamond_water = new GloveDiamond("glove_diamond_water",Element.WATER), "glove_diamond_water");
+		GameRegistry.registerItem(glove_diamond_wood = new GloveDiamond("glove_diamond_wood",Element.WOOD), "glove_diamond_wood");
 	}
 	
 	public static ArrayList<Item> getBoardRegistery(){
@@ -133,6 +179,30 @@ public final class ModItems {
 		toReturn.add(glove_leather_fire);
 		toReturn.add(glove_leather_water);
 		toReturn.add(glove_leather_wood);
+		
+		toReturn.add(glove_stone_air);
+		toReturn.add(glove_stone_earth);
+		toReturn.add(glove_stone_fire);
+		toReturn.add(glove_stone_water);
+		toReturn.add(glove_stone_wood);
+		
+		toReturn.add(glove_iron_air);
+		toReturn.add(glove_iron_earth);
+		toReturn.add(glove_iron_fire);
+		toReturn.add(glove_iron_water);
+		toReturn.add(glove_iron_wood);
+		
+		toReturn.add(glove_gold_air);
+		toReturn.add(glove_gold_earth);
+		toReturn.add(glove_gold_fire);
+		toReturn.add(glove_gold_water);
+		toReturn.add(glove_gold_wood);
+		
+		toReturn.add(glove_diamond_air);
+		toReturn.add(glove_diamond_earth);
+		toReturn.add(glove_diamond_fire);
+		toReturn.add(glove_diamond_water);
+		toReturn.add(glove_diamond_wood);
 		
 		return toReturn;
 	}

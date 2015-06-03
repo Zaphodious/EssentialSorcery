@@ -129,6 +129,8 @@ public class RuneTableTileEntity extends TileEntitySimplePowerConsumer {
 	}
 	
 	private ItemStack figureOutWhichBoard() {
+		//  Goes through a list of spell-caster items, and finds the one that fits
+		//  with what the player has in the input boxes.
 		ItemStack toReturn = new ItemStack(ModItems.glove_wood_fire);
 		for (Item item : ModItems.getBoardRegistery()) {
 			BasicBoard board = (BasicBoard) item;
@@ -248,9 +250,7 @@ public class RuneTableTileEntity extends TileEntitySimplePowerConsumer {
 		
 	}
 	
-	/*This method builds the spell, first getting a HashMap that includes the board itself and
-	all of the runes used in creation, followed by a number that indicates how many Effect Runes
-	are being passed.*/
+	
 	
 	public boolean setInventory() {
 		ItemStack boardStack = inventory[1];

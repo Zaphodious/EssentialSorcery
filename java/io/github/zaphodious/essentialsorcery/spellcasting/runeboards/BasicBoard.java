@@ -86,6 +86,7 @@ public abstract class BasicBoard extends Item implements UsesEssence {
 
 	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn,
 			EntityPlayer playerIn) {
+		playerIn.swingItem();
 		try {
 			if (!worldIn.isRemote) {
 			if (itemStackIn.hasTagCompound()) {
@@ -94,6 +95,7 @@ public abstract class BasicBoard extends Item implements UsesEssence {
 				try {
 					Map<String, ItemStack> runeMap = RuneHelper.getRuneMap(itemStackIn);
 					shapeRune.deployTargetingEntity(runeMap, worldIn, playerIn);
+					
 				} catch (Exception e) {
 					System.out.println(e);
 				}

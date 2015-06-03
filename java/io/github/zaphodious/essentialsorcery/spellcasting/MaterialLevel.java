@@ -8,8 +8,9 @@ import net.minecraft.item.Item;
 public enum MaterialLevel {
 
 	WOOD(3, Item.getItemFromBlock(Blocks.planks)),
-	LEATHER(5, Items.leather),
-	STONE(6, Item.getItemFromBlock(Blocks.stone)),
+	STONE(4, Item.getItemFromBlock(Blocks.stone)),
+	LEATHER(6, Items.leather),
+	
 	IRON(8, Item.getItemFromBlock(Blocks.iron_block)),
 	GOLD(10, Item.getItemFromBlock(Blocks.gold_block)),
 	DIAMOND(14, Item.getItemFromBlock(Blocks.diamond_block));

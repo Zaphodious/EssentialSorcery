@@ -46,6 +46,31 @@ public final class ItemRenderRegister {
 		reg(ModItems.glove_leather_fire, 0);
 		reg(ModItems.glove_leather_water, 0);
 		reg(ModItems.glove_leather_wood, 0);
+		
+		reg(ModItems.glove_stone_air, 0);
+		reg(ModItems.glove_stone_earth, 0);
+		reg(ModItems.glove_stone_fire, 0);
+		reg(ModItems.glove_stone_water, 0);
+		reg(ModItems.glove_stone_wood, 0);
+		
+		reg(ModItems.glove_iron_air, 0);
+		reg(ModItems.glove_iron_earth, 0);
+		reg(ModItems.glove_iron_fire, 0);
+		reg(ModItems.glove_iron_water, 0);
+		reg(ModItems.glove_iron_wood, 0);
+		
+		reg(ModItems.glove_gold_air, 0);
+		reg(ModItems.glove_gold_earth, 0);
+		reg(ModItems.glove_gold_fire, 0);
+		reg(ModItems.glove_gold_water, 0);
+		reg(ModItems.glove_gold_wood, 0);
+		
+		reg(ModItems.glove_diamond_air, 0);
+		reg(ModItems.glove_diamond_earth, 0);
+		reg(ModItems.glove_diamond_fire, 0);
+		reg(ModItems.glove_diamond_water, 0);
+		reg(ModItems.glove_diamond_wood, 0);
+		
 	}
 	
 	public static void reg(Item item, int meta) {
