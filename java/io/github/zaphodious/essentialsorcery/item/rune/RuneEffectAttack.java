@@ -10,6 +10,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
@@ -71,7 +73,13 @@ public class RuneEffectAttack extends RuneEffect {
 		int damageToDeal = RuneHelper.totalEffectRunesIn(runeMapIn
 				.get(thisRuneKey));
 		
-		movObjPos.entityHit.setAir(movObjPos.entityHit.getAir() - damageToDeal);
+		//movObjPos.entityHit.setAir(movObjPos.entityHit.getAir() - damageToDeal);
+		try {
+			EntityLivingBase entityLivingBase = (EntityLivingBase) movObjPos.entityHit;
+			entityLivingBase.addPotionEffect(new PotionEffect(Potion.saturation.getId(), damageToDeal*20, damageToDeal/5, false, true));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+		}
 		return false;
 		
 	}
@@ -84,7 +92,7 @@ public class RuneEffectAttack extends RuneEffect {
 		int damageToDeal = RuneHelper.totalEffectRunesIn(runeMapIn
 				.get(thisRuneKey));
 
-		Random rand = new Random();
+		/*Random rand = new Random();
 		float xDir = rand.nextFloat()*damageToDeal*3;
 		float yDir= rand.nextFloat()*damageToDeal;
 		float zDir= rand.nextFloat()*damageToDeal*3;
@@ -94,11 +102,33 @@ public class RuneEffectAttack extends RuneEffect {
 		
 		if (rand.nextFloat() < .5F) {
 			zDir = -zDir;
+		}*/
+		
+		
+		
+		try {
+			
+			movObjPos.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(entity, throwerIn), 0);
+			
+			EntityLivingBase entityLivingBase = (EntityLivingBase) movObjPos.entityHit;
+			
+			entityLivingBase.knockBack(throwerIn, 5, -(entity.motionX), -(entity.motionZ));
+			//entityLivingBase.motionY = damageToDeal*.2;
+			entityLivingBase.motionX = entity.motionX*(damageToDeal*.5);
+			entityLivingBase.motionZ = entity.motionZ*(damageToDeal*.5);
+			
+			
+			//entityLivingBase.setLastAttacker(throwerIn);
+			
+			
+			
+			
+		} catch (Exception e) {
+			
 		}
 		
-		movObjPos.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(entity, throwerIn), 0);
 		
-		movObjPos.entityHit.moveEntity(xDir, yDir, zDir);
+		//movObjPos.entityHit.moveEntity(xDir, yDir, zDir);
 		
 
 		System.out.println("did it make it fly?");

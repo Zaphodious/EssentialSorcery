@@ -7,9 +7,9 @@ import io.github.zaphodious.essentialsorcery.spellcasting.GivesEssence;
 import io.github.zaphodious.essentialsorcery.spellcasting.MaterialLevel;
 import io.github.zaphodious.essentialsorcery.spellcasting.RuneHelper;
 import io.github.zaphodious.essentialsorcery.spellcasting.UsesEssence;
+import io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneEffect;
 import io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneShape;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -21,6 +21,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 public abstract class BasicBoard extends Item implements UsesEssence {
@@ -60,22 +61,34 @@ public abstract class BasicBoard extends Item implements UsesEssence {
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn,
 			List tooltip, boolean advanced) {
-		// TODO Auto-generated method stub
+		
+		tooltip.add("Essence: " + (stack.getMaxDamage() - stack.getItemDamage()) + "/" + stack.getMaxDamage());
+		
+		
+		
 		if (stack.hasTagCompound()) {
-			Set<String> keySet = new HashSet<String>();
-			keySet = (stack.getTagCompound().getKeySet());
+			
+			tooltip.add("     Mana cost to cast is " + this.getCost(stack));
+			tooltip.add("Effect Runes Affixed:");
+			
+			Set<String> keySet = (stack.getTagCompound().getKeySet());
 			NBTTagCompound nbttc = stack.getTagCompound();
-			//System.out.println(keySet);
 			for (String string : keySet) {
 				//System.out.println(string);
 				ItemStack newStack = (ItemStack) ItemStack.loadItemStackFromNBT(stack.getTagCompound().getCompoundTag(string));
-				if (newStack != null) {
-					tooltip.add(newStack.toString());
+				try {
+					RuneEffect effectRune = (RuneEffect) newStack.getItem();
+					String newString = "    " + newStack.stackSize + " " + StatCollector.translateToLocal(effectRune.getUnlocalizedName() + ".name");
+					tooltip.add(newString);
+				} catch (Exception e) {
+					
+					
 				}
 				
-				newStack = null;
 			}
+			
 		}
+		
 		super.addInformation(stack, playerIn, tooltip, advanced);
 		
 		

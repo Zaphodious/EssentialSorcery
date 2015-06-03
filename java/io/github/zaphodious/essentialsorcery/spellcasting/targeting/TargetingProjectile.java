@@ -52,6 +52,9 @@ public abstract class TargetingProjectile extends EntityThrowable {
 		if (this.ticksExisted > 600) {
 			this.setDead();
 		}
+		this.motionX *= 1.1;
+		this.motionY *= 1.1;
+		this.motionZ *= 1.1;
 		super.onUpdate();
 	}
 

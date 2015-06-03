@@ -3,6 +3,7 @@ package io.github.zaphodious.essentialsorcery.item;
 import io.github.zaphodious.essentialsorcery.item.rune.RuneEffectAttack;
 import io.github.zaphodious.essentialsorcery.item.rune.RuneEffectDefend;
 import io.github.zaphodious.essentialsorcery.item.rune.RuneEffectSpawnVanilla;
+import io.github.zaphodious.essentialsorcery.item.rune.RuneEffectTransportation;
 import io.github.zaphodious.essentialsorcery.item.rune.RuneElementAir;
 import io.github.zaphodious.essentialsorcery.item.rune.RuneElementEarth;
 import io.github.zaphodious.essentialsorcery.item.rune.RuneElementFire;
@@ -43,6 +44,7 @@ public final class ModItems {
 	public static RuneEffectAttack rune_attack;
 	public static RuneEffectDefend rune_defend;
 	public static RuneEffectSpawnVanilla rune_spawn_vanilla;
+	public static RuneEffectTransportation rune_transport;
 	
 	public static RuneElementAir rune_air;
 	public static RuneElementWater rune_water;
@@ -110,6 +112,7 @@ public final class ModItems {
 		GameRegistry.registerItem(rune_attack = new RuneEffectAttack(0, "rune_attack"), "rune_attack");
 		GameRegistry.registerItem(rune_defend = new RuneEffectDefend(1, "rune_defend"), "rune_defend");
 		GameRegistry.registerItem(rune_spawn_vanilla = new RuneEffectSpawnVanilla(2, "rune_spawn_vanilla"), "rune_spawn_vanilla");
+		GameRegistry.registerItem(rune_transport = new RuneEffectTransportation(3, "rune_transport"), "rune_transport");
 		
 		GameRegistry.registerItem(rune_air = new RuneElementAir("rune_air"), "rune_air");
 		GameRegistry.registerItem(rune_water = new RuneElementWater("rune_water"), "rune_water");

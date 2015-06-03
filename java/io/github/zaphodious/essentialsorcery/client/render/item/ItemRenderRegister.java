@@ -30,6 +30,7 @@ public final class ItemRenderRegister {
 		reg(ModItems.rune_attack, 0);
 		reg(ModItems.rune_defend, 0);
 		reg(ModItems.rune_spawn_vanilla, 0);
+		reg(ModItems.rune_transport, 0);
 		
 		reg(ModItems.rune_projectile, 0);
 		reg(ModItems.rune_self, 0);
