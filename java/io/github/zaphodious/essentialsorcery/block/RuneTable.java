@@ -2,6 +2,7 @@ package io.github.zaphodious.essentialsorcery.block;
 
 import io.github.zaphodious.essentialsorcery.container.ContainerRuneTable;
 import io.github.zaphodious.essentialsorcery.core.EssentialSorcery;
+import io.github.zaphodious.essentialsorcery.core.Reference;
 import io.github.zaphodious.essentialsorcery.item.ModItems;
 import io.github.zaphodious.essentialsorcery.tileentities.RuneTableTileEntity;
 import io.github.zaphodious.essentialsorcery.tileentities.TileEntityRuneTable;
@@ -68,7 +69,7 @@ public class RuneTable extends BlockSimplePowerConsumer {
 	/* (non-Javadoc)
 	 * @see net.minecraft.block.Block#onNeighborBlockChange(net.minecraft.world.World, net.minecraft.util.BlockPos, net.minecraft.block.state.IBlockState, net.minecraft.block.Block)
 	 */
-	@Override
+	/*@Override
 	public void onNeighborBlockChange(World worldIn, BlockPos pos,
 			IBlockState state, Block neighborBlock) {
 		// TODO Auto-generated method stub
@@ -80,7 +81,7 @@ public class RuneTable extends BlockSimplePowerConsumer {
 		}
 		
 		super.onNeighborBlockChange(worldIn, pos, state, neighborBlock);
-	}
+	}*/
 
 
 
@@ -94,7 +95,7 @@ public class RuneTable extends BlockSimplePowerConsumer {
 			toReturn = super.onBlockActivated(worldIn, pos, state, playerIn, side, hitX, hitY, hitZ);
 		} else if (playerIn.getCurrentEquippedItem().getItem() == ModItems.tapSetter) {
 			RuneTableTileEntity rtte = (RuneTableTileEntity) worldIn.getTileEntity(pos);
-			System.out.println("spell result is " + rtte.makeTheSpell());
+			System.out.println("spell result is " + rtte.makeTheSpell(playerIn));
 			return true;
 		} else {
 			toReturn = super.onBlockActivated(worldIn, pos, state, playerIn, side, hitX, hitY, hitZ);

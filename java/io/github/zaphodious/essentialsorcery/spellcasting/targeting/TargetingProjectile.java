@@ -102,25 +102,28 @@ public abstract class TargetingProjectile extends EntityThrowable {
 
 			// try {
 
-			for (String key : runeMap.keySet()) {
+			/*for (String key : runeMap.keySet()) {
 				if (runeMap.get(key) != null) {
 					System.out.print(runeMap.get(key).toString());
 				}
 				
-			}
+			}*/
 
 			System.out.println("");
 
 			byte b0 = 0;
 
-			for (String key : runeMap.keySet()) {
-				if (key.contains("effect")) {
-					RuneEffect effectRune = (RuneEffect) runeMap.get(key)
-							.getItem();
-					effectRune.makeMagic(this, super.worldObj,
-							super.getThrower(), runeMap, this.getPosition(),
-							p_70184_1_, key);
+			try {
+				for (String key : runeMap.keySet()) {
+					if (key.contains("effect")) {
+						RuneEffect effectRune = (RuneEffect) runeMap.get(key)
+								.getItem();
+						effectRune.makeMagic(this, super.worldObj,
+								super.getThrower(), runeMap, this.getPosition(),
+								p_70184_1_, key);
+					}
 				}
+			} catch (Exception e) {
 			}
 
 		}

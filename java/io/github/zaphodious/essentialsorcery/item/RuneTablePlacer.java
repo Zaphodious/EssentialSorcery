@@ -24,7 +24,7 @@ public class RuneTablePlacer extends Item {
 		super();
 
 		this.setUnlocalizedName(unlocalizedName);
-		this.setCreativeTab(CreativeTabs.tabBlock);
+		this.setCreativeTab(Reference.tabEssential);
 		this.maxStackSize = 64;
 	}
 	

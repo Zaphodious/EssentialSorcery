@@ -9,6 +9,7 @@ import io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneEffe
 import io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneElement;
 import io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneShape;
 import io.github.zaphodious.essentialsorcery.spellcasting.runeboards.BasicBoard;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -39,7 +40,7 @@ public class RuneTableTileEntity extends TileEntitySimplePowerConsumer {
 	
 	
 	
-	public boolean makeTheSpell() {
+	public boolean makeTheSpell(EntityPlayer playerIn) {
 		
 		
 		// 42 is the maximum power level for runes. So, if the total power level is above 42, it won't make a rune!
@@ -80,7 +81,7 @@ public class RuneTableTileEntity extends TileEntitySimplePowerConsumer {
 		
 		
 		inventory[1] = this.figureOutWhichBoard();
-		
+		inventory[1].damageItem(inventory[1].getMaxDamage(), playerIn);
 		
 		String displayString = "";
 		

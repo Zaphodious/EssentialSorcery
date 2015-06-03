@@ -87,6 +87,16 @@ public abstract class BasicBoard extends Item implements UsesEssence {
 	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn,
 			EntityPlayer playerIn) {
 		playerIn.swingItem();
+		if ((itemStackIn.getMaxDamage() - itemStackIn.getItemDamage()) < this.getCost(itemStackIn) && !playerIn.capabilities.isCreativeMode){
+
+			System.out.println("the first check didn't work. Essence available should be = " + (itemStackIn.getMaxDamage() - itemStackIn.getItemDamage()));
+			System.out.println("the price of the spell is " + this.getCost(itemStackIn));
+			
+			return itemStackIn;
+
+		}
+			
+		
 		try {
 			if (!worldIn.isRemote) {
 			if (itemStackIn.hasTagCompound()) {
@@ -94,6 +104,7 @@ public abstract class BasicBoard extends Item implements UsesEssence {
 				RuneShape shapeRune = (RuneShape) newStack.getItem();
 				try {
 					Map<String, ItemStack> runeMap = RuneHelper.getRuneMap(itemStackIn);
+					if (!playerIn.capabilities.isCreativeMode){ itemStackIn.damageItem(this.getCost(itemStackIn), playerIn); }
 					shapeRune.deployTargetingEntity(runeMap, worldIn, playerIn);
 					
 				} catch (Exception e) {
@@ -188,18 +199,20 @@ public abstract class BasicBoard extends Item implements UsesEssence {
 	 * @see io.github.zaphodious.essentialsorcery.spellcasting.UsesEssence#getCost()
 	 */
 	@Override
-	public int getCost() {
-		// TODO Auto-generated method stub
+	public int getCost(ItemStack stack) {
+		if (stack.hasTagCompound()) {
+			
+			try {
+				return Reference.MANA_COST_ARRAY[(RuneHelper.totalPowerLevelIn(RuneHelper.getRuneMap(stack)))];
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
 		return 0;
 	}
 
-	/* (non-Javadoc)
-	 * @see io.github.zaphodious.essentialsorcery.spellcasting.UsesEssence#setCost()
-	 */
-	@Override
-	public void setCost() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }

@@ -57,6 +57,9 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 			IBlockState state, EntityPlayer playerIn, EnumFacing side,
 			float hitX, float hitY, float hitZ) {
 		ItemStack stack = playerIn.getCurrentEquippedItem();
+		if (stack == null) {
+			return false;
+		}
 		Item item = stack.getItem();
 		UsesEssence caster = null;
 		GivesEssence giver = (GivesEssence) worldIn.getBlockState(pos)
