@@ -115,7 +115,18 @@ public class RuneTableTileEntity extends TileEntitySimplePowerConsumer {
 		
 		// for(ItemStack rune : runeStacks) { NBTTagCompound c = new NBTTagCompound(); rune.writeToNBT(c); runes.appendTag(c); }
 		inventory[1].setStackDisplayName("Spell of" + displayString);
+		
+		if (!playerIn.capabilities.isCreativeMode) {
+			for (int i = 2; i < 8; i++) {
+				inventory[i] = null;
+			}
+			inventory[0] = null;
+		}
+		
+		
 		this.sync();
+		
+		
 		return true;
 		
 	}
