@@ -37,10 +37,12 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 
 	private static final PropertyEnum TYPE = PropertyEnum.create("type",
 			io.github.zaphodious.essentialsorcery.block.states.TapState.class);
+	private int xpLevelCostToSet;
 
 	public DragonTap(String unlocalizedName) {
 		super(unlocalizedName);
-
+		
+		this.xpLevelCostToSet = 10;
 		this.setDefaultState(this.blockState.getBaseState().withProperty(TYPE,
 				TapState.PLACED));
 		this.setTickRandomly(true);
@@ -60,6 +62,11 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 		if (stack == null) {
 			return false;
 		}
+		
+		if (this.xpLevelCostToSet > playerIn.experienceLevel && !playerIn.capabilities.isCreativeMode) {
+			return false;
+		}
+		
 		Item item = stack.getItem();
 		UsesEssence caster = null;
 		GivesEssence giver = (GivesEssence) worldIn.getBlockState(pos)
@@ -67,6 +74,7 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 
 		if (item == ModItems.tapSetter
 				&& (state.equals(this.getStateFromMeta(0)) || playerIn.capabilities.isCreativeMode)) {
+			if (!playerIn.capabilities.isCreativeMode) playerIn.addExperienceLevel(-10);
 			this.dragonToSet(worldIn, pos);
 			return true;
 		}

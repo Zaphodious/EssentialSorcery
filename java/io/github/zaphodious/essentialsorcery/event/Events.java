@@ -14,11 +14,18 @@ public class Events {
 	public void MakeDirtDropRunes(HarvestDropsEvent event) {
 		ItemStack toAdd = null;
 		if (event.state.getBlock() == Blocks.dirt || event.state.getBlock() == Blocks.grass || event.state.getBlock() == Blocks.sand) {
-			if (event.harvester.getCurrentEquippedItem().getItem() == ModItems.stone_trowel) {
-				toAdd = RuneHelper.getRuneToDrop(event);
+			try {
+				if (event.harvester.getCurrentEquippedItem().getItem() == ModItems.stone_trowel) {
+					
+					toAdd = RuneHelper.getRuneToDrop(event);
+					int testVariable = toAdd.stackSize;
+				}
+			} catch (Exception e) {
+				
 			}
 			
 			if (toAdd != null) {
+				event.drops.clear();
 				event.drops.add(toAdd);
 			}
 		}

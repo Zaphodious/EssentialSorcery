@@ -116,21 +116,22 @@ public class RuneHelper {
 		int sizeOfRuneDropsList = RuneHelper.RuneDrops.size();
 		
 		
-		int runePosition = rand.nextInt(sizeOfRuneDropsList) + 1;
+		int runePosition = rand.nextInt(sizeOfRuneDropsList + 1);
 		
 		
-		System.out.println("Size of list is " + sizeOfRuneDropsList + " and the rand number is " + runePosition);
+	
 		
-		if (runePosition == RuneHelper.RuneDrops.size()) {
-			System.out.println("it passed the first gate...");
+		if (runePosition == (RuneHelper.RuneDrops.size())) {
+			
 			for (RuneElement elementRune : ModItems.getElementRunes()) {
 				Element biomeElement = Reference.SORTER.getBiomes().get(event.world.getBiomeGenForCoords(event.pos).biomeID);
 				if (elementRune.getElement() == biomeElement && rand.nextFloat() < DropChance.RARE.getProbability()) {
-					System.out.println("it passed the second gate");
+					
 					toDrop = new ItemStack(elementRune);
 				}
 			}
 		} else {
+			
 			RuneDropObject thisRune = RuneHelper.RuneDrops.get(runePosition);
 			if (thisRune.getProbabilty() > rand.nextFloat()) {
 			toDrop = new ItemStack(thisRune.getRuneAsItem());
