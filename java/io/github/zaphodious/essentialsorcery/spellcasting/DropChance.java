@@ -1,10 +1,11 @@
 package io.github.zaphodious.essentialsorcery.spellcasting;
 
 public enum DropChance {
-	COMMON(.1),
-	UNCOMMON(.05),
-	RARE(.001),
-	ULTRARARE(.0001);
+	COMMON(.5),
+	UNCOMMON(.3),
+	RARE(.1),
+	ULTRARARE(.01),
+	SUPERRARE(.001);
 	
 	double probability;
 	

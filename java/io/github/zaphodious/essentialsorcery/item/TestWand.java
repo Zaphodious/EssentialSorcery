@@ -242,6 +242,14 @@ public class TestWand extends Item implements UsesEssence {
 
 
 
+	@Override
+	public int getCost(ItemStack stack) {
+		
+		return 1;
+	}
+
+
+
 	
 
 

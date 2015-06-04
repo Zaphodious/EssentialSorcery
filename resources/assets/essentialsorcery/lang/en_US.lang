@@ -1,5 +1,6 @@
-item.tap_setter.name=Dragonforge Wand
+﻿item.tap_setter.name=Dragonforge Wand
 item.test_wand.name=OmniWand3000
+item.stone_trowel.name=Stone Trowel
 item.dragon_tap_placer.name=Dragon Tap
 item.rune_table_placer.name=Rune Table
 tile.testing_table.name=Testing Table
@@ -7,7 +8,7 @@ itemGroup.tabEssential=Essentail Sorcery
 item.rune_attack.name=Rune of Attack
 item.rune_defend.name=Rune of Defense
 item.rune_transport.name=Rune of Transportation
-item.rune_spawn_vanilla.name=Rune of Spawning
+item.rune_spawn_vanilla.name=§6Rune of Spawning§f
 item.rune_air.name=Rune of Air
 item.rune_wood.name=Rune of Wood
 item.rune_fire.name=Rune of Fire

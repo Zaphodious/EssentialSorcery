@@ -14,6 +14,7 @@ public final class ItemRenderRegister {
 		reg(ModItems.testWand, 0);
 		reg(ModItems.dragonTapPlacer, 0);
 		reg(ModItems.runeTablePlacer, 0);
+		reg(ModItems.stone_trowel, 0);
 		
 		reg(ModItems.prettyBallRed, 0);
 		reg(ModItems.prettyBallBlue, 0);

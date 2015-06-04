@@ -12,9 +12,12 @@ public class Events {
 	
 	@SubscribeEvent
 	public void MakeDirtDropRunes(HarvestDropsEvent event) {
-		
-		if (event.state.getBlock() == Blocks.dirt || event.state.getBlock() == Blocks.grass) {
-			ItemStack toAdd = RuneHelper.getRuneToDrop(event);
+		ItemStack toAdd = null;
+		if (event.state.getBlock() == Blocks.dirt || event.state.getBlock() == Blocks.grass || event.state.getBlock() == Blocks.sand) {
+			if (event.harvester.getCurrentEquippedItem().getItem() == ModItems.stone_trowel) {
+				toAdd = RuneHelper.getRuneToDrop(event);
+			}
+			
 			if (toAdd != null) {
 				event.drops.add(toAdd);
 			}

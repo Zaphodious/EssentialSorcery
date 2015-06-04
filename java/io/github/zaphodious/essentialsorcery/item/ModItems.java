@@ -1,5 +1,10 @@
 package io.github.zaphodious.essentialsorcery.item;
 
+import io.github.zaphodious.essentialsorcery.item.renderitems.PrettyBallBlue;
+import io.github.zaphodious.essentialsorcery.item.renderitems.PrettyBallBrown;
+import io.github.zaphodious.essentialsorcery.item.renderitems.PrettyBallGreen;
+import io.github.zaphodious.essentialsorcery.item.renderitems.PrettyBallRed;
+import io.github.zaphodious.essentialsorcery.item.renderitems.PrettyBallYellow;
 import io.github.zaphodious.essentialsorcery.item.rune.RuneEffectAttack;
 import io.github.zaphodious.essentialsorcery.item.rune.RuneEffectDefend;
 import io.github.zaphodious.essentialsorcery.item.rune.RuneEffectSpawnVanilla;
@@ -25,10 +30,13 @@ import io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneElem
 import java.util.ArrayList;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public final class ModItems {
 	
+	public static ToolMaterial STONETROWEL = EnumHelper.addToolMaterial("STONETROWEL", 1, 60, 2.0F, 0, 5);
 	
 	public static Item tapSetter;
 	public static Item testWand;
@@ -40,6 +48,8 @@ public final class ModItems {
 	public static Item prettyBallBlue;
 	public static Item prettyBallBrown;
 	public static Item prettyBallYellow;
+	
+	public static Item stone_trowel;
 	
 	
 	/*    Rune variable declarations    */
@@ -104,12 +114,14 @@ public final class ModItems {
 		GameRegistry.registerItem(testWand = new TestWand("test_wand", 8, Element.NEUTRAL), "test_wand");
 		GameRegistry.registerItem(runeTablePlacer = new RuneTablePlacer("rune_table_placer"), "rune_table_placer");
 		
-		GameRegistry.registerItem(prettyBallRed = new RuneTablePlacer("pretty_ball_red"), "pretty_ball_red");
-		GameRegistry.registerItem(prettyBallYellow = new RuneTablePlacer("pretty_ball_yellow"), "pretty_ball_yellow");
-		GameRegistry.registerItem(prettyBallGreen = new RuneTablePlacer("pretty_ball_green"), "pretty_ball_green");
-		GameRegistry.registerItem(prettyBallBlue = new RuneTablePlacer("pretty_ball_blue"), "pretty_ball_blue");
-		GameRegistry.registerItem(prettyBallBrown = new RuneTablePlacer("pretty_ball_brown"), "pretty_ball_brown");
+		GameRegistry.registerItem(prettyBallRed = new PrettyBallRed("pretty_ball_red"), "pretty_ball_red");
+		GameRegistry.registerItem(prettyBallYellow = new PrettyBallYellow("pretty_ball_yellow"), "pretty_ball_yellow");
+		GameRegistry.registerItem(prettyBallGreen = new PrettyBallGreen("pretty_ball_green"), "pretty_ball_green");
+		GameRegistry.registerItem(prettyBallBlue = new PrettyBallBlue("pretty_ball_blue"), "pretty_ball_blue");
+		GameRegistry.registerItem(prettyBallBrown = new PrettyBallBrown("pretty_ball_brown"), "pretty_ball_brown");
 		
+		GameRegistry.registerItem(stone_trowel = new Trowel("stone_trowel", ModItems.STONETROWEL), "stone_trowel");
+
 
 		/*    Rune registrations    */
 		GameRegistry.registerItem(rune_attack = new RuneEffectAttack(0, "rune_attack"), "rune_attack");
@@ -170,9 +182,9 @@ public final class ModItems {
 		RuneHelper.addRuneToDropList(rune_attack, DropChance.COMMON);
 		RuneHelper.addRuneToDropList(rune_defend, DropChance.COMMON);
 		RuneHelper.addRuneToDropList(rune_transport, DropChance.COMMON);
-		RuneHelper.addRuneToDropList(rune_spawn_vanilla, DropChance.UNCOMMON);
-		RuneHelper.addRuneToDropList(rune_projectile, DropChance.RARE);
-		RuneHelper.addRuneToDropList(rune_self, DropChance.RARE);
+		RuneHelper.addRuneToDropList(rune_spawn_vanilla, DropChance.RARE);
+		RuneHelper.addRuneToDropList(rune_projectile, DropChance.UNCOMMON);
+		RuneHelper.addRuneToDropList(rune_self, DropChance.UNCOMMON);
 	}
 	
 	public static ArrayList<RuneElement> getElementRunes() {
