@@ -12,4 +12,14 @@ public class GloveDiamond extends BasicBoard {
 		// TODO Auto-generated constructor stub
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#isRepairable()
+	 */
+	@Override
+	public boolean isRepairable() {
+		return false;
+	}
+	
+	
+
 }

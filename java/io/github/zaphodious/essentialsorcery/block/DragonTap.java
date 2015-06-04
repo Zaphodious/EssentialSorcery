@@ -32,6 +32,19 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/*
+ * 
+ *  The backbone of early casting.
+ *  
+ *  The base, cobble-stone-made block is placed in the world, and then
+ *  if the player has a dragon wand equipped and ten experience built up+6
+ *  upon right click it switches to a thing that gives essence.
+ *  
+ *  TO-DO: Configure this thing so that it visually indicates what element
+ *  it gives off.
+ *  
+ */
+
 public class DragonTap extends BasicBlock implements IMetaBlockName,
 		GivesEssence {
 
@@ -59,25 +72,56 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 			IBlockState state, EntityPlayer playerIn, EnumFacing side,
 			float hitX, float hitY, float hitZ) {
 		ItemStack stack = playerIn.getCurrentEquippedItem();
+		
+		/*
+		 * 
+		 * We really, *really* don't want to try and manipulate
+		 * ItemStacks that aren't there. It crashes the game.
+		 * So, we check to see if this is such an ItemStack
+		 * 
+		 */
+		
 		if (stack == null) {
 			return false;
 		}
 		
-		if (this.xpLevelCostToSet > playerIn.experienceLevel && !playerIn.capabilities.isCreativeMode) {
-			return false;
-		}
+		
 		
 		Item item = stack.getItem();
 		UsesEssence caster = null;
 		GivesEssence giver = (GivesEssence) worldIn.getBlockState(pos)
 				.getBlock();
 
+		/*
+		 * 
+		 * this block checks to see if the player is holding a tap setter
+		 * (called a Dragon Wand in the lang file), and if they are
+		 * *and* the player has ten levels, takes those ten levels
+		 * and "sets" the tap. If the player is in creative mode, it lets
+		 * them do it anyway. Unless the player is in creative mode,
+		 * a "spent" tap cannot be "set".
+		 * 
+		 */
+		
 		if (item == ModItems.tapSetter
 				&& (state.equals(this.getStateFromMeta(0)) || playerIn.capabilities.isCreativeMode)) {
+			
+			if (this.xpLevelCostToSet > playerIn.experienceLevel && !playerIn.capabilities.isCreativeMode) {
+				return false;
+			}
 			if (!playerIn.capabilities.isCreativeMode) playerIn.addExperienceLevel(-10);
 			this.dragonToSet(worldIn, pos);
 			return true;
 		}
+		
+		/*
+		 * 
+		 * If the player isn't holding a tap setter (checked
+		 * for in the last block), this checks to see if they are holding 
+		 * an item that implements the "caster" interface. If not, 
+		 * we cannot continue.
+		 * 
+		 */
 
 		try { // If this block doesn't implement the GivesEssence interface, the
 				// function stops.

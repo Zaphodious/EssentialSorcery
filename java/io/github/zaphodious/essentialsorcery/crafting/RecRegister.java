@@ -36,10 +36,10 @@ public class RecRegister {
 		'x', cobbleStack, 'y', coalStack, 'z', woolStack);
 		
 		GameRegistry.addRecipe(new ItemStack(ModItems.stone_trowel),
-		
-		"xx",
-		"yx",
-		'x', cobbleStack, 'y', stickStack);
+				
+				"zx",
+				"yz",
+				'x', cobbleStack, 'y', stickStack, 'z', woolStack);
 				
 				
 		

@@ -1,6 +1,11 @@
 package io.github.zaphodious.essentialsorcery.block;
 
 import net.minecraft.block.Block;
+
+/* 
+ * The basic block. A baseline for other blocks. 
+ */
+
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;

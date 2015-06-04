@@ -14,7 +14,8 @@ public class Reference {
     public static final String VERSION = "0.0.1";
     public static final String CLIENT_PROXY = "io.github.zaphodious.essentialsorcery.core.ClientProxy";
     public static final String SERVER_PROXY = "io.github.zaphodious.essentialsorcery.core.ServerProxy";
-
+    public static final String DEPENDENCIES = "required-after:poweradvantage;required-after:basemetals";
+    
     public static final BiomeSorter SORTER = new BiomeSorter();
     
     public static final EssentialTab tabEssential = new EssentialTab("tabEssential");

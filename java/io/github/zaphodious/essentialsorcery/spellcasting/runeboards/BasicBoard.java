@@ -54,6 +54,18 @@ public abstract class BasicBoard extends Item implements UsesEssence {
 	}
 
 
+	
+	
+
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#isRepairable()
+	 
+	@Override
+	public boolean isRepairable() {
+		return false;
+	}*/
+
+
 
 	/* (non-Javadoc)
 	 * @see net.minecraft.item.Item#addInformation(net.minecraft.item.ItemStack, net.minecraft.entity.player.EntityPlayer, java.util.List, boolean)
@@ -224,6 +236,24 @@ public abstract class BasicBoard extends Item implements UsesEssence {
 		}
 		
 		return 0;
+	}
+
+
+	public static boolean isThisAnInstanceOfMe(ItemStack stack) {
+		BasicBoard toReturn = null;
+		
+		try {
+			toReturn = (BasicBoard) stack.getItem();
+			System.out.println("It's passed line 246");
+		} catch (Exception e) {
+			
+		}
+		
+		if (toReturn != null) {
+			return true;
+		}
+		
+		return false;
 	}
 
 	
