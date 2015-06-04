@@ -10,13 +10,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class RecRegister {
 
 	public static void makeRecipes() {
-		
-		/*
-		 * 
-		 * Our recipe registration method.
-		 * 
-		 */
-		
 		ItemStack plankStack = new ItemStack(Blocks.planks);
 		ItemStack craftingStack = new ItemStack(Blocks.crafting_table);
 		ItemStack stickStack = new ItemStack(Items.stick);
@@ -44,9 +37,9 @@ public class RecRegister {
 		
 		GameRegistry.addRecipe(new ItemStack(ModItems.stone_trowel),
 		
-		"zx",
-		"yz",
-		'x', cobbleStack, 'y', stickStack, 'z', woolStack);
+		"xx",
+		"yx",
+		'x', cobbleStack, 'y', stickStack);
 				
 				
 		

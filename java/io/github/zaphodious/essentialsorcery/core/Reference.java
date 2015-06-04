@@ -8,12 +8,6 @@ import java.util.ArrayList;
 import net.minecraft.item.Item;
 
 public class Reference {
-	
-	/*
-	 * 
-	 * Our global variables. Keeps everything in check.
-	 * 
-	 */
 
 	public static final String MODID = "essentialsorcery";
     public static final String MODNAME = "Essential Sorcery";
@@ -31,25 +25,6 @@ public class Reference {
 
 
 private static int[] makeManaCosts() {
-	
-	/*
-	 * 
-	 * This makes our mana cost series. All mana costs and essence
-	 * amounts are derived from this series (either hard-coded or
-	 * referencing MANA_COST_ARRAY.)
-	 * 
-	 * Interestingly enough, the Fibbi number of 49 is so large we
-	 * can't store it as a 32-bit signed integer (it goes negative).
-	 * 
-	 * I like 42 a lot more, and I like having a bit of wiggle
-	 * room. Besides, a mana cost of Fibbi(42) is very unlikely to ever
-	 * actually be made, let alone used. It's really quite high.
-	 * (If I am proven comically incorrect in the future, you can all
-	 * point to this and laugh.)
-	 * 
-	 */
-	
-	
 	int[] manaCostAt = new int[43];
     manaCostAt[0] = 0;
     manaCostAt[1] = 1;
@@ -57,8 +32,6 @@ private static int[] makeManaCosts() {
     for (int i = 2; i <= 42; i++) {
         manaCostAt[i] = manaCostAt[(i-1)] + manaCostAt[(i-2)];
     }
-    
-    System.out.println(manaCostAt);
     
     return manaCostAt;
 }

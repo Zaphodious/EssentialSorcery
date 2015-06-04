@@ -36,7 +36,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public final class ModItems {
 	
-	public static ToolMaterial STONETROWEL = EnumHelper.addToolMaterial("STONETROWEL", 1, 60, .8F, 0, 5);
+	public static ToolMaterial STONETROWEL = EnumHelper.addToolMaterial("STONETROWEL", 1, 60, 1F, 0, 5);
 	
 	public static Item tapSetter;
 	public static Item testWand;

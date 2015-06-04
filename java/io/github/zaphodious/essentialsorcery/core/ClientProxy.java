@@ -9,13 +9,6 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class ClientProxy extends CommonProxy {
-	
-	/*
-	 * 
-	 * This is, basically, where we register rendering information. 
-	 * If we do this with the server we'll crash the whole thing.
-	 * 
-	 */
 
 	@Override
     public void preInit(FMLPreInitializationEvent e) {
@@ -27,6 +20,7 @@ public class ClientProxy extends CommonProxy {
     public void init(FMLInitializationEvent e) {
         super.init(e);
         
+        //ModBlocks.registerRenders();
         ItemRenderRegister.registerItemRenderer();
         BlockRenderRegister.registerBlockRenderer();
         EntityRenderRegister.renderEntities();

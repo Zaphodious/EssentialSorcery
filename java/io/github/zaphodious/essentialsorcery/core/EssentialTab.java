@@ -5,14 +5,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
 public class EssentialTab extends CreativeTabs {
-	
-	/*
-	 * 
-	 * Our creative tab. Thanks MrCrayFish! (the custom
-	 * background graphic doesn't seem to actually work,
-	 * however.)
-	 * 
-	 */
 
 	public EssentialTab(String label) {
 		super(label);
@@ -21,7 +13,7 @@ public class EssentialTab extends CreativeTabs {
 
 	@Override
 	public Item getTabIconItem() {
-		
+		// TODO Auto-generated method stub
 		return ModItems.dragonTapPlacer;
 	}
 

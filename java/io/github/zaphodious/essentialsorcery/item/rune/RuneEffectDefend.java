@@ -57,14 +57,14 @@ public class RuneEffectDefend extends RuneEffect {
 	public boolean fireEffect(Entity entity, World worldIn,
 			EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn,
 			BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey) {
-
+		// TODO Auto-generated method stub
 		int spellStrength = RuneHelper.totalEffectRunesIn(runeMapIn
 				.get(thisRuneKey));
 		try {
 			EntityLivingBase hitPlayer = (EntityLivingBase) movObjPos.entityHit;
 
 			hitPlayer.addPotionEffect(new PotionEffect(Potion.fireResistance
-					.getId(), spellStrength * 200, spellStrength / 5, false,
+					.getId(), spellStrength * 100, spellStrength / 5, false,
 					true));
 
 			return true;

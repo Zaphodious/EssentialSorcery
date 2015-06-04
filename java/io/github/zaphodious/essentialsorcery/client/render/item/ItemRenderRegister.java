@@ -10,14 +10,6 @@ import net.minecraft.item.Item;
 public final class ItemRenderRegister {
 
 	public static void registerItemRenderer() {
-		
-		/*
-		 * 
-		 * This is where we register all of the item's render information.
-		 * At this point, nothing at all exciting goes on here.
-		 * 
-		 */
-		
 		reg(ModItems.tapSetter, 0);
 		reg(ModItems.testWand, 0);
 		reg(ModItems.dragonTapPlacer, 0);

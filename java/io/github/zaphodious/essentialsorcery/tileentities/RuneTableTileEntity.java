@@ -274,7 +274,7 @@ public class RuneTableTileEntity extends TileEntitySimplePowerConsumer {
 
 	@Override
 	public void writeToNBT(NBTTagCompound tagRoot) {
-		
+		// TODO Auto-generated method stub
 		super.writeToNBT(tagRoot);
 		if (tagRoot.hasKey("progress")) {
 			progress = tagRoot.getShort("progress");

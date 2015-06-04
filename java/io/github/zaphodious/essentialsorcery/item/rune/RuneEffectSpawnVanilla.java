@@ -71,7 +71,7 @@ public class RuneEffectSpawnVanilla extends RuneEffect {
 	public boolean airEffect(Entity entity, World worldIn,
 			EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn,
 			BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey) {
-
+		// TODO Auto-generated method stub
 		try {
 			int spellPower = runeMapIn.get(thisRuneKey).stackSize;
 			EntityPlayer playerCaster = (EntityPlayer) throwerIn;

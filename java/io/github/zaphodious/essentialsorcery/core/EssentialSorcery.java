@@ -9,14 +9,6 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.common.config.Configuration;
 
-/*
- * 
- * This is the main mod class. This just lets forge know about our mod.
- * All of the actual work happens elsewhere. I like it when this
- * particular file is neat.
- * 
- */
-
 @Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION)
 public class EssentialSorcery {
 

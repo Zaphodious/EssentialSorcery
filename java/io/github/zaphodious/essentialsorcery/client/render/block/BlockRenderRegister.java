@@ -14,11 +14,7 @@ public final class BlockRenderRegister {
 
 	public static void registerBlockRenderer() {
 		addVariantsForDragonTap();
-		/*
-		 * 
-		 * Supposedly, this lets us render our BlockItems. It doesn't seem to be working.
-		 * 
-		 */
+		//reg(ModBlocks.dragon_tap);
 		reg(ModBlocks.dragon_tap, 0, "dragon_tap_placed");
 		reg(ModBlocks.dragon_tap, 1, "dragon_tap_set");
 		reg(ModBlocks.dragon_tap, 2, "dragon_tap_spent");
@@ -31,8 +27,13 @@ public final class BlockRenderRegister {
 	}
 	
 	public static void reg(Block block, int meta, String file) {
+	    //Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
+	    //.register(Item.getItemFromBlock(block), meta, new ModelResourceLocation(Reference.MODID + ":item/" + file, "inventory"));
+		//Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(block), meta, new ModelResourceLocation(Reference.MODID + ":" + file, "inventory"));
 	    Item item = Item.getItemFromBlock(block);
+	    //Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, meta, new ModelResourceLocation(Reference.MODID + ":" + item.getUnlocalizedName().substring(5), "inventory"));
 	    ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Reference.MODID + ":" + file, "inventory"));
+	    //ItemRenderRegister.reg(item, meta);
 	    System.out.println("Ran " + Reference.MODID + ":" +  block.getUnlocalizedName().substring(5) + " through the render reg.");
 
 	}

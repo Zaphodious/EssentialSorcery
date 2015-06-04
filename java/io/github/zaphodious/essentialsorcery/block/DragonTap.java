@@ -32,19 +32,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-/*
- * 
- *  The backbone of early casting.
- *  
- *  The base, cobble-stone-made block is placed in the world, and then
- *  if the player has a dragon wand equipped and ten experience built up+6
- *  upon right click it switches to a thing that gives essence.
- *  
- *  TO-DO: Configure this thing so that it visually indicates what element
- *  it gives off.
- *  
- */
-
 public class DragonTap extends BasicBlock implements IMetaBlockName,
 		GivesEssence {
 
@@ -72,75 +59,34 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 			IBlockState state, EntityPlayer playerIn, EnumFacing side,
 			float hitX, float hitY, float hitZ) {
 		ItemStack stack = playerIn.getCurrentEquippedItem();
-		
-		/*
-		 * 
-		 * We really, *really* don't want to try and manipulate
-		 * ItemStacks that aren't there. It crashes the game.
-		 * So, we check to see if this is such an ItemStack
-		 * 
-		 */
-		
 		if (stack == null) {
 			return false;
 		}
 		
-		
-
+		if (this.xpLevelCostToSet > playerIn.experienceLevel && !playerIn.capabilities.isCreativeMode) {
+			return false;
+		}
 		
 		Item item = stack.getItem();
 		UsesEssence caster = null;
 		GivesEssence giver = (GivesEssence) worldIn.getBlockState(pos)
 				.getBlock();
-		
-		/*
-		 * 
-		 * this block checks to see if the player is holding a tap setter
-		 * (called a Dragon Wand in the lang file), and if they are
-		 * *and* the player has ten levels, takes those ten levels
-		 * and "sets" the tap. If the player is in creative mode, it lets
-		 * them do it anyway. Unless the player is in creative mode,
-		 * a "spent" tap cannot be "set".
-		 * 
-		 */
-		
+
 		if (item == ModItems.tapSetter
 				&& (state.equals(this.getStateFromMeta(0)) || playerIn.capabilities.isCreativeMode)) {
-			// don't have enough experience? Too bad.
-			if (this.xpLevelCostToSet > playerIn.experienceLevel && !playerIn.capabilities.isCreativeMode) return false;
-			
 			if (!playerIn.capabilities.isCreativeMode) playerIn.addExperienceLevel(-10);
-			
 			this.dragonToSet(worldIn, pos);
 			return true;
 		}
-		
-		/*
-		 * 
-		 * If the player isn't holding a tap setter (checked
-		 * for in the last block), this checks to see if they are holding 
-		 * an item that implements the "caster" interface. If not, 
-		 * we cannot continue.
-		 * 
-		 */
 
-		try {
+		try { // If this block doesn't implement the GivesEssence interface, the
+				// function stops.
 			caster = (UsesEssence) item;
 		} catch (Exception e) {
 			System.out
 					.println(item.toString() + "Didn't pass the caster test.");
 			return false;
 		}
-		
-		/*
-		 * 
-		 * Elements are core to the way that the mod functions. If the 
-		 * caster item doesn't align with this particular instance of
-		 * the Dragon Tap's element, we don't want to give the caster
-		 * essence. So, we check, using the getElement function
-		 * found down the page.
-		 * 
-		 */
 
 		if (caster.getElement() != this.getElement(worldIn, pos)
 				&& caster.getElement() != Element.NEUTRAL) {
@@ -149,14 +95,6 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 			return false; // If this block doesn't give the right type of
 							// essence, the function stops.
 		}
-		
-		/*
-		 * 
-		 * Here we check to see if this particular instance of the
-		 * Dragon Tap can actually tap. If it can't, we certainly
-		 * don't want it giving essence!
-		 * 
-		 */
 
 		if (giver.canTap(worldIn, pos)) {
 
@@ -174,32 +112,25 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 
 			stack.setItemDamage(stack.getItemDamage() - newEssence.getAmount());
 			DragonTap.dragonToSpent(worldIn, pos);
-
+			// stack.damageItem(newEssence.getAmount(), playerIn);
+			// this.setDamage(stack, this.getDamage(stack) -
+			// newEssence.getAmount());
 			return true;
 		}
 
-		return false;
+		return false;// super.onBlockActivated(worldIn, pos, state, playerIn,
+						// side, hitX, hitY, hitZ);
+		//
 
 	}
 
 	@Override
 	protected BlockState createBlockState() {
-		
-		/*
-		 * 
-		 * BedRockMiner's tutorial on making multi-state
-		 * blocks asks for this as part of his interface.
-		 * 
-		 */
-		
 		return new BlockState(this, new IProperty[] { TYPE });
 	}
 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		
-
-		
 		IBlockState toReturn = null;
 		if (meta == 1) {
 			toReturn = getDefaultState().withProperty(TYPE, TapState.SET);
@@ -234,13 +165,6 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 	@Override
 	public String getSpecialName(ItemStack stack) {
 		String toReturn = "placed";
-		
-		/*
-		 * 
-		 * BedRockMiner's tutorial asks for this particular 
-		 * function, as part of the interface that he uses.
-		 * 
-		 */
 
 		if (stack.getItemDamage() == 1) {
 			toReturn = "set";
@@ -248,39 +172,19 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 			toReturn = "spent";
 		}
 
+		/*System.out.println("The special name for" + stack.toString() + " is "
+				+ toReturn);*/
 
 		return toReturn;
 	}
 
 	@SideOnly(Side.CLIENT)
 	public EnumWorldBlockLayer getBlockLayer() {
-		
-		/*
-		 * 
-		 * This enables us to have transparency in the block.
-		 * 
-		 */
-		
 		return EnumWorldBlockLayer.CUTOUT;
 	}
 
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state,
 			Random rand) {
-		
-		/*
-		 * 
-		 * This function enables our taps to reset themselves
-		 * once every Minecraft day (or so). It relies on Forge's
-		 * random tick update thingy, meaning that it's not guaranteed
-		 * that a particular tap will reset.
-		 * 
-		 * Basically, at dawn taps will start to reset. The process
-		 * starts a little bit before the time that the player wakes up
-		 * if they sleep in a bed, meaning that if you want full 
-		 * untappiness you should stay away overnight.
-		 * 
-		 */
-		
 		System.out.println(worldIn.getCelestialAngle(1.0F));
 		if (state.equals(this.getStateFromMeta(2))) { // && worldIn.getC)
 			float angle = worldIn.getCelestialAngle(1.0F);
@@ -294,25 +198,11 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 	}
 
 	public static void dragonToSet(World worldIn, BlockPos pos) {
-		
-		/*
-		 * 
-		 * Elimination of copypasta function that sets the tap.
-		 * 
-		 */
-		
 		worldIn.setBlockState(pos, ModBlocks.dragon_tap.getBlockState()
 				.getBaseState().withProperty(TYPE, TapState.SET));
 	}
 
 	public static void dragonToSpent(World worldIn, BlockPos pos) {
-		
-		/*
-		 * 
-		 * Elimination of copy-paste-ugliness method that spends the tap.
-		 * 
-		 */
-		
 		worldIn.setBlockState(pos, ModBlocks.dragon_tap.getBlockState()
 				.getBaseState().withProperty(TYPE, TapState.SPENT));
 	}
@@ -321,43 +211,24 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 		this.dragonToSet(worldIn, pos);
 	}
 
+	public void refreshAllTaps(World worldIn) {
 
+	}
 
 	@Override
 	public Essence getEssence(World worldIn, BlockPos pos) {
-		
-		/*
-		 * 
-		 * This determines how much essence the dragon tap
-		 * will give a caster-item when it uses the tap.
-		 * See Essence.java for more details.
-		 * 
-		 */
 
 		return new Essence(1, this.getElement(worldIn, pos));
 	}
 
 	@Override
 	public Element getElement(World worldIn, BlockPos pos) {
-		
-		/*
-		 * 
-		 * See BiomeSorter.java in the spellcasting package for more details.
-		 * 
-		 */
 
 		return Reference.SORTER.getBiomeElement(worldIn, pos);
 	}
 
 	@Override
 	public Boolean canTap(World worldIn, BlockPos pos) {
-		
-		/*
-		 * 
-		 * Checks to see if the tap can be tapped.
-		 * 
-		 */
-		
 		IBlockState iblockstate = worldIn.getBlockState(pos);
 		Block block = iblockstate.getBlock();
 		int meta = block.getMetaFromState(iblockstate);
@@ -370,14 +241,6 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 	}
 
 	public Boolean tap(World worldIn, BlockPos pos) {
-		
-		/*
-		 * 
-		 * Calls the dragonToSpent method, but checks to see
-		 * if the thing can be tapped first.
-		 * 
-		 */
-		
 		if (worldIn.getBlockState(pos) == this.getStateFromMeta(1)) {
 			this.dragonToSpent(worldIn, pos);
 		}
@@ -385,21 +248,17 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 		return false;
 	}
 
-
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.block.Block#getItemDropped(net.minecraft.block.state.
+	 * IBlockState, java.util.Random, int)
+	 */
 	
 	
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		
-		/*
-		 * 
-		 * This isn't pretty. There's a rather bad bug in this mod: BlockItems aren't rendering *at all*,
-		 * even if their file can be found and correctly parsed. So far, We've been unable to find the
-		 * source. Until we do, this function overrides the regular drop function, and returns a special
-		 * item that mimics this block's natural BlockItem.
-		 * 
-		 */
-		
+		// TODO Auto-generated method stub
 		return ModItems.dragonTapPlacer;
 	}
 	 
@@ -425,16 +284,7 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 	 */
 	@Override
 	public int getLightValue(IBlockAccess world, BlockPos pos) {
-		
-		/*
-		 * 
-		 * At this point, this doesn't actually work. It's supposed to make
-		 * "set" taps give off light, but something with how the
-		 * way blocks work is preventing it. Oh well. It's not too
-		 * important.
-		 * 
-		 */
-		
+		// TODO Auto-generated method stub
 		if (world.getBlockState(pos).equals(this.getStateFromMeta(1))) {
 			return 5;
 		}
