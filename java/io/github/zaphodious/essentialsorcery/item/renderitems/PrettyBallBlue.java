@@ -9,6 +9,15 @@ import net.minecraft.item.ItemStack;
 public class PrettyBallBlue extends Item{
 	public PrettyBallBlue(String unlocalizedName) {
 		
+		/*
+		 * 
+		 * This item exists as a shortcut. With it, we can
+		 * bypass working with the tesselator directly, by passing
+		 * its model to the part of this program that renders
+		 * entities. 
+		 * 
+		 */
+		
 		this.setUnlocalizedName(unlocalizedName);
 		//this.setCreativeTab(Reference.tabEssential);
 		

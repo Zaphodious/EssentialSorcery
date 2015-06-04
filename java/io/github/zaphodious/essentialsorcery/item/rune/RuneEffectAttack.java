@@ -139,7 +139,7 @@ public class RuneEffectAttack extends RuneEffect {
 	public boolean earthEffect(Entity entity, World worldIn,
 			EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn,
 			BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey) {
-		// TODO Auto-generated method stub
+
 		int damageToDeal = RuneHelper.totalEffectRunesIn(runeMapIn
 				.get(thisRuneKey));
 		
@@ -167,8 +167,8 @@ public class RuneEffectAttack extends RuneEffect {
 		// TODO Auto-generated method stub
 		int damageToDeal = RuneHelper.totalEffectRunesIn(runeMapIn
 				.get(thisRuneKey));
-		movObjPos.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(entity, throwerIn), damageToDeal);
-		throwerIn.heal(damageToDeal);
+		movObjPos.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(entity, throwerIn), damageToDeal*3);
+		throwerIn.heal(damageToDeal*3);
 		return true;
 	}
 

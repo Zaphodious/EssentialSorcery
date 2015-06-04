@@ -8,6 +8,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
+/* 
+ * The basic block. A baseline for other blocks. 
+ *  */
+
 public class BasicBlock extends Block {
 
 	protected BasicBlock(String unlocalizedName, Material material, float hardness, float resistance) {
