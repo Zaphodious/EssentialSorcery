@@ -15,16 +15,12 @@ public interface UsesEssence {
 	
 	public Element getElement();
 	
-	public void setElement(Element element);
+	public void setElement(Element elementIn);
 	
-	public boolean useEssence(int req, ItemStack stack);
+	public boolean useEssence(int req, ItemStack stackIn);
 	
-	public int getMaxDamage();
+	public int getCost(ItemStack stackIn);
 	
-	public int getDamage(ItemStack stack);
-	
-	public Item setMaxDamage(int maxDamageIn);
-	
-	public int getCost(ItemStack stack);
+	public boolean takeInEssence(Essence essenceIn, ItemStack stackIn);
 	
 }

@@ -118,12 +118,12 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 		 * 
 		 * If the player isn't holding a tap setter (checked
 		 * for in the last block), this checks to see if they are holding 
-		 * an item that implements the "caster" interface. If not, 
+		 * an item that implements the "UsesEssence" interface. If not, 
 		 * we cannot continue.
 		 * 
 		 */
 
-		try { // If this block doesn't implement the GivesEssence interface, the
+		/*try { // If this block doesn't implement the GivesEssence interface, the
 				// function stops.
 			caster = (UsesEssence) item;
 		} catch (Exception e) {
@@ -138,13 +138,21 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 					+ "Didn't pass the element test.");
 			return false; // If this block doesn't give the right type of
 							// essence, the function stops.
-		}
+		}*/
 
 		if (giver.canTap(worldIn, pos)) {
 
 			Essence newEssence = this.getEssence(worldIn, pos);
 
-			System.out.println("This Damage: " + stack.getItemDamage()
+			if (stack.getItem() instanceof UsesEssence) {
+				UsesEssence thisEssenceUser = (UsesEssence) stack.getItem();
+				if (thisEssenceUser.takeInEssence(newEssence, stack)) {
+					DragonTap.dragonToSpent(worldIn, pos);
+					return true;
+				}
+			}
+			
+			/*System.out.println("This Damage: " + stack.getItemDamage()
 					+ " New Essence amount :" + newEssence.getAmount()
 					+ " while this Damage Limit = " + caster.getMaxDamage());
 
@@ -155,11 +163,11 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 			}
 
 			stack.setItemDamage(stack.getItemDamage() - newEssence.getAmount());
-			DragonTap.dragonToSpent(worldIn, pos);
+			
 			// stack.damageItem(newEssence.getAmount(), playerIn);
 			// this.setDamage(stack, this.getDamage(stack) -
 			// newEssence.getAmount());
-			return true;
+			return true;*/
 		}
 
 		return false;// super.onBlockActivated(worldIn, pos, state, playerIn,
