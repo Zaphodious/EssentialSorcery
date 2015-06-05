@@ -1,7 +1,6 @@
 package io.github.zaphodious.essentialsorcery.tileentities;
 
 import io.github.zaphodious.essentialsorcery.block.ModBlocks;
-import io.github.zaphodious.essentialsorcery.core.EssentialSorcery;
 import io.github.zaphodious.essentialsorcery.core.Reference;
 import io.github.zaphodious.essentialsorcery.gui.RuneTableGUI;
 import net.minecraftforge.fml.common.registry.GameRegistry;

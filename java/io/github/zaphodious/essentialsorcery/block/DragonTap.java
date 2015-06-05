@@ -4,7 +4,6 @@ import io.github.zaphodious.essentialsorcery.block.states.TapState;
 import io.github.zaphodious.essentialsorcery.core.Reference;
 import io.github.zaphodious.essentialsorcery.item.IMetaBlockName;
 import io.github.zaphodious.essentialsorcery.item.ModItems;
-import io.github.zaphodious.essentialsorcery.spellcasting.EssenceAccepter;
 import io.github.zaphodious.essentialsorcery.spellcasting.Element;
 import io.github.zaphodious.essentialsorcery.spellcasting.Essence;
 import io.github.zaphodious.essentialsorcery.spellcasting.GivesEssence;
@@ -14,7 +13,6 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockState;
@@ -110,7 +108,7 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 				return false;
 			}
 			if (!playerIn.capabilities.isCreativeMode) playerIn.addExperienceLevel(-10);
-			this.dragonToSet(worldIn, pos);
+			DragonTap.dragonToSet(worldIn, pos);
 			return true;
 		}
 		
@@ -222,11 +220,13 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 		return toReturn;
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public EnumWorldBlockLayer getBlockLayer() {
 		return EnumWorldBlockLayer.CUTOUT;
 	}
 
+	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state,
 			Random rand) {
 		System.out.println(worldIn.getCelestialAngle(1.0F));
@@ -252,7 +252,7 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 	}
 
 	public void refreshTap(World worldIn, BlockPos pos) {
-		this.dragonToSet(worldIn, pos);
+		DragonTap.dragonToSet(worldIn, pos);
 	}
 
 	public void refreshAllTaps(World worldIn) {
@@ -286,7 +286,7 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 
 	public Boolean tap(World worldIn, BlockPos pos) {
 		if (worldIn.getBlockState(pos) == this.getStateFromMeta(1)) {
-			this.dragonToSpent(worldIn, pos);
+			DragonTap.dragonToSpent(worldIn, pos);
 		}
 
 		return false;
@@ -311,6 +311,7 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 	    return false;
 	}
 	
+	@Override
 	public boolean isFullCube()
     {
         return false;

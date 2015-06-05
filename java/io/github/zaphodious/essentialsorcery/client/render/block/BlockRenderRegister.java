@@ -1,10 +1,8 @@
 package io.github.zaphodious.essentialsorcery.client.render.block;
 
 import io.github.zaphodious.essentialsorcery.block.ModBlocks;
-import io.github.zaphodious.essentialsorcery.client.render.item.ItemRenderRegister;
 import io.github.zaphodious.essentialsorcery.core.Reference;
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;

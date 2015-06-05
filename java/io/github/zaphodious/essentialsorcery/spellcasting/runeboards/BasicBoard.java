@@ -74,11 +74,21 @@ public abstract class BasicBoard extends Item implements UsesEssence {
 	public void addInformation(ItemStack stack, EntityPlayer playerIn,
 			List tooltip, boolean advanced) {
 		
-		tooltip.add("Essence: " + (stack.getMaxDamage() - stack.getItemDamage()) + "/" + stack.getMaxDamage());
-		
-		
-		
 		if (stack.hasTagCompound()) {
+			
+		
+		
+			try {
+				tooltip.add("Essence: " + (stack.getTagCompound().getIntArray("essenceContained")[0]) + "/" + (stack.getTagCompound().getIntArray("essenceContained")[1]));
+				tooltip.add("fak");
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				tooltip.add("Error getting essence. please make a new spell.");
+			}
+		
+		
+		
+		
 			
 			tooltip.add("     Mana cost to cast is " + this.getCost(stack));
 			tooltip.add("Effect Runes Affixed:");
@@ -87,7 +97,7 @@ public abstract class BasicBoard extends Item implements UsesEssence {
 			NBTTagCompound nbttc = stack.getTagCompound();
 			for (String string : keySet) {
 				//System.out.println(string);
-				ItemStack newStack = (ItemStack) ItemStack.loadItemStackFromNBT(stack.getTagCompound().getCompoundTag(string));
+				ItemStack newStack = ItemStack.loadItemStackFromNBT(stack.getTagCompound().getCompoundTag(string));
 				try {
 					RuneEffect effectRune = (RuneEffect) newStack.getItem();
 					String newString = "    " + newStack.stackSize + " " + StatCollector.translateToLocal(effectRune.getUnlocalizedName() + ".name");
@@ -99,8 +109,10 @@ public abstract class BasicBoard extends Item implements UsesEssence {
 				
 			}
 			
-		}
 		
+		} else {
+			tooltip.add("This is not a spell.");
+		}
 		super.addInformation(stack, playerIn, tooltip, advanced);
 		
 		
@@ -109,6 +121,7 @@ public abstract class BasicBoard extends Item implements UsesEssence {
 
 
 
+	@Override
 	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn,
 			EntityPlayer playerIn) {
 		playerIn.swingItem();
@@ -125,7 +138,7 @@ public abstract class BasicBoard extends Item implements UsesEssence {
 		try {
 			if (!worldIn.isRemote) {
 			if (itemStackIn.hasTagCompound()) {
-				ItemStack newStack = (ItemStack) ItemStack.loadItemStackFromNBT(itemStackIn.getTagCompound().getCompoundTag("shape"));
+				ItemStack newStack = ItemStack.loadItemStackFromNBT(itemStackIn.getTagCompound().getCompoundTag("shape"));
 				RuneShape shapeRune = (RuneShape) newStack.getItem();
 				try {
 					Map<String, ItemStack> runeMap = RuneHelper.getRuneMap(itemStackIn);
@@ -255,7 +268,31 @@ public abstract class BasicBoard extends Item implements UsesEssence {
 		
 		return false;
 	}
+	
+	
 
+
+
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#getMaxDamage()
+	 
+	@Override
+	public int getMaxDamage() {
+		// TODO Auto-generated method stub
+		return super.getMaxDamage();
+	}
+*/
+
+
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#getMaxDamage(net.minecraft.item.ItemStack)
+	 
+	@Override
+	public int getMaxDamage(ItemStack stack) {
+		// TODO Auto-generated method stub
+		return stack.getItem().getMaxDamage();
+	}
+*/
 	
 
 }

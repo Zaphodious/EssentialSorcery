@@ -14,7 +14,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import cyano.poweradvantage.api.ConduitType;
 import cyano.poweradvantage.api.simple.TileEntitySimplePowerConsumer;
 
@@ -81,13 +80,15 @@ public class RuneTableTileEntity extends TileEntitySimplePowerConsumer {
 		
 		
 		inventory[1] = this.figureOutWhichBoard();
-		inventory[1].damageItem(inventory[1].getMaxDamage(), playerIn);
+		//inventory[1].damageItem(inventory[1].getMaxDamage(), playerIn);
 		
 		String displayString = "";
 		
-		NBTTagList runes = new NBTTagList();
+		//NBTTagList runes = new NBTTagList();
 		inventory[1].setTagCompound(new NBTTagCompound());
 		NBTTagCompound tbttc = inventory[1].getTagCompound();
+		
+		this.giveBoardEssenceContainer(playerIn, materialFactor, tbttc);
 		
 		for (int i = 2; i < 8; i++) {
 			if (inventory[i] != null) {
@@ -110,6 +111,8 @@ public class RuneTableTileEntity extends TileEntitySimplePowerConsumer {
 				}
 			}
 		}
+		
+		
 		
 		displayString += "" + spellLevel;
 		
@@ -189,17 +192,30 @@ public class RuneTableTileEntity extends TileEntitySimplePowerConsumer {
 			break;
 		
 		}
-			
+		
 			NBTTagCompound compound = new NBTTagCompound();
 			inventory[i].writeToNBT(compound);
 			ItemStack testItem = inventory[i];
 			inventory[1].getTagCompound().setTag(runeIndex, compound);
 			System.out.println("put " + inventory[1].getTagCompound().getTag(runeIndex) + " into the wand. The runeIndex is " + runeIndex);
 		
-		
-		
-		
 		return true;
+	}
+	
+	private NBTTagCompound giveBoardEssenceContainer(EntityPlayer playerIn, int materialFactor, NBTTagCompound compound) {
+		int[] essenceContainer = new int[2];
+		
+		essenceContainer[1] = Reference.MANA_COST_ARRAY[materialFactor];
+		if (playerIn.capabilities.isCreativeMode) {
+			essenceContainer[0] = essenceContainer[1];
+		} else {
+			essenceContainer[0] = 0;
+		}
+		
+		
+		compound.setIntArray("essenceContained", essenceContainer);
+		
+		return compound;
 	}
 	
 	@Override

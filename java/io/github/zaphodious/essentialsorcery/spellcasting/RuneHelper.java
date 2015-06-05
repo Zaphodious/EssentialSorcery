@@ -13,7 +13,6 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
@@ -28,7 +27,7 @@ public class RuneHelper {
 		if (itemStackIn.hasTagCompound()) {
 			Set<String> keySet = (itemStackIn.getTagCompound().getKeySet());
 			for (String key : keySet) {
-				ItemStack newStack = (ItemStack) ItemStack
+				ItemStack newStack = ItemStack
 						.loadItemStackFromNBT(itemStackIn.getTagCompound()
 								.getCompoundTag(key));
 				runeMap.put(key, newStack);
@@ -37,6 +36,7 @@ public class RuneHelper {
 		}
 
 		runeMap.remove("display");
+		runeMap.remove("essenceContainer");
 
 		if (runeMap.isEmpty()) {
 			throw new Exception("The ItemStack " + itemStackIn.toString()

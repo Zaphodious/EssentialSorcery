@@ -1,6 +1,5 @@
 package io.github.zaphodious.essentialsorcery.client.render.item;
 
-import io.github.zaphodious.essentialsorcery.block.ModBlocks;
 import io.github.zaphodious.essentialsorcery.core.Reference;
 import io.github.zaphodious.essentialsorcery.item.ModItems;
 import net.minecraft.client.Minecraft;
