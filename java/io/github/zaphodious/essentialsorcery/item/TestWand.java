@@ -71,7 +71,7 @@ public class TestWand extends Item implements UsesEssence {
 			//System.out.println(keySet);
 			for (String string : keySet) {
 				//System.out.println(string);
-				ItemStack newStack = ItemStack.loadItemStackFromNBT(stack.getTagCompound().getCompoundTag(string));
+				ItemStack newStack = (ItemStack) ItemStack.loadItemStackFromNBT(stack.getTagCompound().getCompoundTag(string));
 				if (newStack != null) {
 					tooltip.add(newStack.toString());
 				}
@@ -87,13 +87,12 @@ public class TestWand extends Item implements UsesEssence {
 
 
 
-	@Override
 	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn,
 			EntityPlayer playerIn) {
 		try {
 			if (!worldIn.isRemote) {
 			if (itemStackIn.hasTagCompound()) {
-				ItemStack newStack = ItemStack.loadItemStackFromNBT(itemStackIn.getTagCompound().getCompoundTag("shape"));
+				ItemStack newStack = (ItemStack) ItemStack.loadItemStackFromNBT(itemStackIn.getTagCompound().getCompoundTag("shape"));
 				RuneShape shapeRune = (RuneShape) newStack.getItem();
 				try {
 					Map<String, ItemStack> runeMap = RuneHelper.getRuneMap(itemStackIn);
@@ -148,7 +147,6 @@ public class TestWand extends Item implements UsesEssence {
 		return itemStackIn;
 	}
 
-	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer playerIn,
 			World worldIn, BlockPos pos, EnumFacing side, float hitX,
 			float hitY, float hitZ) {

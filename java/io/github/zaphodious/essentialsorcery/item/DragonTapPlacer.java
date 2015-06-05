@@ -1,8 +1,13 @@
 package io.github.zaphodious.essentialsorcery.item;
 
+import io.github.zaphodious.essentialsorcery.block.DragonTap;
 import io.github.zaphodious.essentialsorcery.block.ModBlocks;
 import io.github.zaphodious.essentialsorcery.core.Reference;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
@@ -22,7 +27,6 @@ public class DragonTapPlacer extends Item {
 		this.maxStackSize = 64;
 	}
 	
-	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer playerIn,
 			World worldIn, BlockPos pos, EnumFacing side, float hitX,
 			float hitY, float hitZ) {
@@ -45,7 +49,7 @@ public class DragonTapPlacer extends Item {
             	//System.out.println(block.getDefaultState());
             	//dragonTap.setState(TapState.SET);
             } else {**/
-			return Item.getItemFromBlock(ModBlocks.dragon_tap).onItemUse(stack, playerIn, worldIn, pos, side, hitX, hitY, hitZ);
+			return this.getItemFromBlock(ModBlocks.dragon_tap).onItemUse(stack, playerIn, worldIn, pos, side, hitX, hitY, hitZ);
 			// The new stack of apples is a hack to prevent this item from being used up when the player is in survival. If you know how to make it better, please do! :-D
             /**}
 			

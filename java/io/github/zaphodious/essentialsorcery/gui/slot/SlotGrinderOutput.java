@@ -1,9 +1,18 @@
 package io.github.zaphodious.essentialsorcery.gui.slot;
 
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.MathHelper;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import akka.dispatch.sysmsg.Create;
 
 public class SlotGrinderOutput  extends Slot
 {

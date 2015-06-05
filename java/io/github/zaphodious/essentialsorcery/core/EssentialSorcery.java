@@ -22,24 +22,20 @@ public class EssentialSorcery {
     public void preInit(FMLPreInitializationEvent e) {
     	Configuration config = new Configuration(e.getSuggestedConfigurationFile());
     	config.load();
-    	EssentialSorcery.proxy.preInit(e);
-    	System.out.println("called method: preInit");
-    	System.out.println("Is this working?");
-    	System.out.println("called method: preInit");
-    	System.out.println("called method: preInit");
+    	this.proxy.preInit(e);
     	System.out.println("called method: preInit");
     	config.save();
     }
 
     @EventHandler
     public void init(FMLInitializationEvent e) {
-    	EssentialSorcery.proxy.init(e);
+    	this.proxy.init(e);
     	System.out.println("called method: init");
     }
 
     @EventHandler
     public void postInit(FMLPostInitializationEvent e) {
-    	EssentialSorcery.proxy.postInit(e);
+    	this.proxy.postInit(e);
     	System.out.println("called method: postInit");
     }
 }

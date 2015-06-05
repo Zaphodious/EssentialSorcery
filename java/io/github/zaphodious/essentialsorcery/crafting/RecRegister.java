@@ -1,6 +1,7 @@
 package io.github.zaphodious.essentialsorcery.crafting;
 
 import io.github.zaphodious.essentialsorcery.item.ModItems;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;

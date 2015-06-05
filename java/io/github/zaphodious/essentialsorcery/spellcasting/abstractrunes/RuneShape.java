@@ -53,7 +53,6 @@ public abstract class RuneShape extends Item implements Rune {
 			EntityPlayer playerIn);
 
 	
-	@Override
 	public int getPowerLevel() {
 		return 1;
 	}

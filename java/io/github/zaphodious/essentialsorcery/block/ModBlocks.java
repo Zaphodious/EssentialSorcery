@@ -1,8 +1,10 @@
 package io.github.zaphodious.essentialsorcery.block;
 
+import io.github.zaphodious.essentialsorcery.block.states.TapState;
 import io.github.zaphodious.essentialsorcery.core.Reference;
 import io.github.zaphodious.essentialsorcery.item.ItemBlockMeta;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -12,6 +14,7 @@ public final class ModBlocks {
 
 	public static DragonTap dragon_tap;
 	public static RuneTable rune_table;
+	public static Block testing_table;
 	
 	public static void createBlocks() {
 		
@@ -19,7 +22,6 @@ public final class ModBlocks {
 			GameRegistry.registerBlock(dragon_tap, ItemBlockMeta.class, "dragon_tap");
 		rune_table = new RuneTable("rune_table");
 			GameRegistry.registerBlock(rune_table, "rune_table");
-
 		
 		
 		System.out.println("registered " + dragon_tap.getUnlocalizedName());

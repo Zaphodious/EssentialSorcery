@@ -1,6 +1,11 @@
 package io.github.zaphodious.essentialsorcery.core;
 
+import io.github.zaphodious.essentialsorcery.item.ModItems;
 import io.github.zaphodious.essentialsorcery.spellcasting.BiomeSorter;
+
+import java.util.ArrayList;
+
+import net.minecraft.item.Item;
 
 public class Reference {
 

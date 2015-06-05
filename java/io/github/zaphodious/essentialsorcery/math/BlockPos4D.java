@@ -1,6 +1,7 @@
 package io.github.zaphodious.essentialsorcery.math;
 
 import net.minecraft.nbt.NBTBase;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagIntArray;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;

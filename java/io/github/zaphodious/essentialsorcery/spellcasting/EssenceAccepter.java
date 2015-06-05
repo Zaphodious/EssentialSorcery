@@ -23,7 +23,6 @@ public abstract class EssenceAccepter extends Item implements UsesEssence{
 		this.setMaxDamage(maxPool);
 	}
 
-	@Override
 	public boolean useTap(World worldIn, BlockPos pos, ItemStack stack,
 			EntityPlayer playerIn) {
 		GivesEssence giver = null;
@@ -75,17 +74,14 @@ public abstract class EssenceAccepter extends Item implements UsesEssence{
 
 	}
 
-	@Override
 	public Element getElement() {
 		return element;
 	}
 
-	@Override
 	public void setElement(Element element) {
 		this.element = element;
 	}
 	
-	@Override
 	public boolean useEssence(int req, ItemStack stack) {
 		if (stack.getItemDamage() + req > stack.getMaxDamage()) {
 			return false;

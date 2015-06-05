@@ -16,8 +16,7 @@ public class ItemBlockMeta extends ItemBlock {
         this.setHasSubtypes(true);
     }
 
-    @Override
-	public int getMetadata(int damage)
+    public int getMetadata(int damage)
     {
         return damage;
     }

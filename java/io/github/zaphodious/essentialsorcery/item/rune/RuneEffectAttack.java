@@ -4,6 +4,8 @@ import io.github.zaphodious.essentialsorcery.spellcasting.RuneHelper;
 import io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneEffect;
 
 import java.util.Map;
+import java.util.Random;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;

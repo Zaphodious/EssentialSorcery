@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import io.github.zaphodious.essentialsorcery.spellcasting.*;
 
 public abstract class RuneEffect extends Item implements Rune {
 
@@ -88,7 +89,6 @@ public abstract class RuneEffect extends Item implements Rune {
 	public abstract boolean earthEffect(Entity entity, World worldIn, EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn, BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey);
 	public abstract boolean woodEffect(Entity entity, World worldIn, EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn, BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey);
 	
-	@Override
 	public int getPowerLevel() {
 		return 1;
 	}
