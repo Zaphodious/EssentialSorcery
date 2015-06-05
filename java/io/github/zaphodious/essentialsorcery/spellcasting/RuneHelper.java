@@ -13,7 +13,6 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
@@ -28,7 +27,7 @@ public class RuneHelper {
 		if (itemStackIn.hasTagCompound()) {
 			Set<String> keySet = (itemStackIn.getTagCompound().getKeySet());
 			for (String key : keySet) {
-				ItemStack newStack = (ItemStack) ItemStack
+				ItemStack newStack = ItemStack
 						.loadItemStackFromNBT(itemStackIn.getTagCompound()
 								.getCompoundTag(key));
 				runeMap.put(key, newStack);
@@ -37,6 +36,7 @@ public class RuneHelper {
 		}
 
 		runeMap.remove("display");
+		runeMap.remove("essenceContained");
 
 		if (runeMap.isEmpty()) {
 			throw new Exception("The ItemStack " + itemStackIn.toString()
@@ -74,7 +74,7 @@ public class RuneHelper {
 		int runeNumber = 0;
 
 		for (String key : runeMap.keySet()) {
-			if (key.isEmpty() || key.equals("display")) break;
+			if (key.isEmpty() || key.equals("display") || key.equals(BoardSlots.ESSENCE_CONTAINED.getSlotname())) break;
 			ItemStack runeStack = runeMap.get(key);
 			Rune rune = (Rune) runeStack.getItem();
 			if (key.contains("effect")) {

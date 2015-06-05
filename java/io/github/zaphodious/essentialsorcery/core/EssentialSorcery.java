@@ -23,7 +23,7 @@ public class EssentialSorcery {
     	Configuration config = new Configuration(e.getSuggestedConfigurationFile());
     	config.load();
     	this.proxy.preInit(e);
-    	System.out.println("called method: preInit");
+    	System.out.println("called method: preInit... and has this changed?");
     	config.save();
     }
 
