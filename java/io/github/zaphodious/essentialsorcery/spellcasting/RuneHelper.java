@@ -82,7 +82,7 @@ public class RuneHelper {
 			
 		}
 
-		return runeNumber;
+		return runeNumber - 1;
 		
 	}
 	
@@ -101,7 +101,7 @@ public class RuneHelper {
 				
 			}
 		}
-		return powerLevel;
+		return powerLevel - 1;
 	}
 	
 	public static void addRuneToDropList(Rune rune, DropChance dropChance) {
