@@ -45,11 +45,12 @@ public class RuneEffectSpawnVanilla extends RuneEffect {
 	public boolean fireEffect(Entity entity, World worldIn,
 			EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn,
 			BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey) {
-		// TODO Auto-generated method stub
+		int spellPower = runeMapIn.get(thisRuneKey).stackSize;
 		EntityCreeper entityCreeper = new EntityCreeper(worldIn);
 
 		entityCreeper.setLocationAndAngles(pos.getX(), pos.getY(), pos.getZ(),
 				entity.rotationYaw, 0.0F);
+		entityCreeper.setHealth(5*spellPower);
 		worldIn.spawnEntityInWorld(entityCreeper);
 		return true;
 	}
@@ -58,11 +59,12 @@ public class RuneEffectSpawnVanilla extends RuneEffect {
 	public boolean waterEffect(Entity entity, World worldIn,
 			EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn,
 			BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey) {
-		// TODO Auto-generated method stub
+		int spellPower = runeMapIn.get(thisRuneKey).stackSize;
 		EntitySlime entitySlime = new EntitySlime(worldIn);
 
 		entitySlime.setLocationAndAngles(pos.getX(), pos.getY(), pos.getZ(),
 				entity.rotationYaw, 0.0F);
+		entitySlime.setHealth(5*spellPower);
 		worldIn.spawnEntityInWorld(entitySlime);
 		return true;
 	}

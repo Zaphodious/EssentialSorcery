@@ -77,13 +77,17 @@ public abstract class BasicBoard extends Item implements UsesEssence {
 						+ "/"
 						+ (stack.getTagCompound().getIntArray(
 								"essenceContained")[1]));
-				tooltip.add("fak");
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				tooltip.add("Error getting essence. please make a new spell.");
 			}
 
-			tooltip.add("     Mana cost to cast is " + this.getCost(stack));
+			if (this.getCost(stack) > 0) {
+				tooltip.add("     Mana cost to cast is " + this.getCost(stack));
+			} else {
+				tooltip.add("§f§kfak,fak,fak§cRenaming on anvil is currently broken.§f§kfak,fak,fak§f");
+			}
+			
 			tooltip.add("Effect Runes Affixed:");
 
 			Set<String> keySet = (stack.getTagCompound().getKeySet());

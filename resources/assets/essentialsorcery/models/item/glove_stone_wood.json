@@ -3,7 +3,7 @@
     "textures": {
         "0": "blocks/stone",
         "1": "blocks/gold_block",
-        "2": "essentialsorcery:/item/projectile/static_ball_green"
+        "2": "essentialsorcery:item/projectile/static_ball_green"
     },
     "elements": [
         {

@@ -3,7 +3,7 @@
     "textures": {
         "0": "blocks/iron_block",
         "1": "blocks/gold_block",
-        "2": "essentialsorcery:/item/projectile/static_ball_brown"
+        "2": "essentialsorcery:item/projectile/static_ball_brown"
     },
     "elements": [
         {

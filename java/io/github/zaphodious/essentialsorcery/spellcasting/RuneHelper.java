@@ -69,8 +69,7 @@ public class RuneHelper {
 
 	}
 	
-	public static int totalPowerLevelIn(Map<String, ItemStack> runeMap) {
-		
+	public static int totalPowerLevelIn(Map<String, ItemStack> runeMap) {		
 		int runeNumber = 0;
 
 		for (String key : runeMap.keySet()) {
@@ -125,14 +124,14 @@ public class RuneHelper {
 			
 			for (RuneElement elementRune : ModItems.getElementRunes()) {
 				Element biomeElement = Reference.SORTER.getBiomes().get(event.world.getBiomeGenForCoords(event.pos).biomeID);
-				if (elementRune.getElement() == biomeElement && rand.nextFloat() < DropChance.RARE.getProbability()) {
+				if (elementRune.getElement() == biomeElement && rand.nextFloat() < DropChance.UNCOMMON.getProbability()) {
 					
 					toDrop = new ItemStack(elementRune);
 				}
 			}
 		} else {
 			
-			RuneDropObject thisRune = RuneHelper.RuneDrops.get(runePosition);
+			RuneDropObject thisRune = RuneHelper.RuneDrops.get(runePosition-1);
 			if (thisRune.getProbabilty() > rand.nextFloat()) {
 			toDrop = new ItemStack(thisRune.getRuneAsItem());
 		}

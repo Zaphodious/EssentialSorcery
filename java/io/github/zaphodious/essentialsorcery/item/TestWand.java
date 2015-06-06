@@ -250,6 +250,14 @@ public class TestWand extends Item implements UsesEssence {
 
 
 
+	@Override
+	public boolean takeInEssence(Essence essenceIn, ItemStack stackIn) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
 	
 
 
