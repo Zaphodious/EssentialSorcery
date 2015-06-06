@@ -39,7 +39,6 @@ public class RuneTable extends BlockSimplePowerConsumer {
 	public RuneTable(String unlocalizedName) {
 		super(Material.wood, 0.25F, new ConduitType("essence"));
 		this.setUnlocalizedName(unlocalizedName);
-		// TODO Auto-generated constructor stub
 	}
 	
 	

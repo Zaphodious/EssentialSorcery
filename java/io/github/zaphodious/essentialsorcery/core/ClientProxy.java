@@ -19,10 +19,10 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void init(FMLInitializationEvent e) {
         super.init(e);
-        
+        BlockRenderRegister.registerBlockRenderer();
         //ModBlocks.registerRenders();
         ItemRenderRegister.registerItemRenderer();
-        BlockRenderRegister.registerBlockRenderer();
+        
         EntityRenderRegister.renderEntities();
     }
 
