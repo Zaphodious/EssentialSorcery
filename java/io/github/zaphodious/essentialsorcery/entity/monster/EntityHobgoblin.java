@@ -10,6 +10,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
@@ -46,6 +47,8 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -90,6 +93,8 @@ public class EntityHobgoblin extends EntityMob {
 		this.tasks.addTask(8, new EntityAILookIdle(this));
 		this.applyEntityAI();
 		this.setSize(0.6F, 1.95F);
+		
+		System.out.println("Hobgoblin spawned!");
 	}
 
 	protected void applyEntityAI() {
@@ -258,8 +263,14 @@ public class EntityHobgoblin extends EntityMob {
 
 	/**
 	 * Called when the entity is attacked.
-	 * 
-	 * public boolean attackEntityFrom(DamageSource source, float amount) { if
+	 */
+	  /**public boolean attackEntityFrom(DamageSource source, float amount) {
+		  playSound("essentialsorcery:mob.hobgoblin.retch", getSoundVolume(), getSoundPitch());
+		  return true;
+	  }
+		  
+		   if
+	  }
 	 * (super.attackEntityFrom(source, amount)) { EntityLivingBase
 	 * entitylivingbase = this.getAttackTarget();
 	 * 
@@ -356,21 +367,21 @@ public class EntityHobgoblin extends EntityMob {
 	 * Returns the sound this mob makes while it's alive.
 	 */
 	protected String getLivingSound() {
-		return "mob.zombie.say";
+		return "essentialsorcery:mob.hobgoblin.living";
 	}
 
 	/**
 	 * Returns the sound this mob makes when it is hurt.
 	 */
 	protected String getHurtSound() {
-		return "mob.zombie.hurt";
+		return "essentialsorcery:mob.hobgoblin.retch";
 	}
 
 	/**
 	 * Returns the sound this mob makes on death.
 	 */
 	protected String getDeathSound() {
-		return "mob.zombie.death";
+		return "essentialsorcery:mob.hobgoblin.death";
 	}
 
 	protected void playStepSound(BlockPos pos, Block blockIn) {
@@ -378,14 +389,14 @@ public class EntityHobgoblin extends EntityMob {
 	}
 
 	protected Item getDropItem() {
-		return Items.rotten_flesh;
+		return cyano.basemetals.init.Items.silver_ingot;
 	}
 
 	/**
 	 * Get this Entity's EnumCreatureAttribute
 	 */
 	public EnumCreatureAttribute getCreatureAttribute() {
-		return EnumCreatureAttribute.UNDEAD;
+		return EnumCreatureAttribute.UNDEFINED;
 	}
 
 	/**

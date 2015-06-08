@@ -1,0 +1,32 @@
+{
+    "mob.hobgoblin.retch":
+    {
+        "category": "neutral",
+        "sounds":
+        [
+            "mobs/hobgoblin/retch1",
+            "mobs/hobgoblin/retch2",
+            "mobs/hobgoblin/retch3"
+        ]
+    },
+	
+	"mob.hobgoblin.death":
+    {
+        "category": "neutral",
+        "sounds":
+        [
+            "mobs/hobgoblin/death"
+        ]
+    },
+	
+	"mob.hobgoblin.living":
+    {
+        "category": "neutral",
+        "sounds":
+        [
+            "mobs/hobgoblin/living1",
+            "mobs/hobgoblin/living2",
+            "mobs/hobgoblin/living3"
+        ]
+    }
+}
