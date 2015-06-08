@@ -49,7 +49,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class EntityHobgoblin extends EntityMob implements Cloneable {
+// for this particular mob, I've elected to copy over the zombie entity class, and just change some things around.
+// it pretty much works as-is. I'll need to clean this up a bit later on, though.
+
+public class EntityHobgoblin extends EntityMob {
 	/**
 	 * The attribute which determines the chance that this mob will spawn
 	 * reinforcements
@@ -324,14 +327,12 @@ public class EntityHobgoblin extends EntityMob implements Cloneable {
 	 * Called to update the entity's position/logic.
 	 */
 	public void onUpdate() {
-		/*if (!this.worldObj.isRemote && this.isConverting()) {
-			int i = this.getConversionTimeBoost();
-			this.conversionTime -= i;
-
-			if (this.conversionTime <= 0) {
-				this.convertToVillager();
-			}
-		}*/
+		/*
+		 * if (!this.worldObj.isRemote && this.isConverting()) { int i =
+		 * this.getConversionTimeBoost(); this.conversionTime -= i;
+		 * 
+		 * if (this.conversionTime <= 0) { this.convertToVillager(); } }
+		 */
 
 		super.onUpdate();
 	}
@@ -615,27 +616,22 @@ public class EntityHobgoblin extends EntityMob implements Cloneable {
 	public boolean interact(EntityPlayer player) {
 		ItemStack itemstack = player.getCurrentEquippedItem();
 
-		/*if (itemstack != null && itemstack.getItem() == Items.golden_apple
-				&& itemstack.getMetadata() == 0 && this.isVillager()
-				&& this.isPotionActive(Potion.weakness)) {
-			if (!player.capabilities.isCreativeMode) {
-				--itemstack.stackSize;
-			}
+		/*
+		 * if (itemstack != null && itemstack.getItem() == Items.golden_apple &&
+		 * itemstack.getMetadata() == 0 && this.isVillager() &&
+		 * this.isPotionActive(Potion.weakness)) { if
+		 * (!player.capabilities.isCreativeMode) { --itemstack.stackSize; }
+		 * 
+		 * if (itemstack.stackSize <= 0) {
+		 * player.inventory.setInventorySlotContents(
+		 * player.inventory.currentItem, (ItemStack) null); }
+		 * 
+		 * if (!this.worldObj.isRemote) {
+		 * this.startConversion(this.rand.nextInt(2401) + 3600); }
+		 * 
+		 * return true; } else { return false; }
+		 */
 
-			if (itemstack.stackSize <= 0) {
-				player.inventory.setInventorySlotContents(
-						player.inventory.currentItem, (ItemStack) null);
-			}
-
-			if (!this.worldObj.isRemote) {
-				this.startConversion(this.rand.nextInt(2401) + 3600);
-			}
-
-			return true;
-		} else {
-			return false;
-		}*/
-		
 		return true;
 	}
 
@@ -684,28 +680,22 @@ public class EntityHobgoblin extends EntityMob implements Cloneable {
 
 	/**
 	 * Convert this zombie into a villager.
-	 
-	protected void convertToVillager() {
-		EntityVillager entityvillager = new EntityVillager(this.worldObj);
-		entityvillager.copyLocationAndAnglesFrom(this);
-		entityvillager.onInitialSpawn(this.worldObj
-				.getDifficultyForLocation(new BlockPos(entityvillager)),
-				(IEntityLivingData) null);
-		entityvillager.setLookingForHome();
-
-		if (this.isChild()) {
-			entityvillager.setGrowingAge(-24000);
-		}
-
-		this.worldObj.removeEntity(this);
-		this.worldObj.spawnEntityInWorld(entityvillager);
-		entityvillager.addPotionEffect(new PotionEffect(Potion.confusion.id,
-				200, 0));
-		this.worldObj
-				.playAuxSFXAtEntity((EntityPlayer) null, 1017, new BlockPos(
-						(int) this.posX, (int) this.posY, (int) this.posZ), 0);
-	}
-*/
+	 * 
+	 * protected void convertToVillager() { EntityVillager entityvillager = new
+	 * EntityVillager(this.worldObj);
+	 * entityvillager.copyLocationAndAnglesFrom(this);
+	 * entityvillager.onInitialSpawn(this.worldObj .getDifficultyForLocation(new
+	 * BlockPos(entityvillager)), (IEntityLivingData) null);
+	 * entityvillager.setLookingForHome();
+	 * 
+	 * if (this.isChild()) { entityvillager.setGrowingAge(-24000); }
+	 * 
+	 * this.worldObj.removeEntity(this);
+	 * this.worldObj.spawnEntityInWorld(entityvillager);
+	 * entityvillager.addPotionEffect(new PotionEffect(Potion.confusion.id, 200,
+	 * 0)); this.worldObj .playAuxSFXAtEntity((EntityPlayer) null, 1017, new
+	 * BlockPos( (int) this.posX, (int) this.posY, (int) this.posZ), 0); }
+	 */
 	/**
 	 * Return the amount of time decremented from conversionTime every tick.
 	 */
@@ -810,14 +800,10 @@ public class EntityHobgoblin extends EntityMob implements Cloneable {
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#clone()
 	 */
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		// TODO Auto-generated method stub
-		return super.clone();
-	}
-	
-	
+
 }

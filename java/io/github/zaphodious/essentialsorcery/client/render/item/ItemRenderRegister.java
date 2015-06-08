@@ -72,6 +72,7 @@ public final class ItemRenderRegister {
 		reg(ModItems.glove_diamond_fire, 0);
 		reg(ModItems.glove_diamond_water, 0);
 		reg(ModItems.glove_diamond_wood, 0);
+		reg(ModItems.hobgoblin_placer, 0);
 		
 	}
 	

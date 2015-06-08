@@ -3,6 +3,7 @@ item.test_wand.name=OmniWand3000
 item.stone_trowel.name=Stone Trowel
 item.dragon_tap_placer.name=Dragon Tap
 item.rune_table_placer.name=Rune Table
+item.hobgoblin_placer.name=Small Rip in Reality
 tile.testing_table.name=Testing Table
 itemGroup.tabEssential=Essentail Sorcery
 item.rune_attack.name=Rune of Attack

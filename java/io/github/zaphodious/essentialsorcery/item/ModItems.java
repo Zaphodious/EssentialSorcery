@@ -1,6 +1,7 @@
 package io.github.zaphodious.essentialsorcery.item;
 
 import io.github.zaphodious.essentialsorcery.entity.monster.EntityHobgoblin;
+import io.github.zaphodious.essentialsorcery.item.mobplacer.HobgoblinPlacer;
 import io.github.zaphodious.essentialsorcery.item.renderitems.PrettyBallBlue;
 import io.github.zaphodious.essentialsorcery.item.renderitems.PrettyBallBrown;
 import io.github.zaphodious.essentialsorcery.item.renderitems.PrettyBallGreen;
@@ -108,7 +109,7 @@ public final class ModItems {
 	public static GloveDiamond glove_diamond_water;
 	public static GloveDiamond glove_diamond_wood;
 	
-	public static EssentialMonsterPlacer hobgoblin_placer;
+	public static HobgoblinPlacer hobgoblin_placer;
 	
 
 	public static void createItems() {
@@ -125,7 +126,7 @@ public final class ModItems {
 		
 		GameRegistry.registerItem(stone_trowel = new Trowel("stone_trowel", ModItems.STONETROWEL), "stone_trowel");
 
-		 GameRegistry.registerItem(hobgoblin_placer = new EssentialMonsterPlacer("hobgoblin_placer", EntityHobgoblin.class, 0xFFA62E, 0x820000), "hobgoblin_placer");
+		 GameRegistry.registerItem(hobgoblin_placer = new HobgoblinPlacer("hobgoblin_placer"), "hobgoblin_placer");
 
 		/*    Rune registrations    */
 		GameRegistry.registerItem(rune_attack = new RuneEffectAttack(0, "rune_attack"), "rune_attack");
