@@ -2,6 +2,7 @@ package io.github.zaphodious.essentialsorcery.core;
 
 import io.github.zaphodious.essentialsorcery.block.ModBlocks;
 import io.github.zaphodious.essentialsorcery.crafting.RecRegister;
+import io.github.zaphodious.essentialsorcery.entity.RegisterMobs;
 import io.github.zaphodious.essentialsorcery.event.Events;
 import io.github.zaphodious.essentialsorcery.item.ModItems;
 import io.github.zaphodious.essentialsorcery.spellcasting.targeting.RegTargetingEntities;
@@ -34,6 +35,7 @@ public class CommonProxy {
 
     public void init(FMLInitializationEvent e) {
     	ModTileEntities.registerTileEntities();
+    	RegisterMobs.registerMobs();
     	ModTileEntities.regGUIs();
         //NetworkRegistry.INSTANCE.registerGuiHandler(EssentialSorcery.instance, new MachineGUIRegistry());
     	RegTargetingEntities.Reg();
