@@ -10,7 +10,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
-import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
@@ -37,7 +36,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
+import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.potion.Potion;
@@ -47,8 +49,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -92,9 +92,9 @@ public class EntityHobgoblin extends EntityMob {
 				EntityPlayer.class, 8.0F));
 		this.tasks.addTask(8, new EntityAILookIdle(this));
 		this.applyEntityAI();
-		this.setSize(0.6F, 1.95F);
-		
-		System.out.println("Hobgoblin spawned!");
+		this.setSize(0.6F, 1.1F);
+
+		System.out.println("Making a new Hobgoblin object...");
 	}
 
 	protected void applyEntityAI() {
@@ -121,7 +121,7 @@ public class EntityHobgoblin extends EntityMob {
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed)
 				.setBaseValue(0.5D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage)
-				.setBaseValue(3.0D);
+				.setBaseValue(2.0D);
 		this.getAttributeMap()
 				.registerAttribute(reinforcementChance)
 				.setBaseValue(
@@ -264,14 +264,47 @@ public class EntityHobgoblin extends EntityMob {
 	/**
 	 * Called when the entity is attacked.
 	 */
-	  /**public boolean attackEntityFrom(DamageSource source, float amount) {
-		  playSound("essentialsorcery:mob.hobgoblin.retch", getSoundVolume(), getSoundPitch());
-		  return true;
-	  }
-		  
-		   if
-	  }
-	 * (super.attackEntityFrom(source, amount)) { EntityLivingBase
+	public boolean attackEntityFrom(DamageSource source, float amount) {
+		boolean attackedByIron = false;
+		String thisMaterial = "";
+		
+		// Here, we want to see if the attack is coming from an Iron source, and
+		// if so we want to make it *really* hurt.
+		
+		if (source.getEntity() instanceof EntityPlayer) {
+			EntityPlayer damagingPlayer = (EntityPlayer) source.getEntity();
+			if (damagingPlayer.getCurrentEquippedItem().getItem() instanceof ItemSword) {
+				ItemSword thisSword = (ItemSword) damagingPlayer
+						.getCurrentEquippedItem().getItem();
+				thisMaterial = thisSword.getToolMaterialName();
+			}
+
+			if (damagingPlayer.getCurrentEquippedItem().getItem() instanceof ItemTool) {
+				ItemTool thisTool = (ItemTool) damagingPlayer
+						.getCurrentEquippedItem().getItem();
+				thisMaterial = thisTool.getToolMaterialName();
+			}
+
+			if (ToolMaterial.IRON.toString().equals(thisMaterial)) {
+				attackedByIron = true;
+			}
+
+		} else if (source.getEntity() instanceof EntityIronGolem) {
+			attackedByIron = true;
+		}
+
+		if (attackedByIron) {
+			source.setDamageBypassesArmor();
+			amount *= 1.5;
+			this.setFire(10);
+		}
+
+		super.attackEntityFrom(source, amount);
+		return true;
+	}
+
+	/**
+	 * * (super.attackEntityFrom(source, amount)) { EntityLivingBase
 	 * entitylivingbase = this.getAttackTarget();
 	 * 
 	 * if (entitylivingbase == null && source.getEntity() instanceof
@@ -389,7 +422,7 @@ public class EntityHobgoblin extends EntityMob {
 	}
 
 	protected Item getDropItem() {
-		return cyano.basemetals.init.Items.silver_ingot;
+		return cyano.basemetals.init.Items.silver_nugget;
 	}
 
 	/**
@@ -426,9 +459,9 @@ public class EntityHobgoblin extends EntityMob {
 			int i = this.rand.nextInt(3);
 
 			if (i == 0) {
-				this.setCurrentItemOrArmor(0, new ItemStack(Items.iron_sword));
+				this.setCurrentItemOrArmor(0, new ItemStack(cyano.basemetals.init.Items.brass_sword));
 			} else {
-				this.setCurrentItemOrArmor(0, new ItemStack(Items.iron_shovel));
+				this.setCurrentItemOrArmor(0, new ItemStack(cyano.basemetals.init.Items.brass_shovel));
 			}
 		}
 	}
@@ -529,6 +562,7 @@ public class EntityHobgoblin extends EntityMob {
 	 */
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty,
 			IEntityLivingData livingdata) {
+		System.out.println("Hobgoblin spawned!");
 		Object p_180482_2_1 = super.onInitialSpawn(difficulty, livingdata);
 		float f = difficulty.getClampedAdditionalDifficulty();
 		this.setCanPickUpLoot(this.rand.nextFloat() < 0.55F * f);

@@ -34,8 +34,8 @@ public class HobgoblinPlacer extends Item {
 		} else {
 			EntityHobgoblin entityHobgoblin = new EntityHobgoblin(worldIn);
 
-			entityHobgoblin.setLocationAndAngles(pos.getX(), pos.getY()+1,
-					pos.getZ(), playerIn.rotationYaw, 0.0F);
+			entityHobgoblin.setLocationAndAngles(pos.getX()+.5, pos.getY()+1,
+					pos.getZ()+.5, playerIn.rotationYaw, 0.0F);
 
 			worldIn.spawnEntityInWorld(entityHobgoblin);
 			if (!playerIn.capabilities.isCreativeMode) {

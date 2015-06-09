@@ -165,7 +165,7 @@ public class RuneEffectAttack extends RuneEffect {
 			EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn,
 			BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey) {
 		// TODO Auto-generated method stub
-		int damageToDeal = RuneHelper.totalEffectRunesIn(runeMapIn
+		int damageToDeal = 2*RuneHelper.totalEffectRunesIn(runeMapIn
 				.get(thisRuneKey));
 		movObjPos.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(entity, throwerIn), damageToDeal);
 		throwerIn.heal(damageToDeal);
