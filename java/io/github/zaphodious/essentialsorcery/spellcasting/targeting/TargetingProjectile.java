@@ -24,7 +24,7 @@ public abstract class TargetingProjectile extends EntityThrowable {
 	@Override
 	protected float getVelocity() {
 		// TODO Auto-generated method stub
-		return 2F;
+		return 0.2F;
 	}
 
 	/*
@@ -52,9 +52,9 @@ public abstract class TargetingProjectile extends EntityThrowable {
 		if (this.ticksExisted > 600) {
 			this.setDead();
 		}
-		this.motionX *= 1.1;
-		this.motionY *= 1.1;
-		this.motionZ *= 1.1;
+		this.motionX *= 1.5;
+		this.motionY *= 1.5;
+		this.motionZ *= 1.5;
 		super.onUpdate();
 	}
 
