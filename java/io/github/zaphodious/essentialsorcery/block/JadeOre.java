@@ -29,6 +29,7 @@ public class JadeOre extends Block {
 	
 	private static final PropertyEnum ELEMENT = PropertyEnum.create("element",
 			io.github.zaphodious.essentialsorcery.spellcasting.Element.class);
+	private int genCounter;
 
 	protected JadeOre(String unlocalizedName) {
 		super(Material.anvil);
@@ -37,6 +38,7 @@ public class JadeOre extends Block {
 		this.setDefaultState(this.blockState.getBaseState().withProperty(ELEMENT, Element.NEUTRAL));
 		this.setHardness(3);
         this.setResistance(10);
+        this.genCounter = 0;
 	}
 
 	
@@ -111,10 +113,11 @@ public class JadeOre extends Block {
 	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
 		// TODO Auto-generated
 		// state = this.getActualState(state, worldIn, pos);
-		System.out.println("print before the super.");
+		
 		super.onBlockAdded(worldIn, pos, state);
-		worldIn.setBlockState(pos, ModBlocks.jade_ore.getActualState(state, worldIn, pos));
-		System.out.println("printing after the super");
+		if (worldIn.setBlockState(pos, ModBlocks.jade_ore.getActualState(state, worldIn, pos))) {
+			//System.out.println("Ore #" + genCounter++ + " spawned at " + pos.toString());
+		}
 	}
 
 	

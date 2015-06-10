@@ -108,7 +108,7 @@ public class BiomeSorter {
 
 	public int getBiomeID(World worldIn, BlockPos pos) {
 		BiomeGenBase biome = worldIn.getBiomeGenForCoords(pos);
-		System.out.println("Biome: " + biome.biomeName + " ID: " + biome.biomeID);
+		//System.out.println("Biome: " + biome.biomeName + " ID: " + biome.biomeID);
 		return biome.biomeID;
 	}
 	
