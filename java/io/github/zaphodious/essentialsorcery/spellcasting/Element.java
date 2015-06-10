@@ -1,6 +1,8 @@
 package io.github.zaphodious.essentialsorcery.spellcasting;
 
-public enum Element {
+import net.minecraft.util.IStringSerializable;
+
+public enum Element implements IStringSerializable {
 
 	FIRE(0, "fire"),
 	WATER(1, "water"),
@@ -26,5 +28,22 @@ public enum Element {
 	}
 	
 	
+	
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.getName();
+	}
+
+	public static Element getElementForID(int ID) {
+		Element toReturn = null;
+		for (Element element : Element.values()) {
+			if (element.getID() == ID) {
+				toReturn = element;
+			}
+		}
+		return toReturn;
+	}
 	
 }

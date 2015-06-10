@@ -16,6 +16,7 @@ public class RecRegister {
 		ItemStack woolStack = new ItemStack(Blocks.wool);
 		ItemStack cobbleStack = new ItemStack(Blocks.cobblestone);
 		ItemStack coalStack = new ItemStack(Items.coal);
+		ItemStack steelStack = new ItemStack(cyano.basemetals.init.Items.steel_ingot);
 		
 		GameRegistry.addRecipe(new ItemStack(ModItems.runeTablePlacer),
 	    "xxx",
@@ -40,9 +41,45 @@ public class RecRegister {
 				"zx",
 				"yz",
 				'x', cobbleStack, 'y', stickStack, 'z', woolStack);
-				
-				
 		
+		
+		
+		GameRegistry.addRecipe(new ItemStack(ModItems.jade_black_ingot),
+				"xxx",
+				"xyx",
+				"xxx",
+				'x', new ItemStack(ModItems.jade_black_nugget), 'y', steelStack);
+		
+		GameRegistry.addRecipe(new ItemStack(ModItems.jade_blue_ingot),
+				"xxx",
+				"xyx",
+				"xxx",
+				'x', new ItemStack(ModItems.jade_blue_nugget), 'y', steelStack);
+		
+		GameRegistry.addRecipe(new ItemStack(ModItems.jade_red_ingot),
+				"xxx",
+				"xyx",
+				"xxx",
+				'x', new ItemStack(ModItems.jade_red_nugget), 'y', steelStack);
+		
+		GameRegistry.addRecipe(new ItemStack(ModItems.jade_white_ingot),
+				"xxx",
+				"xyx",
+				"xxx",
+				'x', new ItemStack(ModItems.jade_white_nugget), 'y', steelStack);
+		
+		GameRegistry.addRecipe(new ItemStack(ModItems.jade_green_ingot),
+				"xxx",
+				"xyx",
+				"xxx",
+				'x', new ItemStack(ModItems.jade_green_nugget), 'y', steelStack);
+				
+				
+		GameRegistry.addSmelting(ModItems.jade_black_dust, new ItemStack(ModItems.jade_black_nugget), 1.0F);
+		GameRegistry.addSmelting(ModItems.jade_blue_dust, new ItemStack(ModItems.jade_blue_nugget), 1.0F);
+		GameRegistry.addSmelting(ModItems.jade_red_dust, new ItemStack(ModItems.jade_red_nugget), 1.0F);
+		GameRegistry.addSmelting(ModItems.jade_white_dust, new ItemStack(ModItems.jade_white_nugget), 1.0F);
+		GameRegistry.addSmelting(ModItems.jade_green_dust, new ItemStack(ModItems.jade_green_nugget), 1.0F);
 	}
 	
 }

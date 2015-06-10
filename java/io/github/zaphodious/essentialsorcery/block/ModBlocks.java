@@ -15,6 +15,7 @@ public final class ModBlocks {
 	public static DragonTap dragon_tap;
 	public static RuneTable rune_table;
 	public static Block testing_table;
+	public static JadeOre jade_ore;
 	
 	public static void createBlocks() {
 		
@@ -22,6 +23,9 @@ public final class ModBlocks {
 			GameRegistry.registerBlock(dragon_tap, ItemBlockMeta.class, "dragon_tap");
 		rune_table = new RuneTable("rune_table");
 			GameRegistry.registerBlock(rune_table, "rune_table");
+			
+			jade_ore = new JadeOre("jade_ore");
+			GameRegistry.registerBlock(jade_ore, "jade_ore");
 		
 		
 		System.out.println("registered " + dragon_tap.getUnlocalizedName());

@@ -74,6 +74,24 @@ public final class ItemRenderRegister {
 		reg(ModItems.glove_diamond_wood, 0);
 		reg(ModItems.hobgoblin_placer, 0);
 		
+		reg(ModItems.jade_green_ingot, 0);
+		reg(ModItems.jade_black_ingot, 0);
+		reg(ModItems.jade_blue_ingot, 0);
+		reg(ModItems.jade_red_ingot, 0);
+		reg(ModItems.jade_white_ingot, 0);
+		
+		reg(ModItems.jade_green_dust, 0);
+		reg(ModItems.jade_black_dust, 0);
+		reg(ModItems.jade_blue_dust, 0);
+		reg(ModItems.jade_red_dust, 0);
+		reg(ModItems.jade_white_dust, 0);
+
+		reg(ModItems.jade_green_nugget, 0);
+		reg(ModItems.jade_black_nugget, 0);
+		reg(ModItems.jade_blue_nugget, 0);
+		reg(ModItems.jade_red_nugget, 0);
+		reg(ModItems.jade_white_nugget, 0);
+		
 	}
 	
 	public static void reg(Item item, int meta) {

@@ -20,6 +20,7 @@ public final class BlockRenderRegister {
 		reg(ModBlocks.dragon_tap, 2, "dragon_tap_spent");
 		System.out.println(ModBlocks.rune_table + "should be registered after this.");
 		reg(ModBlocks.rune_table, 0, "rune_table");
+		reg(ModBlocks.jade_ore, 0, "jade_ore");
 	}
 	
 	public static void reg(Block block) {

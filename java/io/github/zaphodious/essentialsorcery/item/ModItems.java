@@ -1,6 +1,8 @@
 package io.github.zaphodious.essentialsorcery.item;
 
-import io.github.zaphodious.essentialsorcery.entity.monster.EntityHobgoblin;
+import io.github.zaphodious.essentialsorcery.item.metal.JadeDust;
+import io.github.zaphodious.essentialsorcery.item.metal.JadeIngot;
+import io.github.zaphodious.essentialsorcery.item.metal.JadeNugget;
 import io.github.zaphodious.essentialsorcery.item.mobplacer.HobgoblinPlacer;
 import io.github.zaphodious.essentialsorcery.item.renderitems.PrettyBallBlue;
 import io.github.zaphodious.essentialsorcery.item.renderitems.PrettyBallBrown;
@@ -39,6 +41,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public final class ModItems {
 	
 	public static ToolMaterial STONETROWEL = EnumHelper.addToolMaterial("STONETROWEL", 1, 60, 1F, 0, 5);
+	
+	
 	
 	public static Item tapSetter;
 	public static Item testWand;
@@ -111,8 +115,28 @@ public final class ModItems {
 	
 	public static HobgoblinPlacer hobgoblin_placer;
 	
+	public static JadeIngot jade_green_ingot;
+	public static JadeIngot jade_red_ingot;
+	public static JadeIngot jade_white_ingot;
+	public static JadeIngot jade_blue_ingot;
+	public static JadeIngot jade_black_ingot;
+	
+	public static JadeDust jade_green_dust;
+	public static JadeDust jade_red_dust;
+	public static JadeDust jade_white_dust;
+	public static JadeDust jade_blue_dust;
+	public static JadeDust jade_black_dust;
+	
+	public static JadeNugget jade_green_nugget;
+	public static JadeNugget jade_red_nugget;
+	public static JadeNugget jade_white_nugget;
+	public static JadeNugget jade_blue_nugget;
+	public static JadeNugget jade_black_nugget;
+	
 
 	public static void createItems() {
+		
+		
 		GameRegistry.registerItem(tapSetter = new TapSetter("tap_setter"), "tap_setter");
 		GameRegistry.registerItem(dragonTapPlacer = new DragonTapPlacer("dragon_tap_placer"), "dragon_tap_placer");
 		GameRegistry.registerItem(testWand = new TestWand("test_wand", 8, Element.NEUTRAL), "test_wand");
@@ -181,7 +205,29 @@ public final class ModItems {
 		GameRegistry.registerItem(glove_diamond_fire = new GloveDiamond("glove_diamond_fire",Element.FIRE), "glove_diamond_fire");
 		GameRegistry.registerItem(glove_diamond_water = new GloveDiamond("glove_diamond_water",Element.WATER), "glove_diamond_water");
 		GameRegistry.registerItem(glove_diamond_wood = new GloveDiamond("glove_diamond_wood",Element.WOOD), "glove_diamond_wood");
+		
+		
+		GameRegistry.registerItem(jade_green_ingot = new JadeIngot("jade_green_ingot", Element.WOOD), "jade_green_ingot");
+		GameRegistry.registerItem(jade_red_ingot = new JadeIngot("jade_red_ingot", Element.FIRE), "jade_red_ingot");
+		GameRegistry.registerItem(jade_white_ingot = new JadeIngot("jade_white_ingot", Element.EARTH), "jade_white_ingot");
+		GameRegistry.registerItem(jade_blue_ingot = new JadeIngot("jade_blue_ingot", Element.AIR), "jade_blue_ingot");
+		GameRegistry.registerItem(jade_black_ingot = new JadeIngot("jade_black_ingot", Element.WATER), "jade_black_ingot");
+		
+		GameRegistry.registerItem(jade_green_dust = new JadeDust("jade_green_dust", Element.WOOD), "jade_green_dust");
+		GameRegistry.registerItem(jade_red_dust = new JadeDust("jade_red_dust", Element.FIRE), "jade_red_dust");
+		GameRegistry.registerItem(jade_white_dust = new JadeDust("jade_white_dust", Element.EARTH), "jade_white_dust");
+		GameRegistry.registerItem(jade_blue_dust = new JadeDust("jade_blue_dust", Element.AIR), "jade_blue_dust");
+		GameRegistry.registerItem(jade_black_dust = new JadeDust("jade_black_dust", Element.WATER), "jade_black_dust");
+	
+		GameRegistry.registerItem(jade_green_nugget = new JadeNugget("jade_green_nugget", Element.WOOD), "jade_green_nugget");
+		GameRegistry.registerItem(jade_red_nugget = new JadeNugget("jade_red_nugget", Element.FIRE), "jade_red_nugget");
+		GameRegistry.registerItem(jade_white_nugget = new JadeNugget("jade_white_nugget", Element.EARTH), "jade_white_nugget");
+		GameRegistry.registerItem(jade_blue_nugget = new JadeNugget("jade_blue_nugget", Element.AIR), "jade_blue_nugget");
+		GameRegistry.registerItem(jade_black_nugget = new JadeNugget("jade_black_nugget", Element.WATER), "jade_black_nugget");
+	
 	}
+	
+	
 	
 	public static void putRunesIntoDropList() {
 		RuneHelper.addRuneToDropList(rune_attack, DropChance.COMMON);

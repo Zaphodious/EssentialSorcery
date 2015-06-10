@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "essentialsorcery:block/ore/jade_white_ore"
+    }
+}

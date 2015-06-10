@@ -4,6 +4,25 @@ item.stone_trowel.name=Stone Trowel
 item.dragon_tap_placer.name=Dragon Tap
 item.rune_table_placer.name=Rune Table
 item.hobgoblin_placer.name=Small Rip in Reality
+
+item.jade_green_nugget.name=Green Jade Nugget
+item.jade_blue_nugget.name=Blue Jade Nugget
+item.jade_red_nugget.name=Red Jade Nugget
+item.jade_white_nugget.name=White Jade Nugget
+item.jade_black_nugget.name=Black Jade Nugget
+
+item.jade_green_ingot.name=Green Jade Ingot
+item.jade_blue_ingot.name=Blue Jade Ingot
+item.jade_red_ingot.name=Red Jade Ingot
+item.jade_white_ingot.name=White Jade Ingot
+item.jade_black_ingot.name=Black Jade Ingot
+
+item.jade_green_dust.name=Green Jade Dust
+item.jade_blue_dust.name=Blue Jade Dust
+item.jade_red_dust.name=Red Jade Dust
+item.jade_white_dust.name=White Jade Dust
+item.jade_black_dust.name=Black Jade Dust
+
 tile.testing_table.name=Testing Table
 itemGroup.tabEssential=Essentail Sorcery
 item.rune_attack.name=Rune of Attack

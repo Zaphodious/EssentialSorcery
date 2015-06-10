@@ -94,7 +94,6 @@ public class EntityHobgoblin extends EntityMob {
 		this.applyEntityAI();
 		this.setSize(0.6F, 1.1F);
 
-		System.out.println("Making a new Hobgoblin object...");
 	}
 
 	protected void applyEntityAI() {
@@ -267,16 +266,19 @@ public class EntityHobgoblin extends EntityMob {
 	public boolean attackEntityFrom(DamageSource source, float amount) {
 		boolean attackedByIron = false;
 		String thisMaterial = "";
-		
-		// Here, we want to see if the attack is coming from an Iron source, and
-		// if so we want to make it *really* hurt.
-		
+
+		/*
+		 * Here, we want to see if the attack is coming from an Iron (or Cold
+		 * Iron) source, and if so we want to make it *really* hurt.
+		*/
+
 		if (source.getEntity() instanceof EntityPlayer) {
 			EntityPlayer damagingPlayer = (EntityPlayer) source.getEntity();
 			if (damagingPlayer.getCurrentEquippedItem().getItem() instanceof ItemSword) {
 				ItemSword thisSword = (ItemSword) damagingPlayer
 						.getCurrentEquippedItem().getItem();
 				thisMaterial = thisSword.getToolMaterialName();
+				amount += 1;
 			}
 
 			if (damagingPlayer.getCurrentEquippedItem().getItem() instanceof ItemTool) {
@@ -285,18 +287,23 @@ public class EntityHobgoblin extends EntityMob {
 				thisMaterial = thisTool.getToolMaterialName();
 			}
 
-			if (ToolMaterial.IRON.toString().equals(thisMaterial)) {
+			if (ToolMaterial.IRON.toString().equals(thisMaterial)
+					|| cyano.basemetals.init.Materials
+							.getToolMaterialFor(
+									cyano.basemetals.init.Materials.coldiron)
+							.toString().equals(thisMaterial)) {
 				attackedByIron = true;
 			}
 
 		} else if (source.getEntity() instanceof EntityIronGolem) {
 			attackedByIron = true;
+			
 		}
 
 		if (attackedByIron) {
 			source.setDamageBypassesArmor();
-			amount *= 1.5;
-			this.setFire(10);
+			amount = (amount+2) * 1.5F;
+			this.setFire(10); //to the raaaaaaaaaaaaaain...
 		}
 
 		super.attackEntityFrom(source, amount);
@@ -459,9 +466,11 @@ public class EntityHobgoblin extends EntityMob {
 			int i = this.rand.nextInt(3);
 
 			if (i == 0) {
-				this.setCurrentItemOrArmor(0, new ItemStack(cyano.basemetals.init.Items.brass_sword));
+				this.setCurrentItemOrArmor(0, new ItemStack(
+						cyano.basemetals.init.Items.brass_sword));
 			} else {
-				this.setCurrentItemOrArmor(0, new ItemStack(cyano.basemetals.init.Items.brass_shovel));
+				this.setCurrentItemOrArmor(0, new ItemStack(
+						cyano.basemetals.init.Items.brass_shovel));
 			}
 		}
 	}

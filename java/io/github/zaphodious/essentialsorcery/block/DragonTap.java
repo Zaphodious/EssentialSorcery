@@ -10,9 +10,11 @@ import io.github.zaphodious.essentialsorcery.spellcasting.Essence;
 import io.github.zaphodious.essentialsorcery.spellcasting.GivesEssence;
 import io.github.zaphodious.essentialsorcery.spellcasting.UsesEssence;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import cyano.basemetals.init.Items;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -310,10 +312,14 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 	
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		// TODO Auto-generated method stub
+		
 		return ModItems.dragonTapPlacer;
 	}
+	
+	
 	 
+	
+
 	public boolean renderAsNormalBlock()
 	{
 	    return false;
