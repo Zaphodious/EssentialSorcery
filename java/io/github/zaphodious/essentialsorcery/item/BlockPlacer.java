@@ -10,8 +10,24 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
 public class BlockPlacer extends Item {
+	
+	/*
+	 * this is a hack
+	 * 
+	 * A dirty, filthy hack.
+	 * 
+	 * There's a bug in this project, whereby all
+	 * the BlockItems that would normally render... don't.
+	 * I've tried to fix it, but I have literally no idea
+	 * what's going wrong. So, this class exists. Rather
+	 * then use BlockItems, we use this (which invokes
+	 * the block item from the "toPlace" block) to place
+	 * our blocks for us.
+	 * 
+	 * Ugh... need a shower.
+	 */
 
-	Block toPlace;
+	private Block toPlace;
 	
 	public BlockPlacer(String unlocalizedName, Block toPlace) {
 		this.toPlace = toPlace;
@@ -30,7 +46,9 @@ public class BlockPlacer extends Item {
 		return this.getItemFromBlock(toPlace).onItemUse(stack, playerIn, worldIn, pos, side, hitX, hitY, hitZ);
 	}
 	
-	
+	public Item getBlockItem() {
+		return this.getItemFromBlock(toPlace);
+	}
 	
 	
 	
