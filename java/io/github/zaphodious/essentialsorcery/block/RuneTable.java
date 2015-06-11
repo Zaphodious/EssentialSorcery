@@ -43,7 +43,10 @@ public class RuneTable extends BlockSimplePowerConsumer {
 	
 	
 	
-
+	@Override
+	public boolean isOpaqueCube() {
+		return false;
+	}
 
 
 

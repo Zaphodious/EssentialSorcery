@@ -1,6 +1,5 @@
 package io.github.zaphodious.essentialsorcery.client.render.item;
 
-import io.github.zaphodious.essentialsorcery.block.ModBlocks;
 import io.github.zaphodious.essentialsorcery.core.Reference;
 import io.github.zaphodious.essentialsorcery.item.ModItems;
 import net.minecraft.client.Minecraft;
@@ -15,6 +14,7 @@ public final class ItemRenderRegister {
 		reg(ModItems.dragonTapPlacer, 0);
 		reg(ModItems.runeTablePlacer, 0);
 		reg(ModItems.stone_trowel, 0);
+		reg(ModItems.jadeOrePlacer, 0);
 		
 		reg(ModItems.prettyBallRed, 0);
 		reg(ModItems.prettyBallBlue, 0);
@@ -91,6 +91,14 @@ public final class ItemRenderRegister {
 		reg(ModItems.jade_blue_nugget, 0);
 		reg(ModItems.jade_red_nugget, 0);
 		reg(ModItems.jade_white_nugget, 0);
+		
+		reg(ModItems.jadeBlockBlackPlacer, 0);
+		reg(ModItems.jadeBlockBluePlacer, 0);
+		reg(ModItems.jadeBlockGreenPlacer, 0);
+		reg(ModItems.jadeBlockRedPlacer, 0);
+		reg(ModItems.jadeBlockWhitePlacer, 0);
+		
+		
 		
 	}
 	

@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "essentialsorcery:block/jade_blocks/jade_black_block"
+    }
+}

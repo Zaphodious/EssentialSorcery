@@ -1,8 +1,10 @@
-package io.github.zaphodious.essentialsorcery.block;
+package io.github.zaphodious.essentialsorcery.block.jade;
 
 import io.github.zaphodious.essentialsorcery.block.states.TapState;
 import io.github.zaphodious.essentialsorcery.core.Reference;
 import io.github.zaphodious.essentialsorcery.item.ModItems;
+import io.github.zaphodious.essentialsorcery.block.BasicBlock;
+import io.github.zaphodious.essentialsorcery.block.ModBlocks;
 import io.github.zaphodious.essentialsorcery.spellcasting.Element;
 
 import java.util.ArrayList;
@@ -25,19 +27,17 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ISmartBlockModel;
 
-public class JadeOre extends Block {
+public class JadeOre extends BasicBlock {
 	
 	private static final PropertyEnum ELEMENT = PropertyEnum.create("element",
 			io.github.zaphodious.essentialsorcery.spellcasting.Element.class);
 	private int genCounter;
 
-	protected JadeOre(String unlocalizedName) {
-		super(Material.anvil);
-		this.setCreativeTab(Reference.tabEssential);
-		this.setUnlocalizedName(unlocalizedName);
+	public JadeOre(String unlocalizedName) {
+		super(unlocalizedName);
+		
 		this.setDefaultState(this.blockState.getBaseState().withProperty(ELEMENT, Element.NEUTRAL));
-		this.setHardness(3);
-        this.setResistance(10);
+
         this.genCounter = 0;
 	}
 

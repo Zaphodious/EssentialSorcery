@@ -68,6 +68,11 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 				newState));
 		return this;
 	}
+	
+	@Override
+	public boolean isOpaqueCube() {
+		return false;
+	}
 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos,
@@ -342,7 +347,6 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 	 */
 	@Override
 	public int getLightValue(IBlockAccess world, BlockPos pos) {
-		// TODO Auto-generated method stub
 		if (world.getBlockState(pos).equals(this.getStateFromMeta(1))) {
 			return 5;
 		}

@@ -33,7 +33,7 @@ public class BasicBlock extends Block {
 	
 	@Override
 	public boolean isOpaqueCube() {
-		return false;
+		return true;
 	}
 
 	public boolean hasTileEntity(int metadata) {

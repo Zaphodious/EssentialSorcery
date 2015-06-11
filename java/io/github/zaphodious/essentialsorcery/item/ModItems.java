@@ -1,5 +1,6 @@
 package io.github.zaphodious.essentialsorcery.item;
 
+import io.github.zaphodious.essentialsorcery.block.ModBlocks;
 import io.github.zaphodious.essentialsorcery.item.metal.JadeDust;
 import io.github.zaphodious.essentialsorcery.item.metal.JadeIngot;
 import io.github.zaphodious.essentialsorcery.item.metal.JadeNugget;
@@ -42,12 +43,19 @@ public final class ModItems {
 	
 	public static ToolMaterial STONETROWEL = EnumHelper.addToolMaterial("STONETROWEL", 1, 60, 1F, 0, 5);
 	
-	
+	public static Item dragonTapPlacer;
+	public static Item runeTablePlacer;
+	public static Item jadeOrePlacer;
+	public static Item jadeBlockRedPlacer;
+	public static Item jadeBlockWhitePlacer;
+	public static Item jadeBlockBluePlacer;
+	public static Item jadeBlockGreenPlacer;
+	public static Item jadeBlockBlackPlacer;
 	
 	public static Item tapSetter;
 	public static Item testWand;
-	public static Item dragonTapPlacer;
-	public static Item runeTablePlacer;
+	
+	
 	
 	public static Item prettyBallRed;
 	public static Item prettyBallGreen;
@@ -136,11 +144,19 @@ public final class ModItems {
 
 	public static void createItems() {
 		
+		GameRegistry.registerItem(dragonTapPlacer = new BlockPlacer("dragon_tap_placer",ModBlocks.dragon_tap), "dragon_tap_placer");
+		GameRegistry.registerItem(runeTablePlacer = new BlockPlacer("rune_table_placer",ModBlocks.rune_table), "rune_table_placer");
+		GameRegistry.registerItem(jadeOrePlacer = new BlockPlacer("jade_ore_placer",ModBlocks.jade_ore), "jade_ore_placer");
+		GameRegistry.registerItem(jadeBlockRedPlacer = new BlockPlacer("jade_block_red_placer",ModBlocks.jade_block_red), "jade_block_red_placer");
+		GameRegistry.registerItem(jadeBlockWhitePlacer = new BlockPlacer("jade_block_white_placer",ModBlocks.jade_block_white), "jade_block_white_placer");
+		GameRegistry.registerItem(jadeBlockBluePlacer = new BlockPlacer("jade_block_blue_placer",ModBlocks.jade_block_blue), "jade_block_blue_placer");
+		GameRegistry.registerItem(jadeBlockGreenPlacer = new BlockPlacer("jade_block_green_placer",ModBlocks.jade_block_green), "jade_block_green_placer");
+		GameRegistry.registerItem(jadeBlockBlackPlacer = new BlockPlacer("jade_block_black_placer",ModBlocks.jade_block_black), "jade_block_black_placer");
 		
 		GameRegistry.registerItem(tapSetter = new TapSetter("tap_setter"), "tap_setter");
-		GameRegistry.registerItem(dragonTapPlacer = new DragonTapPlacer("dragon_tap_placer"), "dragon_tap_placer");
+		
 		GameRegistry.registerItem(testWand = new TestWand("test_wand", 8, Element.NEUTRAL), "test_wand");
-		GameRegistry.registerItem(runeTablePlacer = new RuneTablePlacer("rune_table_placer"), "rune_table_placer");
+		
 		
 		GameRegistry.registerItem(prettyBallRed = new PrettyBallRed("pretty_ball_red"), "pretty_ball_red");
 		GameRegistry.registerItem(prettyBallYellow = new PrettyBallYellow("pretty_ball_yellow"), "pretty_ball_yellow");

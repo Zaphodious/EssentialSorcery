@@ -73,7 +73,36 @@ public class RecRegister {
 				"xyx",
 				"xxx",
 				'x', new ItemStack(ModItems.jade_green_nugget), 'y', steelStack);
+		
+		GameRegistry.addRecipe(new ItemStack(ModItems.jadeBlockBlackPlacer),
+				"xxx",
+				"xxx",
+				"xxx",
+				'x', new ItemStack(ModItems.jade_black_ingot));
 				
+		GameRegistry.addRecipe(new ItemStack(ModItems.jadeBlockWhitePlacer),
+				"xxx",
+				"xxx",
+				"xxx",
+				'x', new ItemStack(ModItems.jade_white_ingot));
+		
+		GameRegistry.addRecipe(new ItemStack(ModItems.jadeBlockGreenPlacer),
+				"xxx",
+				"xxx",
+				"xxx",
+				'x', new ItemStack(ModItems.jade_green_ingot));
+		
+		GameRegistry.addRecipe(new ItemStack(ModItems.jadeBlockRedPlacer),
+				"xxx",
+				"xxx",
+				"xxx",
+				'x', new ItemStack(ModItems.jade_red_ingot));
+		
+		GameRegistry.addRecipe(new ItemStack(ModItems.jadeBlockBluePlacer),
+				"xxx",
+				"xxx",
+				"xxx",
+				'x', new ItemStack(ModItems.jade_blue_ingot));
 				
 		GameRegistry.addSmelting(ModItems.jade_black_dust, new ItemStack(ModItems.jade_black_nugget), 1.0F);
 		GameRegistry.addSmelting(ModItems.jade_blue_dust, new ItemStack(ModItems.jade_blue_nugget), 1.0F);
