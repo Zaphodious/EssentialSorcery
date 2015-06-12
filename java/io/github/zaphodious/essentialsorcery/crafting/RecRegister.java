@@ -103,6 +103,12 @@ public class RecRegister {
 				"xxx",
 				"xxx",
 				'x', new ItemStack(ModItems.jade_blue_ingot));
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.jade_green_dust, 2), new ItemStack(ModItems.jade_green_raw));
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.jade_red_dust, 2), new ItemStack(ModItems.jade_red_raw));
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.jade_black_dust, 2), new ItemStack(ModItems.jade_black_raw));
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.jade_blue_dust, 2), new ItemStack(ModItems.jade_blue_raw));
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.jade_white_dust, 2), new ItemStack(ModItems.jade_white_raw));
 				
 		GameRegistry.addSmelting(ModItems.jade_black_dust, new ItemStack(ModItems.jade_black_nugget), 1.0F);
 		GameRegistry.addSmelting(ModItems.jade_blue_dust, new ItemStack(ModItems.jade_blue_nugget), 1.0F);

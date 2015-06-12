@@ -100,6 +100,12 @@ public final class ItemRenderRegister {
 		reg(ModItems.jadeBlockRedPlacer, 0);
 		reg(ModItems.jadeBlockWhitePlacer, 0);
 		
+		reg(ModItems.jade_green_raw, 0);
+		reg(ModItems.jade_black_raw, 0);
+		reg(ModItems.jade_blue_raw, 0);
+		reg(ModItems.jade_red_raw, 0);
+		reg(ModItems.jade_white_raw, 0);
+		
 		
 		
 	}

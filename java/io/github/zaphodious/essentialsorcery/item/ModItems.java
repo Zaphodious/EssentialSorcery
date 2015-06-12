@@ -4,6 +4,7 @@ import io.github.zaphodious.essentialsorcery.block.ModBlocks;
 import io.github.zaphodious.essentialsorcery.item.metal.JadeDust;
 import io.github.zaphodious.essentialsorcery.item.metal.JadeIngot;
 import io.github.zaphodious.essentialsorcery.item.metal.JadeNugget;
+import io.github.zaphodious.essentialsorcery.item.metal.JadeRaw;
 import io.github.zaphodious.essentialsorcery.item.mobplacer.HobgoblinPlacer;
 import io.github.zaphodious.essentialsorcery.item.renderitems.PrettyBallBlue;
 import io.github.zaphodious.essentialsorcery.item.renderitems.PrettyBallBrown;
@@ -141,6 +142,12 @@ public final class ModItems {
 	public static JadeNugget jade_blue_nugget;
 	public static JadeNugget jade_black_nugget;
 	
+	public static JadeRaw jade_green_raw;
+	public static JadeRaw jade_red_raw;
+	public static JadeRaw jade_white_raw;
+	public static JadeRaw jade_blue_raw;
+	public static JadeRaw jade_black_raw;
+	
 
 	public static void createItems() {
 		
@@ -242,6 +249,13 @@ public final class ModItems {
 		GameRegistry.registerItem(jade_white_nugget = new JadeNugget("jade_white_nugget", Element.EARTH), "jade_white_nugget");
 		GameRegistry.registerItem(jade_blue_nugget = new JadeNugget("jade_blue_nugget", Element.AIR), "jade_blue_nugget");
 		GameRegistry.registerItem(jade_black_nugget = new JadeNugget("jade_black_nugget", Element.WATER), "jade_black_nugget");
+	
+		
+		GameRegistry.registerItem(jade_green_raw = new JadeRaw("jade_green_raw", Element.WOOD), "jade_green_raw");
+		GameRegistry.registerItem(jade_red_raw = new JadeRaw("jade_red_raw", Element.FIRE), "jade_red_raw");
+		GameRegistry.registerItem(jade_white_raw = new JadeRaw("jade_white_raw", Element.EARTH), "jade_white_raw");
+		GameRegistry.registerItem(jade_blue_raw = new JadeRaw("jade_blue_raw", Element.AIR), "jade_blue_raw");
+		GameRegistry.registerItem(jade_black_raw = new JadeRaw("jade_black_raw", Element.WATER), "jade_black_raw");
 	
 	}
 	
