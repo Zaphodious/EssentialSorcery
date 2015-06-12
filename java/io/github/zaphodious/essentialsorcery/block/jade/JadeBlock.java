@@ -1,5 +1,7 @@
 package io.github.zaphodious.essentialsorcery.block.jade;
 
+import java.util.Random;
+
 import io.github.zaphodious.essentialsorcery.block.BasicBlock;
 import io.github.zaphodious.essentialsorcery.spellcasting.Element;
 import net.minecraft.block.material.Material;
@@ -7,6 +9,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
@@ -15,11 +18,20 @@ import net.minecraft.world.World;
 
 public class JadeBlock extends BasicBlock {
 
+	
+
 	Element element;
 
 	public JadeBlock(String unlocalizedName, Element element) {
-		super(unlocalizedName, Material.iron, 20F, 100F);
+		super(unlocalizedName, Material.iron, 2F, 100F);
 		this.element = element;
+	}
+	
+	
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		// TODO Auto-generated method stub
+		return super.getItemDropped(state, rand, fortune);
 	}
 
 	/*
@@ -46,7 +58,6 @@ public class JadeBlock extends BasicBlock {
 	public boolean onBlockActivated(World worldIn, BlockPos pos,
 			IBlockState state, EntityPlayer playerIn, EnumFacing side,
 			float hitX, float hitY, float hitZ) {
-		// TODO Auto-generated method stub
 		return this.activate(worldIn, pos, playerIn);
 	}
 
@@ -60,7 +71,6 @@ public class JadeBlock extends BasicBlock {
 	@Override
 	public void onEntityCollidedWithBlock(World worldIn, BlockPos pos,
 			Entity entityIn) {
-		// TODO Auto-generated method stub
 		this.activate(worldIn, pos, entityIn);
 	}
 

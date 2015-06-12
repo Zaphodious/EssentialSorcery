@@ -55,7 +55,7 @@ public final class ModItems {
 	public static Item tapSetter;
 	public static Item testWand;
 	
-	
+	public static Item obol;
 	
 	public static Item prettyBallRed;
 	public static Item prettyBallGreen;
@@ -156,6 +156,8 @@ public final class ModItems {
 		GameRegistry.registerItem(tapSetter = new TapSetter("tap_setter"), "tap_setter");
 		
 		GameRegistry.registerItem(testWand = new TestWand("test_wand", 8, Element.NEUTRAL), "test_wand");
+		
+		GameRegistry.registerItem(obol = new Obol("obol"), "obol");
 		
 		
 		GameRegistry.registerItem(prettyBallRed = new PrettyBallRed("pretty_ball_red"), "pretty_ball_red");

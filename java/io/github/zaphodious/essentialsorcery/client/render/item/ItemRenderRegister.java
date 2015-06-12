@@ -16,6 +16,8 @@ public final class ItemRenderRegister {
 		reg(ModItems.stone_trowel, 0);
 		reg(ModItems.jadeOrePlacer, 0);
 		
+		reg(ModItems.obol, 0);
+		
 		reg(ModItems.prettyBallRed, 0);
 		reg(ModItems.prettyBallBlue, 0);
 		reg(ModItems.prettyBallGreen, 0);
