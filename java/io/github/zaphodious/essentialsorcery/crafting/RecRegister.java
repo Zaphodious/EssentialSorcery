@@ -8,6 +8,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class RecRegister {
 
@@ -18,7 +20,6 @@ public class RecRegister {
 		ItemStack woolStack = new ItemStack(Blocks.wool);
 		ItemStack cobbleStack = new ItemStack(Blocks.cobblestone);
 		ItemStack coalStack = new ItemStack(Items.coal);
-		ItemStack steelStack = new ItemStack(cyano.basemetals.init.Items.steel_ingot);
 		
 		GameRegistry.addRecipe(new ItemStack(ModItems.runeTablePlacer),
 	    "xxx",
@@ -77,17 +78,25 @@ public class RecRegister {
 				"xxx",
 				'x', new ItemStack(ModItems.jade_ingot, 1, Element.AIR.getID()));
 		
+		GameRegistry.addRecipe(new ItemStack(Items.emerald),
+				"xxx",
+				"xxx",
+				"xxx",
+				'x', new ItemStack(ModItems.obol));
+		
 		
 		for (int i = 0; i < 5; i++) {
 			GameRegistry.addRecipe(new ItemStack(ModItems.jade_ingot, 1, i),
 					"xxx",
-					"xyx",
 					"xxx",
-					'x', new ItemStack(ModItems.jade_nugget, 1, i), 'y', steelStack);
-			GameRegistry.addSmelting(new ItemStack(ModItems.jade_dust, 1, i), new ItemStack(ModItems.jade_nugget, 1, i), 1.0F);
+					"xxx",
+					'x', new ItemStack(ModItems.jade_nugget, 1, i));
+			GameRegistry.addShapelessRecipe(new ItemStack(ModItems.jade_nugget, 9, i), new ItemStack(ModItems.jade_ingot, 0, i));
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.jade_alloy_dust, 1, i),
+					new ItemStack(ModItems.jade_dust, 1, i), new ItemStack(ModItems.jade_dust, 1, i), new ItemStack(ModItems.jade_dust, 1, i), "dustSteel"));
+			GameRegistry.addSmelting(new ItemStack(ModItems.jade_alloy_dust, 1, i), new ItemStack(ModItems.jade_ingot, 1, i), 1.0F);
 			CrusherRecipeRegistry.addNewCrusherRecipe(new ItemStack(ModItems.jade_raw, 1, i), new ItemStack(ModItems.jade_dust, 2, i));
 			GameRegistry.addShapelessRecipe(new ItemStack(ModItems.obol), new ItemStack(ModItems.jade_raw, 0, i));
-			System.out.println("the i value of " + i + " has been run through the system");
 		}
 		
 

@@ -97,6 +97,12 @@ public final class ItemRenderRegister {
 		regJade(ModItems.jade_dust, 3);
 		regJade(ModItems.jade_dust, 4);
 		
+		regJade(ModItems.jade_alloy_dust, 0);
+		regJade(ModItems.jade_alloy_dust, 1);
+		regJade(ModItems.jade_alloy_dust, 2);
+		regJade(ModItems.jade_alloy_dust, 3);
+		regJade(ModItems.jade_alloy_dust, 4);
+		
 		regJade(ModItems.jade_nugget, 0);
 		regJade(ModItems.jade_nugget, 1);
 		regJade(ModItems.jade_nugget, 2);
@@ -164,6 +170,18 @@ public final class ItemRenderRegister {
 				+ ModItems.jade_dust.getUnlocalizedName().substring(5) + "_"
 				+ Element.EARTH.getColor(), Reference.MODID + ":"
 				+ ModItems.jade_dust.getUnlocalizedName().substring(5) + "_"
+				+ Element.WOOD.getColor());
+		
+		ModelBakery.addVariantName(ModItems.jade_raw, Reference.MODID + ":"
+				+ ModItems.jade_alloy_dust.getUnlocalizedName().substring(5) + "_"
+				+ Element.FIRE.getColor(), Reference.MODID + ":"
+				+ ModItems.jade_alloy_dust.getUnlocalizedName().substring(5) + "_"
+				+ Element.WATER.getColor(), Reference.MODID + ":"
+				+ ModItems.jade_alloy_dust.getUnlocalizedName().substring(5) + "_"
+				+ Element.AIR.getColor(), Reference.MODID + ":"
+				+ ModItems.jade_alloy_dust.getUnlocalizedName().substring(5) + "_"
+				+ Element.EARTH.getColor(), Reference.MODID + ":"
+				+ ModItems.jade_alloy_dust.getUnlocalizedName().substring(5) + "_"
 				+ Element.WOOD.getColor());
 		
 		ModelBakery.addVariantName(ModItems.jade_nugget, Reference.MODID + ":"

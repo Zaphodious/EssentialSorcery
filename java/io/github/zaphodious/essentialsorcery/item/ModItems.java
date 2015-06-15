@@ -1,6 +1,7 @@
 package io.github.zaphodious.essentialsorcery.item;
 
 import io.github.zaphodious.essentialsorcery.block.ModBlocks;
+import io.github.zaphodious.essentialsorcery.item.metal.JadeAlloyDust;
 import io.github.zaphodious.essentialsorcery.item.metal.JadeDust;
 import io.github.zaphodious.essentialsorcery.item.metal.JadeIngot;
 import io.github.zaphodious.essentialsorcery.item.metal.JadeNugget;
@@ -129,6 +130,7 @@ public final class ModItems {
 	public static JadeNugget jade_nugget;
 	public static JadeRaw jade_raw;
 	public static JadeDust jade_dust;
+	public static JadeAlloyDust jade_alloy_dust;
 	public static JadeIngot jade_ingot;
 
 	public static void createItems() {
@@ -217,6 +219,7 @@ public final class ModItems {
 		GameRegistry.registerItem(jade_nugget = new JadeNugget("jade_nugget"), "jade_nugget");
 		GameRegistry.registerItem(jade_raw = new JadeRaw("jade_raw"), "jade_raw");
 		GameRegistry.registerItem(jade_dust = new JadeDust("jade_dust"), "jade_dust");
+		GameRegistry.registerItem(jade_alloy_dust = new JadeAlloyDust("jade_alloy_dust"), "jade_alloy_dust");
 		GameRegistry.registerItem(jade_ingot = new JadeIngot("jade_ingot"), "jade_ingot");
 	
 	}
