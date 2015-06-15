@@ -25,9 +25,7 @@ import net.minecraft.world.World;
 
 public class JadeBlock extends BasicBlock {
 
-	
-
-	Element element;
+	private Element element;
 
 	public JadeBlock(String unlocalizedName, Element element) {
 		super(unlocalizedName, Material.iron, 2F, 100F);
@@ -74,28 +72,25 @@ public class JadeBlock extends BasicBlock {
 			Entity entityIn) {
 		this.activate(worldIn, pos, entityIn);
 	}
-	
-	
 
 	private boolean activate(World worldIn, BlockPos pos, Entity entityIn) {
-		
-		// TODO: Make it so that the more blocks in a column, the more potent the effect.
-		// Hint: Use pos.
-		
-		int duration = 100;
-		int effectLevel = 0;
+
+		int strengthFactor = this.blocksDeep(worldIn, pos);
+
+		int duration = strengthFactor * 100;
+		int effectLevel = strengthFactor - 1;
 		boolean particles = false;
 
 		if (entityIn instanceof EntityLivingBase) {
 			EntityLivingBase livingEntity = (EntityLivingBase) entityIn;
 			switch (element) {
 			case AIR:
-				livingEntity.addPotionEffect(new PotionEffect(
-						Potion.jump.getId(), duration, effectLevel, false, particles));
+				livingEntity.addPotionEffect(new PotionEffect(Potion.jump
+						.getId(), duration, effectLevel, false, particles));
 				break;
 			case EARTH:
-				livingEntity.addPotionEffect(new PotionEffect(
-						Potion.resistance.getId(), duration, effectLevel, false, particles));
+				livingEntity.addPotionEffect(new PotionEffect(Potion.resistance
+						.getId(), duration, effectLevel, false, particles));
 				break;
 			case FIRE:
 				livingEntity.addPotionEffect(new PotionEffect(Potion.moveSpeed
@@ -107,39 +102,82 @@ public class JadeBlock extends BasicBlock {
 				break;
 			case WATER:
 				livingEntity.addPotionEffect(new PotionEffect(
-						Potion.waterBreathing.getId(), duration, effectLevel, false, particles));
+						Potion.waterBreathing.getId(), duration, effectLevel,
+						false, particles));
 				break;
 			case WOOD:
-				livingEntity.addPotionEffect(new PotionEffect(Potion.regeneration
-						.getId(), duration, effectLevel, false, particles));
+				livingEntity.addPotionEffect(new PotionEffect(
+						Potion.regeneration.getId(), duration, effectLevel,
+						false, particles));
 				break;
 			default:
 				livingEntity.addPotionEffect(new PotionEffect(Potion.moveSpeed
 						.getId(), duration, effectLevel, false, particles));
 				break;
-
 			}
+			
+			livingEntity.addPotionEffect(new PotionEffect(Potion.nightVision
+					.getId(), duration*3, effectLevel, false, particles));
 		}
 
 		return false;
 	}
-	
-	
-	
-	
+
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		
+
 		switch (this.element) {
-		case AIR: return ModItems.jadeBlockBluePlacer;
-		case EARTH: return ModItems.jadeBlockWhitePlacer;
-		case FIRE: return ModItems.jadeBlockRedPlacer;
-		case NEUTRAL: return ModItems.jadeBlockRedPlacer;
-		case WATER: return ModItems.jadeBlockBlackPlacer;
-		case WOOD: return ModItems.jadeBlockGreenPlacer;
-		default: return ModItems.jadeBlockRedPlacer;
-		
+		case AIR:
+			return ModItems.jadeBlockBluePlacer;
+		case EARTH:
+			return ModItems.jadeBlockWhitePlacer;
+		case FIRE:
+			return ModItems.jadeBlockRedPlacer;
+		case NEUTRAL:
+			return ModItems.jadeBlockRedPlacer;
+		case WATER:
+			return ModItems.jadeBlockBlackPlacer;
+		case WOOD:
+			return ModItems.jadeBlockGreenPlacer;
+		default:
+			return ModItems.jadeBlockRedPlacer;
+
 		}
 	}
 
+	/**
+	 * @return the element
+	 */
+	public Element getElement() {
+		return element;
+	}
+
+	public boolean checkElement(World worldIn, BlockPos pos) {
+
+		if (worldIn.getBlockState(pos).getBlock() instanceof JadeBlock) {
+			JadeBlock thisToCheck = (JadeBlock) worldIn.getBlockState(pos).getBlock();
+			if (thisToCheck.getElement() == this.element) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public int blocksDeep(World worldIn, BlockPos pos) {
+		BlockPos checkPos = new BlockPos(pos.getX(), pos.getY(), pos.getZ());
+		int toReturn = 0;
+		JadeBlock thisToCheck = null;
+
+		while (this.checkElement(worldIn, checkPos)) {
+			checkPos = checkPos.down();
+		}
+		checkPos = checkPos.up();
+		while (this.checkElement(worldIn, checkPos)) {
+			checkPos = checkPos.up();
+			toReturn ++;
+
+		}
+		return toReturn;
+	}
+	
 }

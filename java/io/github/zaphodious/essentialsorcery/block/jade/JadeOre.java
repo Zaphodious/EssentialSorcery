@@ -45,7 +45,6 @@ public class JadeOre extends BasicBlock {
 	@Override
 	public void onBlockHarvested(World worldIn, BlockPos pos,
 			IBlockState state, EntityPlayer player) {
-		// TODO Auto-generated method stub
 		super.onBlockHarvested(worldIn, pos, state, player);
 	}
 
@@ -60,7 +59,6 @@ public class JadeOre extends BasicBlock {
 		try {
 			thisElement = Reference.SORTER.getBiomeElement((World) world, pos);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			System.out.println(e);
 		}
 		
@@ -77,17 +75,17 @@ public class JadeOre extends BasicBlock {
 		ItemStack jadeStack = null;
 		
 		switch (thisElement) {
-		case AIR: jadeStack = new ItemStack(ModItems.jade_blue_dust, amount);
+		case AIR: jadeStack = new ItemStack(ModItems.jade_blue_raw, amount);
 			break;
-		case EARTH: jadeStack = new ItemStack(ModItems.jade_white_dust, amount);
+		case EARTH: jadeStack = new ItemStack(ModItems.jade_white_raw, amount);
 			break;
-		case FIRE: jadeStack = new ItemStack(ModItems.jade_red_dust, amount);
+		case FIRE: jadeStack = new ItemStack(ModItems.jade_red_raw, amount);
 			break;
-		case NEUTRAL: jadeStack = new ItemStack(ModItems.jade_black_dust, amount);
+		case NEUTRAL: jadeStack = new ItemStack(ModItems.jade_black_raw, amount);
 			break;
-		case WATER: jadeStack = new ItemStack(ModItems.jade_black_dust, amount);
+		case WATER: jadeStack = new ItemStack(ModItems.jade_black_raw, amount);
 			break;
-		case WOOD: jadeStack = new ItemStack(ModItems.jade_green_dust, amount);
+		case WOOD: jadeStack = new ItemStack(ModItems.jade_green_raw, amount);
 			break;
 		default:
 			break;
@@ -104,14 +102,13 @@ public class JadeOre extends BasicBlock {
 
 	@Override
 	protected BlockState createBlockState() {
-		// TODO Auto-generated method stub
 		return new BlockState(this, new IProperty[] { ELEMENT });
 	}
 
 
 	@Override
 	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
-		// TODO Auto-generated
+
 		// state = this.getActualState(state, worldIn, pos);
 		
 		super.onBlockAdded(worldIn, pos, state);
@@ -129,7 +126,7 @@ public class JadeOre extends BasicBlock {
 	public IBlockState onBlockPlaced(World worldIn, BlockPos pos,
 			EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
 			EntityLivingBase placer) {
-		// TODO Auto-generated method stub
+
 		return super
 				.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(ELEMENT, Reference.SORTER.getBiomeElement(worldIn, pos));
 
