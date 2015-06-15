@@ -4,19 +4,21 @@ import net.minecraft.util.IStringSerializable;
 
 public enum Element implements IStringSerializable {
 
-	FIRE(0, "fire"),
-	WATER(1, "water"),
-	EARTH(2, "earth"),
-	AIR(3, "air"),
-	WOOD(4, "wood"),
-	NEUTRAL(5, "neutral");
+	FIRE(0, "fire", "red"),
+	WATER(1, "water", "black"),
+	EARTH(2, "earth", "white"),
+	AIR(3, "air", "blue"),
+	WOOD(4, "wood", "green"),
+	NEUTRAL(5, "neutral", "red");
 	
 	private int ID;
 	private String name;
+	private String color;
 	
-	private Element(int ID, String name) {
+	private Element(int ID, String name, String color) {
 		this.ID = ID;
 		this.name = name;
+		this.color = color;
 	}
 
 	public int getID() {
@@ -27,12 +29,13 @@ public enum Element implements IStringSerializable {
 		return name;
 	}
 	
-	
+	public String getColor() {
+		return color;
+	}
 	
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return this.getName();
 	}
 

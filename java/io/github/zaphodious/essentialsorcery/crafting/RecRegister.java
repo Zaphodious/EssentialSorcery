@@ -2,6 +2,7 @@ package io.github.zaphodious.essentialsorcery.crafting;
 
 import cyano.basemetals.registry.CrusherRecipeRegistry;
 import io.github.zaphodious.essentialsorcery.item.ModItems;
+import io.github.zaphodious.essentialsorcery.spellcasting.Element;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -42,86 +43,54 @@ public class RecRegister {
 				"zx",
 				"yz",
 				'x', cobbleStack, 'y', stickStack, 'z', woolStack);
+
 		
-		
-		
-		GameRegistry.addRecipe(new ItemStack(ModItems.jade_black_ingot),
-				"xxx",
-				"xyx",
-				"xxx",
-				'x', new ItemStack(ModItems.jade_black_nugget), 'y', steelStack);
-		
-		GameRegistry.addRecipe(new ItemStack(ModItems.jade_blue_ingot),
-				"xxx",
-				"xyx",
-				"xxx",
-				'x', new ItemStack(ModItems.jade_blue_nugget), 'y', steelStack);
-		
-		GameRegistry.addRecipe(new ItemStack(ModItems.jade_red_ingot),
-				"xxx",
-				"xyx",
-				"xxx",
-				'x', new ItemStack(ModItems.jade_red_nugget), 'y', steelStack);
-		
-		GameRegistry.addRecipe(new ItemStack(ModItems.jade_white_ingot),
-				"xxx",
-				"xyx",
-				"xxx",
-				'x', new ItemStack(ModItems.jade_white_nugget), 'y', steelStack);
-		
-		GameRegistry.addRecipe(new ItemStack(ModItems.jade_green_ingot),
-				"xxx",
-				"xyx",
-				"xxx",
-				'x', new ItemStack(ModItems.jade_green_nugget), 'y', steelStack);
+
 		
 		GameRegistry.addRecipe(new ItemStack(ModItems.jadeBlockBlackPlacer),
 				"xxx",
 				"xxx",
 				"xxx",
-				'x', new ItemStack(ModItems.jade_black_ingot));
+				'x', new ItemStack(ModItems.jade_ingot, 1, Element.WATER.getID()));
 				
 		GameRegistry.addRecipe(new ItemStack(ModItems.jadeBlockWhitePlacer),
 				"xxx",
 				"xxx",
 				"xxx",
-				'x', new ItemStack(ModItems.jade_white_ingot));
+				'x', new ItemStack(ModItems.jade_ingot, 1, Element.EARTH.getID()));
 		
 		GameRegistry.addRecipe(new ItemStack(ModItems.jadeBlockGreenPlacer),
 				"xxx",
 				"xxx",
 				"xxx",
-				'x', new ItemStack(ModItems.jade_green_ingot));
+				'x', new ItemStack(ModItems.jade_ingot, 1, Element.WOOD.getID()));
 		
 		GameRegistry.addRecipe(new ItemStack(ModItems.jadeBlockRedPlacer),
 				"xxx",
 				"xxx",
 				"xxx",
-				'x', new ItemStack(ModItems.jade_red_ingot));
+				'x', new ItemStack(ModItems.jade_ingot, 1, Element.FIRE.getID()));
 		
 		GameRegistry.addRecipe(new ItemStack(ModItems.jadeBlockBluePlacer),
 				"xxx",
 				"xxx",
 				"xxx",
-				'x', new ItemStack(ModItems.jade_blue_ingot));
+				'x', new ItemStack(ModItems.jade_ingot, 1, Element.AIR.getID()));
 		
-		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.obol), new ItemStack(ModItems.jade_green_raw));
-		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.obol), new ItemStack(ModItems.jade_red_raw));
-		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.obol), new ItemStack(ModItems.jade_black_raw));
-		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.obol), new ItemStack(ModItems.jade_blue_raw));
-		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.obol), new ItemStack(ModItems.jade_white_raw));
-				
-		GameRegistry.addSmelting(ModItems.jade_black_dust, new ItemStack(ModItems.jade_black_nugget), 1.0F);
-		GameRegistry.addSmelting(ModItems.jade_blue_dust, new ItemStack(ModItems.jade_blue_nugget), 1.0F);
-		GameRegistry.addSmelting(ModItems.jade_red_dust, new ItemStack(ModItems.jade_red_nugget), 1.0F);
-		GameRegistry.addSmelting(ModItems.jade_white_dust, new ItemStack(ModItems.jade_white_nugget), 1.0F);
-		GameRegistry.addSmelting(ModItems.jade_green_dust, new ItemStack(ModItems.jade_green_nugget), 1.0F);
 		
-		CrusherRecipeRegistry.addNewCrusherRecipe(ModItems.jade_green_raw, new ItemStack(ModItems.jade_green_dust));
-		CrusherRecipeRegistry.addNewCrusherRecipe(ModItems.jade_red_raw, new ItemStack(ModItems.jade_red_dust));
-		CrusherRecipeRegistry.addNewCrusherRecipe(ModItems.jade_black_raw, new ItemStack(ModItems.jade_black_dust));
-		CrusherRecipeRegistry.addNewCrusherRecipe(ModItems.jade_blue_raw, new ItemStack(ModItems.jade_blue_dust));
-		CrusherRecipeRegistry.addNewCrusherRecipe(ModItems.jade_white_raw, new ItemStack(ModItems.jade_white_dust));
+		for (int i = 0; i < 5; i++) {
+			GameRegistry.addRecipe(new ItemStack(ModItems.jade_ingot, 1, i),
+					"xxx",
+					"xyx",
+					"xxx",
+					'x', new ItemStack(ModItems.jade_nugget, 1, i), 'y', steelStack);
+			GameRegistry.addSmelting(new ItemStack(ModItems.jade_dust, 1, i), new ItemStack(ModItems.jade_nugget, 1, i), 1.0F);
+			CrusherRecipeRegistry.addNewCrusherRecipe(new ItemStack(ModItems.jade_raw, 1, i), new ItemStack(ModItems.jade_dust, 2, i));
+			GameRegistry.addShapelessRecipe(new ItemStack(ModItems.obol), new ItemStack(ModItems.jade_raw, 0, i));
+			System.out.println("the i value of " + i + " has been run through the system");
+		}
+		
+
 	}
 	
 }

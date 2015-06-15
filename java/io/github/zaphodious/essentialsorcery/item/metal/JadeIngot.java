@@ -4,14 +4,12 @@ import io.github.zaphodious.essentialsorcery.core.Reference;
 import io.github.zaphodious.essentialsorcery.spellcasting.Element;
 import net.minecraft.item.Item;
 
-public class JadeIngot extends Item {
+public class JadeIngot extends Jade {
 	
-	Element element;
 
-	public JadeIngot(String unlocalizedName, Element element) {
-		this.setUnlocalizedName(unlocalizedName);
-		this.setCreativeTab(Reference.tabEssential);
-		this.element = element;
+
+	public JadeIngot(String unlocalizedName) {
+		super(unlocalizedName);
 	}
 
 }

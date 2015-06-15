@@ -124,30 +124,12 @@ public final class ModItems {
 	
 	public static HobgoblinPlacer hobgoblin_placer;
 	
-	public static JadeIngot jade_green_ingot;
-	public static JadeIngot jade_red_ingot;
-	public static JadeIngot jade_white_ingot;
-	public static JadeIngot jade_blue_ingot;
-	public static JadeIngot jade_black_ingot;
 	
-	public static JadeDust jade_green_dust;
-	public static JadeDust jade_red_dust;
-	public static JadeDust jade_white_dust;
-	public static JadeDust jade_blue_dust;
-	public static JadeDust jade_black_dust;
 	
-	public static JadeNugget jade_green_nugget;
-	public static JadeNugget jade_red_nugget;
-	public static JadeNugget jade_white_nugget;
-	public static JadeNugget jade_blue_nugget;
-	public static JadeNugget jade_black_nugget;
-	
-	public static JadeRaw jade_green_raw;
-	public static JadeRaw jade_red_raw;
-	public static JadeRaw jade_white_raw;
-	public static JadeRaw jade_blue_raw;
-	public static JadeRaw jade_black_raw;
-	
+	public static JadeNugget jade_nugget;
+	public static JadeRaw jade_raw;
+	public static JadeDust jade_dust;
+	public static JadeIngot jade_ingot;
 
 	public static void createItems() {
 		
@@ -231,31 +213,11 @@ public final class ModItems {
 		GameRegistry.registerItem(glove_diamond_water = new GloveDiamond("glove_diamond_water",Element.WATER), "glove_diamond_water");
 		GameRegistry.registerItem(glove_diamond_wood = new GloveDiamond("glove_diamond_wood",Element.WOOD), "glove_diamond_wood");
 		
-		
-		GameRegistry.registerItem(jade_green_ingot = new JadeIngot("jade_green_ingot", Element.WOOD), "jade_green_ingot");
-		GameRegistry.registerItem(jade_red_ingot = new JadeIngot("jade_red_ingot", Element.FIRE), "jade_red_ingot");
-		GameRegistry.registerItem(jade_white_ingot = new JadeIngot("jade_white_ingot", Element.EARTH), "jade_white_ingot");
-		GameRegistry.registerItem(jade_blue_ingot = new JadeIngot("jade_blue_ingot", Element.AIR), "jade_blue_ingot");
-		GameRegistry.registerItem(jade_black_ingot = new JadeIngot("jade_black_ingot", Element.WATER), "jade_black_ingot");
-		
-		GameRegistry.registerItem(jade_green_dust = new JadeDust("jade_green_dust", Element.WOOD), "jade_green_dust");
-		GameRegistry.registerItem(jade_red_dust = new JadeDust("jade_red_dust", Element.FIRE), "jade_red_dust");
-		GameRegistry.registerItem(jade_white_dust = new JadeDust("jade_white_dust", Element.EARTH), "jade_white_dust");
-		GameRegistry.registerItem(jade_blue_dust = new JadeDust("jade_blue_dust", Element.AIR), "jade_blue_dust");
-		GameRegistry.registerItem(jade_black_dust = new JadeDust("jade_black_dust", Element.WATER), "jade_black_dust");
-	
-		GameRegistry.registerItem(jade_green_nugget = new JadeNugget("jade_green_nugget", Element.WOOD), "jade_green_nugget");
-		GameRegistry.registerItem(jade_red_nugget = new JadeNugget("jade_red_nugget", Element.FIRE), "jade_red_nugget");
-		GameRegistry.registerItem(jade_white_nugget = new JadeNugget("jade_white_nugget", Element.EARTH), "jade_white_nugget");
-		GameRegistry.registerItem(jade_blue_nugget = new JadeNugget("jade_blue_nugget", Element.AIR), "jade_blue_nugget");
-		GameRegistry.registerItem(jade_black_nugget = new JadeNugget("jade_black_nugget", Element.WATER), "jade_black_nugget");
-	
-		
-		GameRegistry.registerItem(jade_green_raw = new JadeRaw("jade_green_raw", Element.WOOD), "jade_green_raw");
-		GameRegistry.registerItem(jade_red_raw = new JadeRaw("jade_red_raw", Element.FIRE), "jade_red_raw");
-		GameRegistry.registerItem(jade_white_raw = new JadeRaw("jade_white_raw", Element.EARTH), "jade_white_raw");
-		GameRegistry.registerItem(jade_blue_raw = new JadeRaw("jade_blue_raw", Element.AIR), "jade_blue_raw");
-		GameRegistry.registerItem(jade_black_raw = new JadeRaw("jade_black_raw", Element.WATER), "jade_black_raw");
+
+		GameRegistry.registerItem(jade_nugget = new JadeNugget("jade_nugget"), "jade_nugget");
+		GameRegistry.registerItem(jade_raw = new JadeRaw("jade_raw"), "jade_raw");
+		GameRegistry.registerItem(jade_dust = new JadeDust("jade_dust"), "jade_dust");
+		GameRegistry.registerItem(jade_ingot = new JadeIngot("jade_ingot"), "jade_ingot");
 	
 	}
 	

@@ -68,31 +68,8 @@ public class JadeOre extends BasicBlock {
 		int amount = (fortune >=3) ? 9 : rng.nextInt(2) + 1 + (fortune*2);
 		// if fortune is 3, we just give them 9 bits of dust.
 		// However, we *do not* want the output to be more then what it takes
-		// to make a single ingot, so we cap it at 9 too.
 		
-		
-		
-		ItemStack jadeStack = null;
-		
-		switch (thisElement) {
-		case AIR: jadeStack = new ItemStack(ModItems.jade_blue_raw, amount);
-			break;
-		case EARTH: jadeStack = new ItemStack(ModItems.jade_white_raw, amount);
-			break;
-		case FIRE: jadeStack = new ItemStack(ModItems.jade_red_raw, amount);
-			break;
-		case NEUTRAL: jadeStack = new ItemStack(ModItems.jade_black_raw, amount);
-			break;
-		case WATER: jadeStack = new ItemStack(ModItems.jade_black_raw, amount);
-			break;
-		case WOOD: jadeStack = new ItemStack(ModItems.jade_green_raw, amount);
-			break;
-		default:
-			break;
-		
-		}
-		
-		toReturn.add(jadeStack);
+		toReturn.add(new ItemStack(ModItems.jade_raw, amount, thisElement.getID()));
 		
 		return toReturn;
 	}
