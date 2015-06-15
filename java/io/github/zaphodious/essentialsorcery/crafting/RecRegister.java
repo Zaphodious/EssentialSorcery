@@ -1,5 +1,6 @@
 package io.github.zaphodious.essentialsorcery.crafting;
 
+import cyano.basemetals.registry.CrusherRecipeRegistry;
 import io.github.zaphodious.essentialsorcery.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -104,17 +105,23 @@ public class RecRegister {
 				"xxx",
 				'x', new ItemStack(ModItems.jade_blue_ingot));
 		
-		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.jade_green_dust, 2), new ItemStack(ModItems.jade_green_raw));
-		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.jade_red_dust, 2), new ItemStack(ModItems.jade_red_raw));
-		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.jade_black_dust, 2), new ItemStack(ModItems.jade_black_raw));
-		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.jade_blue_dust, 2), new ItemStack(ModItems.jade_blue_raw));
-		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.jade_white_dust, 2), new ItemStack(ModItems.jade_white_raw));
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.obol), new ItemStack(ModItems.jade_green_raw));
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.obol), new ItemStack(ModItems.jade_red_raw));
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.obol), new ItemStack(ModItems.jade_black_raw));
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.obol), new ItemStack(ModItems.jade_blue_raw));
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.obol), new ItemStack(ModItems.jade_white_raw));
 				
 		GameRegistry.addSmelting(ModItems.jade_black_dust, new ItemStack(ModItems.jade_black_nugget), 1.0F);
 		GameRegistry.addSmelting(ModItems.jade_blue_dust, new ItemStack(ModItems.jade_blue_nugget), 1.0F);
 		GameRegistry.addSmelting(ModItems.jade_red_dust, new ItemStack(ModItems.jade_red_nugget), 1.0F);
 		GameRegistry.addSmelting(ModItems.jade_white_dust, new ItemStack(ModItems.jade_white_nugget), 1.0F);
 		GameRegistry.addSmelting(ModItems.jade_green_dust, new ItemStack(ModItems.jade_green_nugget), 1.0F);
+		
+		CrusherRecipeRegistry.addNewCrusherRecipe(ModItems.jade_green_raw, new ItemStack(ModItems.jade_green_dust));
+		CrusherRecipeRegistry.addNewCrusherRecipe(ModItems.jade_red_raw, new ItemStack(ModItems.jade_red_dust));
+		CrusherRecipeRegistry.addNewCrusherRecipe(ModItems.jade_black_raw, new ItemStack(ModItems.jade_black_dust));
+		CrusherRecipeRegistry.addNewCrusherRecipe(ModItems.jade_blue_raw, new ItemStack(ModItems.jade_blue_dust));
+		CrusherRecipeRegistry.addNewCrusherRecipe(ModItems.jade_white_raw, new ItemStack(ModItems.jade_white_dust));
 	}
 	
 }
