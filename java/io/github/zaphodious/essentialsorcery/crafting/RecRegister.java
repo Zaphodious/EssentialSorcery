@@ -92,7 +92,7 @@ public class RecRegister {
 					"xxx",
 					'x', new ItemStack(ModItems.jade_nugget, 1, i));
 			GameRegistry.addShapelessRecipe(new ItemStack(ModItems.jade_nugget, 9, i), new ItemStack(ModItems.jade_ingot, 0, i));
-			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.jade_alloy_dust, 1, i),
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.jade_alloy_dust, 2, i),
 					new ItemStack(ModItems.jade_dust, 1, i), new ItemStack(ModItems.jade_dust, 1, i), new ItemStack(ModItems.jade_dust, 1, i), "dustSteel"));
 			GameRegistry.addSmelting(new ItemStack(ModItems.jade_alloy_dust, 1, i), new ItemStack(ModItems.jade_ingot, 1, i), 1.0F);
 			CrusherRecipeRegistry.addNewCrusherRecipe(new ItemStack(ModItems.jade_raw, 1, i), new ItemStack(ModItems.jade_dust, 2, i));

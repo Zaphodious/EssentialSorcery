@@ -2,10 +2,7 @@ package io.github.zaphodious.essentialsorcery.item.metal;
 
 import java.util.List;
 
-import io.github.zaphodious.essentialsorcery.core.Reference;
-import io.github.zaphodious.essentialsorcery.spellcasting.Element;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class JadeDust extends Jade {

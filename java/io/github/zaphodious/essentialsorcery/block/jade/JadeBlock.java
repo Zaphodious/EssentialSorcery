@@ -1,26 +1,21 @@
 package io.github.zaphodious.essentialsorcery.block.jade;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 import io.github.zaphodious.essentialsorcery.block.BasicBlock;
-import io.github.zaphodious.essentialsorcery.core.Reference;
 import io.github.zaphodious.essentialsorcery.item.ModItems;
 import io.github.zaphodious.essentialsorcery.spellcasting.Element;
+
+import java.util.Random;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class JadeBlock extends BasicBlock {
@@ -77,8 +72,8 @@ public class JadeBlock extends BasicBlock {
 
 		int strengthFactor = this.blocksDeep(worldIn, pos);
 
-		int duration = strengthFactor * 100;
-		int effectLevel = strengthFactor - 1;
+		int duration = ((strengthFactor/3) + 1) * 100;
+		int effectLevel = (strengthFactor)/2 + 1;
 		boolean particles = false;
 
 		if (entityIn instanceof EntityLivingBase) {
@@ -117,7 +112,7 @@ public class JadeBlock extends BasicBlock {
 			}
 			
 			livingEntity.addPotionEffect(new PotionEffect(Potion.nightVision
-					.getId(), duration*3, effectLevel, false, particles));
+					.getId(), duration*2, effectLevel, false, particles));
 		}
 
 		return false;

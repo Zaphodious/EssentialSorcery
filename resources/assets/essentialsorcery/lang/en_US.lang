@@ -5,23 +5,35 @@ item.dragon_tap_placer.name=Dragon Tap
 item.rune_table_placer.name=Rune Table
 item.hobgoblin_placer.name=Small Rip in Reality
 
-item.jade_green_nugget.name=Green Jade Nugget
-item.jade_blue_nugget.name=Blue Jade Nugget
-item.jade_red_nugget.name=Red Jade Nugget
-item.jade_white_nugget.name=White Jade Nugget
-item.jade_black_nugget.name=Black Jade Nugget
+item.jade_nugget_green.name=Green Jade Nugget
+item.jade_nugget_blue.name=Blue Jade Nugget
+item.jade_nugget_red.name=Red Jade Nugget
+item.jade_nugget_white.name=White Jade Nugget
+item.jade_nugget_black.name=Black Jade Nugget
 
-item.jade_green_ingot.name=Green Jade Ingot
-item.jade_blue_ingot.name=Blue Jade Ingot
-item.jade_red_ingot.name=Red Jade Ingot
-item.jade_white_ingot.name=White Jade Ingot
-item.jade_black_ingot.name=Black Jade Ingot
+item.jade_ingot_green.name=Green Jade Ingot
+item.jade_ingot_blue.name=Blue Jade Ingot
+item.jade_ingot_red.name=Red Jade Ingot
+item.jade_ingot_white.name=White Jade Ingot
+item.jade_ingot_black.name=Black Jade Ingot
 
-item.jade_green_dust.name=Green Jade Dust
-item.jade_blue_dust.name=Blue Jade Dust
-item.jade_red_dust.name=Red Jade Dust
-item.jade_white_dust.name=White Jade Dust
-item.jade_black_dust.name=Black Jade Dust
+item.jade_dust_green.name=Green Jade Dust
+item.jade_dust_blue.name=Blue Jade Dust
+item.jade_dust_red.name=Red Jade Dust
+item.jade_dust_white.name=White Jade Dust
+item.jade_dust_black.name=Black Jade Dust
+
+item.jade_alloy_dust_green.name=Green Jade-Steel Blend
+item.jade_alloy_dust_blue.name=Blue Jade-Steel Blend
+item.jade_alloy_dust_red.name=Red Jade-Steel Blend
+item.jade_alloy_dust_white.name=White Jade-Steel Blend
+item.jade_alloy_dust_black.name=Black Jade-Steel Blend
+
+item.jade_raw_green.name=Raw Green Jade
+item.jade_raw_blue.name=Raw Blue Jade
+item.jade_raw_red.name=Raw Red Jade
+item.jade_raw_white.name=Raw White Jade
+item.jade_raw_black.name=Raw Black Jade
 
 tile.testing_table.name=Testing Table
 itemGroup.tabEssential=Essentail Sorcery
