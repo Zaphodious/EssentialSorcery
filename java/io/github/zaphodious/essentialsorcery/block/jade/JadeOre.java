@@ -121,7 +121,6 @@ public class JadeOre extends BasicBlock {
 		World thisWorld = (World) worldIn;
 		
 		Element thisElement = Reference.SORTER.getBiomeElement(thisWorld, pos);
-		System.out.println("the element should be " + thisElement);
 		
 		return state.withProperty(ELEMENT, thisElement);
 		

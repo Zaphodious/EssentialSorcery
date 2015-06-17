@@ -1,5 +1,7 @@
 package io.github.zaphodious.essentialsorcery.entity.monster;
 
+import io.github.zaphodious.essentialsorcery.item.ModItems;
+
 import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
@@ -304,6 +306,10 @@ public class EntityHobgoblin extends EntityMob {
 			source.setDamageBypassesArmor();
 			amount = (amount+2) * 1.5F;
 			this.setFire(10); //to the raaaaaaaaaaaaaain...
+			if (!source.getEntity().worldObj.isRemote) {
+				this.entityDropItem(new ItemStack(ModItems.moon_silver_nugget, source.getEntity().worldObj.rand.nextInt(3)), 1.0F);
+			}
+			
 		}
 
 		super.attackEntityFrom(source, amount);
@@ -429,7 +435,7 @@ public class EntityHobgoblin extends EntityMob {
 	}
 
 	protected Item getDropItem() {
-		return cyano.basemetals.init.Items.silver_nugget;
+		return ModItems.moon_silver_ingot;
 	}
 
 	/**

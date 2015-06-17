@@ -21,6 +21,7 @@ public class RecRegister {
 		ItemStack cobbleStack = new ItemStack(Blocks.cobblestone);
 		ItemStack coalStack = new ItemStack(Items.coal);
 		
+		
 		GameRegistry.addRecipe(new ItemStack(ModItems.runeTablePlacer),
 	    "xxx",
 	    "zyz",
@@ -84,6 +85,14 @@ public class RecRegister {
 				"xxx",
 				'x', new ItemStack(ModItems.obol));
 		
+		GameRegistry.addRecipe(new ItemStack(ModItems.moon_silver_ingot),
+				"xxx",
+				"xxx",
+				"xxx",
+				'x', new ItemStack(ModItems.moon_silver_nugget));
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.moon_silver_nugget, 9), new ItemStack(ModItems.moon_silver_ingot));
+		
 		
 		for (int i = 0; i < 5; i++) {
 			GameRegistry.addRecipe(new ItemStack(ModItems.jade_ingot, 1, i),
@@ -96,7 +105,7 @@ public class RecRegister {
 					new ItemStack(ModItems.jade_dust, 1, i), new ItemStack(ModItems.jade_dust, 1, i), new ItemStack(ModItems.jade_dust, 1, i), "dustSteel"));
 			GameRegistry.addSmelting(new ItemStack(ModItems.jade_alloy_dust, 1, i), new ItemStack(ModItems.jade_ingot, 1, i), 1.0F);
 			CrusherRecipeRegistry.addNewCrusherRecipe(new ItemStack(ModItems.jade_raw, 1, i), new ItemStack(ModItems.jade_dust, 2, i));
-			GameRegistry.addShapelessRecipe(new ItemStack(ModItems.obol), new ItemStack(ModItems.jade_raw, 0, i));
+			GameRegistry.addShapelessRecipe(new ItemStack(ModItems.obol), new ItemStack(ModItems.jade_raw, 1, i));
 		}
 		
 

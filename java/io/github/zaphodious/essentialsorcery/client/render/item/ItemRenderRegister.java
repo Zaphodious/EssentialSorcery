@@ -114,7 +114,10 @@ public final class ItemRenderRegister {
 		regJade(ModItems.jade_ingot, 2);
 		regJade(ModItems.jade_ingot, 3);
 		regJade(ModItems.jade_ingot, 4);
-
+		
+		reg(ModItems.moon_silver_ingot, 0);
+		reg(ModItems.moon_silver_nugget, 0);
+		
 	}
 
 	public static void reg(Item item, int meta) {

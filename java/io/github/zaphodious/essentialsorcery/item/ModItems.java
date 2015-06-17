@@ -6,6 +6,7 @@ import io.github.zaphodious.essentialsorcery.item.metal.JadeDust;
 import io.github.zaphodious.essentialsorcery.item.metal.JadeIngot;
 import io.github.zaphodious.essentialsorcery.item.metal.JadeNugget;
 import io.github.zaphodious.essentialsorcery.item.metal.JadeRaw;
+import io.github.zaphodious.essentialsorcery.item.metal.MoonSilver;
 import io.github.zaphodious.essentialsorcery.item.mobplacer.HobgoblinPlacer;
 import io.github.zaphodious.essentialsorcery.item.renderitems.PrettyBallBlue;
 import io.github.zaphodious.essentialsorcery.item.renderitems.PrettyBallBrown;
@@ -132,6 +133,9 @@ public final class ModItems {
 	public static JadeDust jade_dust;
 	public static JadeAlloyDust jade_alloy_dust;
 	public static JadeIngot jade_ingot;
+	
+	public static MoonSilver moon_silver_ingot;
+	public static MoonSilver moon_silver_nugget;
 
 	public static void createItems() {
 		
@@ -221,6 +225,9 @@ public final class ModItems {
 		GameRegistry.registerItem(jade_dust = new JadeDust("jade_dust"), "jade_dust");
 		GameRegistry.registerItem(jade_alloy_dust = new JadeAlloyDust("jade_alloy_dust"), "jade_alloy_dust");
 		GameRegistry.registerItem(jade_ingot = new JadeIngot("jade_ingot"), "jade_ingot");
+		
+		GameRegistry.registerItem(moon_silver_ingot = new MoonSilver("moon_silver_ingot", "Ingot"), "moon_silver_ingot");
+		GameRegistry.registerItem(moon_silver_nugget = new MoonSilver("moon_silver_nugget", "Drop"), "moon_silver_nugget");
 	
 	}
 	

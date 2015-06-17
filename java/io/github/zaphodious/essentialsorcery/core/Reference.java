@@ -1,11 +1,10 @@
 package io.github.zaphodious.essentialsorcery.core;
 
-import io.github.zaphodious.essentialsorcery.item.ModItems;
 import io.github.zaphodious.essentialsorcery.spellcasting.BiomeSorter;
 
-import java.util.ArrayList;
-
-import net.minecraft.item.Item;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Reference {
 
@@ -37,6 +36,14 @@ private static int[] makeManaCosts() {
     return manaCostAt;
 }
 
+public static boolean doesBeginWithVowel(String word) {
+	Set<Character> vowelSet = new HashSet<Character>(Arrays.asList('a', 'e', 'i', 'o', 'u'));
 
+	if(vowelSet.contains(Character.toLowerCase(word.charAt(0)))) {
+	   return true;
+	}
+	
+	return false;
+}
 
 }
