@@ -1,15 +1,14 @@
 package io.github.zaphodious.essentialsorcery.crafting;
 
-import cyano.basemetals.registry.CrusherRecipeRegistry;
 import io.github.zaphodious.essentialsorcery.item.ModItems;
 import io.github.zaphodious.essentialsorcery.spellcasting.Element;
-import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
+import cyano.basemetals.registry.CrusherRecipeRegistry;
 
 public class RecRegister {
 
@@ -47,60 +46,18 @@ public class RecRegister {
 				'x', cobbleStack, 'y', stickStack, 'z', woolStack);
 
 		
-
+		addXWithReverse(ModItems.jade_ingot, ModItems.jadeBlockBlackPlacer, Element.WATER.getID(), 0, 2);
+		addXWithReverse(ModItems.jade_ingot, ModItems.jadeBlockWhitePlacer, Element.EARTH.getID(), 0, 2);
+		addXWithReverse(ModItems.jade_ingot, ModItems.jadeBlockGreenPlacer, Element.WOOD.getID(), 0, 2);
+		addXWithReverse(ModItems.jade_ingot, ModItems.jadeBlockRedPlacer, Element.FIRE.getID(), 0, 2);
+		addXWithReverse(ModItems.jade_ingot, ModItems.jadeBlockBluePlacer, Element.AIR.getID(), 0, 2);
 		
-		GameRegistry.addRecipe(new ItemStack(ModItems.jadeBlockBlackPlacer),
-				"xxx",
-				"xxx",
-				"xxx",
-				'x', new ItemStack(ModItems.jade_ingot, 1, Element.WATER.getID()));
-				
-		GameRegistry.addRecipe(new ItemStack(ModItems.jadeBlockWhitePlacer),
-				"xxx",
-				"xxx",
-				"xxx",
-				'x', new ItemStack(ModItems.jade_ingot, 1, Element.EARTH.getID()));
-		
-		GameRegistry.addRecipe(new ItemStack(ModItems.jadeBlockGreenPlacer),
-				"xxx",
-				"xxx",
-				"xxx",
-				'x', new ItemStack(ModItems.jade_ingot, 1, Element.WOOD.getID()));
-		
-		GameRegistry.addRecipe(new ItemStack(ModItems.jadeBlockRedPlacer),
-				"xxx",
-				"xxx",
-				"xxx",
-				'x', new ItemStack(ModItems.jade_ingot, 1, Element.FIRE.getID()));
-		
-		GameRegistry.addRecipe(new ItemStack(ModItems.jadeBlockBluePlacer),
-				"xxx",
-				"xxx",
-				"xxx",
-				'x', new ItemStack(ModItems.jade_ingot, 1, Element.AIR.getID()));
-		
-		GameRegistry.addRecipe(new ItemStack(Items.emerald),
-				"xxx",
-				"xxx",
-				"xxx",
-				'x', new ItemStack(ModItems.obol));
-		
-		GameRegistry.addRecipe(new ItemStack(ModItems.moon_silver_ingot),
-				"xxx",
-				"xxx",
-				"xxx",
-				'x', new ItemStack(ModItems.moon_silver_nugget));
-		
-		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.moon_silver_nugget, 9), new ItemStack(ModItems.moon_silver_ingot));
+		add3x3(ModItems.obol, Items.emerald, 0, 0);
+		addXWithReverse(ModItems.moon_silver_nugget, ModItems.moon_silver_ingot, 0, 0, 3);
 		
 		
 		for (int i = 0; i < 5; i++) {
-			GameRegistry.addRecipe(new ItemStack(ModItems.jade_ingot, 1, i),
-					"xxx",
-					"xxx",
-					"xxx",
-					'x', new ItemStack(ModItems.jade_nugget, 1, i));
-			GameRegistry.addShapelessRecipe(new ItemStack(ModItems.jade_nugget, 9, i), new ItemStack(ModItems.jade_ingot, 0, i));
+			addXWithReverse(ModItems.jade_nugget, ModItems.jade_ingot, i, i, 3);
 			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.jade_alloy_dust, 2, i),
 					new ItemStack(ModItems.jade_dust, 1, i), new ItemStack(ModItems.jade_dust, 1, i), new ItemStack(ModItems.jade_dust, 1, i), "dustSteel"));
 			GameRegistry.addSmelting(new ItemStack(ModItems.jade_alloy_dust, 1, i), new ItemStack(ModItems.jade_ingot, 1, i), 1.0F);
@@ -109,6 +66,40 @@ public class RecRegister {
 		}
 		
 
+	}
+	
+	private static void add3x3(Item input, Item result, int metaInput, int metaResult) {
+		GameRegistry.addRecipe(new ItemStack(result, 1, metaResult),
+				"xxx",
+				"xxx",
+				"xxx",
+				'x', new ItemStack(input, 1, metaInput));
+		
+	}
+	
+	private static void add2x2(Item input, Item result, int metaInput, int metaResult) {
+		GameRegistry.addRecipe(new ItemStack(result, 1, metaResult),
+
+				"xx",
+				"xx",
+				'x', new ItemStack(input, 1, metaInput));
+	}
+	
+	private static void addXWithReverse(Item input, Item result, int metaInput, int metaResult, int amount) {
+		
+		switch (amount) {
+		case 1: GameRegistry.addShapelessRecipe(new ItemStack(result, 1, metaResult), new ItemStack(input, 1, metaInput));
+			break;
+		case 2: add2x2(input, result, metaInput, metaResult);
+			break;
+		case 3: add3x3(input, result, metaInput, metaResult);
+			break;
+		default: System.out.println("The amount number needs to be between 1 and 3. You put " + amount);
+			return;
+		}
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(input, amount*amount, metaInput), new ItemStack(result, 1, metaResult));
+		
 	}
 	
 }
