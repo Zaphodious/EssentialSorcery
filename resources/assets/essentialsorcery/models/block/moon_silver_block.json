@@ -1,6 +1,6 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "all": "essentialsorcery:block/testing_table"
+        "all": "essentialsorcery:block/moon_silver_block"
     }
 }

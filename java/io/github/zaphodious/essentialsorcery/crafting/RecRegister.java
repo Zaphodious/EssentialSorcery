@@ -52,6 +52,8 @@ public class RecRegister {
 		addXWithReverse(ModItems.jade_ingot, ModItems.jadeBlockRedPlacer, Element.FIRE.getID(), 0, 2);
 		addXWithReverse(ModItems.jade_ingot, ModItems.jadeBlockBluePlacer, Element.AIR.getID(), 0, 2);
 		
+		addXWithReverse(ModItems.moon_silver_ingot, ModItems.moon_silver_block_placer, 0, 0, 3);
+		
 		add3x3(ModItems.obol, Items.emerald, 0, 0);
 		addXWithReverse(ModItems.moon_silver_nugget, ModItems.moon_silver_ingot, 0, 0, 3);
 		

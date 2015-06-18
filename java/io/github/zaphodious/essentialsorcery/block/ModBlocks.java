@@ -24,6 +24,7 @@ public final class ModBlocks {
 	public static JadeBlock jade_block_blue;
 	public static JadeBlock jade_block_green;
 	public static JadeBlock jade_block_black;
+	public static MoonSilverBlock moon_silver_block;
 	
 
 	public static void createBlocks() {
@@ -53,6 +54,8 @@ public final class ModBlocks {
 		jade_block_black = new JadeBlock("jade_block_black", Element.WATER);
 		GameRegistry.registerBlock(jade_block_black, "jade_block_black");
 		
+		moon_silver_block = new MoonSilverBlock("moon_silver_block");
+		GameRegistry.registerBlock(moon_silver_block, "moon_silver_block");
 
 	}
 

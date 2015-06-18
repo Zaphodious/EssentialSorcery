@@ -117,6 +117,7 @@ public final class ItemRenderRegister {
 		
 		reg(ModItems.moon_silver_ingot, 0);
 		reg(ModItems.moon_silver_nugget, 0);
+		reg(ModItems.moon_silver_block_placer, 0);
 		
 	}
 

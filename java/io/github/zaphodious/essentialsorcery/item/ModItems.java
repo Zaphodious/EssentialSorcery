@@ -136,6 +136,7 @@ public final class ModItems {
 	
 	public static MoonSilver moon_silver_ingot;
 	public static MoonSilver moon_silver_nugget;
+	public static BlockPlacer moon_silver_block_placer;
 
 	public static void createItems() {
 		
@@ -228,6 +229,7 @@ public final class ModItems {
 		
 		GameRegistry.registerItem(moon_silver_ingot = new MoonSilver("moon_silver_ingot", "Ingot"), "moon_silver_ingot");
 		GameRegistry.registerItem(moon_silver_nugget = new MoonSilver("moon_silver_nugget", "Drop"), "moon_silver_nugget");
+		GameRegistry.registerItem(moon_silver_block_placer = new BlockPlacer("moon_silver_block_placer", ModBlocks.moon_silver_block), "moon_silver_block_placer");
 	
 	}
 	
