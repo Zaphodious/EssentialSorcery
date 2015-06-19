@@ -19,41 +19,12 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
-public class CommonProxy {
-	
-	EssentialEventHandler events = new EssentialEventHandler();
+public interface CommonProxy {
 
-	public void preInit(FMLPreInitializationEvent e) {
-		ModBlocks.createBlocks();
-		ModItems.createItems();
-		ModItems.putRunesIntoDropList();
-		
-		Reference.SORTER.fillBiomeList();
-		FMLCommonHandler.instance().bus().register(events);
-		MinecraftForge.EVENT_BUS.register(events);
-		
-		
-		Reference.SORTER.fillBiomeList();
-		
-		OreSpawnJSON.makeOreGenConfigFile(e);
-    }
+	public void preInit(FMLPreInitializationEvent e);
 
-    public void init(FMLInitializationEvent e) {
+    public void init(FMLInitializationEvent e);
 
-
-    	ModTileEntities.registerTileEntities();
-    	RegisterMobs.registerMobs();
-    	ModTileEntities.regGUIs();
-        //NetworkRegistry.INSTANCE.registerGuiHandler(EssentialSorcery.instance, new MachineGUIRegistry());
-    	RegTargetingEntities.Reg();
-    	RecRegister.makeRecipes();
-    }
-
-    public void postInit(FMLPostInitializationEvent e) {
-    	MinecraftForge.EVENT_BUS.register(new Events());
-    	System.out.println("***************");
-    	System.out.println("The ore gen config files that have been loaded: " + BaseMetals.oreSpawnConfigFiles);
-    	System.out.println("***************");
-    }
+    public void postInit(FMLPostInitializationEvent e);
 	
 }

@@ -272,7 +272,7 @@ public class EntityHobgoblin extends EntityMob {
 		/*
 		 * Here, we want to see if the attack is coming from an Iron (or Cold
 		 * Iron) source, and if so we want to make it *really* hurt.
-		*/
+		 */
 
 		if (source.getEntity() instanceof EntityPlayer) {
 			EntityPlayer damagingPlayer = (EntityPlayer) source.getEntity();
@@ -299,17 +299,18 @@ public class EntityHobgoblin extends EntityMob {
 
 		} else if (source.getEntity() instanceof EntityIronGolem) {
 			attackedByIron = true;
-			
+
 		}
 
 		if (attackedByIron) {
 			source.setDamageBypassesArmor();
-			amount = (amount+2) * 1.5F;
-			this.setFire(10); //to the raaaaaaaaaaaaaain...
+			amount = (amount + 2) * 1.5F;
+			this.setFire(10); // to the raaaaaaaaaaaaaain...
 			if (!source.getEntity().worldObj.isRemote) {
-				this.entityDropItem(new ItemStack(ModItems.moon_silver_nugget, source.getEntity().worldObj.rand.nextInt(3)), 1.0F);
+				this.entityDropItem(new ItemStack(ModItems.moon_silver_nugget,
+						source.getEntity().worldObj.rand.nextInt(3)), 1.0F);
 			}
-			
+
 		}
 
 		super.attackEntityFrom(source, amount);
