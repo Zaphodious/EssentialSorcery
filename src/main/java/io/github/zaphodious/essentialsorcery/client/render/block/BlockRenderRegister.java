@@ -1,8 +1,11 @@
 package io.github.zaphodious.essentialsorcery.client.render.block;
 
 import io.github.zaphodious.essentialsorcery.block.ModBlocks;
+import io.github.zaphodious.essentialsorcery.block.states.DragonTapState;
 import io.github.zaphodious.essentialsorcery.client.render.item.ItemRenderRegister;
 import io.github.zaphodious.essentialsorcery.core.Reference;
+import io.github.zaphodious.essentialsorcery.item.ModItems;
+import io.github.zaphodious.essentialsorcery.spellcasting.Element;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelBakery;
@@ -13,7 +16,7 @@ import net.minecraftforge.client.model.ModelLoader;
 public final class BlockRenderRegister {
 
 	public static void registerBlockRenderer() {
-		addVariantsForDragonTap();
+		addBlockVariants();
 		//reg(ModBlocks.dragon_tap);
 		reg(ModBlocks.dragon_tap, 0, "dragon_tap_placed");
 		reg(ModBlocks.dragon_tap, 1, "dragon_tap_set");
@@ -41,8 +44,14 @@ public final class BlockRenderRegister {
 
 	}
 	
-	private static void addVariantsForDragonTap() {
-		ModelBakery.addVariantName(Item.getItemFromBlock(ModBlocks.dragon_tap), "essentialsorcery:dragon_tap_placed", "essentialsorcery:dragon_tap_set", "essentialsorcery:dragon_tap_spent");
+	public static void addBlockVariants() {
+		ModelBakery.addVariantName(Item.getItemFromBlock(ModBlocks.dragon_tap), Reference.MODID + ":"
+				+ ModBlocks.dragon_tap.getUnlocalizedName().substring(5) + "_"
+				+ DragonTapState.PLACED.getName(), Reference.MODID + ":"
+						+ ModBlocks.dragon_tap.getUnlocalizedName().substring(5) + "_"
+						+ DragonTapState.SET.getName(), Reference.MODID + ":"
+								+ ModBlocks.dragon_tap.getUnlocalizedName().substring(5) + "_"
+								+ DragonTapState.SPENT.getName());
 	}
 	
 }

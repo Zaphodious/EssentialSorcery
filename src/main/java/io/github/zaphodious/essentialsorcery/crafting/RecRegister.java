@@ -1,7 +1,9 @@
 package io.github.zaphodious.essentialsorcery.crafting;
 
+import io.github.zaphodious.essentialsorcery.block.ModBlocks;
 import io.github.zaphodious.essentialsorcery.item.ModItems;
 import io.github.zaphodious.essentialsorcery.spellcasting.Element;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -21,7 +23,7 @@ public class RecRegister {
 		ItemStack coalStack = new ItemStack(Items.coal);
 		
 		
-		GameRegistry.addRecipe(new ItemStack(ModItems.runeTablePlacer),
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.rune_table),
 	    "xxx",
 	    "zyz",
 	    "xxx",
@@ -33,7 +35,7 @@ public class RecRegister {
 		"yx ",
 		'x', woolStack, 'y', stickStack);
 		
-		GameRegistry.addRecipe(new ItemStack(ModItems.dragonTapPlacer),
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.dragon_tap, 1, 0),
 		"yyx",
 		"yxz",
 		"xxx",
@@ -46,13 +48,13 @@ public class RecRegister {
 				'x', cobbleStack, 'y', stickStack, 'z', woolStack);
 
 		
-		addXWithReverse(ModItems.jade_ingot, ModItems.jadeBlockBlackPlacer, Element.WATER.getID(), 0, 2);
-		addXWithReverse(ModItems.jade_ingot, ModItems.jadeBlockWhitePlacer, Element.EARTH.getID(), 0, 2);
-		addXWithReverse(ModItems.jade_ingot, ModItems.jadeBlockGreenPlacer, Element.WOOD.getID(), 0, 2);
-		addXWithReverse(ModItems.jade_ingot, ModItems.jadeBlockRedPlacer, Element.FIRE.getID(), 0, 2);
-		addXWithReverse(ModItems.jade_ingot, ModItems.jadeBlockBluePlacer, Element.AIR.getID(), 0, 2);
+		addXWithReverse(ModItems.jade_ingot, Item.getItemFromBlock(ModBlocks.jade_block_black), Element.WATER.getID(), 0, 2);
+		addXWithReverse(ModItems.jade_ingot, Item.getItemFromBlock(ModBlocks.jade_block_white), Element.EARTH.getID(), 0, 2);
+		addXWithReverse(ModItems.jade_ingot, Item.getItemFromBlock(ModBlocks.jade_block_green), Element.WOOD.getID(), 0, 2);
+		addXWithReverse(ModItems.jade_ingot, Item.getItemFromBlock(ModBlocks.jade_block_red), Element.FIRE.getID(), 0, 2);
+		addXWithReverse(ModItems.jade_ingot, Item.getItemFromBlock(ModBlocks.jade_block_blue), Element.AIR.getID(), 0, 2);
 		
-		addXWithReverse(ModItems.moon_silver_ingot, ModItems.moon_silver_block_placer, 0, 0, 3);
+		addXWithReverse(ModItems.moon_silver_ingot, Item.getItemFromBlock(ModBlocks.moon_silver_block), 0, 0, 3);
 		
 		add3x3(ModItems.obol, Items.emerald, 0, 0);
 		addXWithReverse(ModItems.moon_silver_nugget, ModItems.moon_silver_ingot, 0, 0, 3);
@@ -103,5 +105,7 @@ public class RecRegister {
 		GameRegistry.addShapelessRecipe(new ItemStack(input, amount*amount, metaInput), new ItemStack(result, 1, metaResult));
 		
 	}
+	
+	
 	
 }

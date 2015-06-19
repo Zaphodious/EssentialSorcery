@@ -13,11 +13,8 @@ public final class ItemRenderRegister {
 	public static void registerItemRenderer() {
 		reg(ModItems.tapSetter, 0);
 		reg(ModItems.testWand, 0);
-		reg(ModItems.dragonTapPlacer, 0);
-		reg(ModItems.runeTablePlacer, 0);
+		
 		reg(ModItems.stone_trowel, 0);
-		reg(ModItems.jadeOrePlacer, 0);
-
 		reg(ModItems.obol, 0);
 
 		reg(ModItems.prettyBallRed, 0);
@@ -78,12 +75,7 @@ public final class ItemRenderRegister {
 		reg(ModItems.hobgoblin_placer, 0);
 
 
-
-		reg(ModItems.jadeBlockBlackPlacer, 0);
-		reg(ModItems.jadeBlockBluePlacer, 0);
-		reg(ModItems.jadeBlockGreenPlacer, 0);
-		reg(ModItems.jadeBlockRedPlacer, 0);
-		reg(ModItems.jadeBlockWhitePlacer, 0);
+		
 
 		regJade(ModItems.jade_raw, 0);
 		regJade(ModItems.jade_raw, 1);
@@ -117,7 +109,7 @@ public final class ItemRenderRegister {
 		
 		reg(ModItems.moon_silver_ingot, 0);
 		reg(ModItems.moon_silver_nugget, 0);
-		reg(ModItems.moon_silver_block_placer, 0);
+		
 		
 	}
 

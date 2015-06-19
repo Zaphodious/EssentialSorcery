@@ -2,7 +2,6 @@
     "variants": {
         "type=placed": { "model": "essentialsorcery:dragon_tap_placed" },
         "type=set": {"model": "essentialsorcery:dragon_tap_set" },
-        "type=spent": {"model": "essentialsorcery:dragon_tap_spent" },
-        "inventory": { "model": "essentialsorcery:dragon_tap_placed" }
+        "type=spent": {"model": "essentialsorcery:dragon_tap_spent" }
     }
 }

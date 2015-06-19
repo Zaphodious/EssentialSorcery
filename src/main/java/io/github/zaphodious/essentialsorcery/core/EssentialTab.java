@@ -1,5 +1,6 @@
 package io.github.zaphodious.essentialsorcery.core;
 
+import io.github.zaphodious.essentialsorcery.block.ModBlocks;
 import io.github.zaphodious.essentialsorcery.item.ModItems;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -13,8 +14,7 @@ public class EssentialTab extends CreativeTabs {
 
 	@Override
 	public Item getTabIconItem() {
-		// TODO Auto-generated method stub
-		return ModItems.dragonTapPlacer;
+		return Item.getItemFromBlock(ModBlocks.dragon_tap);
 	}
 
 }

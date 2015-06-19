@@ -1,7 +1,7 @@
 package io.github.zaphodious.essentialsorcery.item;
 
 import io.github.zaphodious.essentialsorcery.block.DragonTap;
-import io.github.zaphodious.essentialsorcery.block.states.TapState;
+import io.github.zaphodious.essentialsorcery.block.states.DragonTapState;
 import io.github.zaphodious.essentialsorcery.core.Reference;
 import io.github.zaphodious.essentialsorcery.spellcasting.BiomeSorter;
 import net.minecraft.block.Block;

@@ -1,6 +1,6 @@
 package io.github.zaphodious.essentialsorcery.block.jade;
 
-import io.github.zaphodious.essentialsorcery.block.states.TapState;
+import io.github.zaphodious.essentialsorcery.block.states.DragonTapState;
 import io.github.zaphodious.essentialsorcery.core.Reference;
 import io.github.zaphodious.essentialsorcery.item.ModItems;
 import io.github.zaphodious.essentialsorcery.block.BasicBlock;

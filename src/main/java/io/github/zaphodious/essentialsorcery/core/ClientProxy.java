@@ -21,6 +21,7 @@ public class ClientProxy  implements CommonProxy  {
     public void init(FMLInitializationEvent e) {
         
         ItemRenderRegister.registerVariants();
+        ModBlocks.addVariantsForDragonTap();
         //BlockRenderRegister.registerBlockRenderer();
         ItemRenderRegister.registerItemRenderer();
         EntityRenderRegister.renderEntities();

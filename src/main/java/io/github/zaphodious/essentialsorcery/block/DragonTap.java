@@ -1,6 +1,6 @@
 package io.github.zaphodious.essentialsorcery.block;
 
-import io.github.zaphodious.essentialsorcery.block.states.TapState;
+import io.github.zaphodious.essentialsorcery.block.states.DragonTapState;
 import io.github.zaphodious.essentialsorcery.core.Reference;
 import io.github.zaphodious.essentialsorcery.item.IMetaBlockName;
 import io.github.zaphodious.essentialsorcery.item.ModItems;
@@ -51,7 +51,7 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 		GivesEssence {
 
 	private static final PropertyEnum TYPE = PropertyEnum.create("type",
-			io.github.zaphodious.essentialsorcery.block.states.TapState.class);
+			io.github.zaphodious.essentialsorcery.block.states.DragonTapState.class);
 	private int xpLevelCostToSet;
 
 	public DragonTap(String unlocalizedName) {
@@ -59,11 +59,11 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 		
 		this.xpLevelCostToSet = 10;
 		this.setDefaultState(this.blockState.getBaseState().withProperty(TYPE,
-				TapState.PLACED));
+				DragonTapState.PLACED));
 		this.setTickRandomly(true);
 	}
 
-	public DragonTap setState(TapState newState) {
+	public DragonTap setState(DragonTapState newState) {
 		this.setDefaultState(this.blockState.getBaseState().withProperty(TYPE,
 				newState));
 		return this;
@@ -192,18 +192,18 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 	public IBlockState getStateFromMeta(int meta) {
 		IBlockState toReturn = null;
 		if (meta == 1) {
-			toReturn = getDefaultState().withProperty(TYPE, TapState.SET);
+			toReturn = getDefaultState().withProperty(TYPE, DragonTapState.SET);
 		} else if (meta == 2) {
-			toReturn = getDefaultState().withProperty(TYPE, TapState.SPENT);
+			toReturn = getDefaultState().withProperty(TYPE, DragonTapState.SPENT);
 		} else {
-			toReturn = getDefaultState().withProperty(TYPE, TapState.PLACED);
+			toReturn = getDefaultState().withProperty(TYPE, DragonTapState.PLACED);
 		}
 		return toReturn;
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		TapState type = (TapState) state.getValue(TYPE);
+		DragonTapState type = (DragonTapState) state.getValue(TYPE);
 		return type.getID();
 	}
 
@@ -258,12 +258,12 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 
 	public static void dragonToSet(World worldIn, BlockPos pos) {
 		worldIn.setBlockState(pos, ModBlocks.dragon_tap.getBlockState()
-				.getBaseState().withProperty(TYPE, TapState.SET));
+				.getBaseState().withProperty(TYPE, DragonTapState.SET));
 	}
 
 	public static void dragonToSpent(World worldIn, BlockPos pos) {
 		worldIn.setBlockState(pos, ModBlocks.dragon_tap.getBlockState()
-				.getBaseState().withProperty(TYPE, TapState.SPENT));
+				.getBaseState().withProperty(TYPE, DragonTapState.SPENT));
 	}
 
 	public void refreshTap(World worldIn, BlockPos pos) {
@@ -353,5 +353,16 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 		
 		return 0;
 	}
+
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#getUnlocalizedName()
+	 */
+	@Override
+	public String getUnlocalizedName() {
+		// TODO Auto-generated method stub
+		return super.getUnlocalizedName();
+	}
+	
+	
 
 }

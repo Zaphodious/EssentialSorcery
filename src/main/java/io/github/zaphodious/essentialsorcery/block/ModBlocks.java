@@ -2,13 +2,14 @@ package io.github.zaphodious.essentialsorcery.block;
 
 import io.github.zaphodious.essentialsorcery.block.jade.JadeBlock;
 import io.github.zaphodious.essentialsorcery.block.jade.JadeOre;
-import io.github.zaphodious.essentialsorcery.block.states.TapState;
+import io.github.zaphodious.essentialsorcery.block.states.DragonTapState;
+import io.github.zaphodious.essentialsorcery.block.states.StateEnum;
 import io.github.zaphodious.essentialsorcery.core.Reference;
 import io.github.zaphodious.essentialsorcery.item.ItemBlockMeta;
 import io.github.zaphodious.essentialsorcery.spellcasting.Element;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -66,22 +67,54 @@ public final class ModBlocks {
 
 	public static void registerRenders() {
 		registerRender(rune_table);
+		registerRenderMeta(dragon_tap, DragonTapState.PLACED.getID(), DragonTapState.PLACED);
+		registerRenderMeta(dragon_tap, DragonTapState.SET.getID(), DragonTapState.SET);
+		registerRenderMeta(dragon_tap, DragonTapState.SPENT.getID(), DragonTapState.SPENT);
+		registerRender(jade_ore);
+		registerRender(jade_block_blue);
+		registerRender(jade_block_red);
+		registerRender(jade_block_black);
+		registerRender(jade_block_white);
+		registerRender(jade_block_green);
+		registerRender(moon_silver_block);
+		
 	}
-
+	
 	public static void registerRender(Block block) {
 		Item item = Item.getItemFromBlock(block);
-		System.out
-				.println(Reference.MODID
+		registerRender(block, Reference.MODID
 						+ ":"
-						+ item.getUnlocalizedName().substring(5)
+						+ item.getUnlocalizedName().substring(5), 0);
+	}
+	
+	public static void registerRenderMeta(Block block, int meta, StateEnum stateEnum) {
+		Item item = Item.getItemFromBlock(block);registerRender(block, Reference.MODID
+				+ ":"
+				+ item.getUnlocalizedName().substring(5) + "_" + stateEnum.getStateName(), meta);
+	}
+	
+	public static void registerRender(Block block, String name, int meta) {
+		Item item = Item.getItemFromBlock(block);
+		System.out
+				.println(name
 						+ " has been thrown into the render registry, as a sub-thingy of "
 						+ block.getUnlocalizedName());
 		ModelResourceLocation theThing = new ModelResourceLocation(
-				Reference.MODID + ":" + item.getUnlocalizedName().substring(5),
+				name,
 				"inventory");
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
-				.register(item, 0, theThing);
+				.register(item, meta, theThing);
 		System.out.println(theThing);
+	}
+	
+	public static void addVariantsForDragonTap() {
+		ModelBakery.addVariantName(Item.getItemFromBlock(ModBlocks.dragon_tap), Reference.MODID + ":"
+				+ ModBlocks.dragon_tap.getUnlocalizedName().substring(5) + "_"
+				+ DragonTapState.PLACED.getName(), Reference.MODID + ":"
+						+ ModBlocks.dragon_tap.getUnlocalizedName().substring(5) + "_"
+						+ DragonTapState.SET.getName(), Reference.MODID + ":"
+								+ ModBlocks.dragon_tap.getUnlocalizedName().substring(5) + "_"
+								+ DragonTapState.SPENT.getName());
 	}
 
 }

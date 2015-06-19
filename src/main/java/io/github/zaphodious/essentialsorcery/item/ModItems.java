@@ -46,14 +46,14 @@ public final class ModItems {
 	
 	public static ToolMaterial STONETROWEL = EnumHelper.addToolMaterial("STONETROWEL", 1, 60, 1F, 0, 5);
 	
-	public static Item dragonTapPlacer;
+/*	public static Item dragonTapPlacer;
 	public static Item runeTablePlacer;
 	public static Item jadeOrePlacer;
 	public static Item jadeBlockRedPlacer;
 	public static Item jadeBlockWhitePlacer;
 	public static Item jadeBlockBluePlacer;
 	public static Item jadeBlockGreenPlacer;
-	public static Item jadeBlockBlackPlacer;
+	public static Item jadeBlockBlackPlacer;*/
 	
 	public static Item tapSetter;
 	public static Item testWand;
@@ -136,18 +136,9 @@ public final class ModItems {
 	
 	public static MoonSilver moon_silver_ingot;
 	public static MoonSilver moon_silver_nugget;
-	public static BlockPlacer moon_silver_block_placer;
+	/*public static BlockPlacer moon_silver_block_placer;*/
 
 	public static void createItems() {
-		
-		GameRegistry.registerItem(dragonTapPlacer = new BlockPlacer("dragon_tap_placer",ModBlocks.dragon_tap), "dragon_tap_placer");
-		GameRegistry.registerItem(runeTablePlacer = new BlockPlacer("rune_table_placer",ModBlocks.rune_table), "rune_table_placer");
-		GameRegistry.registerItem(jadeOrePlacer = new BlockPlacer("jade_ore_placer",ModBlocks.jade_ore), "jade_ore_placer");
-		GameRegistry.registerItem(jadeBlockRedPlacer = new BlockPlacer("jade_block_red_placer",ModBlocks.jade_block_red), "jade_block_red_placer");
-		GameRegistry.registerItem(jadeBlockWhitePlacer = new BlockPlacer("jade_block_white_placer",ModBlocks.jade_block_white), "jade_block_white_placer");
-		GameRegistry.registerItem(jadeBlockBluePlacer = new BlockPlacer("jade_block_blue_placer",ModBlocks.jade_block_blue), "jade_block_blue_placer");
-		GameRegistry.registerItem(jadeBlockGreenPlacer = new BlockPlacer("jade_block_green_placer",ModBlocks.jade_block_green), "jade_block_green_placer");
-		GameRegistry.registerItem(jadeBlockBlackPlacer = new BlockPlacer("jade_block_black_placer",ModBlocks.jade_block_black), "jade_block_black_placer");
 		
 		GameRegistry.registerItem(tapSetter = new TapSetter("tap_setter"), "tap_setter");
 		
@@ -229,7 +220,7 @@ public final class ModItems {
 		
 		GameRegistry.registerItem(moon_silver_ingot = new MoonSilver("moon_silver_ingot", "Ingot"), "moon_silver_ingot");
 		GameRegistry.registerItem(moon_silver_nugget = new MoonSilver("moon_silver_nugget", "Drop"), "moon_silver_nugget");
-		GameRegistry.registerItem(moon_silver_block_placer = new BlockPlacer("moon_silver_block_placer", ModBlocks.moon_silver_block), "moon_silver_block_placer");
+		/*GameRegistry.registerItem(moon_silver_block_placer = new BlockPlacer("moon_silver_block_placer", ModBlocks.moon_silver_block), "moon_silver_block_placer");*/
 	
 	}
 	

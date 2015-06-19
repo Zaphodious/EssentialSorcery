@@ -1,8 +1,9 @@
 package io.github.zaphodious.essentialsorcery.spellcasting;
 
+import io.github.zaphodious.essentialsorcery.block.states.StateEnum;
 import net.minecraft.util.IStringSerializable;
 
-public enum Element implements IStringSerializable {
+public enum Element implements IStringSerializable, StateEnum {
 
 	FIRE(0, "fire", "red"),
 	WATER(1, "water", "black"),
@@ -47,6 +48,16 @@ public enum Element implements IStringSerializable {
 			}
 		}
 		return toReturn;
+	}
+
+	@Override
+	public String getStateNameFromMeta(int meta) {
+		return getElementForID(meta).getColor();
+	}
+
+	@Override
+	public String getStateName() {
+		return color;
 	}
 	
 }
