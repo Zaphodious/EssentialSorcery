@@ -10,30 +10,31 @@ import net.minecraft.world.biome.BiomeGenBase;
 public class BiomeSorter {
 
 	Map<Integer, Element> biomes;
-	
-	
-	
-	
+
 	public BiomeSorter() {
 		biomes = new HashMap<Integer, Element>();
 	}
-	
+
 	public void printMap() {
 		for (int biomeID : biomes.keySet()) {
-			System.out.println("Biome ID: " + biomeID + " Element: " + biomes.get(biomeID));
+			System.out.println("Biome ID: "
+					+ biomeID
+					+ " Element: "
+					+ biomes.get(biomeID));
 		}
 	}
-	
+
 	public void fillBiomeList() {
 		// http://minecraft.gamepedia.com/Biome#Biome_IDs
 		// The IDs were gathered using information in that link.
 		// The elemental affiliation is based on the following:
 		// https://docs.google.com/forms/d/1Sf2FAivFflC51FnJGPDhD0R5mnqsININeWGu22L-tlk/viewanalytics?usp=form_confirm
-		// (Note - the results might have changed since adding the biomes. If you notify the head of this repo
+		// (Note - the results might have changed since adding the biomes. If
+		// you notify the head of this repo
 		// about it, he'll change it accordingly.)
-		
+
 		// To-Do: add Biomes Aplenty biome IDs
-		
+
 		addBiome(0, Element.WATER); // Ocean
 		addBiome(1, Element.EARTH); // Plains
 		addBiome(2, Element.FIRE); // Desert
@@ -74,24 +75,24 @@ public class BiomeSorter {
 		addBiome(37, Element.FIRE); // Mesa
 		addBiome(38, Element.FIRE); // Mesa Plateau F
 		addBiome(39, Element.FIRE); // Mesa Plateau
-		
+
 		addBiome(129, Element.AIR); // Sunflower Plains
 		addBiome(130, Element.FIRE); // Desert M
 		addBiome(131, Element.EARTH); // Extreme Hills vM
 		addBiome(132, Element.WOOD); // Flower Forest
 		addBiome(133, Element.AIR); // Taiga M
 		addBiome(134, Element.WATER); // Swampland M
-		
+
 		addBiome(140, Element.AIR); // Ice Plains Spikes
 		addBiome(149, Element.WOOD); // Jungle M
-		
+
 		addBiome(151, Element.WOOD); // JungleEdge M
-		
+
 		addBiome(155, Element.WOOD); // Birch Forest M
 		addBiome(156, Element.WOOD); // Birch Forest Hills M
 		addBiome(157, Element.WOOD); // Roofed Forest M
 		addBiome(158, Element.AIR); // Cold Taiga M
-		
+
 		addBiome(160, Element.WOOD); // Mega Spruce Taiga
 		addBiome(161, Element.WOOD); // Redwood Taiga Hills M
 		addBiome(162, Element.EARTH); // Extreme Hills+ M
@@ -108,13 +109,14 @@ public class BiomeSorter {
 
 	public int getBiomeID(World worldIn, BlockPos pos) {
 		BiomeGenBase biome = worldIn.getBiomeGenForCoords(pos);
-		//System.out.println("Biome: " + biome.biomeName + " ID: " + biome.biomeID);
+		// System.out.println("Biome: " + biome.biomeName + " ID: " +
+		// biome.biomeID);
 		return biome.biomeID;
 	}
-	
+
 	public Element getBiomeElement(World worldIn, BlockPos pos) {
 		int biomeID = this.getBiomeID(worldIn, pos);
-		
+
 		return biomes.get(biomeID);
 	}
 
@@ -125,7 +127,4 @@ public class BiomeSorter {
 		return biomes;
 	}
 
-
-	
-	
 }

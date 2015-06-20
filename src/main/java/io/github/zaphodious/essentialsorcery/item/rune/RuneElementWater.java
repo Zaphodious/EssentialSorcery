@@ -6,7 +6,7 @@ import io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneElem
 public class RuneElementWater extends RuneElement {
 
 	public RuneElementWater(String name) {
-		super(Element.WATER.getID(), name , Element.WATER);
+		super(Element.WATER.getID(), name, Element.WATER);
 		// TODO Auto-generated constructor stub
 	}
 

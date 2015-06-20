@@ -46,9 +46,15 @@ public abstract class TargetingProjectile extends EntityThrowable {
 	@Override
 	public void onUpdate() {
 		// TODO Auto-generated method stub
-		this.worldObj.spawnParticle(EnumParticleTypes.SPELL_WITCH, this
-				.getPosition().getX(), this.getPosition().getY(), this
-				.getPosition().getZ(), -.5F, -.5F, -.5F, 1);
+		this.worldObj.spawnParticle(
+				EnumParticleTypes.SPELL_WITCH,
+				this.getPosition().getX(),
+				this.getPosition().getY(),
+				this.getPosition().getZ(),
+				-.5F,
+				-.5F,
+				-.5F,
+				1);
 		if (this.ticksExisted > 600) {
 			this.setDead();
 		}
@@ -86,8 +92,10 @@ public abstract class TargetingProjectile extends EntityThrowable {
 	public void setRuneMap(Map<String, ItemStack> runeMap) {
 		System.out.println("Trying to set the runeMap.");
 		this.runeMap = runeMap;
-		System.out.println("the runeMap is " + this.runeMap
-				+ "..... derived from " + runeMap);
+		System.out.println("the runeMap is "
+				+ this.runeMap
+				+ "..... derived from "
+				+ runeMap);
 	}
 
 	/**
@@ -96,21 +104,26 @@ public abstract class TargetingProjectile extends EntityThrowable {
 	public void onImpact(MovingObjectPosition p_70184_1_) {
 		this.setDead();
 		if (!worldObj.isRemote) {
-			//System.out.println(runeMap.toString());
-			System.out.println("Hey, we hit something at " + this.posX + ","
-					+ this.posY + "," + this.posZ + " at @Clientside:"
+			// System.out.println(runeMap.toString());
+			System.out.println("Hey, we hit something at "
+					+ this.posX
+					+ ","
+					+ this.posY
+					+ ","
+					+ this.posZ
+					+ " at @Clientside:"
 					+ this.worldObj.isRemote);
 			System.out
 					.print("And, hey, just because I can... the rune-bag you're holding contains: ");
 
 			// try {
 
-			/*for (String key : runeMap.keySet()) {
-				if (runeMap.get(key) != null) {
-					System.out.print(runeMap.get(key).toString());
-				}
-				
-			}*/
+			/*
+			 * for (String key : runeMap.keySet()) { if (runeMap.get(key) !=
+			 * null) { System.out.print(runeMap.get(key).toString()); }
+			 * 
+			 * }
+			 */
 
 			System.out.println("");
 
@@ -119,11 +132,16 @@ public abstract class TargetingProjectile extends EntityThrowable {
 			try {
 				for (String key : runeMap.keySet()) {
 					if (key.contains("effect")) {
-						RuneEffect effectRune = (RuneEffect) runeMap.get(key)
-								.getItem();
-						effectRune.makeMagic(this, super.worldObj,
-								super.getThrower(), runeMap, this.getPosition(),
-								p_70184_1_, key);
+						RuneEffect effectRune =
+								(RuneEffect) runeMap.get(key).getItem();
+						effectRune.makeMagic(
+								this,
+								super.worldObj,
+								super.getThrower(),
+								runeMap,
+								this.getPosition(),
+								p_70184_1_,
+								key);
 					}
 				}
 			} catch (Exception e) {

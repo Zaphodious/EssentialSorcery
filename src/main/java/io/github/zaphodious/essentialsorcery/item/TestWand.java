@@ -28,7 +28,7 @@ public class TestWand extends Item implements UsesEssence {
 
 	Element element;
 	private ItemStack[] inventory;
-	
+
 	public TestWand(String unlocalizedName, int maxPool, Element element) {
 		this.element = element;
 		this.setUnlocalizedName(unlocalizedName);
@@ -38,13 +38,16 @@ public class TestWand extends Item implements UsesEssence {
 		inventory = new ItemStack[6];
 	}
 
-	
-	
-	/* (non-Javadoc)
-	 * @see net.minecraft.item.Item#onCreated(net.minecraft.item.ItemStack, net.minecraft.world.World, net.minecraft.entity.player.EntityPlayer)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.item.Item#onCreated(net.minecraft.item.ItemStack,
+	 * net.minecraft.world.World, net.minecraft.entity.player.EntityPlayer)
 	 */
 	@Override
-	public void onCreated(ItemStack stack, World worldIn, EntityPlayer playerIn) {
+	public
+			void
+			onCreated(ItemStack stack, World worldIn, EntityPlayer playerIn) {
 		// TODO Auto-generated method stub
 		super.onCreated(stack, worldIn, playerIn);
 		stack.setTagCompound(new NBTTagCompound());
@@ -53,103 +56,115 @@ public class TestWand extends Item implements UsesEssence {
 		stack.getTagCompound().setTag("apple", compound);
 	}
 
-
-	
-	
-
-	/* (non-Javadoc)
-	 * @see net.minecraft.item.Item#addInformation(net.minecraft.item.ItemStack, net.minecraft.entity.player.EntityPlayer, java.util.List, boolean)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.item.Item#addInformation(net.minecraft.item.ItemStack,
+	 * net.minecraft.entity.player.EntityPlayer, java.util.List, boolean)
 	 */
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer playerIn,
-			List tooltip, boolean advanced) {
+	public void addInformation(
+			ItemStack stack,
+			EntityPlayer playerIn,
+			List tooltip,
+			boolean advanced) {
 		// TODO Auto-generated method stub
 		if (stack.hasTagCompound()) {
 			Set<String> keySet = new HashSet<String>();
 			keySet = (stack.getTagCompound().getKeySet());
 			NBTTagCompound nbttc = stack.getTagCompound();
-			//System.out.println(keySet);
+			// System.out.println(keySet);
 			for (String string : keySet) {
-				//System.out.println(string);
-				ItemStack newStack = (ItemStack) ItemStack.loadItemStackFromNBT(stack.getTagCompound().getCompoundTag(string));
+				// System.out.println(string);
+				ItemStack newStack =
+						(ItemStack) ItemStack.loadItemStackFromNBT(stack
+								.getTagCompound()
+								.getCompoundTag(string));
 				if (newStack != null) {
 					tooltip.add(newStack.toString());
 				}
-				
+
 				newStack = null;
 			}
 		}
 		super.addInformation(stack, playerIn, tooltip, advanced);
-		
-		
-		
+
 	}
 
-
-
-	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn,
+	public ItemStack onItemRightClick(
+			ItemStack itemStackIn,
+			World worldIn,
 			EntityPlayer playerIn) {
 		try {
 			if (!worldIn.isRemote) {
-			if (itemStackIn.hasTagCompound()) {
-				ItemStack newStack = (ItemStack) ItemStack.loadItemStackFromNBT(itemStackIn.getTagCompound().getCompoundTag("shape"));
-				RuneShape shapeRune = (RuneShape) newStack.getItem();
-				try {
-					Map<String, ItemStack> runeMap = RuneHelper.getRuneMap(itemStackIn);
-					shapeRune.deployTargetingEntity(runeMap, worldIn, playerIn);
-				} catch (Exception e) {
-					System.out.println(e);
+				if (itemStackIn.hasTagCompound()) {
+					ItemStack newStack =
+							(ItemStack) ItemStack
+									.loadItemStackFromNBT(itemStackIn
+											.getTagCompound()
+											.getCompoundTag("shape"));
+					RuneShape shapeRune = (RuneShape) newStack.getItem();
+					try {
+						Map<String, ItemStack> runeMap =
+								RuneHelper.getRuneMap(itemStackIn);
+						shapeRune.deployTargetingEntity(
+								runeMap,
+								worldIn,
+								playerIn);
+					} catch (Exception e) {
+						System.out.println(e);
+					}
+
 				}
-				
+				// worldIn.spawnEntityInWorld(new TargetingProjectile(worldIn,
+				// playerIn));
+				// worldIn.spawnEntityInWorld(new EntitySnowball(worldIn,
+				// playerIn));
 			}
-			//worldIn.spawnEntityInWorld(new TargetingProjectile(worldIn, playerIn));
-			//worldIn.spawnEntityInWorld(new EntitySnowball(worldIn, playerIn));
-		}
 		} catch (Exception e) {
-			System.out.println("Oops, the projectile didn't fire. Error is: " + e);
-		}
-		
-
-		
-		
-		/*ItemStack appleStack;
-		try {
-			 appleStack = (ItemStack) ItemStack.loadItemStackFromNBT(itemStackIn.getTagCompound().getCompoundTag("apple"));
-		} catch (Exception e) {
-			onCreated(itemStackIn, worldIn, playerIn);
-			appleStack = (ItemStack) ItemStack.loadItemStackFromNBT(itemStackIn.getTagCompound().getCompoundTag("apple"));
-		}
-		
-		
-		System.out.println(appleStack);
-		
-		boolean canUse = false;
-		if (!playerIn.capabilities.isCreativeMode) {
-			canUse = useEssence(2, itemStackIn);
-		} else {
-			canUse = true;
+			System.out.println("Oops, the projectile didn't fire. Error is: "
+					+ e);
 		}
 
-		//canUse = !playerIn.isSneaking();
-		
-		if (canUse) {
-			worldIn.playSoundAtEntity(playerIn, "random.bow", 0.5F,
-					0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
-
-			if (!worldIn.isRemote) {
-				worldIn.spawnEntityInWorld(new EntitySnowball(worldIn, playerIn));
-			}
-
-			playerIn.triggerAchievement(StatList.objectUseStats[Item
-					.getIdFromItem(this)]);
-		}*/
+		/*
+		 * ItemStack appleStack; try { appleStack = (ItemStack)
+		 * ItemStack.loadItemStackFromNBT
+		 * (itemStackIn.getTagCompound().getCompoundTag("apple")); } catch
+		 * (Exception e) { onCreated(itemStackIn, worldIn, playerIn); appleStack
+		 * = (ItemStack)
+		 * ItemStack.loadItemStackFromNBT(itemStackIn.getTagCompound
+		 * ().getCompoundTag("apple")); }
+		 * 
+		 * 
+		 * System.out.println(appleStack);
+		 * 
+		 * boolean canUse = false; if (!playerIn.capabilities.isCreativeMode) {
+		 * canUse = useEssence(2, itemStackIn); } else { canUse = true; }
+		 * 
+		 * //canUse = !playerIn.isSneaking();
+		 * 
+		 * if (canUse) { worldIn.playSoundAtEntity(playerIn, "random.bow", 0.5F,
+		 * 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+		 * 
+		 * if (!worldIn.isRemote) { worldIn.spawnEntityInWorld(new
+		 * EntitySnowball(worldIn, playerIn)); }
+		 * 
+		 * playerIn.triggerAchievement(StatList.objectUseStats[Item
+		 * .getIdFromItem(this)]); }
+		 */
 
 		return itemStackIn;
 	}
 
-	public boolean onItemUse(ItemStack stack, EntityPlayer playerIn,
-			World worldIn, BlockPos pos, EnumFacing side, float hitX,
-			float hitY, float hitZ) {
+	public boolean onItemUse(
+			ItemStack stack,
+			EntityPlayer playerIn,
+			World worldIn,
+			BlockPos pos,
+			EnumFacing side,
+			float hitX,
+			float hitY,
+			float hitZ) {
 		try {
 
 			if (!useTap(worldIn, pos, stack, playerIn)) {
@@ -166,7 +181,10 @@ public class TestWand extends Item implements UsesEssence {
 	}
 
 	@Override
-	public boolean useTap(World worldIn, BlockPos pos, ItemStack stack,
+	public boolean useTap(
+			World worldIn,
+			BlockPos pos,
+			ItemStack stack,
 			EntityPlayer playerIn) {
 		GivesEssence giver = null;
 		// get the specific block
@@ -191,9 +209,12 @@ public class TestWand extends Item implements UsesEssence {
 
 			Essence newEssence = giver.getEssence(worldIn, pos);
 
-			System.out.println("This Damage: " + stack.getItemDamage()
-					+ " New Essence amount :" + newEssence.getAmount()
-					+ " while this Damage Limit = " + this.getMaxDamage());
+			System.out.println("This Damage: "
+					+ stack.getItemDamage()
+					+ " New Essence amount :"
+					+ newEssence.getAmount()
+					+ " while this Damage Limit = "
+					+ this.getMaxDamage());
 
 			if (newEssence.getAmount() > this.getDamage(stack)) {
 				System.out.println("Didn't pass the amount test.");
@@ -201,8 +222,9 @@ public class TestWand extends Item implements UsesEssence {
 								// function stops.
 			}
 
-			//stack.setItemDamage(stack.getItemDamage() - newEssence.getAmount());
-			//DragonTap.dragonToSpent(worldIn, pos);
+			// stack.setItemDamage(stack.getItemDamage() -
+			// newEssence.getAmount());
+			// DragonTap.dragonToSpent(worldIn, pos);
 			// stack.damageItem(newEssence.getAmount(), playerIn);
 			// this.setDamage(stack, this.getDamage(stack) -
 			// newEssence.getAmount());
@@ -234,40 +256,22 @@ public class TestWand extends Item implements UsesEssence {
 		if (stack.getItemDamage() + req > stack.getMaxDamage()) {
 			return false;
 		}
-		
+
 		stack.setItemDamage(stack.getItemDamage() + req);
-		
+
 		return true;
 	}
 
-
-
 	@Override
 	public int getCost(ItemStack stack) {
-		
+
 		return 1;
 	}
-
-
 
 	@Override
 	public boolean takeInEssence(Essence essenceIn, ItemStack stackIn) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-
-
-	
-
-
-
-	
-
-
-
-	
-
-	
 
 }

@@ -47,105 +47,109 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  *  
  */
 
-public class DragonTap extends BasicBlock implements IMetaBlockName,
+public class DragonTap extends BasicBlock
+		implements
+		IMetaBlockName,
 		GivesEssence {
 
-	private static final PropertyEnum TYPE = PropertyEnum.create("type",
-			io.github.zaphodious.essentialsorcery.block.states.DragonTapState.class);
+	private static final PropertyEnum TYPE =
+			PropertyEnum
+					.create(
+							"type",
+							io.github.zaphodious.essentialsorcery.block.states.DragonTapState.class);
 	private int xpLevelCostToSet;
 
 	public DragonTap(String unlocalizedName) {
 		super(unlocalizedName);
-		
+
 		this.xpLevelCostToSet = 10;
-		this.setDefaultState(this.blockState.getBaseState().withProperty(TYPE,
+		this.setDefaultState(this.blockState.getBaseState().withProperty(
+				TYPE,
 				DragonTapState.PLACED));
 		this.setTickRandomly(true);
 	}
 
 	public DragonTap setState(DragonTapState newState) {
-		this.setDefaultState(this.blockState.getBaseState().withProperty(TYPE,
+		this.setDefaultState(this.blockState.getBaseState().withProperty(
+				TYPE,
 				newState));
 		return this;
 	}
-	
+
 	@Override
 	public boolean isOpaqueCube() {
 		return false;
 	}
 
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos,
-			IBlockState state, EntityPlayer playerIn, EnumFacing side,
-			float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(
+			World worldIn,
+			BlockPos pos,
+			IBlockState state,
+			EntityPlayer playerIn,
+			EnumFacing side,
+			float hitX,
+			float hitY,
+			float hitZ) {
 		ItemStack stack = playerIn.getCurrentEquippedItem();
-		
+
 		/*
 		 * 
-		 * We really, *really* don't want to try and manipulate
-		 * ItemStacks that aren't there. It crashes the game.
-		 * So, we check to see if this is such an ItemStack
-		 * 
+		 * We really, *really* don't want to try and manipulate ItemStacks that
+		 * aren't there. It crashes the game. So, we check to see if this is
+		 * such an ItemStack
 		 */
-		
+
 		if (stack == null) {
 			return false;
 		}
-		
-		
-		
+
 		Item item = stack.getItem();
 		UsesEssence caster = null;
-		GivesEssence giver = (GivesEssence) worldIn.getBlockState(pos)
-				.getBlock();
+		GivesEssence giver =
+				(GivesEssence) worldIn.getBlockState(pos).getBlock();
 
 		/*
 		 * 
 		 * this block checks to see if the player is holding a tap setter
-		 * (called a Dragon Wand in the lang file), and if they are
-		 * *and* the player has ten levels, takes those ten levels
-		 * and "sets" the tap. If the player is in creative mode, it lets
-		 * them do it anyway. Unless the player is in creative mode,
-		 * a "spent" tap cannot be "set".
-		 * 
+		 * (called a Dragon Wand in the lang file), and if they are *and* the
+		 * player has ten levels, takes those ten levels and "sets" the tap. If
+		 * the player is in creative mode, it lets them do it anyway. Unless the
+		 * player is in creative mode, a "spent" tap cannot be "set".
 		 */
-		
+
 		if (item == ModItems.tapSetter
 				&& (state.equals(this.getStateFromMeta(0)) || playerIn.capabilities.isCreativeMode)) {
-			
-			if (this.xpLevelCostToSet > playerIn.experienceLevel && !playerIn.capabilities.isCreativeMode) {
+
+			if (this.xpLevelCostToSet > playerIn.experienceLevel
+					&& !playerIn.capabilities.isCreativeMode) {
 				return false;
 			}
-			if (!playerIn.capabilities.isCreativeMode) playerIn.addExperienceLevel(-10);
+			if (!playerIn.capabilities.isCreativeMode)
+				playerIn.addExperienceLevel(-10);
 			this.dragonToSet(worldIn, pos);
 			return true;
 		}
-		
+
 		/*
 		 * 
-		 * If the player isn't holding a tap setter (checked
-		 * for in the last block), this checks to see if they are holding 
-		 * an item that implements the "UsesEssence" interface. If not, 
-		 * we cannot continue.
-		 * 
+		 * If the player isn't holding a tap setter (checked for in the last
+		 * block), this checks to see if they are holding an item that
+		 * implements the "UsesEssence" interface. If not, we cannot continue.
 		 */
 
-		/*try { // If this block doesn't implement the GivesEssence interface, the
-				// function stops.
-			caster = (UsesEssence) item;
-		} catch (Exception e) {
-			System.out
-					.println(item.toString() + "Didn't pass the caster test.");
-			return false;
-		}
-
-		if (caster.getElement() != this.getElement(worldIn, pos)
-				&& caster.getElement() != Element.NEUTRAL) {
-			System.out.println(item.toString()
-					+ "Didn't pass the element test.");
-			return false; // If this block doesn't give the right type of
-							// essence, the function stops.
-		}*/
+		/*
+		 * try { // If this block doesn't implement the GivesEssence interface,
+		 * the // function stops. caster = (UsesEssence) item; } catch
+		 * (Exception e) { System.out .println(item.toString() +
+		 * "Didn't pass the caster test."); return false; }
+		 * 
+		 * if (caster.getElement() != this.getElement(worldIn, pos) &&
+		 * caster.getElement() != Element.NEUTRAL) {
+		 * System.out.println(item.toString() +
+		 * "Didn't pass the element test."); return false; // If this block
+		 * doesn't give the right type of // essence, the function stops. }
+		 */
 
 		if (giver.canTap(worldIn, pos)) {
 
@@ -158,23 +162,24 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 					return true;
 				}
 			}
-			
-			/*System.out.println("This Damage: " + stack.getItemDamage()
-					+ " New Essence amount :" + newEssence.getAmount()
-					+ " while this Damage Limit = " + caster.getMaxDamage());
 
-			if (newEssence.getAmount() > caster.getDamage(stack)) {
-				System.out.println("Didn't pass the amount test.");
-				return false; // If this will add more essence then the max, the
-								// function stops.
-			}
-
-			stack.setItemDamage(stack.getItemDamage() - newEssence.getAmount());
-			
-			// stack.damageItem(newEssence.getAmount(), playerIn);
-			// this.setDamage(stack, this.getDamage(stack) -
-			// newEssence.getAmount());
-			return true;*/
+			/*
+			 * System.out.println("This Damage: " + stack.getItemDamage() +
+			 * " New Essence amount :" + newEssence.getAmount() +
+			 * " while this Damage Limit = " + caster.getMaxDamage());
+			 * 
+			 * if (newEssence.getAmount() > caster.getDamage(stack)) {
+			 * System.out.println("Didn't pass the amount test."); return false;
+			 * // If this will add more essence then the max, the // function
+			 * stops. }
+			 * 
+			 * stack.setItemDamage(stack.getItemDamage() -
+			 * newEssence.getAmount());
+			 * 
+			 * // stack.damageItem(newEssence.getAmount(), playerIn); //
+			 * this.setDamage(stack, this.getDamage(stack) - //
+			 * newEssence.getAmount()); return true;
+			 */
 		}
 
 		return false;// super.onBlockActivated(worldIn, pos, state, playerIn,
@@ -194,9 +199,11 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 		if (meta == 1) {
 			toReturn = getDefaultState().withProperty(TYPE, DragonTapState.SET);
 		} else if (meta == 2) {
-			toReturn = getDefaultState().withProperty(TYPE, DragonTapState.SPENT);
+			toReturn =
+					getDefaultState().withProperty(TYPE, DragonTapState.SPENT);
 		} else {
-			toReturn = getDefaultState().withProperty(TYPE, DragonTapState.PLACED);
+			toReturn =
+					getDefaultState().withProperty(TYPE, DragonTapState.PLACED);
 		}
 		return toReturn;
 	}
@@ -215,9 +222,13 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 	}
 
 	@Override
-	public ItemStack getPickBlock(MovingObjectPosition target, World world,
+	public ItemStack getPickBlock(
+			MovingObjectPosition target,
+			World world,
 			BlockPos pos) {
-		return new ItemStack(Item.getItemFromBlock(this), 1,
+		return new ItemStack(
+				Item.getItemFromBlock(this),
+				1,
 				this.getMetaFromState(world.getBlockState(pos)));
 	}
 
@@ -231,8 +242,10 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 			toReturn = "spent";
 		}
 
-		/*System.out.println("The special name for" + stack.toString() + " is "
-				+ toReturn);*/
+		/*
+		 * System.out.println("The special name for" + stack.toString() + " is "
+		 * + toReturn);
+		 */
 
 		return toReturn;
 	}
@@ -242,7 +255,10 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 		return EnumWorldBlockLayer.CUTOUT;
 	}
 
-	public void updateTick(World worldIn, BlockPos pos, IBlockState state,
+	public void updateTick(
+			World worldIn,
+			BlockPos pos,
+			IBlockState state,
 			Random rand) {
 		System.out.println(worldIn.getCelestialAngle(1.0F));
 		if (state.equals(this.getStateFromMeta(2))) { // && worldIn.getC)
@@ -257,13 +273,17 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 	}
 
 	public static void dragonToSet(World worldIn, BlockPos pos) {
-		worldIn.setBlockState(pos, ModBlocks.dragon_tap.getBlockState()
-				.getBaseState().withProperty(TYPE, DragonTapState.SET));
+		worldIn.setBlockState(pos, ModBlocks.dragon_tap
+				.getBlockState()
+				.getBaseState()
+				.withProperty(TYPE, DragonTapState.SET));
 	}
 
 	public static void dragonToSpent(World worldIn, BlockPos pos) {
-		worldIn.setBlockState(pos, ModBlocks.dragon_tap.getBlockState()
-				.getBaseState().withProperty(TYPE, DragonTapState.SPENT));
+		worldIn.setBlockState(pos, ModBlocks.dragon_tap
+				.getBlockState()
+				.getBaseState()
+				.withProperty(TYPE, DragonTapState.SPENT));
 	}
 
 	public void refreshTap(World worldIn, BlockPos pos) {
@@ -313,48 +333,56 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 	 * @see net.minecraft.block.Block#getItemDropped(net.minecraft.block.state.
 	 * IBlockState, java.util.Random, int)
 	 */
-	
-	
+
+	public boolean renderAsNormalBlock() {
+		return false;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.block.Block#getDrops(net.minecraft.world.IBlockAccess,
+	 * net.minecraft.util.BlockPos, net.minecraft.block.state.IBlockState, int)
+	 */
 	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		
-		return ModItems.dragonTapPlacer;
-	}
-	
-	
-	 
-	
+	public List<ItemStack> getDrops(
+			IBlockAccess world,
+			BlockPos pos,
+			IBlockState state,
+			int fortune) {
+		List drops = new ArrayList<ItemStack>();
+		drops.add(new ItemStack(ModBlocks.dragon_tap, 1, 0));
 
-	public boolean renderAsNormalBlock()
-	{
-	    return false;
+		return drops;
 	}
-	
-	public boolean isFullCube()
-    {
-        return false;
-    }
-	
-	public int getLightOpacity(World world, int x, int y, int z) 
-	{
-	    return 0;
-	}
-	
-	
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.block.Block#getLightValue(net.minecraft.world.IBlockAccess, net.minecraft.util.BlockPos)
+	public boolean isFullCube() {
+		return false;
+	}
+
+	public int getLightOpacity(World world, int x, int y, int z) {
+		return 0;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.block.Block#getLightValue(net.minecraft.world.IBlockAccess,
+	 * net.minecraft.util.BlockPos)
 	 */
 	@Override
 	public int getLightValue(IBlockAccess world, BlockPos pos) {
 		if (world.getBlockState(pos).equals(this.getStateFromMeta(1))) {
 			return 5;
 		}
-		
+
 		return 0;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.block.Block#getUnlocalizedName()
 	 */
 	@Override
@@ -362,7 +390,5 @@ public class DragonTap extends BasicBlock implements IMetaBlockName,
 		// TODO Auto-generated method stub
 		return super.getUnlocalizedName();
 	}
-	
-	
 
 }

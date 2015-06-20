@@ -14,12 +14,9 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
 public class TargetingProjectileEarth extends TargetingProjectile {
-	
 
 	private static final String __OBFID = "CL_00001722";
-	
-	 
-	
+
 	public TargetingProjectileEarth(World worldIn) {
 		super(worldIn);
 
@@ -36,9 +33,4 @@ public class TargetingProjectileEarth extends TargetingProjectile {
 
 	}
 
-	
-
-	
-
-	
-	}
+}

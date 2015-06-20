@@ -26,16 +26,26 @@ public class HobgoblinPlacer extends Item {
 	 * float)
 	 */
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer playerIn,
-			World worldIn, BlockPos pos, EnumFacing side, float hitX,
-			float hitY, float hitZ) {
+	public boolean onItemUse(
+			ItemStack stack,
+			EntityPlayer playerIn,
+			World worldIn,
+			BlockPos pos,
+			EnumFacing side,
+			float hitX,
+			float hitY,
+			float hitZ) {
 		if (worldIn.isRemote) {
 			return true;
 		} else {
 			EntityHobgoblin entityHobgoblin = new EntityHobgoblin(worldIn);
 
-			entityHobgoblin.setLocationAndAngles(pos.getX()+.5, pos.getY()+1,
-					pos.getZ()+.5, playerIn.rotationYaw, 0.0F);
+			entityHobgoblin.setLocationAndAngles(
+					pos.getX() + .5,
+					pos.getY() + 1,
+					pos.getZ() + .5,
+					playerIn.rotationYaw,
+					0.0F);
 
 			worldIn.spawnEntityInWorld(entityHobgoblin);
 			if (!playerIn.capabilities.isCreativeMode) {

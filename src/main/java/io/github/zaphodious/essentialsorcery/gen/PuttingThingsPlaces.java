@@ -9,7 +9,9 @@ import net.minecraft.world.World;
 
 public class PuttingThingsPlaces {
 
-	public static boolean starmetalMeteorFall(World world, EntityPlayer player,
+	public static boolean starmetalMeteorFall(
+			World world,
+			EntityPlayer player,
 			BlockPos pos) {
 		BlockPos skyDrop = new BlockPos(pos.getX(), 250, pos.getZ());
 		boolean isAir = true;
@@ -54,13 +56,17 @@ public class PuttingThingsPlaces {
 		world.setBlockState(skyDrop.west(), Blocks.air.getDefaultState());
 		world.setBlockState(skyDrop.north(), Blocks.air.getDefaultState());
 		world.setBlockState(skyDrop.south(), Blocks.air.getDefaultState());
-		world.setBlockState(skyDrop.north().east(),
+		world.setBlockState(
+				skyDrop.north().east(),
 				Blocks.air.getDefaultState());
-		world.setBlockState(skyDrop.north().west(),
+		world.setBlockState(
+				skyDrop.north().west(),
 				Blocks.air.getDefaultState());
-		world.setBlockState(skyDrop.south().east(),
+		world.setBlockState(
+				skyDrop.south().east(),
 				Blocks.air.getDefaultState());
-		world.setBlockState(skyDrop.south().west(),
+		world.setBlockState(
+				skyDrop.south().west(),
 				Blocks.air.getDefaultState());
 
 		return true;

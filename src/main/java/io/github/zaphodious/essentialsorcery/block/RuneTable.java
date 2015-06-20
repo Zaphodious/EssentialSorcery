@@ -41,254 +41,258 @@ public class RuneTable extends BlockSimplePowerConsumer {
 		this.setUnlocalizedName(unlocalizedName);
 		this.setCreativeTab(Reference.tabEssential);
 	}
-	
-	
-	
+
 	@Override
 	public boolean isOpaqueCube() {
 		return false;
 	}
 
-
-
-	/* (non-Javadoc)
-	 * @see net.minecraft.block.Block#canPlaceTorchOnTop(net.minecraft.world.IBlockAccess, net.minecraft.util.BlockPos)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.block.Block#canPlaceTorchOnTop(net.minecraft.world.IBlockAccess
+	 * , net.minecraft.util.BlockPos)
 	 */
 	@Override
 	public boolean canPlaceTorchOnTop(IBlockAccess world, BlockPos pos) {
 		// TODO Auto-generated method stub
 		return true;
-		
-		//return super.canPlaceTorchOnTop(world, pos);
+
+		// return super.canPlaceTorchOnTop(world, pos);
 	}
 
-
-
-
-	
-
-
-
-	/* (non-Javadoc)
-	 * @see net.minecraft.block.Block#onNeighborBlockChange(net.minecraft.world.World, net.minecraft.util.BlockPos, net.minecraft.block.state.IBlockState, net.minecraft.block.Block)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.block.Block#onNeighborBlockChange(net.minecraft.world.World
+	 * , net.minecraft.util.BlockPos, net.minecraft.block.state.IBlockState,
+	 * net.minecraft.block.Block)
 	 */
-	/*@Override
-	public void onNeighborBlockChange(World worldIn, BlockPos pos,
-			IBlockState state, Block neighborBlock) {
-		// TODO Auto-generated method stub
-		
-		RuneTableTileEntity rtte = (RuneTableTileEntity) worldIn.getTileEntity(pos);
-		
-		if (worldIn.isBlockPowered(pos)) {
-			rtte.makeTheSpell();
-		}
-		
-		super.onNeighborBlockChange(worldIn, pos, state, neighborBlock);
-	}*/
-
-
+	/*
+	 * @Override public void onNeighborBlockChange(World worldIn, BlockPos pos,
+	 * IBlockState state, Block neighborBlock) { // TODO Auto-generated method
+	 * stub
+	 * 
+	 * RuneTableTileEntity rtte = (RuneTableTileEntity)
+	 * worldIn.getTileEntity(pos);
+	 * 
+	 * if (worldIn.isBlockPowered(pos)) { rtte.makeTheSpell(); }
+	 * 
+	 * super.onNeighborBlockChange(worldIn, pos, state, neighborBlock); }
+	 */
 
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos,
-			IBlockState state, EntityPlayer playerIn, EnumFacing side,
-			float hitX, float hitY, float hitZ) {
-		
+	public boolean onBlockActivated(
+			World worldIn,
+			BlockPos pos,
+			IBlockState state,
+			EntityPlayer playerIn,
+			EnumFacing side,
+			float hitX,
+			float hitY,
+			float hitZ) {
+
 		boolean toReturn = false;
 		if (playerIn.getCurrentEquippedItem() == null) {
-			toReturn = super.onBlockActivated(worldIn, pos, state, playerIn, side, hitX, hitY, hitZ);
+			toReturn =
+					super.onBlockActivated(
+							worldIn,
+							pos,
+							state,
+							playerIn,
+							side,
+							hitX,
+							hitY,
+							hitZ);
 		} else if (playerIn.getCurrentEquippedItem().getItem() == ModItems.tapSetter) {
-			RuneTableTileEntity rtte = (RuneTableTileEntity) worldIn.getTileEntity(pos);
-			System.out.println("spell result is " + rtte.makeTheSpell(playerIn));
+			RuneTableTileEntity rtte =
+					(RuneTableTileEntity) worldIn.getTileEntity(pos);
+			System.out
+					.println("spell result is " + rtte.makeTheSpell(playerIn));
 			return true;
 		} else {
-			toReturn = super.onBlockActivated(worldIn, pos, state, playerIn, side, hitX, hitY, hitZ);
+			toReturn =
+					super.onBlockActivated(
+							worldIn,
+							pos,
+							state,
+							playerIn,
+							side,
+							hitX,
+							hitY,
+							hitZ);
 		}
-		
+
 		return toReturn;
-		
-    }
-	/*
-	@Override
-	public boolean isOpaqueCube() {
-		return false;
+
 	}
-	
-	@Override
-    public int getRenderType()
-    {
-        return 3;
-    }*/
-	
+
+	/*
+	 * @Override public boolean isOpaqueCube() { return false; }
+	 * 
+	 * @Override public int getRenderType() { return 3; }
+	 */
+/*
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		// TODO Auto-generated method stub
 		return ModItems.runeTablePlacer;
 	}
 
-	/*public TileEntity createNewTileEntity(World worldIn, int meta) {
-		
-		return new TileEntityRuneTable();
-	}
 	
+	 * public TileEntity createNewTileEntity(World worldIn, int meta) {
+	 * 
+	 * return new TileEntityRuneTable(); }
+	 * 
+	 * @Override public boolean hasTileEntity() { return true; }
+	 */
+
+	/*
+	 * public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer
+	 * player, int meta, float hitX, float hitY, float hitZ) {
+	 * if(!world.isRemote) { if (world.getTileEntity(pos) != null)
+	 * player.openGui(EssentialSorcery.instance, GUIs.RUNE_DESK.ordinal(),
+	 * world, pos.getX(), pos.getY(), pos.getZ()); return true; } return true; }
+	 */
+
+	/*
+	 * @Override public void breakBlock( World worldIn, BlockPos pos,
+	 * IBlockState state) { if (!hasTileEntity()) { TileEntity tileentity =
+	 * worldIn.getTileEntity(pos);
+	 * 
+	 * if (tileentity instanceof TileEntityRuneTable) {
+	 * InventoryHelper.dropInventoryItems(worldIn, pos,
+	 * (TileEntityRuneTable)tileentity);
+	 * worldIn.updateComparatorOutputLevel(pos, this); } }
+	 * 
+	 * super.breakBlock(worldIn, pos, state); }
+	 */
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * cyano.poweradvantage.api.GUIBlock#onBlockActivated(net.minecraft.world
+	 * .World, net.minecraft.util.BlockPos,
+	 * net.minecraft.block.state.IBlockState,
+	 * net.minecraft.entity.player.EntityPlayer, net.minecraft.util.EnumFacing,
+	 * float, float, float)
+	 */
+	/*
+	 * @Override public boolean onBlockActivated(World w, BlockPos coord,
+	 * IBlockState bs, EntityPlayer player, EnumFacing facing, float f1, float
+	 * f2, float f3) {
+	 * 
+	 * boolean didItWork = super.onBlockActivated(w, coord, bs, player, facing,
+	 * f1, f2, f3); System.out.println("Rune Table Activated, result of " +
+	 * didItWork + " for world.isRemote = " + w.isRemote);
+	 * 
+	 * return didItWork;
+	 * 
+	 * }
+	 * 
+	 * @Override public boolean onBlockActivated(final World w, final BlockPos
+	 * coord, final IBlockState bs, final EntityPlayer player, final EnumFacing
+	 * facing, final float f1, final float f2, final float f3) { if
+	 * (!w.isRemote) { return false; } final TileEntity tileEntity =
+	 * w.getTileEntity(coord); if (tileEntity == null || player.isSneaking()) {
+	 * return false; } // handle buckets and fluid containers ItemStack item =
+	 * player.getCurrentEquippedItem(); if(item != null &&
+	 * FluidContainerRegistry.isContainer(item) && tileEntity instanceof
+	 * IFluidHandler){ boolean bucketed =
+	 * handleBucketInteraction(item,player,facing,(IFluidHandler)tileEntity,w);
+	 * if(bucketed){ return true; } }
+	 * 
+	 * // open GUI if(this.getGuiOwner() == null) return false;
+	 * System.out.println("GuiID is " + this.getGuiID());
+	 * player.openGui(this.getGuiOwner(), this.getGuiID(), w, coord.getX(),
+	 * coord.getY(), coord.getZ()); return true; }
+	 */
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * cyano.poweradvantage.api.simple.BlockSimplePowerConsumer#onBlockPlaced
+	 * (net.minecraft.world.World, net.minecraft.util.BlockPos,
+	 * net.minecraft.util.EnumFacing, float, float, float, int,
+	 * net.minecraft.entity.EntityLivingBase)
+	 */
 	@Override
-	public boolean hasTileEntity() {
-		return true;
-	}*/
-	
+	public IBlockState onBlockPlaced(
+			World world,
+			BlockPos coord,
+			EnumFacing facing,
+			float f1,
+			float f2,
+			float f3,
+			int meta,
+			EntityLivingBase player) {
+		// TODO Auto-generated method stub
+		return super.onBlockPlaced(
+				world,
+				coord,
+				facing,
+				f1,
+				f2,
+				f3,
+				meta,
+				player);
 
-	
-	    /*public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int meta, float hitX, float hitY, float hitZ) {
-	        if(!world.isRemote) {
-	            if (world.getTileEntity(pos) != null)
-	            	player.openGui(EssentialSorcery.instance, GUIs.RUNE_DESK.ordinal(), world, pos.getX(), pos.getY(), pos.getZ());
-	            return true;
-	        }
-	        return true;
-	    }*/
+	}
 
-		
-	    /*@Override
-	    public void breakBlock(
-	          World worldIn, 
-	          BlockPos pos, 
-	          IBlockState state)
-	    {
-	        if (!hasTileEntity())
-	        {
-	            TileEntity tileentity = worldIn.getTileEntity(pos);
+	/*
+	 * public static class InterfaceCraftingTable implements IInteractionObject
+	 * { private final World world; private final BlockPos position; private
+	 * static final String __OBFID = "CL_00002127";
+	 * 
+	 * public InterfaceCraftingTable(World worldIn, BlockPos pos) {
+	 * System.out.println("InterfaceCraftinTable called"); this.world = worldIn;
+	 * this.position = pos; }
+	 *//**
+	 * Gets the name of this command sender (usually username, but possibly
+	 * "Rcon")
+	 */
+	/*
+	 * public String getCommandSenderName() { return null; }
+	 *//**
+	 * Returns true if this thing is named
+	 */
+	/*
+	 * public boolean hasCustomName() { return false; }
+	 *//**
+	 * Get the formatted ChatComponent that will be used for the sender's
+	 * username in chat
+	 */
+	/*
+	 * public IChatComponent getDisplayName() { return new
+	 * ChatComponentTranslation(Blocks.crafting_table.getUnlocalizedName() +
+	 * ".name", new Object[0]); }
+	 * 
+	 * public Container createContainer(InventoryPlayer playerInventory,
+	 * EntityPlayer playerIn) { return new ContainerRuneTable(playerInventory,
+	 * this.world, this.position); }
+	 * 
+	 * public String getGuiID() { return "minecraft:crafting_table"; } }
+	 */
 
-	            if (tileentity instanceof TileEntityRuneTable)
-	            {
-	                InventoryHelper.dropInventoryItems(worldIn, pos, 
-	                      (TileEntityRuneTable)tileentity);
-	                worldIn.updateComparatorOutputLevel(pos, this);
-	            }
-	        }
+	@Override
+	public boolean hasComparatorInputOverride() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
-	        super.breakBlock(worldIn, pos, state);
-	    }*/
+	@Override
+	public int getComparatorInputOverride(World world, BlockPos coord) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
-	    /* (non-Javadoc)
-		 * @see cyano.poweradvantage.api.GUIBlock#onBlockActivated(net.minecraft.world.World, net.minecraft.util.BlockPos, net.minecraft.block.state.IBlockState, net.minecraft.entity.player.EntityPlayer, net.minecraft.util.EnumFacing, float, float, float)
-		 */
-		/*@Override
-		public boolean onBlockActivated(World w, BlockPos coord,
-				IBlockState bs, EntityPlayer player, EnumFacing facing,
-				float f1, float f2, float f3) {
-			
-				boolean didItWork = super.onBlockActivated(w, coord, bs, player, facing, f1, f2, f3);
-			System.out.println("Rune Table Activated, result of " + didItWork + " for world.isRemote = " + w.isRemote);
-			
-			return didItWork;
-			
-		}
-		
-		@Override
-	    public boolean onBlockActivated(final World w, final BlockPos coord, final IBlockState bs, 
-	    		final EntityPlayer player, final EnumFacing facing, final float f1, final float f2, 
-	    		final float f3) {
-	         if (!w.isRemote) {
-	            return false;
-	        }
-	        final TileEntity tileEntity = w.getTileEntity(coord);
-	        if (tileEntity == null || player.isSneaking()) {
-	        	return false;
-	        }
-	        // handle buckets and fluid containers
-	        ItemStack item = player.getCurrentEquippedItem();
-	        if(item != null && FluidContainerRegistry.isContainer(item) && tileEntity instanceof IFluidHandler){
-	        	boolean bucketed = handleBucketInteraction(item,player,facing,(IFluidHandler)tileEntity,w);
-	        	if(bucketed){
-	        		return true;
-	        	}
-	        }
-	        
-	        // open GUI
-	        if(this.getGuiOwner() == null) return false;
-	        System.out.println("GuiID is " + this.getGuiID());
-	        player.openGui(this.getGuiOwner(), this.getGuiID(), w, coord.getX(), coord.getY(), coord.getZ());
-	        return true;
-	    }*/
-
-		
-		
-			/* (non-Javadoc)
-		 * @see cyano.poweradvantage.api.simple.BlockSimplePowerConsumer#onBlockPlaced(net.minecraft.world.World, net.minecraft.util.BlockPos, net.minecraft.util.EnumFacing, float, float, float, int, net.minecraft.entity.EntityLivingBase)
-		 */
-		@Override
-		public IBlockState onBlockPlaced(World world, BlockPos coord,
-				EnumFacing facing, float f1, float f2, float f3, int meta,
-				EntityLivingBase player) {
-			// TODO Auto-generated method stub
-			return super.onBlockPlaced(world, coord, facing, f1, f2, f3, meta, player);
-			
-		}
-
-			/*public static class InterfaceCraftingTable implements IInteractionObject
-        {
-            private final World world;
-            private final BlockPos position;
-            private static final String __OBFID = "CL_00002127";
-
-            public InterfaceCraftingTable(World worldIn, BlockPos pos)
-            {
-            	System.out.println("InterfaceCraftinTable called");
-                this.world = worldIn;
-                this.position = pos;
-            }
-
-            *//**
-             * Gets the name of this command sender (usually username, but possibly "Rcon")
-             *//*
-            public String getCommandSenderName()
-            {
-                return null;
-            }
-
-            *//**
-             * Returns true if this thing is named
-             *//*
-            public boolean hasCustomName()
-            {
-                return false;
-            }
-
-            *//**
-             * Get the formatted ChatComponent that will be used for the sender's username in chat
-             *//*
-            public IChatComponent getDisplayName()
-            {
-                return new ChatComponentTranslation(Blocks.crafting_table.getUnlocalizedName() + ".name", new Object[0]);
-            }
-
-            public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn)
-            {
-                return new ContainerRuneTable(playerInventory, this.world, this.position);
-            }
-
-            public String getGuiID()
-            {
-                return "minecraft:crafting_table";
-            }
-        }*/
-
-		
-
-		@Override
-		public boolean hasComparatorInputOverride() {
-			// TODO Auto-generated method stub
-			return false;
-		}
-
-		@Override
-		public int getComparatorInputOverride(World world, BlockPos coord) {
-			// TODO Auto-generated method stub
-			return 0;
-		}
-
-		@Override
-		public PoweredEntity createNewTileEntity(World world, int metaDataValue) {
-			// TODO Auto-generated method stub
-			return new RuneTableTileEntity();
-		}
+	@Override
+	public PoweredEntity createNewTileEntity(World world, int metaDataValue) {
+		// TODO Auto-generated method stub
+		return new RuneTableTileEntity();
+	}
 }

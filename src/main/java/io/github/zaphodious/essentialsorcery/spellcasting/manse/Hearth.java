@@ -14,18 +14,23 @@ import net.minecraft.world.World;
 import cyano.poweradvantage.api.PoweredEntity;
 import cyano.poweradvantage.api.simple.BlockSimpleFluidConsumer;
 
-public abstract class Hearth extends BlockSimpleFluidConsumer implements GivesEssence {
+public abstract class Hearth extends BlockSimpleFluidConsumer
+		implements
+		GivesEssence {
 
-	
 	Element element;
-	
+
 	public Hearth(Material blockMaterial, float hardness) {
 		super(blockMaterial, hardness);
-		
+
 	}
-	
-	/* (non-Javadoc)
-	 * @see io.github.zaphodious.essentialsorcery.spellcasting.GivesEssence#getEssence(net.minecraft.world.World, net.minecraft.util.BlockPos)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * io.github.zaphodious.essentialsorcery.spellcasting.GivesEssence#getEssence
+	 * (net.minecraft.world.World, net.minecraft.util.BlockPos)
 	 */
 	@Override
 	public Essence getEssence(World worldIn, BlockPos pos) {
@@ -33,8 +38,12 @@ public abstract class Hearth extends BlockSimpleFluidConsumer implements GivesEs
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see io.github.zaphodious.essentialsorcery.spellcasting.GivesEssence#getElement(net.minecraft.world.World, net.minecraft.util.BlockPos)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * io.github.zaphodious.essentialsorcery.spellcasting.GivesEssence#getElement
+	 * (net.minecraft.world.World, net.minecraft.util.BlockPos)
 	 */
 	@Override
 	public Element getElement(World worldIn, BlockPos pos) {
@@ -42,8 +51,12 @@ public abstract class Hearth extends BlockSimpleFluidConsumer implements GivesEs
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see io.github.zaphodious.essentialsorcery.spellcasting.GivesEssence#canTap(net.minecraft.world.World, net.minecraft.util.BlockPos)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * io.github.zaphodious.essentialsorcery.spellcasting.GivesEssence#canTap
+	 * (net.minecraft.world.World, net.minecraft.util.BlockPos)
 	 */
 	@Override
 	public Boolean canTap(World worldIn, BlockPos pos) {
@@ -51,8 +64,12 @@ public abstract class Hearth extends BlockSimpleFluidConsumer implements GivesEs
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see cyano.poweradvantage.api.simple.BlockSimplePowerConsumer#createNewTileEntity(net.minecraft.world.World, int)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * cyano.poweradvantage.api.simple.BlockSimplePowerConsumer#createNewTileEntity
+	 * (net.minecraft.world.World, int)
 	 */
 	@Override
 	public PoweredEntity createNewTileEntity(World world, int metaDataValue) {
@@ -60,8 +77,12 @@ public abstract class Hearth extends BlockSimpleFluidConsumer implements GivesEs
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see cyano.poweradvantage.api.simple.BlockSimplePowerConsumer#getItemDropped(net.minecraft.block.state.IBlockState, java.util.Random, int)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * cyano.poweradvantage.api.simple.BlockSimplePowerConsumer#getItemDropped
+	 * (net.minecraft.block.state.IBlockState, java.util.Random, int)
 	 */
 	@Override
 	public Item getItemDropped(IBlockState state, Random prng, int i3) {
@@ -69,8 +90,11 @@ public abstract class Hearth extends BlockSimpleFluidConsumer implements GivesEs
 		return super.getItemDropped(state, prng, i3);
 	}
 
-	/* (non-Javadoc)
-	 * @see cyano.poweradvantage.api.simple.BlockSimplePowerConsumer#hasComparatorInputOverride()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see cyano.poweradvantage.api.simple.BlockSimplePowerConsumer#
+	 * hasComparatorInputOverride()
 	 */
 	@Override
 	public boolean hasComparatorInputOverride() {
@@ -78,15 +102,17 @@ public abstract class Hearth extends BlockSimpleFluidConsumer implements GivesEs
 		return false;
 	}
 
-	/* (non-Javadoc)
-	 * @see cyano.poweradvantage.api.simple.BlockSimplePowerConsumer#getComparatorInputOverride(net.minecraft.world.World, net.minecraft.util.BlockPos)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see cyano.poweradvantage.api.simple.BlockSimplePowerConsumer#
+	 * getComparatorInputOverride(net.minecraft.world.World,
+	 * net.minecraft.util.BlockPos)
 	 */
 	@Override
 	public int getComparatorInputOverride(World world, BlockPos coord) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	
-	
-	
+
 }

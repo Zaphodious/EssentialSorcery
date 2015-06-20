@@ -28,128 +28,190 @@ public class RuneEffectTransportation extends RuneEffect {
 		return "Going";
 	}
 
-	/* (non-Javadoc)
-	 * @see io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneEffect#makeMagic(net.minecraft.entity.Entity, net.minecraft.world.World, net.minecraft.entity.EntityLivingBase, java.util.Map, net.minecraft.util.BlockPos, net.minecraft.util.MovingObjectPosition, java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneEffect
+	 * #makeMagic(net.minecraft.entity.Entity, net.minecraft.world.World,
+	 * net.minecraft.entity.EntityLivingBase, java.util.Map,
+	 * net.minecraft.util.BlockPos, net.minecraft.util.MovingObjectPosition,
+	 * java.lang.String)
 	 */
 	@Override
-	public boolean makeMagic(Entity entity, World worldIn,
-			EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn,
-			BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey) {
+	public boolean makeMagic(
+			Entity entity,
+			World worldIn,
+			EntityLivingBase throwerIn,
+			Map<String, ItemStack> runeMapIn,
+			BlockPos pos,
+			MovingObjectPosition movObjPos,
+			String thisRuneKey) {
 		// TODO Auto-generated method stub
-		if (movObjPos.entityHit != null)
-        {
-			return super.makeMagic(entity, worldIn, throwerIn, runeMapIn, pos, movObjPos,
-				thisRuneKey);
-        }
-		
+		if (movObjPos.entityHit != null) {
+			return super.makeMagic(
+					entity,
+					worldIn,
+					throwerIn,
+					runeMapIn,
+					pos,
+					movObjPos,
+					thisRuneKey);
+		}
+
 		return false;
-		
+
 	}
-	
+
 	@Override
-	public boolean fireEffect(Entity entity, World worldIn,
-			EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn,
-			BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey) {
+	public boolean fireEffect(
+			Entity entity,
+			World worldIn,
+			EntityLivingBase throwerIn,
+			Map<String, ItemStack> runeMapIn,
+			BlockPos pos,
+			MovingObjectPosition movObjPos,
+			String thisRuneKey) {
 		// TODO Auto-generated method stub
-		int spellStrength = RuneHelper.totalEffectRunesIn(runeMapIn
-				.get(thisRuneKey));
+		int spellStrength =
+				RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
 		try {
 			EntityLivingBase hitPlayer = (EntityLivingBase) movObjPos.entityHit;
-			
-			hitPlayer.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), spellStrength*200, spellStrength/5, false, true));
-			
+
+			hitPlayer.addPotionEffect(new PotionEffect(
+					Potion.moveSpeed.getId(),
+					spellStrength * 200,
+					spellStrength / 5,
+					false,
+					true));
+
 			return true;
-			
+
 		} catch (Exception e) {
-			
+
 		}
 		return false;
 	}
 
 	@Override
-	public boolean waterEffect(Entity entity, World worldIn,
-			EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn,
-			BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey) {
+	public boolean waterEffect(
+			Entity entity,
+			World worldIn,
+			EntityLivingBase throwerIn,
+			Map<String, ItemStack> runeMapIn,
+			BlockPos pos,
+			MovingObjectPosition movObjPos,
+			String thisRuneKey) {
 		// TODO Auto-generated method stub
-		int spellStrength = RuneHelper.totalEffectRunesIn(runeMapIn
-				.get(thisRuneKey));
+		int spellStrength =
+				RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
 		try {
 			EntityLivingBase hitPlayer = (EntityLivingBase) movObjPos.entityHit;
-			
-			hitPlayer.addPotionEffect(new PotionEffect(Potion.waterBreathing.getId(), spellStrength*200, spellStrength/5, false, true));
-			
+
+			hitPlayer.addPotionEffect(new PotionEffect(
+					Potion.waterBreathing.getId(),
+					spellStrength * 200,
+					spellStrength / 5,
+					false,
+					true));
+
 			return true;
-			
+
 		} catch (Exception e) {
-			
+
 		}
 		return false;
 	}
 
 	@Override
-	public boolean airEffect(Entity entity, World worldIn,
-			EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn,
-			BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey) {
+	public boolean airEffect(
+			Entity entity,
+			World worldIn,
+			EntityLivingBase throwerIn,
+			Map<String, ItemStack> runeMapIn,
+			BlockPos pos,
+			MovingObjectPosition movObjPos,
+			String thisRuneKey) {
 		// TODO Auto-generated method stub
-		int spellStrength = RuneHelper.totalEffectRunesIn(runeMapIn
-				.get(thisRuneKey));
+		int spellStrength =
+				RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
 		try {
 			EntityLivingBase hitPlayer = (EntityLivingBase) movObjPos.entityHit;
-			
-			hitPlayer.addPotionEffect(new PotionEffect(Potion.nightVision.getId(), spellStrength*200, (spellStrength/5)*2, false, true));
-			
+
+			hitPlayer.addPotionEffect(new PotionEffect(
+					Potion.nightVision.getId(),
+					spellStrength * 200,
+					(spellStrength / 5) * 2,
+					false,
+					true));
+
 			return true;
-			
+
 		} catch (Exception e) {
-			
+
 		}
 		return false;
 	}
 
 	@Override
-	public boolean earthEffect(Entity entity, World worldIn,
-			EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn,
-			BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey) {
+	public boolean earthEffect(
+			Entity entity,
+			World worldIn,
+			EntityLivingBase throwerIn,
+			Map<String, ItemStack> runeMapIn,
+			BlockPos pos,
+			MovingObjectPosition movObjPos,
+			String thisRuneKey) {
 		// TODO Auto-generated method stub
-		int spellStrength = RuneHelper.totalEffectRunesIn(runeMapIn
-				.get(thisRuneKey));
+		int spellStrength =
+				RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
 		try {
 			EntityLivingBase hitPlayer = (EntityLivingBase) movObjPos.entityHit;
-			
-			hitPlayer.addPotionEffect(new PotionEffect(Potion.digSpeed.getId(), spellStrength*200, (spellStrength/5)*2, false, true));
-			
+
+			hitPlayer.addPotionEffect(new PotionEffect(
+					Potion.digSpeed.getId(),
+					spellStrength * 200,
+					(spellStrength / 5) * 2,
+					false,
+					true));
+
 			return true;
-			
+
 		} catch (Exception e) {
-			
+
 		}
 		return false;
 	}
 
 	@Override
-	public boolean woodEffect(Entity entity, World worldIn,
-			EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn,
-			BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey) {
+	public boolean woodEffect(
+			Entity entity,
+			World worldIn,
+			EntityLivingBase throwerIn,
+			Map<String, ItemStack> runeMapIn,
+			BlockPos pos,
+			MovingObjectPosition movObjPos,
+			String thisRuneKey) {
 		// TODO Auto-generated method stub
-		int spellStrength = RuneHelper.totalEffectRunesIn(runeMapIn
-				.get(thisRuneKey));
-		
-		
+		int spellStrength =
+				RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
+
 		try {
 			EntityLivingBase hitPlayer = (EntityLivingBase) movObjPos.entityHit;
-			
-			hitPlayer.addPotionEffect(new PotionEffect(Potion.jump.getId(), spellStrength*200, (spellStrength/5)*2, false, true));
-			
+
+			hitPlayer.addPotionEffect(new PotionEffect(
+					Potion.jump.getId(),
+					spellStrength * 200,
+					(spellStrength / 5) * 2,
+					false,
+					true));
+
 			return true;
-			
+
 		} catch (Exception e) {
-			
+
 		}
 		return false;
 	}
-
-	
-
-	
 
 }

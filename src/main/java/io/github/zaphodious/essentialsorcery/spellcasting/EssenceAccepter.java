@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public abstract class EssenceAccepter extends Item implements UsesEssence{
+public abstract class EssenceAccepter extends Item implements UsesEssence {
 
 	protected Element element;
 
@@ -23,7 +23,10 @@ public abstract class EssenceAccepter extends Item implements UsesEssence{
 		this.setMaxDamage(maxPool);
 	}
 
-	public boolean useTap(World worldIn, BlockPos pos, ItemStack stack,
+	public boolean useTap(
+			World worldIn,
+			BlockPos pos,
+			ItemStack stack,
 			EntityPlayer playerIn) {
 		GivesEssence giver = null;
 		// get the specific block
@@ -48,9 +51,12 @@ public abstract class EssenceAccepter extends Item implements UsesEssence{
 
 			Essence newEssence = giver.getEssence(worldIn, pos);
 
-			System.out.println("This Damage: " + stack.getItemDamage()
-					+ " New Essence amount :" + newEssence.getAmount()
-					+ " while this Damage Limit = " + this.getMaxDamage());
+			System.out.println("This Damage: "
+					+ stack.getItemDamage()
+					+ " New Essence amount :"
+					+ newEssence.getAmount()
+					+ " while this Damage Limit = "
+					+ this.getMaxDamage());
 
 			if (newEssence.getAmount() > this.getDamage(stack)) {
 				System.out.println("Didn't pass the amount test.");
@@ -58,8 +64,9 @@ public abstract class EssenceAccepter extends Item implements UsesEssence{
 								// function stops.
 			}
 
-			//stack.setItemDamage(stack.getItemDamage() - newEssence.getAmount());
-			//DragonTap.dragonToSpent(worldIn, pos);
+			// stack.setItemDamage(stack.getItemDamage() -
+			// newEssence.getAmount());
+			// DragonTap.dragonToSpent(worldIn, pos);
 			// stack.damageItem(newEssence.getAmount(), playerIn);
 			// this.setDamage(stack, this.getDamage(stack) -
 			// newEssence.getAmount());
@@ -81,14 +88,14 @@ public abstract class EssenceAccepter extends Item implements UsesEssence{
 	public void setElement(Element element) {
 		this.element = element;
 	}
-	
+
 	public boolean useEssence(int req, ItemStack stack) {
 		if (stack.getItemDamage() + req > stack.getMaxDamage()) {
 			return false;
 		}
-		
+
 		stack.setItemDamage(stack.getItemDamage() + req);
-		
+
 		return true;
 	}
 

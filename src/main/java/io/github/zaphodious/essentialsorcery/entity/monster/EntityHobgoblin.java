@@ -62,13 +62,21 @@ public class EntityHobgoblin extends EntityMob {
 	 * The attribute which determines the chance that this mob will spawn
 	 * reinforcements
 	 */
-	protected static final IAttribute reinforcementChance = (new RangedAttribute(
-			(IAttribute) null, "zombie.spawnReinforcements", 0.0D, 0.0D, 1.0D))
-			.setDescription("Spawn Reinforcements Chance");
+	protected static final IAttribute reinforcementChance =
+			(new RangedAttribute(
+					(IAttribute) null,
+					"zombie.spawnReinforcements",
+					0.0D,
+					0.0D,
+					1.0D)).setDescription("Spawn Reinforcements Chance");
 	private static final UUID babySpeedBoostUUID = UUID
 			.fromString("B9766B59-9566-4402-BC1F-2EE2A276D836");
-	private static final AttributeModifier babySpeedBoostModifier = new AttributeModifier(
-			babySpeedBoostUUID, "Baby speed boost", 0.5D, 1);
+	private static final AttributeModifier babySpeedBoostModifier =
+			new AttributeModifier(
+					babySpeedBoostUUID,
+					"Baby speed boost",
+					0.5D,
+					1);
 	private final EntityAIBreakDoor breakDoor = new EntityAIBreakDoor(this);
 	/**
 	 * Ticker used to determine the time remaining for this zombie to convert
@@ -85,13 +93,18 @@ public class EntityHobgoblin extends EntityMob {
 		super(worldIn);
 		((PathNavigateGround) this.getNavigator()).setBreakDoors(true);
 		this.tasks.addTask(0, new EntityAISwimming(this));
-		this.tasks.addTask(2, new EntityAIAttackOnCollide(this,
-				EntityPlayer.class, 1.0D, false));
+		this.tasks.addTask(2, new EntityAIAttackOnCollide(
+				this,
+				EntityPlayer.class,
+				1.0D,
+				false));
 		this.tasks.addTask(2, this.aiAvoidExplodingCreepers);
 		this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
 		this.tasks.addTask(7, new EntityAIWander(this, 1.0D));
-		this.tasks.addTask(8, new EntityAIWatchClosest(this,
-				EntityPlayer.class, 8.0F));
+		this.tasks.addTask(8, new EntityAIWatchClosest(
+				this,
+				EntityPlayer.class,
+				8.0F));
 		this.tasks.addTask(8, new EntityAILookIdle(this));
 		this.applyEntityAI();
 		this.setSize(0.6F, 1.1F);
@@ -99,31 +112,49 @@ public class EntityHobgoblin extends EntityMob {
 	}
 
 	protected void applyEntityAI() {
-		this.tasks.addTask(4, new EntityAIAttackOnCollide(this,
-				EntityVillager.class, 1.0D, true));
-		this.tasks.addTask(4, new EntityAIAttackOnCollide(this,
-				EntityIronGolem.class, 1.0D, true));
+		this.tasks.addTask(4, new EntityAIAttackOnCollide(
+				this,
+				EntityVillager.class,
+				1.0D,
+				true));
+		this.tasks.addTask(4, new EntityAIAttackOnCollide(
+				this,
+				EntityIronGolem.class,
+				1.0D,
+				true));
 		this.tasks
 				.addTask(6, new EntityAIMoveThroughVillage(this, 1.0D, false));
-		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true,
+		this.targetTasks.addTask(1, new EntityAIHurtByTarget(
+				this,
+				true,
 				new Class[] { EntityPigZombie.class }));
-		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this,
-				EntityPlayer.class, true));
-		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this,
-				EntityVillager.class, false));
-		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this,
-				EntityIronGolem.class, true));
+		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(
+				this,
+				EntityPlayer.class,
+				true));
+		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(
+				this,
+				EntityVillager.class,
+				false));
+		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(
+				this,
+				EntityIronGolem.class,
+				true));
 	}
 
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.followRange)
+		this
+				.getEntityAttribute(SharedMonsterAttributes.followRange)
 				.setBaseValue(35.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed)
+		this
+				.getEntityAttribute(SharedMonsterAttributes.movementSpeed)
 				.setBaseValue(0.5D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage)
+		this
+				.getEntityAttribute(SharedMonsterAttributes.attackDamage)
 				.setBaseValue(2.0D);
-		this.getAttributeMap()
+		this
+				.getAttributeMap()
 				.registerAttribute(reinforcementChance)
 				.setBaseValue(
 						this.rand.nextDouble()
@@ -192,12 +223,14 @@ public class EntityHobgoblin extends EntityMob {
 	 * Set whether this zombie is a child.
 	 */
 	public void setChild(boolean childZombie) {
-		this.getDataWatcher().updateObject(12,
+		this.getDataWatcher().updateObject(
+				12,
 				Byte.valueOf((byte) (childZombie ? 1 : 0)));
 
 		if (this.worldObj != null && !this.worldObj.isRemote) {
-			IAttributeInstance iattributeinstance = this
-					.getEntityAttribute(SharedMonsterAttributes.movementSpeed);
+			IAttributeInstance iattributeinstance =
+					this
+							.getEntityAttribute(SharedMonsterAttributes.movementSpeed);
 			iattributeinstance.removeModifier(babySpeedBoostModifier);
 
 			if (childZombie) {
@@ -219,7 +252,8 @@ public class EntityHobgoblin extends EntityMob {
 	 * Set whether this zombie is a villager.
 	 */
 	public void setVillager(boolean villager) {
-		this.getDataWatcher().updateObject(13,
+		this.getDataWatcher().updateObject(
+				13,
 				Byte.valueOf((byte) (villager ? 1 : 0)));
 	}
 
@@ -254,10 +288,12 @@ public class EntityHobgoblin extends EntityMob {
 		 * if (flag) { this.setFire(8); } } }
 		 */
 
-		if (this.isRiding() && this.getAttackTarget() != null
+		if (this.isRiding()
+				&& this.getAttackTarget() != null
 				&& this.ridingEntity instanceof EntityChicken) {
 			((EntityLiving) this.ridingEntity).getNavigator().setPath(
-					this.getNavigator().getPath(), 1.5D);
+					this.getNavigator().getPath(),
+					1.5D);
 		}
 
 	}
@@ -277,15 +313,19 @@ public class EntityHobgoblin extends EntityMob {
 		if (source.getEntity() instanceof EntityPlayer) {
 			EntityPlayer damagingPlayer = (EntityPlayer) source.getEntity();
 			if (damagingPlayer.getCurrentEquippedItem().getItem() instanceof ItemSword) {
-				ItemSword thisSword = (ItemSword) damagingPlayer
-						.getCurrentEquippedItem().getItem();
+				ItemSword thisSword =
+						(ItemSword) damagingPlayer
+								.getCurrentEquippedItem()
+								.getItem();
 				thisMaterial = thisSword.getToolMaterialName();
 				amount += 1;
 			}
 
 			if (damagingPlayer.getCurrentEquippedItem().getItem() instanceof ItemTool) {
-				ItemTool thisTool = (ItemTool) damagingPlayer
-						.getCurrentEquippedItem().getItem();
+				ItemTool thisTool =
+						(ItemTool) damagingPlayer
+								.getCurrentEquippedItem()
+								.getItem();
 				thisMaterial = thisTool.getToolMaterialName();
 			}
 
@@ -293,7 +333,8 @@ public class EntityHobgoblin extends EntityMob {
 					|| cyano.basemetals.init.Materials
 							.getToolMaterialFor(
 									cyano.basemetals.init.Materials.coldiron)
-							.toString().equals(thisMaterial)) {
+							.toString()
+							.equals(thisMaterial)) {
 				attackedByIron = true;
 			}
 
@@ -307,7 +348,8 @@ public class EntityHobgoblin extends EntityMob {
 			amount = (amount + 2) * 1.5F;
 			this.setFire(10); // to the raaaaaaaaaaaaaain...
 			if (!source.getEntity().worldObj.isRemote) {
-				this.entityDropItem(new ItemStack(ModItems.moon_silver_nugget,
+				this.entityDropItem(new ItemStack(
+						ModItems.moon_silver_nugget,
 						source.getEntity().worldObj.rand.nextInt(3)), 1.0F);
 			}
 
@@ -401,7 +443,8 @@ public class EntityHobgoblin extends EntityMob {
 		if (flag) {
 			int i = this.worldObj.getDifficulty().getDifficultyId();
 
-			if (this.getHeldItem() == null && this.isBurning()
+			if (this.getHeldItem() == null
+					&& this.isBurning()
 					&& this.rand.nextFloat() < (float) i * 0.3F) {
 				entityIn.setFire(2 * i);
 			}
@@ -468,7 +511,8 @@ public class EntityHobgoblin extends EntityMob {
 	protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
 		super.setEquipmentBasedOnDifficulty(difficulty);
 
-		if (this.rand.nextFloat() < (this.worldObj.getDifficulty() == EnumDifficulty.HARD ? 0.05F
+		if (this.rand.nextFloat() < (this.worldObj.getDifficulty() == EnumDifficulty.HARD
+				? 0.05F
 				: 0.01F)) {
 			int i = this.rand.nextInt(3);
 
@@ -496,8 +540,9 @@ public class EntityHobgoblin extends EntityMob {
 			tagCompound.setBoolean("IsVillager", true);
 		}
 
-		tagCompound.setInteger("ConversionTime",
-				this.isConverting() ? this.conversionTime : -1);
+		tagCompound.setInteger("ConversionTime", this.isConverting()
+				? this.conversionTime
+				: -1);
 		tagCompound.setBoolean("CanBreakDoors", this.isBreakDoorsTaskSet());
 	}
 
@@ -540,8 +585,9 @@ public class EntityHobgoblin extends EntityMob {
 			EntityHobgoblin entityzombie = new EntityHobgoblin(this.worldObj);
 			entityzombie.copyLocationAndAnglesFrom(entityLivingIn);
 			this.worldObj.removeEntity(entityLivingIn);
-			entityzombie.onInitialSpawn(this.worldObj
-					.getDifficultyForLocation(new BlockPos(entityzombie)),
+			entityzombie.onInitialSpawn(
+					this.worldObj.getDifficultyForLocation(new BlockPos(
+							entityzombie)),
 					(IEntityLivingData) null);
 			entityzombie.setVillager(true);
 
@@ -550,9 +596,14 @@ public class EntityHobgoblin extends EntityMob {
 			}
 
 			this.worldObj.spawnEntityInWorld(entityzombie);
-			this.worldObj.playAuxSFXAtEntity((EntityPlayer) null, 1016,
-					new BlockPos((int) this.posX, (int) this.posY,
-							(int) this.posZ), 0);
+			this.worldObj.playAuxSFXAtEntity(
+					(EntityPlayer) null,
+					1016,
+					new BlockPos(
+							(int) this.posX,
+							(int) this.posY,
+							(int) this.posZ),
+					0);
 		}
 	}
 
@@ -567,7 +618,8 @@ public class EntityHobgoblin extends EntityMob {
 	}
 
 	protected boolean func_175448_a(ItemStack stack) {
-		return stack.getItem() == Items.egg && this.isChild()
+		return stack.getItem() == Items.egg
+				&& this.isChild()
 				&& this.isRiding() ? false : super.func_175448_a(stack);
 	}
 
@@ -576,7 +628,8 @@ public class EntityHobgoblin extends EntityMob {
 	 * spawner, natural spawning etc, but not called when entity is reloaded
 	 * from nbt. Mainly used for initializing attributes and inventory
 	 */
-	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty,
+	public IEntityLivingData onInitialSpawn(
+			DifficultyInstance difficulty,
 			IEntityLivingData livingdata) {
 		System.out.println("Hobgoblin spawned!");
 		Object p_180482_2_1 = super.onInitialSpawn(difficulty, livingdata);
@@ -584,13 +637,16 @@ public class EntityHobgoblin extends EntityMob {
 		this.setCanPickUpLoot(this.rand.nextFloat() < 0.55F * f);
 
 		if (p_180482_2_1 == null) {
-			p_180482_2_1 = new EntityHobgoblin.GroupData(
-					this.worldObj.rand.nextFloat() < net.minecraftforge.common.ForgeModContainer.zombieBabyChance,
-					this.worldObj.rand.nextFloat() < 0.05F, null);
+			p_180482_2_1 =
+					new EntityHobgoblin.GroupData(
+							this.worldObj.rand.nextFloat() < net.minecraftforge.common.ForgeModContainer.zombieBabyChance,
+							this.worldObj.rand.nextFloat() < 0.05F,
+							null);
 		}
 
 		if (p_180482_2_1 instanceof EntityHobgoblin.GroupData) {
-			EntityHobgoblin.GroupData groupdata = (EntityHobgoblin.GroupData) p_180482_2_1;
+			EntityHobgoblin.GroupData groupdata =
+					(EntityHobgoblin.GroupData) p_180482_2_1;
 
 			if (groupdata.isVillager) {
 				this.setVillager(true);
@@ -600,23 +656,32 @@ public class EntityHobgoblin extends EntityMob {
 				this.setChild(true);
 
 				if ((double) this.worldObj.rand.nextFloat() < 0.05D) {
-					List list = this.worldObj.getEntitiesWithinAABB(
-							EntityChicken.class, this.getEntityBoundingBox()
-									.expand(5.0D, 3.0D, 5.0D),
-							IEntitySelector.IS_STANDALONE);
+					List list =
+							this.worldObj.getEntitiesWithinAABB(
+									EntityChicken.class,
+									this.getEntityBoundingBox().expand(
+											5.0D,
+											3.0D,
+											5.0D),
+									IEntitySelector.IS_STANDALONE);
 
 					if (!list.isEmpty()) {
-						EntityChicken entitychicken = (EntityChicken) list
-								.get(0);
+						EntityChicken entitychicken =
+								(EntityChicken) list.get(0);
 						entitychicken.setChickenJockey(true);
 						this.mountEntity(entitychicken);
 					}
 				} else if ((double) this.worldObj.rand.nextFloat() < 0.05D) {
-					EntityChicken entitychicken1 = new EntityChicken(
-							this.worldObj);
-					entitychicken1.setLocationAndAngles(this.posX, this.posY,
-							this.posZ, this.rotationYaw, 0.0F);
-					entitychicken1.onInitialSpawn(difficulty,
+					EntityChicken entitychicken1 =
+							new EntityChicken(this.worldObj);
+					entitychicken1.setLocationAndAngles(
+							this.posX,
+							this.posY,
+							this.posZ,
+							this.rotationYaw,
+							0.0F);
+					entitychicken1.onInitialSpawn(
+							difficulty,
 							(IEntityLivingData) null);
 					entitychicken1.setChickenJockey(true);
 					this.worldObj.spawnEntityInWorld(entitychicken1);
@@ -632,38 +697,46 @@ public class EntityHobgoblin extends EntityMob {
 		if (this.getEquipmentInSlot(4) == null) {
 			Calendar calendar = this.worldObj.getCurrentDate();
 
-			if (calendar.get(2) + 1 == 10 && calendar.get(5) == 31
+			if (calendar.get(2) + 1 == 10
+					&& calendar.get(5) == 31
 					&& this.rand.nextFloat() < 0.25F) {
 				this.setCurrentItemOrArmor(
 						4,
-						new ItemStack(
-								this.rand.nextFloat() < 0.1F ? Blocks.lit_pumpkin
-										: Blocks.pumpkin));
+						new ItemStack(this.rand.nextFloat() < 0.1F
+								? Blocks.lit_pumpkin
+								: Blocks.pumpkin));
 				this.equipmentDropChances[4] = 0.0F;
 			}
 		}
 
-		this.getEntityAttribute(SharedMonsterAttributes.knockbackResistance)
+		this
+				.getEntityAttribute(SharedMonsterAttributes.knockbackResistance)
 				.applyModifier(
 						new AttributeModifier("Random spawn bonus", this.rand
 								.nextDouble() * 0.05000000074505806D, 0));
 		double d0 = this.rand.nextDouble() * 1.5D * (double) f;
 
 		if (d0 > 1.0D) {
-			this.getEntityAttribute(SharedMonsterAttributes.followRange)
+			this
+					.getEntityAttribute(SharedMonsterAttributes.followRange)
 					.applyModifier(
-							new AttributeModifier("Random zombie-spawn bonus",
-									d0, 2));
+							new AttributeModifier(
+									"Random zombie-spawn bonus",
+									d0,
+									2));
 		}
 
 		if (this.rand.nextFloat() < f * 0.05F) {
 			this.getEntityAttribute(reinforcementChance).applyModifier(
 					new AttributeModifier("Leader zombie bonus", this.rand
 							.nextDouble() * 0.25D + 0.5D, 0));
-			this.getEntityAttribute(SharedMonsterAttributes.maxHealth)
+			this
+					.getEntityAttribute(SharedMonsterAttributes.maxHealth)
 					.applyModifier(
-							new AttributeModifier("Leader zombie bonus",
-									this.rand.nextDouble() * 3.0D + 1.0D, 2));
+							new AttributeModifier(
+									"Leader zombie bonus",
+									this.rand.nextDouble() * 3.0D + 1.0D,
+									2));
 			this.setBreakDoorsAItask(true);
 		}
 
@@ -704,10 +777,13 @@ public class EntityHobgoblin extends EntityMob {
 		this.conversionTime = ticks;
 		this.getDataWatcher().updateObject(14, Byte.valueOf((byte) 1));
 		this.removePotionEffect(Potion.weakness.id);
-		this.addPotionEffect(new PotionEffect(
-				Potion.damageBoost.id,
-				ticks,
-				Math.min(this.worldObj.getDifficulty().getDifficultyId() - 1, 0)));
+		this
+				.addPotionEffect(new PotionEffect(
+						Potion.damageBoost.id,
+						ticks,
+						Math.min(this.worldObj
+								.getDifficulty()
+								.getDifficultyId() - 1, 0)));
 		this.worldObj.setEntityState(this, (byte) 16);
 	}
 
@@ -715,10 +791,14 @@ public class EntityHobgoblin extends EntityMob {
 	public void handleHealthUpdate(byte id) {
 		if (id == 16) {
 			if (!this.isSilent()) {
-				this.worldObj.playSound(this.posX + 0.5D, this.posY + 0.5D,
-						this.posZ + 0.5D, "mob.zombie.remedy",
+				this.worldObj.playSound(
+						this.posX + 0.5D,
+						this.posY + 0.5D,
+						this.posZ + 0.5D,
+						"mob.zombie.remedy",
 						1.0F + this.rand.nextFloat(),
-						this.rand.nextFloat() * 0.7F + 0.3F, false);
+						this.rand.nextFloat() * 0.7F + 0.3F,
+						false);
 			}
 		} else {
 			super.handleHealthUpdate(id);
@@ -771,8 +851,9 @@ public class EntityHobgoblin extends EntityMob {
 						&& j < 14; ++l) {
 					for (int i1 = (int) this.posZ - 4; i1 < (int) this.posZ + 4
 							&& j < 14; ++i1) {
-						Block block = this.worldObj.getBlockState(
-								new BlockPos(k, l, i1)).getBlock();
+						Block block =
+								this.worldObj.getBlockState(
+										new BlockPos(k, l, i1)).getBlock();
 
 						if (block == Blocks.iron_bars || block == Blocks.bed) {
 							if (this.rand.nextFloat() < 0.3F) {

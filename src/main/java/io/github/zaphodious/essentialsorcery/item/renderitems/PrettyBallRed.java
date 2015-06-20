@@ -6,11 +6,11 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public class PrettyBallRed extends Item{
+public class PrettyBallRed extends Item {
 	public PrettyBallRed(String unlocalizedName) {
-		
+
 		this.setUnlocalizedName(unlocalizedName);
 		this.setCreativeTab(Reference.tabEssential);
-		
+
 	}
 }

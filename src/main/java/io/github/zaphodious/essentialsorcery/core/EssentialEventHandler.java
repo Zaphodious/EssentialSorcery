@@ -9,5 +9,5 @@ public class EssentialEventHandler {
 		World world = e.entityPlayer.getEntityWorld();
 		System.out.println(e.entityPlayer.getDisplayName() + " slept!");
 	}
-	
+
 }

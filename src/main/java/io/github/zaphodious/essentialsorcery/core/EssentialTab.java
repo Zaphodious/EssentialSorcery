@@ -9,7 +9,7 @@ public class EssentialTab extends CreativeTabs {
 
 	public EssentialTab(String label) {
 		super(label);
-		//this.setBackgroundImageName("essential.png");
+		// this.setBackgroundImageName("essential.png");
 	}
 
 	@Override

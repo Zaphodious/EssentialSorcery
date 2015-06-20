@@ -6,9 +6,9 @@ import cyano.basemetals.material.MetalMaterial;
 public class EssentialMaterials extends Materials {
 
 	public static MetalMaterial Jade;
-	
+
 	public static void initMaterials() {
 		Materials.registerMaterial("Jade", Jade);
 	}
-	
+
 }

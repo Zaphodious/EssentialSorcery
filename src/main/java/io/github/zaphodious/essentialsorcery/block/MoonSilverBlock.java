@@ -9,11 +9,14 @@ public class MoonSilverBlock extends BasicBlock {
 
 	public MoonSilverBlock(String unlocalizedName) {
 		super(unlocalizedName);
-		
+
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.block.Block#getItemDropped(net.minecraft.block.state.IBlockState, java.util.Random, int)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.block.Block#getItemDropped(net.minecraft.block.state.
+	 * IBlockState, java.util.Random, int)
 	 */
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
@@ -21,6 +24,4 @@ public class MoonSilverBlock extends BasicBlock {
 		return super.getItemDropped(state, rand, fortune);
 	}
 
-	
-	
 }

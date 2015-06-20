@@ -29,11 +29,13 @@ public class RuneEffectSpawnVanilla extends RuneEffect {
 		// TODO Auto-generated method stub
 		return "Mob Spawning";
 	}
-	
-	
 
-	/* (non-Javadoc)
-	 * @see io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneEffect#getPowerLevel()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.RuneEffect
+	 * #getPowerLevel()
 	 */
 	@Override
 	public int getPowerLevel() {
@@ -42,37 +44,60 @@ public class RuneEffectSpawnVanilla extends RuneEffect {
 	}
 
 	@Override
-	public boolean fireEffect(Entity entity, World worldIn,
-			EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn,
-			BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey) {
+	public boolean fireEffect(
+			Entity entity,
+			World worldIn,
+			EntityLivingBase throwerIn,
+			Map<String, ItemStack> runeMapIn,
+			BlockPos pos,
+			MovingObjectPosition movObjPos,
+			String thisRuneKey) {
 		int spellPower = runeMapIn.get(thisRuneKey).stackSize;
 		EntityCreeper entityCreeper = new EntityCreeper(worldIn);
 
-		entityCreeper.setLocationAndAngles(pos.getX(), pos.getY(), pos.getZ(),
-				entity.rotationYaw, 0.0F);
-		entityCreeper.setHealth(5*spellPower);
+		entityCreeper.setLocationAndAngles(
+				pos.getX(),
+				pos.getY(),
+				pos.getZ(),
+				entity.rotationYaw,
+				0.0F);
+		entityCreeper.setHealth(5 * spellPower);
 		worldIn.spawnEntityInWorld(entityCreeper);
 		return true;
 	}
 
 	@Override
-	public boolean waterEffect(Entity entity, World worldIn,
-			EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn,
-			BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey) {
+	public boolean waterEffect(
+			Entity entity,
+			World worldIn,
+			EntityLivingBase throwerIn,
+			Map<String, ItemStack> runeMapIn,
+			BlockPos pos,
+			MovingObjectPosition movObjPos,
+			String thisRuneKey) {
 		int spellPower = runeMapIn.get(thisRuneKey).stackSize;
 		EntitySlime entitySlime = new EntitySlime(worldIn);
 
-		entitySlime.setLocationAndAngles(pos.getX(), pos.getY(), pos.getZ(),
-				entity.rotationYaw, 0.0F);
-		entitySlime.setHealth(5*spellPower);
+		entitySlime.setLocationAndAngles(
+				pos.getX(),
+				pos.getY(),
+				pos.getZ(),
+				entity.rotationYaw,
+				0.0F);
+		entitySlime.setHealth(5 * spellPower);
 		worldIn.spawnEntityInWorld(entitySlime);
 		return true;
 	}
 
 	@Override
-	public boolean airEffect(Entity entity, World worldIn,
-			EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn,
-			BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey) {
+	public boolean airEffect(
+			Entity entity,
+			World worldIn,
+			EntityLivingBase throwerIn,
+			Map<String, ItemStack> runeMapIn,
+			BlockPos pos,
+			MovingObjectPosition movObjPos,
+			String thisRuneKey) {
 		// TODO Auto-generated method stub
 		try {
 			int spellPower = runeMapIn.get(thisRuneKey).stackSize;
@@ -80,10 +105,14 @@ public class RuneEffectSpawnVanilla extends RuneEffect {
 			EntityOcelot entityOcelot = new EntityOcelot(worldIn);
 			entityOcelot.setTamed(true);
 			entityOcelot.setTameSkin(1 + worldIn.rand.nextInt(3));
-            entityOcelot.setOwnerId(throwerIn.getUniqueID().toString());
-            entityOcelot.setHealth(10*spellPower);
-			entityOcelot.setLocationAndAngles(pos.getX(), pos.getY(),
-					pos.getZ(), entity.rotationYaw, 0.0F);
+			entityOcelot.setOwnerId(throwerIn.getUniqueID().toString());
+			entityOcelot.setHealth(10 * spellPower);
+			entityOcelot.setLocationAndAngles(
+					pos.getX(),
+					pos.getY(),
+					pos.getZ(),
+					entity.rotationYaw,
+					0.0F);
 			worldIn.spawnEntityInWorld(entityOcelot);
 			return true;
 		} catch (Exception e) {
@@ -93,35 +122,53 @@ public class RuneEffectSpawnVanilla extends RuneEffect {
 	}
 
 	@Override
-	public boolean earthEffect(Entity entity, World worldIn,
-			EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn,
-			BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey) {
+	public boolean earthEffect(
+			Entity entity,
+			World worldIn,
+			EntityLivingBase throwerIn,
+			Map<String, ItemStack> runeMapIn,
+			BlockPos pos,
+			MovingObjectPosition movObjPos,
+			String thisRuneKey) {
 		// TODO Auto-generated method stub
 		EntityIronGolem entityIronGolem = new EntityIronGolem(worldIn);
 		int spellPower = runeMapIn.get(thisRuneKey).stackSize;
-		entityIronGolem.setLocationAndAngles(pos.getX(), pos.getY(), pos.getZ(),
-				entity.rotationYaw, 0.0F);
+		entityIronGolem.setLocationAndAngles(
+				pos.getX(),
+				pos.getY(),
+				pos.getZ(),
+				entity.rotationYaw,
+				0.0F);
 		entityIronGolem.setPlayerCreated(true);
-		entityIronGolem.setHealth(10*spellPower);
+		entityIronGolem.setHealth(10 * spellPower);
 		worldIn.spawnEntityInWorld(entityIronGolem);
 		return false;
 	}
 
 	@Override
-	public boolean woodEffect(Entity entity, World worldIn,
-			EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn,
-			BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey) {
+	public boolean woodEffect(
+			Entity entity,
+			World worldIn,
+			EntityLivingBase throwerIn,
+			Map<String, ItemStack> runeMapIn,
+			BlockPos pos,
+			MovingObjectPosition movObjPos,
+			String thisRuneKey) {
 		// TODO Auto-generated method stub
 		int spellPower = runeMapIn.get(thisRuneKey).stackSize;
 		EntityPlayer playerCaster = (EntityPlayer) throwerIn;
 		EntityWolf entityWolf = new EntityWolf(worldIn);
 		entityWolf.setTamed(true);
 		entityWolf.getNavigator().clearPathEntity();
-		entityWolf.setAttackTarget((EntityLivingBase)null);
-		entityWolf.setHealth(10*spellPower);
+		entityWolf.setAttackTarget((EntityLivingBase) null);
+		entityWolf.setHealth(10 * spellPower);
 		entityWolf.setOwnerId(playerCaster.getUniqueID().toString());
-        entityWolf.setLocationAndAngles(pos.getX(), pos.getY(),
-				pos.getZ(), entity.rotationYaw, 0.0F);
+		entityWolf.setLocationAndAngles(
+				pos.getX(),
+				pos.getY(),
+				pos.getZ(),
+				entity.rotationYaw,
+				0.0F);
 		worldIn.spawnEntityInWorld(entityWolf);
 		return false;
 	}

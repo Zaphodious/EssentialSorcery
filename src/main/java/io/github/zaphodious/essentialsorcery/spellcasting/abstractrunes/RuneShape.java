@@ -13,26 +13,32 @@ public abstract class RuneShape extends Item implements Rune {
 
 	protected int id;
 	protected String name;
-	
+
 	protected RuneShape(int id, String name) {
 		this.setCreativeTab(Reference.tabEssential);
 		this.setUnlocalizedName(name);
 		this.setMaxStackSize(1);
 	}
 
-	/* (non-Javadoc)
-	 * @see io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.Rune#getName()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.Rune
+	 * #getName()
 	 */
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
 		return name;
 	}
-	
-	
 
-	/* (non-Javadoc)
-	 * @see io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.Rune#isEffectRune()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.Rune
+	 * #isEffectRune()
 	 */
 	@Override
 	public boolean isEffectRune() {
@@ -40,19 +46,24 @@ public abstract class RuneShape extends Item implements Rune {
 		return false;
 	}
 
-	/* (non-Javadoc)
-	 * @see io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.Rune#getID()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.Rune
+	 * #getID()
 	 */
 	@Override
 	public int getID() {
 		// TODO Auto-generated method stub
 		return id;
 	}
-	
-	public abstract boolean deployTargetingEntity(Map<String,ItemStack> runeMap, World worldIn,
+
+	public abstract boolean deployTargetingEntity(
+			Map<String, ItemStack> runeMap,
+			World worldIn,
 			EntityPlayer playerIn);
 
-	
 	public int getPowerLevel() {
 		return 1;
 	}

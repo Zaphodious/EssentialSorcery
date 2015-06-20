@@ -13,23 +13,49 @@ public class Trowel extends ItemSpade {
 	public Trowel(String unlocalizedName, ToolMaterial material) {
 		super(material);
 		this.setUnlocalizedName(unlocalizedName);
-		
+
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.item.Item#onItemUse(net.minecraft.item.ItemStack, net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, net.minecraft.util.BlockPos, net.minecraft.util.EnumFacing, float, float, float)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.item.Item#onItemUse(net.minecraft.item.ItemStack,
+	 * net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World,
+	 * net.minecraft.util.BlockPos, net.minecraft.util.EnumFacing, float, float,
+	 * float)
 	 */
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer playerIn,
-			World worldIn, BlockPos pos, EnumFacing side, float hitX,
-			float hitY, float hitZ) {
+	public boolean onItemUse(
+			ItemStack stack,
+			EntityPlayer playerIn,
+			World worldIn,
+			BlockPos pos,
+			EnumFacing side,
+			float hitX,
+			float hitY,
+			float hitZ) {
 		// TODO Auto-generated method stub
-		//GenTest.makeASimpleBuilding(stack, playerIn, worldIn, pos, side, hitX, hitY, hitZ, 22, 33, 44);
-		GenTest.genTestStructure(stack, playerIn, worldIn, pos, side, hitX, hitY, hitZ);
-		return super.onItemUse(stack, playerIn, worldIn, pos, side, hitX, hitY, hitZ);
-		
+		// GenTest.makeASimpleBuilding(stack, playerIn, worldIn, pos, side,
+		// hitX, hitY, hitZ, 22, 33, 44);
+		GenTest.genTestStructure(
+				stack,
+				playerIn,
+				worldIn,
+				pos,
+				side,
+				hitX,
+				hitY,
+				hitZ);
+		return super.onItemUse(
+				stack,
+				playerIn,
+				worldIn,
+				pos,
+				side,
+				hitX,
+				hitY,
+				hitZ);
+
 	}
 
-	
-	
 }

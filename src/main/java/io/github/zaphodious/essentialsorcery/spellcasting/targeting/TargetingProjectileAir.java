@@ -14,15 +14,15 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
 public class TargetingProjectileAir extends TargetingProjectile {
-	
 
-	/* (non-Javadoc)
-	 * @see io.github.zaphodious.essentialsorcery.spellcasting.targeting.TargetingProjectile#setRuneMap(java.util.Map)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see io.github.zaphodious.essentialsorcery.spellcasting.targeting.
+	 * TargetingProjectile#setRuneMap(java.util.Map)
 	 */
-	
 
 	private static final String __OBFID = "CL_00001722";
-	
 
 	public TargetingProjectileAir(World worldIn) {
 		super(worldIn);
@@ -39,9 +39,5 @@ public class TargetingProjectileAir extends TargetingProjectile {
 		super(worldIn, x, y, z);
 
 	}
-
-	
-
-	
 
 }

@@ -50,9 +50,15 @@ public class Events {
 		if (event.world.rand.nextFloat() < .000000002) {
 			int xOffset = event.world.rand.nextInt(40) - 20;
 			int zOffset = event.world.rand.nextInt(40) - 20;
-			PuttingThingsPlaces.starmetalMeteorFall(event.world, event.harvester, new BlockPos(event.pos.getX() + xOffset, event.pos.getY(), event.pos.getZ() + zOffset));
+			PuttingThingsPlaces.starmetalMeteorFall(
+					event.world,
+					event.harvester,
+					new BlockPos(
+							event.pos.getX() + xOffset,
+							event.pos.getY(),
+							event.pos.getZ() + zOffset));
 		}
-		
+
 	}
-		
+
 }

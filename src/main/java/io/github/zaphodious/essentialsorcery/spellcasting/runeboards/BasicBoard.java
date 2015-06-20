@@ -32,7 +32,9 @@ public abstract class BasicBoard extends Item implements UsesEssence {
 
 	private ItemStack[] inventory;
 
-	protected BasicBoard(String unlocalizedName, MaterialLevel materialLevel,
+	protected BasicBoard(
+			String unlocalizedName,
+			MaterialLevel materialLevel,
 			Element element) {
 		this.element = element;
 		this.setUnlocalizedName(unlocalizedName);
@@ -65,8 +67,11 @@ public abstract class BasicBoard extends Item implements UsesEssence {
 	 * net.minecraft.entity.player.EntityPlayer, java.util.List, boolean)
 	 */
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer playerIn,
-			List tooltip, boolean advanced) {
+	public void addInformation(
+			ItemStack stack,
+			EntityPlayer playerIn,
+			List tooltip,
+			boolean advanced) {
 
 		if (stack.hasTagCompound()) {
 
@@ -85,24 +90,28 @@ public abstract class BasicBoard extends Item implements UsesEssence {
 			if (this.getCost(stack) > 0) {
 				tooltip.add("     Mana cost to cast is " + this.getCost(stack));
 			} else {
-				tooltip.add("§f§kfak,fak,fak§cRenaming on anvil is currently broken.§f§kfak,fak,fak§f");
+				tooltip
+						.add("§f§kfak,fak,fak§cRenaming on anvil is currently broken.§f§kfak,fak,fak§f");
 			}
-			
+
 			tooltip.add("Effect Runes Affixed:");
 
 			Set<String> keySet = (stack.getTagCompound().getKeySet());
 			NBTTagCompound nbttc = stack.getTagCompound();
 			for (String string : keySet) {
 				// System.out.println(string);
-				ItemStack newStack = ItemStack.loadItemStackFromNBT(stack
-						.getTagCompound().getCompoundTag(string));
+				ItemStack newStack =
+						ItemStack.loadItemStackFromNBT(stack
+								.getTagCompound()
+								.getCompoundTag(string));
 				try {
 					RuneEffect effectRune = (RuneEffect) newStack.getItem();
-					String newString = "    "
-							+ newStack.stackSize
-							+ " "
-							+ StatCollector.translateToLocal(effectRune
-									.getUnlocalizedName() + ".name");
+					String newString =
+							"    "
+									+ newStack.stackSize
+									+ " "
+									+ StatCollector.translateToLocal(effectRune
+											.getUnlocalizedName() + ".name");
 					tooltip.add(newString);
 				} catch (Exception e) {
 
@@ -118,7 +127,9 @@ public abstract class BasicBoard extends Item implements UsesEssence {
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn,
+	public ItemStack onItemRightClick(
+			ItemStack itemStackIn,
+			World worldIn,
 			EntityPlayer playerIn) {
 		playerIn.swingItem();
 		int essenceRemaining = this.getEssenceArray(itemStackIn)[0];
@@ -126,26 +137,28 @@ public abstract class BasicBoard extends Item implements UsesEssence {
 		if (essenceRemaining == -1) {
 			return itemStackIn;
 		}
-		
-		
-		
 
 		try {
 			if (!worldIn.isRemote) {
 				if (itemStackIn.hasTagCompound()) {
-					ItemStack newStack = ItemStack
-							.loadItemStackFromNBT(itemStackIn.getTagCompound()
-									.getCompoundTag(BoardSlots.SHAPE.getSlotname()));
+					ItemStack newStack =
+							ItemStack.loadItemStackFromNBT(itemStackIn
+									.getTagCompound()
+									.getCompoundTag(
+											BoardSlots.SHAPE.getSlotname()));
 					RuneShape shapeRune = (RuneShape) newStack.getItem();
 					try {
-						Map<String, ItemStack> runeMap = RuneHelper
-								.getRuneMap(itemStackIn);
-						if (playerIn.capabilities.isCreativeMode || this.useEssence(this.getCost(itemStackIn),
-									itemStackIn)) {
-							shapeRune.deployTargetingEntity(runeMap, worldIn,
-								playerIn);
+						Map<String, ItemStack> runeMap =
+								RuneHelper.getRuneMap(itemStackIn);
+						if (playerIn.capabilities.isCreativeMode
+								|| this.useEssence(
+										this.getCost(itemStackIn),
+										itemStackIn)) {
+							shapeRune.deployTargetingEntity(
+									runeMap,
+									worldIn,
+									playerIn);
 						}
-						
 
 					} catch (Exception e) {
 						System.out.println(e);
@@ -180,17 +193,19 @@ public abstract class BasicBoard extends Item implements UsesEssence {
 			if (req > amount) {
 				return false;
 			}
-			
+
 			return this.changeEssenceValue(-(req), stack);
 		}
 
 		return false;
 
-		
 	}
 
 	@Override
-	public boolean useTap(World worldIn, BlockPos pos, ItemStack stack,
+	public boolean useTap(
+			World worldIn,
+			BlockPos pos,
+			ItemStack stack,
 			EntityPlayer playerIn) {
 		GivesEssence giver = null;
 		// get the specific block
@@ -215,9 +230,12 @@ public abstract class BasicBoard extends Item implements UsesEssence {
 
 			Essence newEssence = giver.getEssence(worldIn, pos);
 
-			System.out.println("This Damage: " + stack.getItemDamage()
-					+ " New Essence amount :" + newEssence.getAmount()
-					+ " while this Damage Limit = " + this.getMaxDamage());
+			System.out.println("This Damage: "
+					+ stack.getItemDamage()
+					+ " New Essence amount :"
+					+ newEssence.getAmount()
+					+ " while this Damage Limit = "
+					+ this.getMaxDamage());
 
 			if (newEssence.getAmount() > this.getDamage(stack)) {
 				System.out.println("Didn't pass the amount test.");
@@ -305,9 +323,10 @@ public abstract class BasicBoard extends Item implements UsesEssence {
 		if (stack.hasTagCompound()) {
 			double amount = getEssenceArray(stack)[0];
 			double total = getEssenceArray(stack)[1];
-			//System.out.println("The percentage that should be showing for " + stack + " is: " + ((amount) / (total)));
-			return (total-amount) / (total);
-			
+			// System.out.println("The percentage that should be showing for " +
+			// stack + " is: " + ((amount) / (total)));
+			return (total - amount) / (total);
+
 		}
 		return 0;
 	}
@@ -315,15 +334,16 @@ public abstract class BasicBoard extends Item implements UsesEssence {
 	private int[] getEssenceArray(ItemStack stackIn) {
 		int[] toReturn = new int[2];
 		if (stackIn.hasTagCompound()) {
-			toReturn[0] = stackIn.getTagCompound().getIntArray(
-				BoardSlots.ESSENCE_CONTAINED.getSlotname())[0];
-		toReturn[1] = stackIn.getTagCompound().getIntArray(
-				BoardSlots.ESSENCE_CONTAINED.getSlotname())[1];
+			toReturn[0] =
+					stackIn.getTagCompound().getIntArray(
+							BoardSlots.ESSENCE_CONTAINED.getSlotname())[0];
+			toReturn[1] =
+					stackIn.getTagCompound().getIntArray(
+							BoardSlots.ESSENCE_CONTAINED.getSlotname())[1];
 		} else {
 			toReturn[0] = -1;
 			toReturn[1] = -1;
 		}
-		
 
 		return toReturn;
 	}
@@ -334,25 +354,22 @@ public abstract class BasicBoard extends Item implements UsesEssence {
 					BoardSlots.ESSENCE_CONTAINED.getSlotname())[0] += toAdd;
 			return true;
 		}
-		
-		
+
 		return false;
 	}
-	
-	
-	
+
 	public boolean takeInEssence(Essence essence, ItemStack stackIn) {
-		if (stackIn.getItem() instanceof UsesEssence && stackIn.hasTagCompound()) {
+		if (stackIn.getItem() instanceof UsesEssence
+				&& stackIn.hasTagCompound()) {
 			UsesEssence essenceUser = (UsesEssence) stackIn.getItem();
 			if (essenceUser.getElement() == essence.getElement()) {
 				return this.addEssence(essence.getAmount(), stackIn);
 			}
 		}
-		
-		
+
 		return false;
 	}
-	
+
 	private boolean addEssence(int req, ItemStack stack) {
 		if (stack.hasTagCompound()) {
 			int amount = getEssenceArray(stack)[0];
@@ -360,15 +377,14 @@ public abstract class BasicBoard extends Item implements UsesEssence {
 			if (req + amount > total) {
 				return false;
 			}
-			
+
 			return this.changeEssenceValue(req, stack);
 		}
 
 		return false;
 
-		
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 

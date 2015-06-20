@@ -10,7 +10,7 @@ public abstract class RuneElement extends Item implements Rune {
 	protected Element element;
 	protected int id;
 	protected String name;
-	
+
 	protected RuneElement(int id, String name, Element element) {
 		this.element = element;
 		this.name = name;
@@ -20,10 +20,12 @@ public abstract class RuneElement extends Item implements Rune {
 		this.setMaxStackSize(1);
 	}
 
-	
-	
-	/* (non-Javadoc)
-	 * @see io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.Rune#isEffectRune()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.Rune
+	 * #isEffectRune()
 	 */
 	@Override
 	public boolean isEffectRune() {
@@ -31,10 +33,12 @@ public abstract class RuneElement extends Item implements Rune {
 		return false;
 	}
 
-
-
-	/* (non-Javadoc)
-	 * @see io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.Rune#getName()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.Rune
+	 * #getName()
 	 */
 	@Override
 	public String getName() {
@@ -42,8 +46,12 @@ public abstract class RuneElement extends Item implements Rune {
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.Rune#getID()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * io.github.zaphodious.essentialsorcery.spellcasting.abstractrunes.Rune
+	 * #getID()
 	 */
 	@Override
 	public int getID() {
@@ -54,7 +62,7 @@ public abstract class RuneElement extends Item implements Rune {
 	public Element getElement() {
 		return this.element;
 	}
-	
+
 	public int getPowerLevel() {
 		return 1;
 	}

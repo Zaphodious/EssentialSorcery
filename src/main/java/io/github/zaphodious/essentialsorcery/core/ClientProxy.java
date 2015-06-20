@@ -8,29 +8,24 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-public class ClientProxy  implements Proxy  {
+public class ClientProxy implements Proxy {
 
+	public void preInit(FMLPreInitializationEvent e) {
 
-    public void preInit(FMLPreInitializationEvent e) {
-        
-        
-        
-    }
+	}
 
+	public void init(FMLInitializationEvent e) {
 
-    public void init(FMLInitializationEvent e) {
-        
-        ItemRenderRegister.registerVariants();
-        ModBlocks.addVariantsForDragonTap();
-        ItemRenderRegister.registerItemRenderer();
-        EntityRenderRegister.renderEntities();
-        ModBlocks.registerRenders();
-        
-    }
+		ItemRenderRegister.registerVariants();
+		ModBlocks.addBlockVariants();
+		ItemRenderRegister.registerItemRenderer();
+		EntityRenderRegister.renderEntities();
+		ModBlocks.registerRenders();
 
+	}
 
-    public void postInit(FMLPostInitializationEvent e) {
-        
-    }
-	
+	public void postInit(FMLPostInitializationEvent e) {
+
+	}
+
 }

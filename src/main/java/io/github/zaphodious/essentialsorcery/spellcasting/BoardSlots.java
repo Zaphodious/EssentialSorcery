@@ -1,14 +1,12 @@
 package io.github.zaphodious.essentialsorcery.spellcasting;
 
 public enum BoardSlots {
-	
-	ELEMENT("element"),
-	SHAPE("shape"),
-	EFFECT("effect"),
-	ESSENCE_CONTAINED("essenceContained");
-	
+
+	ELEMENT("element"), SHAPE("shape"), EFFECT("effect"), ESSENCE_CONTAINED(
+			"essenceContained");
+
 	private String slotname;
-	
+
 	BoardSlots(String slotname) {
 		this.slotname = slotname;
 	}
@@ -19,7 +17,5 @@ public enum BoardSlots {
 	public String getSlotname() {
 		return slotname;
 	}
-	
-	
 
 }

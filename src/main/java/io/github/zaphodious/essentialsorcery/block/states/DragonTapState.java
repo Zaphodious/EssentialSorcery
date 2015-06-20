@@ -8,16 +8,13 @@ import java.util.Collection;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.util.IStringSerializable;
 
-public enum DragonTapState implements IStringSerializable, IProperty, StateEnum{
-	
-	
-	PLACED(0, "placed"),
-	SET(1, "set"),
-	SPENT(2, "spent");
-	
+public enum DragonTapState implements IStringSerializable, IProperty, StateEnum {
+
+	PLACED(0, "placed"), SET(1, "set"), SPENT(2, "spent");
+
 	private int ID;
 	private String name;
-	
+
 	private DragonTapState(int ID, String name) {
 		this.ID = ID;
 		this.name = name;
@@ -51,7 +48,7 @@ public enum DragonTapState implements IStringSerializable, IProperty, StateEnum{
 		// TODO Auto-generated method stub
 		return value.toString();
 	}
-	
+
 	public static DragonTapState getStateForID(int ID) {
 		DragonTapState toReturn = null;
 		for (DragonTapState state : DragonTapState.values()) {
@@ -72,5 +69,5 @@ public enum DragonTapState implements IStringSerializable, IProperty, StateEnum{
 		// TODO Auto-generated method stub
 		return name;
 	}
-	
+
 }

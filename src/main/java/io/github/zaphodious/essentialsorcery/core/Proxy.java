@@ -23,8 +23,8 @@ public interface Proxy {
 
 	public void preInit(FMLPreInitializationEvent e);
 
-    public void init(FMLInitializationEvent e);
+	public void init(FMLInitializationEvent e);
 
-    public void postInit(FMLPostInitializationEvent e);
-	
+	public void postInit(FMLPostInitializationEvent e);
+
 }

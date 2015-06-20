@@ -11,7 +11,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public abstract class Jade extends Item {
-	
+
 	String tooltipName;
 
 	protected Jade(String unlocalizedName) {
@@ -19,7 +19,7 @@ public abstract class Jade extends Item {
 		this.setCreativeTab(Reference.tabEssential);
 		this.setHasSubtypes(true);
 	}
-	
+
 	protected Jade(String unlocalizedName, String tooltipName) {
 		this.setUnlocalizedName(unlocalizedName);
 		this.setCreativeTab(Reference.tabEssential);
@@ -30,16 +30,22 @@ public abstract class Jade extends Item {
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
 
-		return super.getUnlocalizedName() + "_"
+		return super.getUnlocalizedName()
+				+ "_"
 				+ this.getElement(stack).getColor();
 
 	}
-	
+
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer playerIn,
-			List tooltip, boolean advanced) {
-		String elementName = this.getElement(stack).getName().substring(0, 1).toUpperCase() + this.getElement(stack).getName().substring(1);
-		tooltip.add(elementName+"-Aspected " + tooltipName);
+	public void addInformation(
+			ItemStack stack,
+			EntityPlayer playerIn,
+			List tooltip,
+			boolean advanced) {
+		String elementName =
+				this.getElement(stack).getName().substring(0, 1).toUpperCase()
+						+ this.getElement(stack).getName().substring(1);
+		tooltip.add(elementName + "-Aspected " + tooltipName);
 		super.addInformation(stack, playerIn, tooltip, advanced);
 	}
 

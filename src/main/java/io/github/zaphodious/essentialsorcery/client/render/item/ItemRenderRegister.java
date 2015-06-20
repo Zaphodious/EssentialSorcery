@@ -13,7 +13,7 @@ public final class ItemRenderRegister {
 	public static void registerItemRenderer() {
 		reg(ModItems.tapSetter, 0);
 		reg(ModItems.testWand, 0);
-		
+
 		reg(ModItems.stone_trowel, 0);
 		reg(ModItems.obol, 0);
 
@@ -74,9 +74,6 @@ public final class ItemRenderRegister {
 		reg(ModItems.glove_diamond_wood, 0);
 		reg(ModItems.hobgoblin_placer, 0);
 
-
-		
-
 		regJade(ModItems.jade_raw, 0);
 		regJade(ModItems.jade_raw, 1);
 		regJade(ModItems.jade_raw, 2);
@@ -88,29 +85,28 @@ public final class ItemRenderRegister {
 		regJade(ModItems.jade_dust, 2);
 		regJade(ModItems.jade_dust, 3);
 		regJade(ModItems.jade_dust, 4);
-		
+
 		regJade(ModItems.jade_alloy_dust, 0);
 		regJade(ModItems.jade_alloy_dust, 1);
 		regJade(ModItems.jade_alloy_dust, 2);
 		regJade(ModItems.jade_alloy_dust, 3);
 		regJade(ModItems.jade_alloy_dust, 4);
-		
+
 		regJade(ModItems.jade_nugget, 0);
 		regJade(ModItems.jade_nugget, 1);
 		regJade(ModItems.jade_nugget, 2);
 		regJade(ModItems.jade_nugget, 3);
 		regJade(ModItems.jade_nugget, 4);
-		
+
 		regJade(ModItems.jade_ingot, 0);
 		regJade(ModItems.jade_ingot, 1);
 		regJade(ModItems.jade_ingot, 2);
 		regJade(ModItems.jade_ingot, 3);
 		regJade(ModItems.jade_ingot, 4);
-		
+
 		reg(ModItems.moon_silver_ingot, 0);
 		reg(ModItems.moon_silver_nugget, 0);
-		
-		
+
 	}
 
 	public static void reg(Item item, int meta) {
@@ -121,8 +117,12 @@ public final class ItemRenderRegister {
 				.register(
 						item,
 						meta,
-						new ModelResourceLocation(Reference.MODID + ":"
-								+ item.getUnlocalizedName().substring(5),
+						new ModelResourceLocation(
+								Reference.MODID
+										+ ":"
+										+ item
+												.getUnlocalizedName()
+												.substring(5),
 								"inventory"));
 	}
 
@@ -134,74 +134,133 @@ public final class ItemRenderRegister {
 				.register(
 						item,
 						meta,
-						new ModelResourceLocation(Reference.MODID + ":"
-								+ item.getUnlocalizedName().substring(5) + "_"
-								+ Element.getElementForID(meta).getColor(),
-								"inventory"));
-		System.out.println("registered " + Reference.MODID + ":"
-				+ item.getUnlocalizedName().substring(5) + "_"
+						new ModelResourceLocation(
+								Reference.MODID
+										+ ":"
+										+ item
+												.getUnlocalizedName()
+												.substring(5)
+										+ "_"
+										+ Element
+												.getElementForID(meta)
+												.getColor(), "inventory"));
+		System.out.println("registered "
+				+ Reference.MODID
+				+ ":"
+				+ item.getUnlocalizedName().substring(5)
+				+ "_"
 				+ Element.getElementForID(meta).getColor());
 	}
 
 	public static void registerVariants() {
-		ModelBakery.addVariantName(ModItems.jade_raw, Reference.MODID + ":"
-				+ ModItems.jade_raw.getUnlocalizedName().substring(5) + "_"
-				+ Element.FIRE.getColor(), Reference.MODID + ":"
-				+ ModItems.jade_raw.getUnlocalizedName().substring(5) + "_"
-				+ Element.WATER.getColor(), Reference.MODID + ":"
-				+ ModItems.jade_raw.getUnlocalizedName().substring(5) + "_"
-				+ Element.AIR.getColor(), Reference.MODID + ":"
-				+ ModItems.jade_raw.getUnlocalizedName().substring(5) + "_"
-				+ Element.EARTH.getColor(), Reference.MODID + ":"
-				+ ModItems.jade_raw.getUnlocalizedName().substring(5) + "_"
+		ModelBakery.addVariantName(ModItems.jade_raw, Reference.MODID
+				+ ":"
+				+ ModItems.jade_raw.getUnlocalizedName().substring(5)
+				+ "_"
+				+ Element.FIRE.getColor(), Reference.MODID
+				+ ":"
+				+ ModItems.jade_raw.getUnlocalizedName().substring(5)
+				+ "_"
+				+ Element.WATER.getColor(), Reference.MODID
+				+ ":"
+				+ ModItems.jade_raw.getUnlocalizedName().substring(5)
+				+ "_"
+				+ Element.AIR.getColor(), Reference.MODID
+				+ ":"
+				+ ModItems.jade_raw.getUnlocalizedName().substring(5)
+				+ "_"
+				+ Element.EARTH.getColor(), Reference.MODID
+				+ ":"
+				+ ModItems.jade_raw.getUnlocalizedName().substring(5)
+				+ "_"
 				+ Element.WOOD.getColor());
 
-		ModelBakery.addVariantName(ModItems.jade_raw, Reference.MODID + ":"
-				+ ModItems.jade_dust.getUnlocalizedName().substring(5) + "_"
-				+ Element.FIRE.getColor(), Reference.MODID + ":"
-				+ ModItems.jade_dust.getUnlocalizedName().substring(5) + "_"
-				+ Element.WATER.getColor(), Reference.MODID + ":"
-				+ ModItems.jade_dust.getUnlocalizedName().substring(5) + "_"
-				+ Element.AIR.getColor(), Reference.MODID + ":"
-				+ ModItems.jade_dust.getUnlocalizedName().substring(5) + "_"
-				+ Element.EARTH.getColor(), Reference.MODID + ":"
-				+ ModItems.jade_dust.getUnlocalizedName().substring(5) + "_"
+		ModelBakery.addVariantName(ModItems.jade_raw, Reference.MODID
+				+ ":"
+				+ ModItems.jade_dust.getUnlocalizedName().substring(5)
+				+ "_"
+				+ Element.FIRE.getColor(), Reference.MODID
+				+ ":"
+				+ ModItems.jade_dust.getUnlocalizedName().substring(5)
+				+ "_"
+				+ Element.WATER.getColor(), Reference.MODID
+				+ ":"
+				+ ModItems.jade_dust.getUnlocalizedName().substring(5)
+				+ "_"
+				+ Element.AIR.getColor(), Reference.MODID
+				+ ":"
+				+ ModItems.jade_dust.getUnlocalizedName().substring(5)
+				+ "_"
+				+ Element.EARTH.getColor(), Reference.MODID
+				+ ":"
+				+ ModItems.jade_dust.getUnlocalizedName().substring(5)
+				+ "_"
 				+ Element.WOOD.getColor());
-		
-		ModelBakery.addVariantName(ModItems.jade_raw, Reference.MODID + ":"
-				+ ModItems.jade_alloy_dust.getUnlocalizedName().substring(5) + "_"
-				+ Element.FIRE.getColor(), Reference.MODID + ":"
-				+ ModItems.jade_alloy_dust.getUnlocalizedName().substring(5) + "_"
-				+ Element.WATER.getColor(), Reference.MODID + ":"
-				+ ModItems.jade_alloy_dust.getUnlocalizedName().substring(5) + "_"
-				+ Element.AIR.getColor(), Reference.MODID + ":"
-				+ ModItems.jade_alloy_dust.getUnlocalizedName().substring(5) + "_"
-				+ Element.EARTH.getColor(), Reference.MODID + ":"
-				+ ModItems.jade_alloy_dust.getUnlocalizedName().substring(5) + "_"
+
+		ModelBakery.addVariantName(ModItems.jade_raw, Reference.MODID
+				+ ":"
+				+ ModItems.jade_alloy_dust.getUnlocalizedName().substring(5)
+				+ "_"
+				+ Element.FIRE.getColor(), Reference.MODID
+				+ ":"
+				+ ModItems.jade_alloy_dust.getUnlocalizedName().substring(5)
+				+ "_"
+				+ Element.WATER.getColor(), Reference.MODID
+				+ ":"
+				+ ModItems.jade_alloy_dust.getUnlocalizedName().substring(5)
+				+ "_"
+				+ Element.AIR.getColor(), Reference.MODID
+				+ ":"
+				+ ModItems.jade_alloy_dust.getUnlocalizedName().substring(5)
+				+ "_"
+				+ Element.EARTH.getColor(), Reference.MODID
+				+ ":"
+				+ ModItems.jade_alloy_dust.getUnlocalizedName().substring(5)
+				+ "_"
 				+ Element.WOOD.getColor());
-		
-		ModelBakery.addVariantName(ModItems.jade_nugget, Reference.MODID + ":"
-				+ ModItems.jade_nugget.getUnlocalizedName().substring(5) + "_"
-				+ Element.FIRE.getColor(), Reference.MODID + ":"
-				+ ModItems.jade_nugget.getUnlocalizedName().substring(5) + "_"
-				+ Element.WATER.getColor(), Reference.MODID + ":"
-				+ ModItems.jade_nugget.getUnlocalizedName().substring(5) + "_"
-				+ Element.AIR.getColor(), Reference.MODID + ":"
-				+ ModItems.jade_nugget.getUnlocalizedName().substring(5) + "_"
-				+ Element.EARTH.getColor(), Reference.MODID + ":"
-				+ ModItems.jade_nugget.getUnlocalizedName().substring(5) + "_"
+
+		ModelBakery.addVariantName(ModItems.jade_nugget, Reference.MODID
+				+ ":"
+				+ ModItems.jade_nugget.getUnlocalizedName().substring(5)
+				+ "_"
+				+ Element.FIRE.getColor(), Reference.MODID
+				+ ":"
+				+ ModItems.jade_nugget.getUnlocalizedName().substring(5)
+				+ "_"
+				+ Element.WATER.getColor(), Reference.MODID
+				+ ":"
+				+ ModItems.jade_nugget.getUnlocalizedName().substring(5)
+				+ "_"
+				+ Element.AIR.getColor(), Reference.MODID
+				+ ":"
+				+ ModItems.jade_nugget.getUnlocalizedName().substring(5)
+				+ "_"
+				+ Element.EARTH.getColor(), Reference.MODID
+				+ ":"
+				+ ModItems.jade_nugget.getUnlocalizedName().substring(5)
+				+ "_"
 				+ Element.WOOD.getColor());
-		
-		ModelBakery.addVariantName(ModItems.jade_ingot, Reference.MODID + ":"
-				+ ModItems.jade_ingot.getUnlocalizedName().substring(5) + "_"
-				+ Element.FIRE.getColor(), Reference.MODID + ":"
-				+ ModItems.jade_ingot.getUnlocalizedName().substring(5) + "_"
-				+ Element.WATER.getColor(), Reference.MODID + ":"
-				+ ModItems.jade_ingot.getUnlocalizedName().substring(5) + "_"
-				+ Element.AIR.getColor(), Reference.MODID + ":"
-				+ ModItems.jade_ingot.getUnlocalizedName().substring(5) + "_"
-				+ Element.EARTH.getColor(), Reference.MODID + ":"
-				+ ModItems.jade_ingot.getUnlocalizedName().substring(5) + "_"
+
+		ModelBakery.addVariantName(ModItems.jade_ingot, Reference.MODID
+				+ ":"
+				+ ModItems.jade_ingot.getUnlocalizedName().substring(5)
+				+ "_"
+				+ Element.FIRE.getColor(), Reference.MODID
+				+ ":"
+				+ ModItems.jade_ingot.getUnlocalizedName().substring(5)
+				+ "_"
+				+ Element.WATER.getColor(), Reference.MODID
+				+ ":"
+				+ ModItems.jade_ingot.getUnlocalizedName().substring(5)
+				+ "_"
+				+ Element.AIR.getColor(), Reference.MODID
+				+ ":"
+				+ ModItems.jade_ingot.getUnlocalizedName().substring(5)
+				+ "_"
+				+ Element.EARTH.getColor(), Reference.MODID
+				+ ":"
+				+ ModItems.jade_ingot.getUnlocalizedName().substring(5)
+				+ "_"
 				+ Element.WOOD.getColor());
 	}
 

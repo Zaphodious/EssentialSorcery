@@ -40,13 +40,24 @@ public class RuneEffectDefend extends RuneEffect {
 	 * java.lang.String)
 	 */
 	@Override
-	public boolean makeMagic(Entity entity, World worldIn,
-			EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn,
-			BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey) {
+	public boolean makeMagic(
+			Entity entity,
+			World worldIn,
+			EntityLivingBase throwerIn,
+			Map<String, ItemStack> runeMapIn,
+			BlockPos pos,
+			MovingObjectPosition movObjPos,
+			String thisRuneKey) {
 		// TODO Auto-generated method stub
 		if (movObjPos.entityHit != null) {
-			return super.makeMagic(entity, worldIn, throwerIn, runeMapIn, pos,
-					movObjPos, thisRuneKey);
+			return super.makeMagic(
+					entity,
+					worldIn,
+					throwerIn,
+					runeMapIn,
+					pos,
+					movObjPos,
+					thisRuneKey);
 		}
 
 		return false;
@@ -54,17 +65,25 @@ public class RuneEffectDefend extends RuneEffect {
 	}
 
 	@Override
-	public boolean fireEffect(Entity entity, World worldIn,
-			EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn,
-			BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey) {
+	public boolean fireEffect(
+			Entity entity,
+			World worldIn,
+			EntityLivingBase throwerIn,
+			Map<String, ItemStack> runeMapIn,
+			BlockPos pos,
+			MovingObjectPosition movObjPos,
+			String thisRuneKey) {
 		// TODO Auto-generated method stub
-		int spellStrength = RuneHelper.totalEffectRunesIn(runeMapIn
-				.get(thisRuneKey));
+		int spellStrength =
+				RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
 		try {
 			EntityLivingBase hitPlayer = (EntityLivingBase) movObjPos.entityHit;
 
-			hitPlayer.addPotionEffect(new PotionEffect(Potion.fireResistance
-					.getId(), spellStrength * 100, spellStrength / 5, false,
+			hitPlayer.addPotionEffect(new PotionEffect(
+					Potion.fireResistance.getId(),
+					spellStrength * 100,
+					spellStrength / 5,
+					false,
 					true));
 
 			return true;
@@ -76,17 +95,25 @@ public class RuneEffectDefend extends RuneEffect {
 	}
 
 	@Override
-	public boolean waterEffect(Entity entity, World worldIn,
-			EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn,
-			BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey) {
+	public boolean waterEffect(
+			Entity entity,
+			World worldIn,
+			EntityLivingBase throwerIn,
+			Map<String, ItemStack> runeMapIn,
+			BlockPos pos,
+			MovingObjectPosition movObjPos,
+			String thisRuneKey) {
 		// TODO Auto-generated method stub
-		int spellStrength = RuneHelper.totalEffectRunesIn(runeMapIn
-				.get(thisRuneKey));
+		int spellStrength =
+				RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
 		try {
 			EntityLivingBase hitPlayer = (EntityLivingBase) movObjPos.entityHit;
 
-			hitPlayer.addPotionEffect(new PotionEffect(Potion.moveSlowdown
-					.getId(), spellStrength * 200, spellStrength / 5, false,
+			hitPlayer.addPotionEffect(new PotionEffect(
+					Potion.moveSlowdown.getId(),
+					spellStrength * 200,
+					spellStrength / 5,
+					false,
 					true));
 
 			return true;
@@ -98,12 +125,17 @@ public class RuneEffectDefend extends RuneEffect {
 	}
 
 	@Override
-	public boolean airEffect(Entity entity, World worldIn,
-			EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn,
-			BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey) {
+	public boolean airEffect(
+			Entity entity,
+			World worldIn,
+			EntityLivingBase throwerIn,
+			Map<String, ItemStack> runeMapIn,
+			BlockPos pos,
+			MovingObjectPosition movObjPos,
+			String thisRuneKey) {
 		// TODO Auto-generated method stub
-		int spellStrength = RuneHelper.totalEffectRunesIn(runeMapIn
-				.get(thisRuneKey));
+		int spellStrength =
+				RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
 		/*
 		 * try { EntityLivingBase hitPlayer = (EntityLivingBase)
 		 * movObjPos.entityHit;
@@ -120,8 +152,8 @@ public class RuneEffectDefend extends RuneEffect {
 
 		try {
 
-
-			EntityLivingBase entityLivingBase = (EntityLivingBase) movObjPos.entityHit;
+			EntityLivingBase entityLivingBase =
+					(EntityLivingBase) movObjPos.entityHit;
 
 			entityLivingBase.motionY = entity.motionX * (spellStrength * .3);
 
@@ -133,18 +165,26 @@ public class RuneEffectDefend extends RuneEffect {
 	}
 
 	@Override
-	public boolean earthEffect(Entity entity, World worldIn,
-			EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn,
-			BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey) {
+	public boolean earthEffect(
+			Entity entity,
+			World worldIn,
+			EntityLivingBase throwerIn,
+			Map<String, ItemStack> runeMapIn,
+			BlockPos pos,
+			MovingObjectPosition movObjPos,
+			String thisRuneKey) {
 		// TODO Auto-generated method stub
-		int spellStrength = RuneHelper.totalEffectRunesIn(runeMapIn
-				.get(thisRuneKey));
+		int spellStrength =
+				RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
 		try {
 			EntityLivingBase hitPlayer = (EntityLivingBase) movObjPos.entityHit;
 
-			hitPlayer.addPotionEffect(new PotionEffect(Potion.healthBoost
-					.getId(), spellStrength * 200, (spellStrength / 5) * 2,
-					false, true));
+			hitPlayer.addPotionEffect(new PotionEffect(
+					Potion.healthBoost.getId(),
+					spellStrength * 200,
+					(spellStrength / 5) * 2,
+					false,
+					true));
 
 			return true;
 
@@ -155,12 +195,17 @@ public class RuneEffectDefend extends RuneEffect {
 	}
 
 	@Override
-	public boolean woodEffect(Entity entity, World worldIn,
-			EntityLivingBase throwerIn, Map<String, ItemStack> runeMapIn,
-			BlockPos pos, MovingObjectPosition movObjPos, String thisRuneKey) {
+	public boolean woodEffect(
+			Entity entity,
+			World worldIn,
+			EntityLivingBase throwerIn,
+			Map<String, ItemStack> runeMapIn,
+			BlockPos pos,
+			MovingObjectPosition movObjPos,
+			String thisRuneKey) {
 		// TODO Auto-generated method stub
-		int spellStrength = RuneHelper.totalEffectRunesIn(runeMapIn
-				.get(thisRuneKey));
+		int spellStrength =
+				RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
 
 		/*
 		 * try { EntityPlayer hitPlayer = (EntityPlayer) movObjPos.entityHit;
@@ -175,9 +220,12 @@ public class RuneEffectDefend extends RuneEffect {
 		try {
 			EntityLivingBase hitPlayer = (EntityLivingBase) movObjPos.entityHit;
 
-			hitPlayer.addPotionEffect(new PotionEffect(Potion.invisibility
-					.getId(), spellStrength * 200, (spellStrength / 5) * 2,
-					false, true));
+			hitPlayer.addPotionEffect(new PotionEffect(
+					Potion.invisibility.getId(),
+					spellStrength * 200,
+					(spellStrength / 5) * 2,
+					false,
+					true));
 
 			return true;
 

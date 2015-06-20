@@ -11,20 +11,40 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class RegisterMobs {
 
 	public static void registerMobs() {
-		registerModEntityWithEgg(EntityHobgoblin.class, "hobgoblin", 3000,
-				0xFFA62E, 0x820000);
-		EntityRegistry.addSpawn(EntityHobgoblin.class, 4, 1, 5,
-				EnumCreatureType.MONSTER, BiomeGenBase.forest,
-				BiomeGenBase.mesa, BiomeGenBase.plains, BiomeGenBase.desert,
+		registerModEntityWithEgg(
+				EntityHobgoblin.class,
+				"hobgoblin",
+				3000,
+				0xFFA62E,
+				0x820000);
+		EntityRegistry.addSpawn(
+				EntityHobgoblin.class,
+				4,
+				1,
+				5,
+				EnumCreatureType.MONSTER,
+				BiomeGenBase.forest,
+				BiomeGenBase.mesa,
+				BiomeGenBase.plains,
+				BiomeGenBase.desert,
 				BiomeGenBase.taiga); // change the values to vary the spawn
 										// rarity, biome, etc.
 	}
 
-	public static void registerModEntityWithEgg(Class parEntityClass,
-			String parEntityName, int parEntityID, int parEggColor,
+	public static void registerModEntityWithEgg(
+			Class parEntityClass,
+			String parEntityName,
+			int parEntityID,
+			int parEggColor,
 			int parEggSpotsColor) {
-		EntityRegistry.registerModEntity(parEntityClass, parEntityName,
-				parEntityID, EssentialSorcery.instance, 80, 3, false);
+		EntityRegistry.registerModEntity(
+				parEntityClass,
+				parEntityName,
+				parEntityID,
+				EssentialSorcery.instance,
+				80,
+				3,
+				false);
 
 	}
 }
