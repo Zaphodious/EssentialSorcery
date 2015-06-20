@@ -9,11 +9,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
-
-
-import cyano.basemetals.BaseMetals;
 import net.minecraftforge.fml.common.FMLLog;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import cyano.basemetals.BaseMetals;
 
 public class OreSpawnJSON {
 	
@@ -22,11 +20,15 @@ public class OreSpawnJSON {
 		Path oreSpawnFile = Paths.get(oreSpawnFolder.toString(),Reference.MODID+".json");
 		if(Files.exists(oreSpawnFile) == false){
 			try {
+				//FileInputStream location = (FileInputStream) OreSpawnJSON.class.getResource("essentialsorcery:default_configs/orespawn.json").openStream();
+				//FileInputStream in = new FileInputStream("/assets/essentialsorcery/default_configs/orespawn.json");
 				Files.createDirectories(oreSpawnFile.getParent());
 				Files.write(oreSpawnFile, Arrays.asList(defaultOreSpawnJSON.split("\n")), Charset.forName("UTF-8"));
+				//Files.copy(location, oreSpawnFile, StandardCopyOption.REPLACE_EXISTING);
 				BaseMetals.oreSpawnConfigFiles.add(oreSpawnFile);
 			} catch (IOException e) {
 				FMLLog.severe(Reference.MODID+": Error: Failed to write file "+oreSpawnFile);
+				e.printStackTrace();
 			}
 			
 			

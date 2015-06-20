@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
-public interface CommonProxy {
+public interface Proxy {
 
 	public void preInit(FMLPreInitializationEvent e);
 

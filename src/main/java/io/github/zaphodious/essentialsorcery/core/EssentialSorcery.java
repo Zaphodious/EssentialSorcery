@@ -26,7 +26,7 @@ public class EssentialSorcery {
 	EssentialEventHandler events = new EssentialEventHandler();
 	
 	@SidedProxy(clientSide=Reference.CLIENT_PROXY, serverSide=Reference.SERVER_PROXY)
-	public static CommonProxy proxy;
+	public static Proxy proxy;
 	
     @Instance
     public static EssentialSorcery instance = new EssentialSorcery();
@@ -37,6 +37,7 @@ public class EssentialSorcery {
     	config.load();
     	this.proxy.preInit(e);
     	System.out.println("called method: preInit... and has this changed?");
+    	OreSpawnJSON.makeOreGenConfigFile(e);
     	config.save();
     	
     	ModBlocks.createBlocks();
@@ -50,7 +51,7 @@ public class EssentialSorcery {
 		
 		Reference.SORTER.fillBiomeList();
 		
-		OreSpawnJSON.makeOreGenConfigFile(e);
+		
     }
 
     @EventHandler
