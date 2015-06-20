@@ -28,5 +28,18 @@
             "mobs/hobgoblin/living2",
             "mobs/hobgoblin/living3"
         ]
+    },
+	
+	"event.meteor.crash":
+    {
+        "category": "neutral",
+        "sounds":
+        [
+            "event/meteor/slam1",
+			"event/meteor/slam2",
+			"event/meteor/slam3",
+			"event/meteor/slam4",
+			"event/meteor/slam5"
+        ]
     }
 }

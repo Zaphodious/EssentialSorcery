@@ -1,6 +1,7 @@
 package io.github.zaphodious.essentialsorcery.item;
 
 import io.github.zaphodious.essentialsorcery.gen.GenTest;
+import io.github.zaphodious.essentialsorcery.gen.PuttingThingsPlaces;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
@@ -37,15 +38,23 @@ public class Trowel extends ItemSpade {
 		// TODO Auto-generated method stub
 		// GenTest.makeASimpleBuilding(stack, playerIn, worldIn, pos, side,
 		// hitX, hitY, hitZ, 22, 33, 44);
-		GenTest.genTestStructure(
-				stack,
-				playerIn,
-				worldIn,
-				pos,
-				side,
-				hitX,
-				hitY,
-				hitZ);
+		if (playerIn.isSneaking()) {
+			GenTest.makeASimpleBuilding(
+					stack,
+					playerIn,
+					worldIn,
+					pos,
+					side,
+					hitX,
+					hitY,
+					hitZ,
+					10,
+					11,
+					12);
+		} else {
+			PuttingThingsPlaces.starmetalMeteorFall(worldIn, playerIn, pos);
+		}
+
 		return super.onItemUse(
 				stack,
 				playerIn,

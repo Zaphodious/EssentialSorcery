@@ -1,5 +1,7 @@
 package io.github.zaphodious.essentialsorcery.gen;
 
+import io.github.zaphodious.essentialsorcery.block.ModBlocks;
+import io.github.zaphodious.essentialsorcery.core.Reference;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.server.MinecraftServer;
@@ -16,15 +18,19 @@ public class PuttingThingsPlaces {
 		BlockPos skyDrop = new BlockPos(pos.getX(), 250, pos.getZ());
 		boolean isAir = true;
 		while (isAir) {
-			if (world.getBlockState(skyDrop).getBlock() != Blocks.air) {
+			if (world.getBlockState(skyDrop).getBlock() != Blocks.air && world.getBlockState(skyDrop).getBlock() != Blocks.water) {
+				
 				if (world.getBlockState(skyDrop.down()).getBlock() == Blocks.air) {
-					world.setBlockState(skyDrop, Blocks.air.getDefaultState());
+					world.setBlockState(skyDrop, ModBlocks.magic_field.getDefaultState());
 					skyDrop = skyDrop.down();
+					
 				} else {
 					isAir = false;
+					
 				}
 
 			} else {
+				world.setBlockState(skyDrop, ModBlocks.magic_field.getDefaultState());
 				skyDrop = skyDrop.down();
 			}
 		}
@@ -50,24 +56,24 @@ public class PuttingThingsPlaces {
 			}
 
 		}
-
+		world.playSound(skyDrop.getX(), skyDrop.getY(), skyDrop.getZ(), Reference.MODID + ":event.meteor.crash", 10F, 1.0F, true);
 		world.setBlockState(skyDrop, Blocks.glowstone.getDefaultState());
-		world.setBlockState(skyDrop.east(), Blocks.air.getDefaultState());
-		world.setBlockState(skyDrop.west(), Blocks.air.getDefaultState());
-		world.setBlockState(skyDrop.north(), Blocks.air.getDefaultState());
-		world.setBlockState(skyDrop.south(), Blocks.air.getDefaultState());
+		world.setBlockState(skyDrop.east(), ModBlocks.magic_field.getDefaultState());
+		world.setBlockState(skyDrop.west(), ModBlocks.magic_field.getDefaultState());
+		world.setBlockState(skyDrop.north(), ModBlocks.magic_field.getDefaultState());
+		world.setBlockState(skyDrop.south(), ModBlocks.magic_field.getDefaultState());
 		world.setBlockState(
 				skyDrop.north().east(),
-				Blocks.air.getDefaultState());
+				ModBlocks.magic_field.getDefaultState());
 		world.setBlockState(
 				skyDrop.north().west(),
-				Blocks.air.getDefaultState());
+				ModBlocks.magic_field.getDefaultState());
 		world.setBlockState(
 				skyDrop.south().east(),
-				Blocks.air.getDefaultState());
+				ModBlocks.magic_field.getDefaultState());
 		world.setBlockState(
 				skyDrop.south().west(),
-				Blocks.air.getDefaultState());
+				ModBlocks.magic_field.getDefaultState());
 
 		return true;
 	}

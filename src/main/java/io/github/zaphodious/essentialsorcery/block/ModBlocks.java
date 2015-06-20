@@ -22,6 +22,7 @@ public final class ModBlocks {
 	public static JadeOre jade_ore;
 	public static JadeBlock jade_block;
 	public static MoonSilverBlock moon_silver_block;
+	public static MagicField magic_field;
 
 	public static void createBlocks() {
 
@@ -45,6 +46,9 @@ public final class ModBlocks {
 
 		moon_silver_block = new MoonSilverBlock("moon_silver_block");
 		GameRegistry.registerBlock(moon_silver_block, "moon_silver_block");
+
+		magic_field = new MagicField("magic_field");
+		GameRegistry.registerBlock(magic_field, "magic_field");
 
 	}
 
@@ -74,6 +78,7 @@ public final class ModBlocks {
 		registerRenderMeta(jade_block, Element.EARTH.getID(), Element.EARTH);
 		registerRenderMeta(jade_block, Element.WOOD.getID(), Element.WOOD);
 		registerRender(moon_silver_block);
+		registerRender(magic_field);
 
 	}
 
