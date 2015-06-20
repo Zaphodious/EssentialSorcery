@@ -19,7 +19,7 @@ public class RegisterMobs {
 				0x820000);
 		EntityRegistry.addSpawn(
 				EntityHobgoblin.class,
-				4,
+				7,
 				1,
 				5,
 				EnumCreatureType.MONSTER,

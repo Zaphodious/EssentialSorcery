@@ -74,6 +74,22 @@ public class PuttingThingsPlaces {
 		world.setBlockState(
 				skyDrop.south().west(),
 				ModBlocks.magic_field.getDefaultState());
+		world.setBlockState(skyDrop.east().up(), ModBlocks.magic_field.getDefaultState());
+		world.setBlockState(skyDrop.west().up(), ModBlocks.magic_field.getDefaultState());
+		world.setBlockState(skyDrop.north().up(), ModBlocks.magic_field.getDefaultState());
+		world.setBlockState(skyDrop.south().up(), ModBlocks.magic_field.getDefaultState());
+		world.setBlockState(
+				skyDrop.north().east().up(),
+				ModBlocks.magic_field.getDefaultState());
+		world.setBlockState(
+				skyDrop.north().west().up(),
+				ModBlocks.magic_field.getDefaultState());
+		world.setBlockState(
+				skyDrop.south().east().up(),
+				ModBlocks.magic_field.getDefaultState());
+		world.setBlockState(
+				skyDrop.south().west().up(),
+				ModBlocks.magic_field.getDefaultState());
 
 		return true;
 	}
