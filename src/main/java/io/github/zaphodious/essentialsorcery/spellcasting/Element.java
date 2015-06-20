@@ -5,17 +5,18 @@ import net.minecraft.util.IStringSerializable;
 
 public enum Element implements IStringSerializable, StateEnum {
 
-	FIRE(0, "fire", "red"),
-	WATER(1, "water", "black"),
-	EARTH(2, "earth", "white"),
-	AIR(3, "air", "blue"),
-	WOOD(4, "wood", "green"),
-	NEUTRAL(5, "neutral", "red");
-	
+	FIRE(0, "fire", "red"), WATER(1, "water", "black"), EARTH(
+			2,
+			"earth",
+			"white"), AIR(3, "air", "blue"), WOOD(4, "wood", "green"), NEUTRAL(
+			5,
+			"neutral",
+			"clear");
+
 	private int ID;
 	private String name;
 	private String color;
-	
+
 	private Element(int ID, String name, String color) {
 		this.ID = ID;
 		this.name = name;
@@ -29,15 +30,14 @@ public enum Element implements IStringSerializable, StateEnum {
 	public String getName() {
 		return name;
 	}
-	
+
 	public String getColor() {
 		return color;
 	}
-	
 
 	@Override
 	public String toString() {
-		return this.getName();
+		return this.getStateName();
 	}
 
 	public static Element getElementForID(int ID) {
@@ -59,5 +59,5 @@ public enum Element implements IStringSerializable, StateEnum {
 	public String getStateName() {
 		return color;
 	}
-	
+
 }

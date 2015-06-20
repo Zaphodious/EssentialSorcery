@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "element=wood": {"model": "essentialsorcery:jade_block_green"},
+		"element=fire": {"model": "essentialsorcery:jade_block_red"},
+        "element=air": {"model": "essentialsorcery:jade_block_blue" },
+        "element=water": {"model": "essentialsorcery:jade_block_black" },
+        "element=earth": { "model": "essentialsorcery:jade_block_white" },
+		"element=neutral": {"model": "essentialsorcery:jade_block_black" }
+    }
+}
