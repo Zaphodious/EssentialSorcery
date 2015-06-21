@@ -1,12 +1,12 @@
 package io.github.zaphodious.essentialsorcery.item;
 
-import io.github.zaphodious.essentialsorcery.block.ModBlocks;
 import io.github.zaphodious.essentialsorcery.item.metal.JadeAlloyDust;
 import io.github.zaphodious.essentialsorcery.item.metal.JadeDust;
 import io.github.zaphodious.essentialsorcery.item.metal.JadeIngot;
 import io.github.zaphodious.essentialsorcery.item.metal.JadeNugget;
 import io.github.zaphodious.essentialsorcery.item.metal.JadeRaw;
 import io.github.zaphodious.essentialsorcery.item.metal.MoonSilver;
+import io.github.zaphodious.essentialsorcery.item.metal.StarMetal;
 import io.github.zaphodious.essentialsorcery.item.mobplacer.HobgoblinPlacer;
 import io.github.zaphodious.essentialsorcery.item.renderitems.PrettyBallBlue;
 import io.github.zaphodious.essentialsorcery.item.renderitems.PrettyBallBrown;
@@ -137,6 +137,8 @@ public final class ModItems {
 
 	public static MoonSilver moon_silver_ingot;
 	public static MoonSilver moon_silver_nugget;
+	
+	public static StarMetal star_metal_ingot;
 
 	/* public static BlockPlacer moon_silver_block_placer; */
 
@@ -354,6 +356,11 @@ public final class ModItems {
 				moon_silver_nugget =
 						new MoonSilver("moon_silver_nugget", "Drop"),
 				"moon_silver_nugget");
+		
+		GameRegistry.registerItem(
+				star_metal_ingot =
+						new StarMetal("star_metal_ingot", "Ingot"),
+				"star_metal_ingot");
 		/*
 		 * GameRegistry.registerItem(moon_silver_block_placer = new
 		 * BlockPlacer("moon_silver_block_placer", ModBlocks.moon_silver_block),

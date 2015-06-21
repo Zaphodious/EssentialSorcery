@@ -74,38 +74,20 @@ public final class ItemRenderRegister {
 		reg(ModItems.glove_diamond_wood, 0);
 		reg(ModItems.hobgoblin_placer, 0);
 
-		regJade(ModItems.jade_raw, 0);
-		regJade(ModItems.jade_raw, 1);
-		regJade(ModItems.jade_raw, 2);
-		regJade(ModItems.jade_raw, 3);
-		regJade(ModItems.jade_raw, 4);
-
-		regJade(ModItems.jade_dust, 0);
-		regJade(ModItems.jade_dust, 1);
-		regJade(ModItems.jade_dust, 2);
-		regJade(ModItems.jade_dust, 3);
-		regJade(ModItems.jade_dust, 4);
-
-		regJade(ModItems.jade_alloy_dust, 0);
-		regJade(ModItems.jade_alloy_dust, 1);
-		regJade(ModItems.jade_alloy_dust, 2);
-		regJade(ModItems.jade_alloy_dust, 3);
-		regJade(ModItems.jade_alloy_dust, 4);
-
-		regJade(ModItems.jade_nugget, 0);
-		regJade(ModItems.jade_nugget, 1);
-		regJade(ModItems.jade_nugget, 2);
-		regJade(ModItems.jade_nugget, 3);
-		regJade(ModItems.jade_nugget, 4);
-
-		regJade(ModItems.jade_ingot, 0);
-		regJade(ModItems.jade_ingot, 1);
-		regJade(ModItems.jade_ingot, 2);
-		regJade(ModItems.jade_ingot, 3);
-		regJade(ModItems.jade_ingot, 4);
+		
+		for (int i = 0; i < 5; i++) {
+			regJade(ModItems.jade_raw, i);
+			regJade(ModItems.jade_dust, i);
+			regJade(ModItems.jade_alloy_dust, i);
+			regJade(ModItems.jade_nugget, i);
+			regJade(ModItems.jade_ingot, i);
+		}
+		
 
 		reg(ModItems.moon_silver_ingot, 0);
 		reg(ModItems.moon_silver_nugget, 0);
+		
+		reg(ModItems.star_metal_ingot, 0);
 
 	}
 

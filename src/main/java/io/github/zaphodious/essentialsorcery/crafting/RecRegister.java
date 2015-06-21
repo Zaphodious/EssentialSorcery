@@ -60,7 +60,6 @@ public class RecRegister {
 
 		"zx", "yz", 'x', cobbleStack, 'y', stickStack, 'z', woolStack);
 
-
 		addXWithReverse(
 				ModItems.moon_silver_ingot,
 				Item.getItemFromBlock(ModBlocks.moon_silver_block),
@@ -76,9 +75,19 @@ public class RecRegister {
 				0,
 				3);
 
+		GameRegistry.addSmelting(
+				new ItemStack(ModBlocks.star_metal_ore, 1, 0),
+				new ItemStack(ModItems.star_metal_ingot, 4, 0),
+				10.0F);
+
 		for (int i = 0; i < 5; i++) {
 			addXWithReverse(ModItems.jade_nugget, ModItems.jade_ingot, i, i, 3);
-			addXWithReverse(ModItems.jade_ingot, Item.getItemFromBlock(ModBlocks.jade_block), i, i, 2);
+			addXWithReverse(
+					ModItems.jade_ingot,
+					Item.getItemFromBlock(ModBlocks.jade_block),
+					i,
+					i,
+					2);
 			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(
 					ModItems.jade_alloy_dust,
 					2,
