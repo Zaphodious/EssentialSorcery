@@ -14,7 +14,8 @@ public class PuttingThingsPlaces {
 	public static boolean starmetalMeteorFall(
 			World world,
 			EntityPlayer player,
-			BlockPos pos) {
+			BlockPos pos,
+			boolean fallDirect) {
 		boolean goingNorth = world.rand.nextBoolean();
 		int northSeverity = world.rand.nextInt(20);
 		boolean goingWest = world.rand.nextBoolean();
@@ -45,11 +46,11 @@ public class PuttingThingsPlaces {
 				world.setBlockState(
 						skyDrop,
 						ModBlocks.magic_field.getDefaultState());
-				if (counterNorth == northSeverity) {
+				if (counterNorth == northSeverity && !fallDirect) {
 					skyDrop = (goingNorth) ? skyDrop.north() : skyDrop.south();
 					counterNorth = 0;
 				}
-				if (counterWest == westSeverity) {
+				if (counterWest == westSeverity && !fallDirect) {
 					skyDrop = (goingWest) ? skyDrop.west() : skyDrop.east();
 					counterWest = 0;
 				}
@@ -143,6 +144,13 @@ public class PuttingThingsPlaces {
 				ModBlocks.magic_field.getDefaultState());
 
 		return true;
+	}
+	
+	public static boolean starmetalMeteorFall(
+			World world,
+			EntityPlayer player,
+			BlockPos pos) {
+		return starmetalMeteorFall(world, player, pos, false);
 	}
 
 	public static boolean starmetalMeteorFall(World world, BlockPos pos) {

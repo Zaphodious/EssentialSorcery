@@ -39,18 +39,7 @@ public class Trowel extends ItemSpade {
 		// GenTest.makeASimpleBuilding(stack, playerIn, worldIn, pos, side,
 		// hitX, hitY, hitZ, 22, 33, 44);
 		if (playerIn.isSneaking()) {
-			GenTest.makeASimpleBuilding(
-					stack,
-					playerIn,
-					worldIn,
-					pos,
-					side,
-					hitX,
-					hitY,
-					hitZ,
-					10,
-					11,
-					12);
+			PuttingThingsPlaces.starmetalMeteorFall(worldIn, playerIn, pos, true);
 		} else {
 			PuttingThingsPlaces.starmetalMeteorFall(worldIn, playerIn, pos);
 		}
