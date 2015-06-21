@@ -34,11 +34,7 @@ public class EssentialMonsterPlacer extends ItemMonsterPlacer {
 	String unlocalizedName;
 	Class entityClass;
 
-	public EssentialMonsterPlacer(
-			String unlocalizedName,
-			Class entityToSpawn,
-			int primaryColor,
-			int secondaryColor) {
+	public EssentialMonsterPlacer(String unlocalizedName, Class entityToSpawn, int primaryColor, int secondaryColor) {
 
 		this.primaryColor = primaryColor;
 		this.secondaryColor = secondaryColor;
@@ -140,18 +136,12 @@ public class EssentialMonsterPlacer extends ItemMonsterPlacer {
 			try {
 				EntityLivingBase entityLiving = null;
 
-				Constructor<?> cons =
-						this.entityClass.getConstructor(World.class);
+				Constructor<?> cons = this.entityClass.getConstructor(World.class);
 				Object object = cons.newInstance(worldIn);
 
 				entityLiving = (EntityLivingBase) object;
 
-				entityLiving.setLocationAndAngles(
-						pos.getX(),
-						pos.getY(),
-						pos.getZ(),
-						entityLiving.rotationYaw,
-						0.0F);
+				entityLiving.setLocationAndAngles(pos.getX(), pos.getY(), pos.getZ(), entityLiving.rotationYaw, 0.0F);
 				worldIn.spawnEntityInWorld(entityLiving);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -176,10 +166,7 @@ public class EssentialMonsterPlacer extends ItemMonsterPlacer {
 	 * net.minecraft.entity.player.EntityPlayer)
 	 */
 	@Override
-	public ItemStack onItemRightClick(
-			ItemStack itemStackIn,
-			World worldIn,
-			EntityPlayer playerIn) {
+	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn) {
 		if (worldIn.isRemote) {
 			return itemStackIn;
 		} else {
@@ -222,12 +209,7 @@ public class EssentialMonsterPlacer extends ItemMonsterPlacer {
 		}
 	}
 
-	public static Entity spawnCreature(
-			World worldIn,
-			EntityLiving entityToSpawn,
-			double x,
-			double y,
-			double z) {
+	public static Entity spawnCreature(World worldIn, EntityLiving entityToSpawn, double x, double y, double z) {
 		/*
 		 * if (!EntityList.entityEggs.containsKey(Integer.valueOf(entityID))) {
 		 * return null; } else {
@@ -238,21 +220,17 @@ public class EssentialMonsterPlacer extends ItemMonsterPlacer {
 
 		if (entity instanceof EntityLivingBase) {
 			EntityLiving entityliving = (EntityLiving) entity;
-			entity
-					.setLocationAndAngles(
-							x,
-							y,
-							z,
-							MathHelper.wrapAngleTo180_float(worldIn.rand
-									.nextFloat() * 360.0F),
-							0.0F);
+			entity.setLocationAndAngles(
+					x,
+					y,
+					z,
+					MathHelper.wrapAngleTo180_float(worldIn.rand.nextFloat() * 360.0F),
+					0.0F);
 			entityliving.rotationYawHead = entityliving.rotationYaw;
 			entityliving.renderYawOffset = entityliving.rotationYaw;
-			entityliving
-					.onInitialSpawn(
-							worldIn.getDifficultyForLocation(new BlockPos(
-									entityliving)),
-							(IEntityLivingData) null);
+			entityliving.onInitialSpawn(
+					worldIn.getDifficultyForLocation(new BlockPos(entityliving)),
+					(IEntityLivingData) null);
 			worldIn.spawnEntityInWorld(entity);
 			entityliving.playLivingSound();
 		}

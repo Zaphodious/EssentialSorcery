@@ -11,11 +11,7 @@ import net.minecraft.world.World;
 
 public class PuttingThingsPlaces {
 
-	public static boolean starmetalMeteorFall(
-			World world,
-			EntityPlayer player,
-			BlockPos pos,
-			boolean fallDirect) {
+	public static boolean starmetalMeteorFall(World world, EntityPlayer player, BlockPos pos, boolean fallDirect) {
 		boolean goingNorth = world.rand.nextBoolean();
 		int northSeverity = world.rand.nextInt(20);
 		boolean goingWest = world.rand.nextBoolean();
@@ -31,9 +27,7 @@ public class PuttingThingsPlaces {
 					&& world.getBlockState(skyDrop).getBlock() != Blocks.water) {
 
 				if (world.getBlockState(skyDrop.down()).getBlock() == Blocks.air) {
-					world.setBlockState(
-							skyDrop,
-							ModBlocks.magic_field.getDefaultState());
+					world.setBlockState(skyDrop, ModBlocks.magic_field.getDefaultState());
 
 					skyDrop = skyDrop.down();
 
@@ -43,9 +37,7 @@ public class PuttingThingsPlaces {
 				}
 
 			} else {
-				world.setBlockState(
-						skyDrop,
-						ModBlocks.magic_field.getDefaultState());
+				world.setBlockState(skyDrop, ModBlocks.magic_field.getDefaultState());
 				if (counterNorth == northSeverity && !fallDirect) {
 					skyDrop = (goingNorth) ? skyDrop.north() : skyDrop.south();
 					counterNorth = 0;
@@ -54,9 +46,7 @@ public class PuttingThingsPlaces {
 					skyDrop = (goingWest) ? skyDrop.west() : skyDrop.east();
 					counterWest = 0;
 				}
-				world.setBlockState(
-						skyDrop,
-						ModBlocks.magic_field.getDefaultState());
+				world.setBlockState(skyDrop, ModBlocks.magic_field.getDefaultState());
 				skyDrop = skyDrop.down();
 			}
 		}
@@ -67,18 +57,15 @@ public class PuttingThingsPlaces {
 						.getServer()
 						.getConfigurationManager()
 						.sendChatMsg(
-								new ChatComponentText(
-										"A god has died, and his star has fallen near "
-												+ player.getDisplayNameString()
-												+ "."));
+								new ChatComponentText("A god has died, and his star has fallen near "
+										+ player.getDisplayNameString()
+										+ "."));
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				MinecraftServer
 						.getServer()
 						.getConfigurationManager()
-						.sendChatMsg(
-								new ChatComponentText(
-										"A god has died, and his star has fallen."));
+						.sendChatMsg(new ChatComponentText("A god has died, and his star has fallen."));
 			}
 
 		}
@@ -90,66 +77,28 @@ public class PuttingThingsPlaces {
 				10F,
 				1.0F,
 				true);
-		world
-				.setBlockState(
-						skyDrop,
-						ModBlocks.star_metal_ore.getDefaultState());
-		world.setBlockState(
-				skyDrop.east(),
-				ModBlocks.magic_field.getDefaultState());
-		world.setBlockState(
-				skyDrop.west(),
-				ModBlocks.magic_field.getDefaultState());
-		world.setBlockState(
-				skyDrop.north(),
-				ModBlocks.magic_field.getDefaultState());
-		world.setBlockState(
-				skyDrop.south(),
-				ModBlocks.magic_field.getDefaultState());
-		world.setBlockState(
-				skyDrop.north().east(),
-				ModBlocks.magic_field.getDefaultState());
-		world.setBlockState(
-				skyDrop.north().west(),
-				ModBlocks.magic_field.getDefaultState());
-		world.setBlockState(
-				skyDrop.south().east(),
-				ModBlocks.magic_field.getDefaultState());
-		world.setBlockState(
-				skyDrop.south().west(),
-				ModBlocks.magic_field.getDefaultState());
-		world.setBlockState(
-				skyDrop.east().up(),
-				ModBlocks.magic_field.getDefaultState());
-		world.setBlockState(
-				skyDrop.west().up(),
-				ModBlocks.magic_field.getDefaultState());
-		world.setBlockState(
-				skyDrop.north().up(),
-				ModBlocks.magic_field.getDefaultState());
-		world.setBlockState(
-				skyDrop.south().up(),
-				ModBlocks.magic_field.getDefaultState());
-		world.setBlockState(
-				skyDrop.north().east().up(),
-				ModBlocks.magic_field.getDefaultState());
-		world.setBlockState(
-				skyDrop.north().west().up(),
-				ModBlocks.magic_field.getDefaultState());
-		world.setBlockState(
-				skyDrop.south().east().up(),
-				ModBlocks.magic_field.getDefaultState());
-		world.setBlockState(
-				skyDrop.south().west().up(),
-				ModBlocks.magic_field.getDefaultState());
+		world.setBlockState(skyDrop, ModBlocks.star_metal_ore.getDefaultState());
+		world.setBlockState(skyDrop.east(), ModBlocks.magic_field.getDefaultState());
+		world.setBlockState(skyDrop.west(), ModBlocks.magic_field.getDefaultState());
+		world.setBlockState(skyDrop.north(), ModBlocks.magic_field.getDefaultState());
+		world.setBlockState(skyDrop.south(), ModBlocks.magic_field.getDefaultState());
+		world.setBlockState(skyDrop.north().east(), ModBlocks.magic_field.getDefaultState());
+		world.setBlockState(skyDrop.north().west(), ModBlocks.magic_field.getDefaultState());
+		world.setBlockState(skyDrop.south().east(), ModBlocks.magic_field.getDefaultState());
+		world.setBlockState(skyDrop.south().west(), ModBlocks.magic_field.getDefaultState());
+		world.setBlockState(skyDrop.east().up(), ModBlocks.magic_field.getDefaultState());
+		world.setBlockState(skyDrop.west().up(), ModBlocks.magic_field.getDefaultState());
+		world.setBlockState(skyDrop.north().up(), ModBlocks.magic_field.getDefaultState());
+		world.setBlockState(skyDrop.south().up(), ModBlocks.magic_field.getDefaultState());
+		world.setBlockState(skyDrop.north().east().up(), ModBlocks.magic_field.getDefaultState());
+		world.setBlockState(skyDrop.north().west().up(), ModBlocks.magic_field.getDefaultState());
+		world.setBlockState(skyDrop.south().east().up(), ModBlocks.magic_field.getDefaultState());
+		world.setBlockState(skyDrop.south().west().up(), ModBlocks.magic_field.getDefaultState());
 
 		return true;
 	}
-	
-	public static boolean starmetalMeteorFall(
-			World world,
-			EntityPlayer player,
-			BlockPos pos) {
+
+	public static boolean starmetalMeteorFall(World world, EntityPlayer player, BlockPos pos) {
 		return starmetalMeteorFall(world, player, pos, false);
 	}
 

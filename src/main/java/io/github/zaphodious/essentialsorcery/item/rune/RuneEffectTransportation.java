@@ -49,14 +49,7 @@ public class RuneEffectTransportation extends RuneEffect {
 			String thisRuneKey) {
 		// TODO Auto-generated method stub
 		if (movObjPos.entityHit != null) {
-			return super.makeMagic(
-					entity,
-					worldIn,
-					throwerIn,
-					runeMapIn,
-					pos,
-					movObjPos,
-					thisRuneKey);
+			return super.makeMagic(entity, worldIn, throwerIn, runeMapIn, pos, movObjPos, thisRuneKey);
 		}
 
 		return false;
@@ -73,8 +66,7 @@ public class RuneEffectTransportation extends RuneEffect {
 			MovingObjectPosition movObjPos,
 			String thisRuneKey) {
 		// TODO Auto-generated method stub
-		int spellStrength =
-				RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
+		int spellStrength = RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
 		try {
 			EntityLivingBase hitPlayer = (EntityLivingBase) movObjPos.entityHit;
 
@@ -103,8 +95,7 @@ public class RuneEffectTransportation extends RuneEffect {
 			MovingObjectPosition movObjPos,
 			String thisRuneKey) {
 		// TODO Auto-generated method stub
-		int spellStrength =
-				RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
+		int spellStrength = RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
 		try {
 			EntityLivingBase hitPlayer = (EntityLivingBase) movObjPos.entityHit;
 
@@ -133,8 +124,7 @@ public class RuneEffectTransportation extends RuneEffect {
 			MovingObjectPosition movObjPos,
 			String thisRuneKey) {
 		// TODO Auto-generated method stub
-		int spellStrength =
-				RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
+		int spellStrength = RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
 		try {
 			EntityLivingBase hitPlayer = (EntityLivingBase) movObjPos.entityHit;
 
@@ -163,8 +153,7 @@ public class RuneEffectTransportation extends RuneEffect {
 			MovingObjectPosition movObjPos,
 			String thisRuneKey) {
 		// TODO Auto-generated method stub
-		int spellStrength =
-				RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
+		int spellStrength = RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
 		try {
 			EntityLivingBase hitPlayer = (EntityLivingBase) movObjPos.entityHit;
 
@@ -193,8 +182,7 @@ public class RuneEffectTransportation extends RuneEffect {
 			MovingObjectPosition movObjPos,
 			String thisRuneKey) {
 		// TODO Auto-generated method stub
-		int spellStrength =
-				RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
+		int spellStrength = RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
 
 		try {
 			EntityLivingBase hitPlayer = (EntityLivingBase) movObjPos.entityHit;

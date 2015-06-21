@@ -34,15 +34,7 @@ public class RecRegister {
 				'z',
 				stickStack);
 
-		GameRegistry.addRecipe(
-				new ItemStack(ModItems.tapSetter),
-				"  y",
-				"xy ",
-				"yx ",
-				'x',
-				woolStack,
-				'y',
-				stickStack);
+		GameRegistry.addRecipe(new ItemStack(ModItems.tapSetter), "  y", "xy ", "yx ", 'x', woolStack, 'y', stickStack);
 
 		GameRegistry.addRecipe(
 				new ItemStack(ModBlocks.dragon_tap, 1, 0),
@@ -60,93 +52,55 @@ public class RecRegister {
 
 		"zx", "yz", 'x', cobbleStack, 'y', stickStack, 'z', woolStack);
 
-		addXWithReverse(
-				ModItems.moon_silver_ingot,
-				Item.getItemFromBlock(ModBlocks.moon_silver_block),
-				0,
-				0,
-				3);
+		addXWithReverse(ModItems.moon_silver_ingot, Item.getItemFromBlock(ModBlocks.moon_silver_block), 0, 0, 3);
 
 		add3x3(ModItems.obol, Items.emerald, 0, 0);
-		addXWithReverse(
-				ModItems.moon_silver_nugget,
-				ModItems.moon_silver_ingot,
-				0,
-				0,
-				3);
+		addXWithReverse(ModItems.moon_silver_nugget, ModItems.moon_silver_ingot, 0, 0, 3);
 
-		GameRegistry.addSmelting(
-				new ItemStack(ModBlocks.star_metal_ore, 1, 0),
-				new ItemStack(ModItems.star_metal_ingot, 4, 0),
-				10.0F);
+		GameRegistry.addSmelting(new ItemStack(ModBlocks.star_metal_ore, 1, 0), new ItemStack(
+				ModItems.star_metal_ingot,
+				4,
+				0), 10.0F);
 
 		for (int i = 0; i < 5; i++) {
 			addXWithReverse(ModItems.jade_nugget, ModItems.jade_ingot, i, i, 3);
-			addXWithReverse(
-					ModItems.jade_ingot,
-					Item.getItemFromBlock(ModBlocks.jade_block),
-					i,
-					i,
-					2);
-			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(
-					ModItems.jade_alloy_dust,
-					2,
-					i), new ItemStack(ModItems.jade_dust, 1, i), new ItemStack(
+			addXWithReverse(ModItems.jade_ingot, Item.getItemFromBlock(ModBlocks.jade_block), i, i, 2);
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.jade_alloy_dust, 2, i), new ItemStack(
 					ModItems.jade_dust,
 					1,
-					i), new ItemStack(ModItems.jade_dust, 1, i), "dustSteel"));
-			GameRegistry.addSmelting(new ItemStack(
-					ModItems.jade_alloy_dust,
+					i), new ItemStack(ModItems.jade_dust, 1, i), new ItemStack(ModItems.jade_dust, 1, i), "dustSteel"));
+			GameRegistry.addSmelting(new ItemStack(ModItems.jade_alloy_dust, 1, i), new ItemStack(
+					ModItems.jade_ingot,
 					1,
-					i), new ItemStack(ModItems.jade_ingot, 1, i), 1.0F);
-			CrusherRecipeRegistry.addNewCrusherRecipe(new ItemStack(
-					ModItems.jade_raw,
-					1,
-					i), new ItemStack(ModItems.jade_dust, 2, i));
-			GameRegistry.addShapelessRecipe(
-					new ItemStack(ModItems.obol),
-					new ItemStack(ModItems.jade_raw, 1, i));
+					i), 1.0F);
+			CrusherRecipeRegistry.addNewCrusherRecipe(new ItemStack(ModItems.jade_raw, 1, i), new ItemStack(
+					ModItems.jade_dust,
+					2,
+					i));
+			GameRegistry.addShapelessRecipe(new ItemStack(ModItems.obol), new ItemStack(ModItems.jade_raw, 1, i));
 		}
 
 	}
 
-	private static void add3x3(
-			Item input,
-			Item result,
-			int metaInput,
-			int metaResult) {
-		GameRegistry.addRecipe(
-				new ItemStack(result, 1, metaResult),
-				"xxx",
-				"xxx",
-				"xxx",
-				'x',
-				new ItemStack(input, 1, metaInput));
+	private static void add3x3(Item input, Item result, int metaInput, int metaResult) {
+		GameRegistry.addRecipe(new ItemStack(result, 1, metaResult), "xxx", "xxx", "xxx", 'x', new ItemStack(
+				input,
+				1,
+				metaInput));
 
 	}
 
-	private static void add2x2(
-			Item input,
-			Item result,
-			int metaInput,
-			int metaResult) {
+	private static void add2x2(Item input, Item result, int metaInput, int metaResult) {
 		GameRegistry.addRecipe(new ItemStack(result, 1, metaResult),
 
 		"xx", "xx", 'x', new ItemStack(input, 1, metaInput));
 	}
 
-	private static void addXWithReverse(
-			Item input,
-			Item result,
-			int metaInput,
-			int metaResult,
-			int amount) {
+	private static void addXWithReverse(Item input, Item result, int metaInput, int metaResult, int amount) {
 
 		switch (amount) {
 		case 1:
-			GameRegistry.addShapelessRecipe(
-					new ItemStack(result, 1, metaResult),
-					new ItemStack(input, 1, metaInput));
+			GameRegistry.addShapelessRecipe(new ItemStack(result, 1, metaResult), new ItemStack(input, 1, metaInput));
 			break;
 		case 2:
 			add2x2(input, result, metaInput, metaResult);
@@ -155,16 +109,14 @@ public class RecRegister {
 			add3x3(input, result, metaInput, metaResult);
 			break;
 		default:
-			System.out
-					.println("The amount number needs to be between 1 and 3. You put "
-							+ amount);
+			System.out.println("The amount number needs to be between 1 and 3. You put " + amount);
 			return;
 		}
 
-		GameRegistry.addShapelessRecipe(new ItemStack(
-				input,
-				amount * amount,
-				metaInput), new ItemStack(result, 1, metaResult));
+		GameRegistry.addShapelessRecipe(new ItemStack(input, amount * amount, metaInput), new ItemStack(
+				result,
+				1,
+				metaResult));
 
 	}
 

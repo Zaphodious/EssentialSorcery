@@ -69,14 +69,7 @@ public class ModelHobgoblin extends ModelBiped {
 			float headYRot,
 			float headXRot,
 			float scale) {
-		this.setRotationAngles(
-				time,
-				limbSwingDistance,
-				unknownValue,
-				headYRot,
-				headXRot,
-				scale,
-				entityIn);
+		this.setRotationAngles(time, limbSwingDistance, unknownValue, headYRot, headXRot, scale, entityIn);
 
 		if (this.isChild) {
 			float div = 2.0F;
@@ -128,18 +121,10 @@ public class ModelHobgoblin extends ModelBiped {
 		this.body.rotateAngleX = ((float) Math.PI / 2F);
 		// this.body.rotateAngleX = -90;
 
-		this.legLeft.rotateAngleX =
-				MathHelper.cos(time * 0.6662F) * 1.4F * limbSwingDistance;
-		this.armRight.rotateAngleX =
-				MathHelper.cos(time * 0.6662F) * 1.4F * limbSwingDistance;
-		this.legRight.rotateAngleX =
-				MathHelper.cos(time * 0.6662F + (float) Math.PI)
-						* 1.4F
-						* limbSwingDistance;
-		this.armLeft.rotateAngleX =
-				MathHelper.cos(time * 0.6662F + (float) Math.PI)
-						* 1.4F
-						* limbSwingDistance;
+		this.legLeft.rotateAngleX = MathHelper.cos(time * 0.6662F) * 1.4F * limbSwingDistance;
+		this.armRight.rotateAngleX = MathHelper.cos(time * 0.6662F) * 1.4F * limbSwingDistance;
+		this.legRight.rotateAngleX = MathHelper.cos(time * 0.6662F + (float) Math.PI) * 1.4F * limbSwingDistance;
+		this.armLeft.rotateAngleX = MathHelper.cos(time * 0.6662F + (float) Math.PI) * 1.4F * limbSwingDistance;
 
 	}
 

@@ -31,9 +31,8 @@ import com.google.common.collect.Lists;
 
 @SideOnly(Side.CLIENT)
 public class RenderHobgoblin extends RenderBiped {
-	private static final ResourceLocation hobgoblinTextures =
-			new ResourceLocation(Reference.MODID
-					+ ":textures/entity/hobgoblin/hobgoblin.png");
+	private static final ResourceLocation hobgoblinTextures = new ResourceLocation(Reference.MODID
+			+ ":textures/entity/hobgoblin/hobgoblin.png");
 	private final ModelBiped field_82434_o;
 	private final ModelZombieVillager zombieVillagerModel;
 	private final List field_177121_n;
@@ -41,8 +40,7 @@ public class RenderHobgoblin extends RenderBiped {
 
 	public RenderHobgoblin(ModelBiped modelIn) {
 		super(Minecraft.getMinecraft().getRenderManager(), modelIn, 0.5F);
-		LayerRenderer layerrenderer =
-				(LayerRenderer) this.layerRenderers.get(0);
+		LayerRenderer layerrenderer = (LayerRenderer) this.layerRenderers.get(0);
 		this.field_82434_o = this.modelBipedMain;
 		this.zombieVillagerModel = new ModelZombieVillager();
 		this.addLayer(new LayerHeldItem(this));
@@ -58,8 +56,7 @@ public class RenderHobgoblin extends RenderBiped {
 
 		if (layerrenderer instanceof LayerCustomHead) {
 			this.removeLayer(layerrenderer);
-			this.addLayer(new LayerCustomHead(
-					this.zombieVillagerModel.bipedHead));
+			this.addLayer(new LayerCustomHead(this.zombieVillagerModel.bipedHead));
 		}
 
 		this.removeLayer(layerbipedarmor);
@@ -67,13 +64,9 @@ public class RenderHobgoblin extends RenderBiped {
 		this.field_177121_n = Lists.newArrayList(this.layerRenderers);
 	}
 
-	public void func_180579_a(
-			EntityHobgoblin entity,
-			double x,
-			double y,
-			double z,
-			float entityYaw,
-			float partialTicks) {
+	public
+			void
+			func_180579_a(EntityHobgoblin entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		this.func_82427_a(entity);
 		super.doRender(entity, x, y, z, entityYaw, partialTicks);
 	}
@@ -94,15 +87,9 @@ public class RenderHobgoblin extends RenderBiped {
 		this.modelBipedMain = (ModelBiped) this.mainModel;
 	}
 
-	protected void rotateCorpse(
-			EntityHobgoblin bat,
-			float p_77043_2_,
-			float p_77043_3_,
-			float p_77043_4_) {
+	protected void rotateCorpse(EntityHobgoblin bat, float p_77043_2_, float p_77043_3_, float p_77043_4_) {
 		if (bat.isConverting()) {
-			p_77043_3_ +=
-					(float) (Math.cos((double) bat.ticksExisted * 3.25D)
-							* Math.PI * 0.25D);
+			p_77043_3_ += (float) (Math.cos((double) bat.ticksExisted * 3.25D) * Math.PI * 0.25D);
 		}
 
 		super.rotateCorpse(bat, p_77043_2_, p_77043_3_, p_77043_4_);
@@ -127,32 +114,12 @@ public class RenderHobgoblin extends RenderBiped {
 	 * @param entityYaw
 	 *            The yaw rotation of the passed entity
 	 */
-	public void doRender(
-			EntityLiving entity,
-			double x,
-			double y,
-			double z,
-			float entityYaw,
-			float partialTicks) {
-		this.func_180579_a(
-				(EntityHobgoblin) entity,
-				x,
-				y,
-				z,
-				entityYaw,
-				partialTicks);
+	public void doRender(EntityLiving entity, double x, double y, double z, float entityYaw, float partialTicks) {
+		this.func_180579_a((EntityHobgoblin) entity, x, y, z, entityYaw, partialTicks);
 	}
 
-	protected void rotateCorpse(
-			EntityLivingBase bat,
-			float p_77043_2_,
-			float p_77043_3_,
-			float p_77043_4_) {
-		this.rotateCorpse(
-				(EntityHobgoblin) bat,
-				p_77043_2_,
-				p_77043_3_,
-				p_77043_4_);
+	protected void rotateCorpse(EntityLivingBase bat, float p_77043_2_, float p_77043_3_, float p_77043_4_) {
+		this.rotateCorpse((EntityHobgoblin) bat, p_77043_2_, p_77043_3_, p_77043_4_);
 	}
 
 	/**
@@ -166,20 +133,8 @@ public class RenderHobgoblin extends RenderBiped {
 	 * @param entityYaw
 	 *            The yaw rotation of the passed entity
 	 */
-	public void doRender(
-			EntityLivingBase entity,
-			double x,
-			double y,
-			double z,
-			float entityYaw,
-			float partialTicks) {
-		this.func_180579_a(
-				(EntityHobgoblin) entity,
-				x,
-				y,
-				z,
-				entityYaw,
-				partialTicks);
+	public void doRender(EntityLivingBase entity, double x, double y, double z, float entityYaw, float partialTicks) {
+		this.func_180579_a((EntityHobgoblin) entity, x, y, z, entityYaw, partialTicks);
 	}
 
 	/**
@@ -201,19 +156,7 @@ public class RenderHobgoblin extends RenderBiped {
 	 * @param entityYaw
 	 *            The yaw rotation of the passed entity
 	 */
-	public void doRender(
-			Entity entity,
-			double x,
-			double y,
-			double z,
-			float entityYaw,
-			float partialTicks) {
-		this.func_180579_a(
-				(EntityHobgoblin) entity,
-				x,
-				y,
-				z,
-				entityYaw,
-				partialTicks);
+	public void doRender(Entity entity, double x, double y, double z, float entityYaw, float partialTicks) {
+		this.func_180579_a((EntityHobgoblin) entity, x, y, z, entityYaw, partialTicks);
 	}
 }

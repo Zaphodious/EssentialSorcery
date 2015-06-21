@@ -12,11 +12,7 @@ public class JadeDust extends Jade {
 	}
 
 	@Override
-	public void addInformation(
-			ItemStack stack,
-			EntityPlayer playerIn,
-			List tooltip,
-			boolean advanced) {
+	public void addInformation(ItemStack stack, EntityPlayer playerIn, List tooltip, boolean advanced) {
 		String elementName =
 				this.getElement(stack).getName().substring(0, 1).toUpperCase()
 						+ this.getElement(stack).getName().substring(1);

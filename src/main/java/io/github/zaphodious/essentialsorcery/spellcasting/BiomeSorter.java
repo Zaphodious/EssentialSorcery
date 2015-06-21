@@ -17,10 +17,7 @@ public class BiomeSorter {
 
 	public void printMap() {
 		for (int biomeID : biomes.keySet()) {
-			System.out.println("Biome ID: "
-					+ biomeID
-					+ " Element: "
-					+ biomes.get(biomeID));
+			System.out.println("Biome ID: " + biomeID + " Element: " + biomes.get(biomeID));
 		}
 	}
 

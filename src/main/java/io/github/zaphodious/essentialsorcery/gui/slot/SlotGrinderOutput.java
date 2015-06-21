@@ -25,11 +25,7 @@ public class SlotGrinderOutput extends Slot {
 			int parSlotIndex,
 			int parXDisplayPosition,
 			int parYDisplayPosition) {
-		super(
-				parIInventory,
-				parSlotIndex,
-				parXDisplayPosition,
-				parYDisplayPosition);
+		super(parIInventory, parSlotIndex, parXDisplayPosition, parYDisplayPosition);
 		thePlayer = parPlayer;
 	}
 

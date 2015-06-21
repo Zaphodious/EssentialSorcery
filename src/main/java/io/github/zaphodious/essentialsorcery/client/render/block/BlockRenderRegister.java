@@ -21,17 +21,14 @@ public final class BlockRenderRegister {
 		reg(ModBlocks.dragon_tap, 0, "dragon_tap_placed");
 		reg(ModBlocks.dragon_tap, 1, "dragon_tap_set");
 		reg(ModBlocks.dragon_tap, 2, "dragon_tap_spent");
-		System.out.println(ModBlocks.rune_table
-				+ "should be registered after this.");
+		System.out.println(ModBlocks.rune_table + "should be registered after this.");
 		reg(ModBlocks.rune_table, 0, "rune_table");
 		reg(ModBlocks.jade_ore, 0, "jade_ore");
 	}
 
 	public static void reg(Block block) {
 
-		reg(block, 0, Reference.MODID
-				+ ":"
-				+ block.getUnlocalizedName().substring(5));
+		reg(block, 0, Reference.MODID + ":" + block.getUnlocalizedName().substring(5));
 
 	}
 
@@ -47,12 +44,9 @@ public final class BlockRenderRegister {
 		// Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item,
 		// meta, new ModelResourceLocation(Reference.MODID + ":" +
 		// item.getUnlocalizedName().substring(5), "inventory"));
-		ModelLoader.setCustomModelResourceLocation(
-				item,
-				meta,
-				new ModelResourceLocation(
-						Reference.MODID + ":" + file,
-						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(
+				Reference.MODID + ":" + file,
+				"inventory"));
 		// ItemRenderRegister.reg(item, meta);
 		System.out.println("Ran "
 				+ Reference.MODID
@@ -63,29 +57,19 @@ public final class BlockRenderRegister {
 	}
 
 	public static void addBlockVariants() {
-		ModelBakery.addVariantName(
-				Item.getItemFromBlock(ModBlocks.dragon_tap),
-				Reference.MODID
-						+ ":"
-						+ ModBlocks.dragon_tap
-								.getUnlocalizedName()
-								.substring(5)
-						+ "_"
-						+ DragonTapState.PLACED.getName(),
-				Reference.MODID
-						+ ":"
-						+ ModBlocks.dragon_tap
-								.getUnlocalizedName()
-								.substring(5)
-						+ "_"
-						+ DragonTapState.SET.getName(),
-				Reference.MODID
-						+ ":"
-						+ ModBlocks.dragon_tap
-								.getUnlocalizedName()
-								.substring(5)
-						+ "_"
-						+ DragonTapState.SPENT.getName());
+		ModelBakery.addVariantName(Item.getItemFromBlock(ModBlocks.dragon_tap), Reference.MODID
+				+ ":"
+				+ ModBlocks.dragon_tap.getUnlocalizedName().substring(5)
+				+ "_"
+				+ DragonTapState.PLACED.getName(), Reference.MODID
+				+ ":"
+				+ ModBlocks.dragon_tap.getUnlocalizedName().substring(5)
+				+ "_"
+				+ DragonTapState.SET.getName(), Reference.MODID
+				+ ":"
+				+ ModBlocks.dragon_tap.getUnlocalizedName().substring(5)
+				+ "_"
+				+ DragonTapState.SPENT.getName());
 	}
 
 }

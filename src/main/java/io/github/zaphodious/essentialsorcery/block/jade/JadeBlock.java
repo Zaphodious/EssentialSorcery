@@ -37,9 +37,7 @@ public class JadeBlock extends BasicBlock implements IMetaBlockName {
 		super(unlocalizedName, Material.iron, 2F, 100F);
 
 		this.setHarvestLevel("pickaxe", 2);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(
-				ELEMENT,
-				Element.FIRE));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(ELEMENT, Element.FIRE));
 	}
 
 	/*
@@ -83,10 +81,7 @@ public class JadeBlock extends BasicBlock implements IMetaBlockName {
 	 * .World, net.minecraft.util.BlockPos, net.minecraft.entity.Entity)
 	 */
 	@Override
-	public void onEntityCollidedWithBlock(
-			World worldIn,
-			BlockPos pos,
-			Entity entityIn) {
+	public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, Entity entityIn) {
 		this.activate(worldIn, pos, entityIn);
 	}
 
@@ -100,24 +95,39 @@ public class JadeBlock extends BasicBlock implements IMetaBlockName {
 
 		if (entityIn instanceof EntityLivingBase) {
 			EntityLivingBase livingEntity = (EntityLivingBase) entityIn;
-			Element element =
-					(Element) worldIn.getBlockState(pos).getValue(ELEMENT);
+			Element element = (Element) worldIn.getBlockState(pos).getValue(ELEMENT);
 			switch (element) {
 			case AIR:
-				livingEntity.addPotionEffect(new PotionEffect(Potion.jump
-						.getId(), duration, effectLevel, false, particles));
+				livingEntity.addPotionEffect(new PotionEffect(
+						Potion.jump.getId(),
+						duration,
+						effectLevel,
+						false,
+						particles));
 				break;
 			case EARTH:
-				livingEntity.addPotionEffect(new PotionEffect(Potion.resistance
-						.getId(), duration, effectLevel, false, particles));
+				livingEntity.addPotionEffect(new PotionEffect(
+						Potion.resistance.getId(),
+						duration,
+						effectLevel,
+						false,
+						particles));
 				break;
 			case FIRE:
-				livingEntity.addPotionEffect(new PotionEffect(Potion.moveSpeed
-						.getId(), duration, effectLevel, false, particles));
+				livingEntity.addPotionEffect(new PotionEffect(
+						Potion.moveSpeed.getId(),
+						duration,
+						effectLevel,
+						false,
+						particles));
 				break;
 			case NEUTRAL:
-				livingEntity.addPotionEffect(new PotionEffect(Potion.moveSpeed
-						.getId(), duration, effectLevel, false, particles));
+				livingEntity.addPotionEffect(new PotionEffect(
+						Potion.moveSpeed.getId(),
+						duration,
+						effectLevel,
+						false,
+						particles));
 				break;
 			case WATER:
 				livingEntity.addPotionEffect(new PotionEffect(
@@ -136,13 +146,21 @@ public class JadeBlock extends BasicBlock implements IMetaBlockName {
 						particles));
 				break;
 			default:
-				livingEntity.addPotionEffect(new PotionEffect(Potion.moveSpeed
-						.getId(), duration, effectLevel, false, particles));
+				livingEntity.addPotionEffect(new PotionEffect(
+						Potion.moveSpeed.getId(),
+						duration,
+						effectLevel,
+						false,
+						particles));
 				break;
 			}
 
-			livingEntity.addPotionEffect(new PotionEffect(Potion.nightVision
-					.getId(), duration * 2, effectLevel, false, particles));
+			livingEntity.addPotionEffect(new PotionEffect(
+					Potion.nightVision.getId(),
+					duration * 2,
+					effectLevel,
+					false,
+					particles));
 		}
 
 		return false;
@@ -168,12 +186,9 @@ public class JadeBlock extends BasicBlock implements IMetaBlockName {
 	public boolean checkElement(World worldIn, BlockPos pos) {
 
 		if (worldIn.getBlockState(pos).getBlock() instanceof JadeBlock) {
-			JadeBlock thisToCheck =
-					(JadeBlock) worldIn.getBlockState(pos).getBlock();
-			Element element =
-					(Element) worldIn.getBlockState(pos).getValue(ELEMENT);
-			if (Element.getElementForID(thisToCheck.getMetaFromState(worldIn
-					.getBlockState(pos))) == element) {
+			JadeBlock thisToCheck = (JadeBlock) worldIn.getBlockState(pos).getBlock();
+			Element element = (Element) worldIn.getBlockState(pos).getValue(ELEMENT);
+			if (Element.getElementForID(thisToCheck.getMetaFromState(worldIn.getBlockState(pos))) == element) {
 				return true;
 			}
 		}
@@ -227,9 +242,7 @@ public class JadeBlock extends BasicBlock implements IMetaBlockName {
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		// TODO Auto-generated method stub
-		return getDefaultState().withProperty(
-				ELEMENT,
-				Element.getElementForID(meta));
+		return getDefaultState().withProperty(ELEMENT, Element.getElementForID(meta));
 	}
 
 	/*
@@ -266,14 +279,8 @@ public class JadeBlock extends BasicBlock implements IMetaBlockName {
 	}
 
 	@Override
-	public ItemStack getPickBlock(
-			MovingObjectPosition target,
-			World world,
-			BlockPos pos) {
-		return new ItemStack(
-				Item.getItemFromBlock(this),
-				1,
-				this.getMetaFromState(world.getBlockState(pos)));
+	public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos) {
+		return new ItemStack(Item.getItemFromBlock(this), 1, this.getMetaFromState(world.getBlockState(pos)));
 	}
 
 }

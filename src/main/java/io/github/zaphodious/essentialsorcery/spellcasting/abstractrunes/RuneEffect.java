@@ -72,79 +72,29 @@ public abstract class RuneEffect extends Item implements Rune {
 			MovingObjectPosition movObjPos,
 			String thisRuneKey) {
 
-		RuneElement elementRune =
-				(RuneElement) runeMapIn.get("element").getItem();
+		RuneElement elementRune = (RuneElement) runeMapIn.get("element").getItem();
 
 		switch (elementRune.getElement()) {
 		case AIR:
-			this.airEffect(
-					entity,
-					worldIn,
-					throwerIn,
-					runeMapIn,
-					pos,
-					movObjPos,
-					thisRuneKey);
+			this.airEffect(entity, worldIn, throwerIn, runeMapIn, pos, movObjPos, thisRuneKey);
 			break;
 		case EARTH:
-			this.earthEffect(
-					entity,
-					worldIn,
-					throwerIn,
-					runeMapIn,
-					pos,
-					movObjPos,
-					thisRuneKey);
+			this.earthEffect(entity, worldIn, throwerIn, runeMapIn, pos, movObjPos, thisRuneKey);
 			break;
 		case FIRE:
-			this.fireEffect(
-					entity,
-					worldIn,
-					throwerIn,
-					runeMapIn,
-					pos,
-					movObjPos,
-					thisRuneKey);
+			this.fireEffect(entity, worldIn, throwerIn, runeMapIn, pos, movObjPos, thisRuneKey);
 			break;
 		case NEUTRAL:
-			this.fireEffect(
-					entity,
-					worldIn,
-					throwerIn,
-					runeMapIn,
-					pos,
-					movObjPos,
-					thisRuneKey);
+			this.fireEffect(entity, worldIn, throwerIn, runeMapIn, pos, movObjPos, thisRuneKey);
 			break;
 		case WATER:
-			this.waterEffect(
-					entity,
-					worldIn,
-					throwerIn,
-					runeMapIn,
-					pos,
-					movObjPos,
-					thisRuneKey);
+			this.waterEffect(entity, worldIn, throwerIn, runeMapIn, pos, movObjPos, thisRuneKey);
 			break;
 		case WOOD:
-			this.woodEffect(
-					entity,
-					worldIn,
-					throwerIn,
-					runeMapIn,
-					pos,
-					movObjPos,
-					thisRuneKey);
+			this.woodEffect(entity, worldIn, throwerIn, runeMapIn, pos, movObjPos, thisRuneKey);
 			break;
 		default:
-			this.fireEffect(
-					entity,
-					worldIn,
-					throwerIn,
-					runeMapIn,
-					pos,
-					movObjPos,
-					thisRuneKey);
+			this.fireEffect(entity, worldIn, throwerIn, runeMapIn, pos, movObjPos, thisRuneKey);
 			break;
 		}
 

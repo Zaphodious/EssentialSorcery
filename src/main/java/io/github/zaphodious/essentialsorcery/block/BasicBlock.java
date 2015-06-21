@@ -16,11 +16,7 @@ import net.minecraft.world.World;
 
 public class BasicBlock extends Block {
 
-	protected BasicBlock(
-			String unlocalizedName,
-			Material material,
-			float hardness,
-			float resistance) {
+	protected BasicBlock(String unlocalizedName, Material material, float hardness, float resistance) {
 		super(material);
 		this.setUnlocalizedName(unlocalizedName);
 		this.setCreativeTab(Reference.tabEssential);

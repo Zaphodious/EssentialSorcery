@@ -92,10 +92,7 @@ public abstract class TargetingProjectile extends EntityThrowable {
 	public void setRuneMap(Map<String, ItemStack> runeMap) {
 		System.out.println("Trying to set the runeMap.");
 		this.runeMap = runeMap;
-		System.out.println("the runeMap is "
-				+ this.runeMap
-				+ "..... derived from "
-				+ runeMap);
+		System.out.println("the runeMap is " + this.runeMap + "..... derived from " + runeMap);
 	}
 
 	/**
@@ -113,8 +110,7 @@ public abstract class TargetingProjectile extends EntityThrowable {
 					+ this.posZ
 					+ " at @Clientside:"
 					+ this.worldObj.isRemote);
-			System.out
-					.print("And, hey, just because I can... the rune-bag you're holding contains: ");
+			System.out.print("And, hey, just because I can... the rune-bag you're holding contains: ");
 
 			// try {
 
@@ -132,8 +128,7 @@ public abstract class TargetingProjectile extends EntityThrowable {
 			try {
 				for (String key : runeMap.keySet()) {
 					if (key.contains("effect")) {
-						RuneEffect effectRune =
-								(RuneEffect) runeMap.get(key).getItem();
+						RuneEffect effectRune = (RuneEffect) runeMap.get(key).getItem();
 						effectRune.makeMagic(
 								this,
 								super.worldObj,

@@ -23,11 +23,7 @@ public abstract class EssenceAccepter extends Item implements UsesEssence {
 		this.setMaxDamage(maxPool);
 	}
 
-	public boolean useTap(
-			World worldIn,
-			BlockPos pos,
-			ItemStack stack,
-			EntityPlayer playerIn) {
+	public boolean useTap(World worldIn, BlockPos pos, ItemStack stack, EntityPlayer playerIn) {
 		GivesEssence giver = null;
 		// get the specific block
 		IBlockState iblockstate = worldIn.getBlockState(pos);
@@ -40,8 +36,7 @@ public abstract class EssenceAccepter extends Item implements UsesEssence {
 			return false;
 		}
 
-		if (giver.getElement(worldIn, pos) != this.element
-				&& this.element != Element.NEUTRAL) {
+		if (giver.getElement(worldIn, pos) != this.element && this.element != Element.NEUTRAL) {
 			System.out.println("Didn't pass the element test.");
 			return false; // If this block doesn't give the right type of
 							// essence, the function stops.

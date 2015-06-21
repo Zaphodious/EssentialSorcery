@@ -44,15 +44,7 @@ public class Trowel extends ItemSpade {
 			PuttingThingsPlaces.starmetalMeteorFall(worldIn, playerIn, pos);
 		}
 
-		return super.onItemUse(
-				stack,
-				playerIn,
-				worldIn,
-				pos,
-				side,
-				hitX,
-				hitY,
-				hitZ);
+		return super.onItemUse(stack, playerIn, worldIn, pos, side, hitX, hitY, hitZ);
 
 	}
 

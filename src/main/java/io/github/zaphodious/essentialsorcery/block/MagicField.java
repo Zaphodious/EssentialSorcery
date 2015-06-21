@@ -43,11 +43,7 @@ public class MagicField extends BlockBreakable {
 	}
 
 	@Override
-	public void updateTick(
-			World worldIn,
-			BlockPos pos,
-			IBlockState state,
-			Random rand) {
+	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		// TODO Auto-generated method stub
 		worldIn.setBlockState(pos, Blocks.air.getDefaultState());
 	}

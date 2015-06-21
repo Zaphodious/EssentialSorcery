@@ -9,15 +9,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.EnumFacing;
 
-public class TileEntityRuneTable extends TileEntityLockable
-		implements
-		ISidedInventory /* IUpdatePlayerListBox */{
+public class TileEntityRuneTable extends TileEntityLockable implements ISidedInventory /* IUpdatePlayerListBox */{
 
 	private String id = ModBlocks.rune_table.getUnlocalizedName().substring(5);
 
 	public static String getID() {
-		return ModBlocks.rune_table.getUnlocalizedName().substring(5)
-				+ "tileentity";
+		return ModBlocks.rune_table.getUnlocalizedName().substring(5) + "tileentity";
 	}
 
 	int tick = 0;
@@ -132,9 +129,7 @@ public class TileEntityRuneTable extends TileEntityLockable
 	}
 
 	@Override
-	public Container createContainer(
-			InventoryPlayer playerInventory,
-			EntityPlayer playerIn) {
+	public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -152,19 +147,13 @@ public class TileEntityRuneTable extends TileEntityLockable
 	}
 
 	@Override
-	public boolean canInsertItem(
-			int index,
-			ItemStack itemStackIn,
-			EnumFacing direction) {
+	public boolean canInsertItem(int index, ItemStack itemStackIn, EnumFacing direction) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean canExtractItem(
-			int index,
-			ItemStack stack,
-			EnumFacing direction) {
+	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
 		// TODO Auto-generated method stub
 		return false;
 	}

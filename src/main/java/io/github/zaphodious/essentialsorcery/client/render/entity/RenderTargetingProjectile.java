@@ -19,9 +19,7 @@ import org.lwjgl.opengl.GL12;
 public class RenderTargetingProjectile extends RenderSnowball {
 
 	public RenderTargetingProjectile(Item itemIn) {
-		super(Minecraft.getMinecraft().getRenderManager(), itemIn, Minecraft
-				.getMinecraft()
-				.getRenderItem());
+		super(Minecraft.getMinecraft().getRenderManager(), itemIn, Minecraft.getMinecraft().getRenderItem());
 
 		// TODO Auto-generated constructor stub
 	}
@@ -34,13 +32,7 @@ public class RenderTargetingProjectile extends RenderSnowball {
 	 * .entity.Entity, double, double, double, float, float)
 	 */
 	@Override
-	public void doRender(
-			Entity entity,
-			double x,
-			double y,
-			double z,
-			float entityYaw,
-			float partialTicks) {
+	public void doRender(Entity entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		// TODO Auto-generated method stub
 		super.doRender(entity, x, y, z, entityYaw, partialTicks);
 	}

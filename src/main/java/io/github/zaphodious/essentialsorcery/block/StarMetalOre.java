@@ -8,7 +8,7 @@ public class StarMetalOre extends BasicBlock {
 
 	public StarMetalOre(String unlocalizedName) {
 		super(unlocalizedName);
-		
+
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -20,11 +20,10 @@ public class StarMetalOre extends BasicBlock {
 	public boolean isFullCube() {
 		return false;
 	}
-	
 
 	@Override
 	public boolean isOpaqueCube() {
 		return false;
 	}
-	
+
 }

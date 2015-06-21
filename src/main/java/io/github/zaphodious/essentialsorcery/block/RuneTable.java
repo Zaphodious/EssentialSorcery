@@ -96,33 +96,13 @@ public class RuneTable extends BlockSimplePowerConsumer {
 
 		boolean toReturn = false;
 		if (playerIn.getCurrentEquippedItem() == null) {
-			toReturn =
-					super.onBlockActivated(
-							worldIn,
-							pos,
-							state,
-							playerIn,
-							side,
-							hitX,
-							hitY,
-							hitZ);
+			toReturn = super.onBlockActivated(worldIn, pos, state, playerIn, side, hitX, hitY, hitZ);
 		} else if (playerIn.getCurrentEquippedItem().getItem() == ModItems.tapSetter) {
-			RuneTableTileEntity rtte =
-					(RuneTableTileEntity) worldIn.getTileEntity(pos);
-			System.out
-					.println("spell result is " + rtte.makeTheSpell(playerIn));
+			RuneTableTileEntity rtte = (RuneTableTileEntity) worldIn.getTileEntity(pos);
+			System.out.println("spell result is " + rtte.makeTheSpell(playerIn));
 			return true;
 		} else {
-			toReturn =
-					super.onBlockActivated(
-							worldIn,
-							pos,
-							state,
-							playerIn,
-							side,
-							hitX,
-							hitY,
-							hitZ);
+			toReturn = super.onBlockActivated(worldIn, pos, state, playerIn, side, hitX, hitY, hitZ);
 		}
 
 		return toReturn;
@@ -134,14 +114,12 @@ public class RuneTable extends BlockSimplePowerConsumer {
 	 * 
 	 * @Override public int getRenderType() { return 3; }
 	 */
-/*
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		// TODO Auto-generated method stub
-		return ModItems.runeTablePlacer;
-	}
-
-	
+	/*
+	 * @Override public Item getItemDropped(IBlockState state, Random rand, int
+	 * fortune) { // TODO Auto-generated method stub return
+	 * ModItems.runeTablePlacer; }
+	 * 
+	 * 
 	 * public TileEntity createNewTileEntity(World worldIn, int meta) {
 	 * 
 	 * return new TileEntityRuneTable(); }
@@ -231,15 +209,7 @@ public class RuneTable extends BlockSimplePowerConsumer {
 			int meta,
 			EntityLivingBase player) {
 		// TODO Auto-generated method stub
-		return super.onBlockPlaced(
-				world,
-				coord,
-				facing,
-				f1,
-				f2,
-				f3,
-				meta,
-				player);
+		return super.onBlockPlaced(world, coord, facing, f1, f2, f3, meta, player);
 
 	}
 

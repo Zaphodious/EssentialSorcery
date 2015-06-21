@@ -23,10 +23,7 @@ public class RuneShapeSelf extends RuneShape {
 	}
 
 	@Override
-	public boolean deployTargetingEntity(
-			Map<String, ItemStack> runeMap,
-			World worldIn,
-			EntityPlayer playerIn) {
+	public boolean deployTargetingEntity(Map<String, ItemStack> runeMap, World worldIn, EntityPlayer playerIn) {
 		// TODO Auto-generated method stub
 
 		for (String key : runeMap.keySet()) {

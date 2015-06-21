@@ -51,8 +51,7 @@ public class RuneTableTileEntity extends TileEntitySimplePowerConsumer {
 			RuneShape runeTestShape = (RuneShape) inventory[3].getItem();
 			RuneEffect runeTestEffect = (RuneEffect) inventory[4].getItem();
 		} catch (Exception e) {
-			System.out.println("Things weren't in the correct place. Error: "
-					+ e);
+			System.out.println("Things weren't in the correct place. Error: " + e);
 			return false;
 		}
 
@@ -70,8 +69,7 @@ public class RuneTableTileEntity extends TileEntitySimplePowerConsumer {
 			return false;
 		}
 
-		if (materialFactor == 0
-				|| materialFactor < RuneHelper.totalPowerLevelIn(inventory)) {
+		if (materialFactor == 0 || materialFactor < RuneHelper.totalPowerLevelIn(inventory)) {
 			return false;
 		}
 
@@ -165,9 +163,7 @@ public class RuneTableTileEntity extends TileEntitySimplePowerConsumer {
 			return false;
 		}
 
-		System.out.println("successfully turned "
-				+ inventory[i]
-				+ " into a rune-type");
+		System.out.println("successfully turned " + inventory[i] + " into a rune-type");
 
 		String runeIndex = "useless";
 
@@ -206,10 +202,9 @@ public class RuneTableTileEntity extends TileEntitySimplePowerConsumer {
 		return true;
 	}
 
-	private NBTTagCompound giveBoardEssenceContainer(
-			EntityPlayer playerIn,
-			int materialFactor,
-			NBTTagCompound compound) {
+	private
+			NBTTagCompound
+			giveBoardEssenceContainer(EntityPlayer playerIn, int materialFactor, NBTTagCompound compound) {
 		int[] essenceContainer = new int[2];
 
 		essenceContainer[1] = Reference.MANA_COST_ARRAY[materialFactor];

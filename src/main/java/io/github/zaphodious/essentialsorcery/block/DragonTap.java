@@ -47,32 +47,23 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  *  
  */
 
-public class DragonTap extends BasicBlock
-		implements
-		IMetaBlockName,
-		GivesEssence {
+public class DragonTap extends BasicBlock implements IMetaBlockName, GivesEssence {
 
-	private static final PropertyEnum TYPE =
-			PropertyEnum
-					.create(
-							"type",
-							io.github.zaphodious.essentialsorcery.block.states.DragonTapState.class);
+	private static final PropertyEnum TYPE = PropertyEnum.create(
+			"type",
+			io.github.zaphodious.essentialsorcery.block.states.DragonTapState.class);
 	private int xpLevelCostToSet;
 
 	public DragonTap(String unlocalizedName) {
 		super(unlocalizedName);
 
 		this.xpLevelCostToSet = 10;
-		this.setDefaultState(this.blockState.getBaseState().withProperty(
-				TYPE,
-				DragonTapState.PLACED));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(TYPE, DragonTapState.PLACED));
 		this.setTickRandomly(true);
 	}
 
 	public DragonTap setState(DragonTapState newState) {
-		this.setDefaultState(this.blockState.getBaseState().withProperty(
-				TYPE,
-				newState));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(TYPE, newState));
 		return this;
 	}
 
@@ -106,8 +97,7 @@ public class DragonTap extends BasicBlock
 
 		Item item = stack.getItem();
 		UsesEssence caster = null;
-		GivesEssence giver =
-				(GivesEssence) worldIn.getBlockState(pos).getBlock();
+		GivesEssence giver = (GivesEssence) worldIn.getBlockState(pos).getBlock();
 
 		/*
 		 * 
@@ -121,8 +111,7 @@ public class DragonTap extends BasicBlock
 		if (item == ModItems.tapSetter
 				&& (state.equals(this.getStateFromMeta(0)) || playerIn.capabilities.isCreativeMode)) {
 
-			if (this.xpLevelCostToSet > playerIn.experienceLevel
-					&& !playerIn.capabilities.isCreativeMode) {
+			if (this.xpLevelCostToSet > playerIn.experienceLevel && !playerIn.capabilities.isCreativeMode) {
 				return false;
 			}
 			if (!playerIn.capabilities.isCreativeMode)
@@ -199,11 +188,9 @@ public class DragonTap extends BasicBlock
 		if (meta == 1) {
 			toReturn = getDefaultState().withProperty(TYPE, DragonTapState.SET);
 		} else if (meta == 2) {
-			toReturn =
-					getDefaultState().withProperty(TYPE, DragonTapState.SPENT);
+			toReturn = getDefaultState().withProperty(TYPE, DragonTapState.SPENT);
 		} else {
-			toReturn =
-					getDefaultState().withProperty(TYPE, DragonTapState.PLACED);
+			toReturn = getDefaultState().withProperty(TYPE, DragonTapState.PLACED);
 		}
 		return toReturn;
 	}
@@ -222,14 +209,8 @@ public class DragonTap extends BasicBlock
 	}
 
 	@Override
-	public ItemStack getPickBlock(
-			MovingObjectPosition target,
-			World world,
-			BlockPos pos) {
-		return new ItemStack(
-				Item.getItemFromBlock(this),
-				1,
-				this.getMetaFromState(world.getBlockState(pos)));
+	public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos) {
+		return new ItemStack(Item.getItemFromBlock(this), 1, this.getMetaFromState(world.getBlockState(pos)));
 	}
 
 	@Override
@@ -255,17 +236,12 @@ public class DragonTap extends BasicBlock
 		return EnumWorldBlockLayer.CUTOUT;
 	}
 
-	public void updateTick(
-			World worldIn,
-			BlockPos pos,
-			IBlockState state,
-			Random rand) {
+	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		System.out.println(worldIn.getCelestialAngle(1.0F));
 		if (state.equals(this.getStateFromMeta(2))) { // && worldIn.getC)
 			float angle = worldIn.getCelestialAngle(1.0F);
 			if (angle > 0.7F && angle < 0.85F) {
-				System.out.println("and it got through at "
-						+ worldIn.getWorldTime());
+				System.out.println("and it got through at " + worldIn.getWorldTime());
 				this.refreshTap(worldIn, pos);
 			}
 
@@ -273,17 +249,15 @@ public class DragonTap extends BasicBlock
 	}
 
 	public static void dragonToSet(World worldIn, BlockPos pos) {
-		worldIn.setBlockState(pos, ModBlocks.dragon_tap
-				.getBlockState()
-				.getBaseState()
-				.withProperty(TYPE, DragonTapState.SET));
+		worldIn.setBlockState(
+				pos,
+				ModBlocks.dragon_tap.getBlockState().getBaseState().withProperty(TYPE, DragonTapState.SET));
 	}
 
 	public static void dragonToSpent(World worldIn, BlockPos pos) {
-		worldIn.setBlockState(pos, ModBlocks.dragon_tap
-				.getBlockState()
-				.getBaseState()
-				.withProperty(TYPE, DragonTapState.SPENT));
+		worldIn.setBlockState(
+				pos,
+				ModBlocks.dragon_tap.getBlockState().getBaseState().withProperty(TYPE, DragonTapState.SPENT));
 	}
 
 	public void refreshTap(World worldIn, BlockPos pos) {
@@ -345,11 +319,7 @@ public class DragonTap extends BasicBlock
 	 * net.minecraft.util.BlockPos, net.minecraft.block.state.IBlockState, int)
 	 */
 	@Override
-	public List<ItemStack> getDrops(
-			IBlockAccess world,
-			BlockPos pos,
-			IBlockState state,
-			int fortune) {
+	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 		List drops = new ArrayList<ItemStack>();
 		drops.add(new ItemStack(ModBlocks.dragon_tap, 1, 0));
 

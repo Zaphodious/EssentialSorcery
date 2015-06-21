@@ -30,18 +30,12 @@ public abstract class Jade extends Item {
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
 
-		return super.getUnlocalizedName()
-				+ "_"
-				+ this.getElement(stack).getColor();
+		return super.getUnlocalizedName() + "_" + this.getElement(stack).getColor();
 
 	}
 
 	@Override
-	public void addInformation(
-			ItemStack stack,
-			EntityPlayer playerIn,
-			List tooltip,
-			boolean advanced) {
+	public void addInformation(ItemStack stack, EntityPlayer playerIn, List tooltip, boolean advanced) {
 		String elementName =
 				this.getElement(stack).getName().substring(0, 1).toUpperCase()
 						+ this.getElement(stack).getName().substring(1);

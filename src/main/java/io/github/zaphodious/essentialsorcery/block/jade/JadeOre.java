@@ -37,28 +37,18 @@ public class JadeOre extends BasicBlock {
 	public JadeOre(String unlocalizedName) {
 		super(unlocalizedName);
 
-		this.setDefaultState(this.blockState.getBaseState().withProperty(
-				ELEMENT,
-				Element.NEUTRAL));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(ELEMENT, Element.NEUTRAL));
 
 		this.genCounter = 0;
 	}
 
 	@Override
-	public void onBlockHarvested(
-			World worldIn,
-			BlockPos pos,
-			IBlockState state,
-			EntityPlayer player) {
+	public void onBlockHarvested(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player) {
 		super.onBlockHarvested(worldIn, pos, state, player);
 	}
 
 	@Override
-	public List<ItemStack> getDrops(
-			IBlockAccess world,
-			BlockPos pos,
-			IBlockState state,
-			int fortune) {
+	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 
 		Element thisElement = Element.NEUTRAL;
 		try {
@@ -74,8 +64,7 @@ public class JadeOre extends BasicBlock {
 		// if fortune is 3, we just give them 9 bits of dust.
 		// However, we *do not* want the output to be more then what it takes
 
-		toReturn.add(new ItemStack(ModItems.jade_raw, amount, thisElement
-				.getID()));
+		toReturn.add(new ItemStack(ModItems.jade_raw, amount, thisElement.getID()));
 
 		return toReturn;
 	}
@@ -91,9 +80,7 @@ public class JadeOre extends BasicBlock {
 		// state = this.getActualState(state, worldIn, pos);
 
 		super.onBlockAdded(worldIn, pos, state);
-		if (worldIn.setBlockState(
-				pos,
-				ModBlocks.jade_ore.getActualState(state, worldIn, pos))) {
+		if (worldIn.setBlockState(pos, ModBlocks.jade_ore.getActualState(state, worldIn, pos))) {
 			// System.out.println("Ore #" + genCounter++ + " spawned at " +
 			// pos.toString());
 		}
@@ -125,10 +112,7 @@ public class JadeOre extends BasicBlock {
 	 * net.minecraft.util.BlockPos)
 	 */
 	@Override
-	public IBlockState getActualState(
-			IBlockState state,
-			IBlockAccess worldIn,
-			BlockPos pos) {
+	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
 
 		World thisWorld = (World) worldIn;
 
@@ -141,9 +125,7 @@ public class JadeOre extends BasicBlock {
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 
-		return getDefaultState().withProperty(
-				ELEMENT,
-				Element.getElementForID(meta));
+		return getDefaultState().withProperty(ELEMENT, Element.getElementForID(meta));
 
 	}
 

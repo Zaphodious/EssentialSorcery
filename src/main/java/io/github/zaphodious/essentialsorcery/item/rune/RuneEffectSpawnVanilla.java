@@ -55,12 +55,7 @@ public class RuneEffectSpawnVanilla extends RuneEffect {
 		int spellPower = runeMapIn.get(thisRuneKey).stackSize;
 		EntityCreeper entityCreeper = new EntityCreeper(worldIn);
 
-		entityCreeper.setLocationAndAngles(
-				pos.getX(),
-				pos.getY(),
-				pos.getZ(),
-				entity.rotationYaw,
-				0.0F);
+		entityCreeper.setLocationAndAngles(pos.getX(), pos.getY(), pos.getZ(), entity.rotationYaw, 0.0F);
 		entityCreeper.setHealth(5 * spellPower);
 		worldIn.spawnEntityInWorld(entityCreeper);
 		return true;
@@ -78,12 +73,7 @@ public class RuneEffectSpawnVanilla extends RuneEffect {
 		int spellPower = runeMapIn.get(thisRuneKey).stackSize;
 		EntitySlime entitySlime = new EntitySlime(worldIn);
 
-		entitySlime.setLocationAndAngles(
-				pos.getX(),
-				pos.getY(),
-				pos.getZ(),
-				entity.rotationYaw,
-				0.0F);
+		entitySlime.setLocationAndAngles(pos.getX(), pos.getY(), pos.getZ(), entity.rotationYaw, 0.0F);
 		entitySlime.setHealth(5 * spellPower);
 		worldIn.spawnEntityInWorld(entitySlime);
 		return true;
@@ -107,12 +97,7 @@ public class RuneEffectSpawnVanilla extends RuneEffect {
 			entityOcelot.setTameSkin(1 + worldIn.rand.nextInt(3));
 			entityOcelot.setOwnerId(throwerIn.getUniqueID().toString());
 			entityOcelot.setHealth(10 * spellPower);
-			entityOcelot.setLocationAndAngles(
-					pos.getX(),
-					pos.getY(),
-					pos.getZ(),
-					entity.rotationYaw,
-					0.0F);
+			entityOcelot.setLocationAndAngles(pos.getX(), pos.getY(), pos.getZ(), entity.rotationYaw, 0.0F);
 			worldIn.spawnEntityInWorld(entityOcelot);
 			return true;
 		} catch (Exception e) {
@@ -133,12 +118,7 @@ public class RuneEffectSpawnVanilla extends RuneEffect {
 		// TODO Auto-generated method stub
 		EntityIronGolem entityIronGolem = new EntityIronGolem(worldIn);
 		int spellPower = runeMapIn.get(thisRuneKey).stackSize;
-		entityIronGolem.setLocationAndAngles(
-				pos.getX(),
-				pos.getY(),
-				pos.getZ(),
-				entity.rotationYaw,
-				0.0F);
+		entityIronGolem.setLocationAndAngles(pos.getX(), pos.getY(), pos.getZ(), entity.rotationYaw, 0.0F);
 		entityIronGolem.setPlayerCreated(true);
 		entityIronGolem.setHealth(10 * spellPower);
 		worldIn.spawnEntityInWorld(entityIronGolem);
@@ -163,12 +143,7 @@ public class RuneEffectSpawnVanilla extends RuneEffect {
 		entityWolf.setAttackTarget((EntityLivingBase) null);
 		entityWolf.setHealth(10 * spellPower);
 		entityWolf.setOwnerId(playerCaster.getUniqueID().toString());
-		entityWolf.setLocationAndAngles(
-				pos.getX(),
-				pos.getY(),
-				pos.getZ(),
-				entity.rotationYaw,
-				0.0F);
+		entityWolf.setLocationAndAngles(pos.getX(), pos.getY(), pos.getZ(), entity.rotationYaw, 0.0F);
 		worldIn.spawnEntityInWorld(entityWolf);
 		return false;
 	}

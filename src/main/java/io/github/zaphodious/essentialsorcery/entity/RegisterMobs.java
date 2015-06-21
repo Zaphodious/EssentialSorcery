@@ -11,12 +11,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class RegisterMobs {
 
 	public static void registerMobs() {
-		registerModEntityWithEgg(
-				EntityHobgoblin.class,
-				"hobgoblin",
-				3000,
-				0xFFA62E,
-				0x820000);
+		registerModEntityWithEgg(EntityHobgoblin.class, "hobgoblin", 3000, 0xFFA62E, 0x820000);
 		EntityRegistry.addSpawn(
 				EntityHobgoblin.class,
 				7,

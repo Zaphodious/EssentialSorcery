@@ -5,13 +5,10 @@ import net.minecraft.util.IStringSerializable;
 
 public enum Element implements IStringSerializable, StateEnum {
 
-	FIRE(0, "fire", "red"), WATER(1, "water", "black"), EARTH(
-			2,
-			"earth",
-			"white"), AIR(3, "air", "blue"), WOOD(4, "wood", "green"), NEUTRAL(
-			5,
-			"neutral",
-			"clear");
+	FIRE(0, "fire", "red"), WATER(1, "water", "black"), EARTH(2, "earth", "white"), AIR(3, "air", "blue"), WOOD(
+			4,
+			"wood",
+			"green"), NEUTRAL(5, "neutral", "clear");
 
 	private int ID;
 	private String name;

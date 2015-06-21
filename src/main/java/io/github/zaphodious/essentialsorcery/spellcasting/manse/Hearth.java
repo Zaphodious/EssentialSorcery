@@ -14,9 +14,7 @@ import net.minecraft.world.World;
 import cyano.poweradvantage.api.PoweredEntity;
 import cyano.poweradvantage.api.simple.BlockSimpleFluidConsumer;
 
-public abstract class Hearth extends BlockSimpleFluidConsumer
-		implements
-		GivesEssence {
+public abstract class Hearth extends BlockSimpleFluidConsumer implements GivesEssence {
 
 	Element element;
 

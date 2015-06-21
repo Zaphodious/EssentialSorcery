@@ -50,14 +50,7 @@ public class RuneEffectDefend extends RuneEffect {
 			String thisRuneKey) {
 		// TODO Auto-generated method stub
 		if (movObjPos.entityHit != null) {
-			return super.makeMagic(
-					entity,
-					worldIn,
-					throwerIn,
-					runeMapIn,
-					pos,
-					movObjPos,
-					thisRuneKey);
+			return super.makeMagic(entity, worldIn, throwerIn, runeMapIn, pos, movObjPos, thisRuneKey);
 		}
 
 		return false;
@@ -74,8 +67,7 @@ public class RuneEffectDefend extends RuneEffect {
 			MovingObjectPosition movObjPos,
 			String thisRuneKey) {
 		// TODO Auto-generated method stub
-		int spellStrength =
-				RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
+		int spellStrength = RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
 		try {
 			EntityLivingBase hitPlayer = (EntityLivingBase) movObjPos.entityHit;
 
@@ -104,8 +96,7 @@ public class RuneEffectDefend extends RuneEffect {
 			MovingObjectPosition movObjPos,
 			String thisRuneKey) {
 		// TODO Auto-generated method stub
-		int spellStrength =
-				RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
+		int spellStrength = RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
 		try {
 			EntityLivingBase hitPlayer = (EntityLivingBase) movObjPos.entityHit;
 
@@ -134,8 +125,7 @@ public class RuneEffectDefend extends RuneEffect {
 			MovingObjectPosition movObjPos,
 			String thisRuneKey) {
 		// TODO Auto-generated method stub
-		int spellStrength =
-				RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
+		int spellStrength = RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
 		/*
 		 * try { EntityLivingBase hitPlayer = (EntityLivingBase)
 		 * movObjPos.entityHit;
@@ -152,8 +142,7 @@ public class RuneEffectDefend extends RuneEffect {
 
 		try {
 
-			EntityLivingBase entityLivingBase =
-					(EntityLivingBase) movObjPos.entityHit;
+			EntityLivingBase entityLivingBase = (EntityLivingBase) movObjPos.entityHit;
 
 			entityLivingBase.motionY = entity.motionX * (spellStrength * .3);
 
@@ -174,8 +163,7 @@ public class RuneEffectDefend extends RuneEffect {
 			MovingObjectPosition movObjPos,
 			String thisRuneKey) {
 		// TODO Auto-generated method stub
-		int spellStrength =
-				RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
+		int spellStrength = RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
 		try {
 			EntityLivingBase hitPlayer = (EntityLivingBase) movObjPos.entityHit;
 
@@ -204,8 +192,7 @@ public class RuneEffectDefend extends RuneEffect {
 			MovingObjectPosition movObjPos,
 			String thisRuneKey) {
 		// TODO Auto-generated method stub
-		int spellStrength =
-				RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
+		int spellStrength = RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
 
 		/*
 		 * try { EntityPlayer hitPlayer = (EntityPlayer) movObjPos.entityHit;

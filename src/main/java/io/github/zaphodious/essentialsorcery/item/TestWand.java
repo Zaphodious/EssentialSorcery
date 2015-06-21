@@ -45,9 +45,7 @@ public class TestWand extends Item implements UsesEssence {
 	 * net.minecraft.world.World, net.minecraft.entity.player.EntityPlayer)
 	 */
 	@Override
-	public
-			void
-			onCreated(ItemStack stack, World worldIn, EntityPlayer playerIn) {
+	public void onCreated(ItemStack stack, World worldIn, EntityPlayer playerIn) {
 		// TODO Auto-generated method stub
 		super.onCreated(stack, worldIn, playerIn);
 		stack.setTagCompound(new NBTTagCompound());
@@ -63,11 +61,7 @@ public class TestWand extends Item implements UsesEssence {
 	 * net.minecraft.entity.player.EntityPlayer, java.util.List, boolean)
 	 */
 	@Override
-	public void addInformation(
-			ItemStack stack,
-			EntityPlayer playerIn,
-			List tooltip,
-			boolean advanced) {
+	public void addInformation(ItemStack stack, EntityPlayer playerIn, List tooltip, boolean advanced) {
 		// TODO Auto-generated method stub
 		if (stack.hasTagCompound()) {
 			Set<String> keySet = new HashSet<String>();
@@ -77,9 +71,7 @@ public class TestWand extends Item implements UsesEssence {
 			for (String string : keySet) {
 				// System.out.println(string);
 				ItemStack newStack =
-						(ItemStack) ItemStack.loadItemStackFromNBT(stack
-								.getTagCompound()
-								.getCompoundTag(string));
+						(ItemStack) ItemStack.loadItemStackFromNBT(stack.getTagCompound().getCompoundTag(string));
 				if (newStack != null) {
 					tooltip.add(newStack.toString());
 				}
@@ -91,26 +83,17 @@ public class TestWand extends Item implements UsesEssence {
 
 	}
 
-	public ItemStack onItemRightClick(
-			ItemStack itemStackIn,
-			World worldIn,
-			EntityPlayer playerIn) {
+	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn) {
 		try {
 			if (!worldIn.isRemote) {
 				if (itemStackIn.hasTagCompound()) {
 					ItemStack newStack =
-							(ItemStack) ItemStack
-									.loadItemStackFromNBT(itemStackIn
-											.getTagCompound()
-											.getCompoundTag("shape"));
+							(ItemStack) ItemStack.loadItemStackFromNBT(itemStackIn.getTagCompound().getCompoundTag(
+									"shape"));
 					RuneShape shapeRune = (RuneShape) newStack.getItem();
 					try {
-						Map<String, ItemStack> runeMap =
-								RuneHelper.getRuneMap(itemStackIn);
-						shapeRune.deployTargetingEntity(
-								runeMap,
-								worldIn,
-								playerIn);
+						Map<String, ItemStack> runeMap = RuneHelper.getRuneMap(itemStackIn);
+						shapeRune.deployTargetingEntity(runeMap, worldIn, playerIn);
 					} catch (Exception e) {
 						System.out.println(e);
 					}
@@ -122,8 +105,7 @@ public class TestWand extends Item implements UsesEssence {
 				// playerIn));
 			}
 		} catch (Exception e) {
-			System.out.println("Oops, the projectile didn't fire. Error is: "
-					+ e);
+			System.out.println("Oops, the projectile didn't fire. Error is: " + e);
 		}
 
 		/*
@@ -181,11 +163,7 @@ public class TestWand extends Item implements UsesEssence {
 	}
 
 	@Override
-	public boolean useTap(
-			World worldIn,
-			BlockPos pos,
-			ItemStack stack,
-			EntityPlayer playerIn) {
+	public boolean useTap(World worldIn, BlockPos pos, ItemStack stack, EntityPlayer playerIn) {
 		GivesEssence giver = null;
 		// get the specific block
 		IBlockState iblockstate = worldIn.getBlockState(pos);
@@ -198,8 +176,7 @@ public class TestWand extends Item implements UsesEssence {
 			return false;
 		}
 
-		if (giver.getElement(worldIn, pos) != this.element
-				&& this.element != Element.NEUTRAL) {
+		if (giver.getElement(worldIn, pos) != this.element && this.element != Element.NEUTRAL) {
 			System.out.println("Didn't pass the element test.");
 			return false; // If this block doesn't give the right type of
 							// essence, the function stops.

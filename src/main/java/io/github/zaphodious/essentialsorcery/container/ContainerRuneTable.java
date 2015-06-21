@@ -26,10 +26,7 @@ public class ContainerRuneTable extends Container {
 	private static final String __OBFID = "CL_00001744";
 	protected TileEntityRuneTable tileEntity;
 
-	public ContainerRuneTable(
-			InventoryPlayer playerInventory,
-			World worldIn,
-			BlockPos posIn) {
+	public ContainerRuneTable(InventoryPlayer playerInventory, World worldIn, BlockPos posIn) {
 		this.craftMatrix = new TileEntityRuneTable();
 		this.worldObj = worldIn;
 		this.pos = posIn;
@@ -41,11 +38,7 @@ public class ContainerRuneTable extends Container {
 		for (int i1 = 0; i1 < 2; i1++) {
 			for (int j1 = 0; j1 < 3; j1++) {
 				System.out.println("crafting slot " + (j1 + i1 * 3) + " added");
-				addSlotToContainer(new Slot(
-						tileEntity,
-						j1 + i1 * 3,
-						60 + j1 * 20,
-						8 + i1 * 20));
+				addSlotToContainer(new Slot(tileEntity, j1 + i1 * 3, 60 + j1 * 20, 8 + i1 * 20));
 			}
 		}
 
@@ -71,11 +64,7 @@ public class ContainerRuneTable extends Container {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 9; j++) {
 				int index = j + i * 9 + 9;
-				addSlotToContainer(new Slot(
-						inventoryPlayer,
-						index,
-						8 + j * 18,
-						50 + i * 18));
+				addSlotToContainer(new Slot(inventoryPlayer, index, 8 + j * 18, 50 + i * 18));
 				System.out.println("inventory slot " + (index) + " added");
 			}
 		}
@@ -94,8 +83,7 @@ public class ContainerRuneTable extends Container {
 
 		if (!this.worldObj.isRemote) {
 			for (int i = 0; i < 9; ++i) {
-				ItemStack itemstack =
-						this.craftMatrix.getStackInSlotOnClosing(i);
+				ItemStack itemstack = this.craftMatrix.getStackInSlotOnClosing(i);
 
 				if (itemstack != null) {
 					playerIn.dropPlayerItemWithRandomChoice(itemstack, false);
@@ -105,9 +93,8 @@ public class ContainerRuneTable extends Container {
 	}
 
 	public boolean canInteractWith(EntityPlayer playerIn) {
-		return this.worldObj.getBlockState(this.pos).getBlock() != Blocks.crafting_table
-				? false
-				: playerIn.getDistanceSq(
+		return this.worldObj.getBlockState(this.pos).getBlock() != Blocks.crafting_table ? false : playerIn
+				.getDistanceSq(
 						(double) this.pos.getX() + 0.5D,
 						(double) this.pos.getY() + 0.5D,
 						(double) this.pos.getZ() + 0.5D) <= 64.0D;
@@ -164,7 +151,6 @@ public class ContainerRuneTable extends Container {
 	 * that was double-clicked.
 	 */
 	public boolean canMergeSlot(ItemStack stack, Slot p_94530_2_) {
-		return p_94530_2_.inventory != this.craftResult
-				&& super.canMergeSlot(stack, p_94530_2_);
+		return p_94530_2_.inventory != this.craftResult && super.canMergeSlot(stack, p_94530_2_);
 	}
 }

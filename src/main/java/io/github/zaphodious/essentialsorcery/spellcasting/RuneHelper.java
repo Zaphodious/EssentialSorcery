@@ -19,19 +19,14 @@ import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 
 public class RuneHelper {
 
-	public static final List<RuneDropObject> RuneDrops =
-			new ArrayList<RuneDropObject>();
+	public static final List<RuneDropObject> RuneDrops = new ArrayList<RuneDropObject>();
 
-	public static Map<String, ItemStack> getRuneMap(ItemStack itemStackIn)
-			throws Exception {
+	public static Map<String, ItemStack> getRuneMap(ItemStack itemStackIn) throws Exception {
 		Map<String, ItemStack> runeMap = new HashMap<String, ItemStack>();
 		if (itemStackIn.hasTagCompound()) {
 			Set<String> keySet = (itemStackIn.getTagCompound().getKeySet());
 			for (String key : keySet) {
-				ItemStack newStack =
-						ItemStack.loadItemStackFromNBT(itemStackIn
-								.getTagCompound()
-								.getCompoundTag(key));
+				ItemStack newStack = ItemStack.loadItemStackFromNBT(itemStackIn.getTagCompound().getCompoundTag(key));
 				runeMap.put(key, newStack);
 			}
 
@@ -41,9 +36,7 @@ public class RuneHelper {
 		runeMap.remove("essenceContained");
 
 		if (runeMap.isEmpty()) {
-			throw new Exception("The ItemStack "
-					+ itemStackIn.toString()
-					+ " had nothing in NBT.");
+			throw new Exception("The ItemStack " + itemStackIn.toString() + " had nothing in NBT.");
 		}
 
 		return runeMap;
@@ -76,9 +69,7 @@ public class RuneHelper {
 		int runeNumber = 0;
 
 		for (String key : runeMap.keySet()) {
-			if (key.isEmpty()
-					|| key.equals("display")
-					|| key.equals(BoardSlots.ESSENCE_CONTAINED.getSlotname()))
+			if (key.isEmpty() || key.equals("display") || key.equals(BoardSlots.ESSENCE_CONTAINED.getSlotname()))
 				break;
 			ItemStack runeStack = runeMap.get(key);
 			Rune rune = (Rune) runeStack.getItem();
@@ -99,11 +90,8 @@ public class RuneHelper {
 		for (int i = 0; i < length; i++) {
 			if (stackArray[i] != null) {
 				try {
-					RuneEffect effectRune =
-							(RuneEffect) stackArray[i].getItem();
-					powerLevel +=
-							effectRune.getPowerLevel()
-									+ stackArray[i].stackSize;
+					RuneEffect effectRune = (RuneEffect) stackArray[i].getItem();
+					powerLevel += effectRune.getPowerLevel() + stackArray[i].stackSize;
 				} catch (Exception e) {
 
 				}
@@ -129,22 +117,15 @@ public class RuneHelper {
 
 			for (RuneElement elementRune : ModItems.getElementRunes()) {
 				Element biomeElement =
-						Reference.SORTER
-								.getBiomes()
-								.get(
-										event.world
-												.getBiomeGenForCoords(event.pos).biomeID);
-				if (elementRune.getElement() == biomeElement
-						&& rand.nextFloat() < DropChance.UNCOMMON
-								.getProbability()) {
+						Reference.SORTER.getBiomes().get(event.world.getBiomeGenForCoords(event.pos).biomeID);
+				if (elementRune.getElement() == biomeElement && rand.nextFloat() < DropChance.UNCOMMON.getProbability()) {
 
 					toDrop = new ItemStack(elementRune);
 				}
 			}
 		} else {
 
-			RuneDropObject thisRune =
-					RuneHelper.RuneDrops.get(runePosition - 1);
+			RuneDropObject thisRune = RuneHelper.RuneDrops.get(runePosition - 1);
 			if (thisRune.getProbabilty() > rand.nextFloat()) {
 				toDrop = new ItemStack(thisRune.getRuneAsItem());
 			}

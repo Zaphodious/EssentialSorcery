@@ -29,9 +29,7 @@ public class EssentialSorcery {
 
 	EssentialEventHandler events = new EssentialEventHandler();
 
-	@SidedProxy(
-			clientSide = Reference.CLIENT_PROXY,
-			serverSide = Reference.SERVER_PROXY)
+	@SidedProxy(clientSide = Reference.CLIENT_PROXY, serverSide = Reference.SERVER_PROXY)
 	public static Proxy proxy;
 
 	@Instance
@@ -39,8 +37,7 @@ public class EssentialSorcery {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e) {
-		Configuration config =
-				new Configuration(e.getSuggestedConfigurationFile());
+		Configuration config = new Configuration(e.getSuggestedConfigurationFile());
 		config.load();
 
 		System.out.println("called method: preInit... and has this changed?");
@@ -82,8 +79,7 @@ public class EssentialSorcery {
 
 		MinecraftForge.EVENT_BUS.register(new Events());
 		System.out.println("***************");
-		System.out.println("The ore gen config files that have been loaded: "
-				+ BaseMetals.oreSpawnConfigFiles);
+		System.out.println("The ore gen config files that have been loaded: " + BaseMetals.oreSpawnConfigFiles);
 		System.out.println("***************");
 		this.proxy.postInit(e);
 	}

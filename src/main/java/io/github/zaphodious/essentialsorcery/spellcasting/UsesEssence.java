@@ -8,11 +8,7 @@ import net.minecraft.world.World;
 
 public interface UsesEssence {
 
-	public boolean useTap(
-			World worldIn,
-			BlockPos pos,
-			ItemStack stack,
-			EntityPlayer playerIn);
+	public boolean useTap(World worldIn, BlockPos pos, ItemStack stack, EntityPlayer playerIn);
 
 	public Element getElement();
 

@@ -21,11 +21,7 @@ public class MoonSilver extends Item {
 	}
 
 	@Override
-	public void addInformation(
-			ItemStack stack,
-			EntityPlayer playerIn,
-			List tooltip,
-			boolean advanced) {
+	public void addInformation(ItemStack stack, EntityPlayer playerIn, List tooltip, boolean advanced) {
 
 		tooltip.add(this.tooltip);
 		super.addInformation(stack, playerIn, tooltip, advanced);

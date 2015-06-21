@@ -5,11 +5,7 @@ import net.minecraft.inventory.Slot;
 
 public class SlotDebug extends Slot {
 
-	public SlotDebug(
-			IInventory inventoryIn,
-			int index,
-			int xPosition,
-			int yPosition) {
+	public SlotDebug(IInventory inventoryIn, int index, int xPosition, int yPosition) {
 		super(inventoryIn, index, xPosition, yPosition);
 		// TODO Auto-generated constructor stub
 	}

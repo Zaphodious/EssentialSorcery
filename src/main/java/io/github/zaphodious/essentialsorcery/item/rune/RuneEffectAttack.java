@@ -51,14 +51,7 @@ public class RuneEffectAttack extends RuneEffect {
 			String thisRuneKey) {
 		// TODO Auto-generated method stub
 		if (movObjPos.entityHit != null) {
-			return super.makeMagic(
-					entity,
-					worldIn,
-					throwerIn,
-					runeMapIn,
-					pos,
-					movObjPos,
-					thisRuneKey);
+			return super.makeMagic(entity, worldIn, throwerIn, runeMapIn, pos, movObjPos, thisRuneKey);
 		}
 
 		return false;
@@ -75,14 +68,11 @@ public class RuneEffectAttack extends RuneEffect {
 			MovingObjectPosition movObjPos,
 			String thisRuneKey) {
 		// TODO Auto-generated method stub
-		int secondToBurn =
-				RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
+		int secondToBurn = RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
 		movObjPos.entityHit.setFire(secondToBurn);
 		// movObjPos.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(entity,
 		// throwerIn), damageToDeal);
-		System.out.println("I should have set on fire for "
-				+ secondToBurn
-				+ " seconds!");
+		System.out.println("I should have set on fire for " + secondToBurn + " seconds!");
 		return true;
 	}
 
@@ -96,21 +86,18 @@ public class RuneEffectAttack extends RuneEffect {
 			MovingObjectPosition movObjPos,
 			String thisRuneKey) {
 		// TODO Auto-generated method stub
-		int damageToDeal =
-				RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
+		int damageToDeal = RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
 
 		// movObjPos.entityHit.setAir(movObjPos.entityHit.getAir() -
 		// damageToDeal);
 		try {
-			EntityLivingBase entityLivingBase =
-					(EntityLivingBase) movObjPos.entityHit;
-			entityLivingBase
-					.addPotionEffect(new PotionEffect(
-							Potion.saturation.getId(),
-							damageToDeal * 20,
-							damageToDeal / 5,
-							false,
-							true));
+			EntityLivingBase entityLivingBase = (EntityLivingBase) movObjPos.entityHit;
+			entityLivingBase.addPotionEffect(new PotionEffect(
+					Potion.saturation.getId(),
+					damageToDeal * 20,
+					damageToDeal / 5,
+					false,
+					true));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 		}
@@ -128,8 +115,7 @@ public class RuneEffectAttack extends RuneEffect {
 			MovingObjectPosition movObjPos,
 			String thisRuneKey) {
 		// TODO Auto-generated method stub
-		int damageToDeal =
-				RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
+		int damageToDeal = RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
 
 		/*
 		 * Random rand = new Random(); float xDir =
@@ -143,18 +129,11 @@ public class RuneEffectAttack extends RuneEffect {
 
 		try {
 
-			movObjPos.entityHit.attackEntityFrom(
-					DamageSource.causeThrownDamage(entity, throwerIn),
-					0);
+			movObjPos.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(entity, throwerIn), 0);
 
-			EntityLivingBase entityLivingBase =
-					(EntityLivingBase) movObjPos.entityHit;
+			EntityLivingBase entityLivingBase = (EntityLivingBase) movObjPos.entityHit;
 
-			entityLivingBase.knockBack(
-					throwerIn,
-					5,
-					-(entity.motionX),
-					-(entity.motionZ));
+			entityLivingBase.knockBack(throwerIn, 5, -(entity.motionX), -(entity.motionZ));
 			// entityLivingBase.motionY = damageToDeal*.2;
 			entityLivingBase.motionX = entity.motionX * (damageToDeal * .5);
 			entityLivingBase.motionZ = entity.motionZ * (damageToDeal * .5);
@@ -181,15 +160,12 @@ public class RuneEffectAttack extends RuneEffect {
 			MovingObjectPosition movObjPos,
 			String thisRuneKey) {
 		// TODO Auto-generated method stub
-		int damageToDeal =
-				RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
+		int damageToDeal = RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
 
 		try {
 			EntityPlayer hitPlayer = (EntityPlayer) movObjPos.entityHit;
 			for (int i = 0; i < 4; i++) {
-				hitPlayer.getCurrentArmor(0).damageItem(
-						damageToDeal * 3,
-						throwerIn);
+				hitPlayer.getCurrentArmor(0).damageItem(damageToDeal * 3, throwerIn);
 			}
 
 		} catch (Exception e) {
@@ -210,11 +186,8 @@ public class RuneEffectAttack extends RuneEffect {
 			MovingObjectPosition movObjPos,
 			String thisRuneKey) {
 		// TODO Auto-generated method stub
-		int damageToDeal =
-				2 * RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
-		movObjPos.entityHit.attackEntityFrom(
-				DamageSource.causeThrownDamage(entity, throwerIn),
-				damageToDeal);
+		int damageToDeal = 2 * RuneHelper.totalEffectRunesIn(runeMapIn.get(thisRuneKey));
+		movObjPos.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(entity, throwerIn), damageToDeal);
 		throwerIn.heal(damageToDeal);
 		return true;
 	}
