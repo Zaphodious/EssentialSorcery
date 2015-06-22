@@ -6,7 +6,6 @@
 !.gitignore
 !.gitattributes
 !*.md
-!.project
 !README.md
 !gradlew
 !gradlew.bat
