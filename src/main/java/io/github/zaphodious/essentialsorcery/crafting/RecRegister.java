@@ -59,8 +59,10 @@ public class RecRegister {
 
 		GameRegistry.addSmelting(new ItemStack(ModBlocks.star_metal_ore, 1, 0), new ItemStack(
 				ModItems.star_metal_ingot,
-				4,
+				3,
 				0), 10.0F);
+		
+		addXWithReverse(ModItems.star_metal_ingot, Item.getItemFromBlock(ModBlocks.star_metal_block), 0, 0, 3);
 
 		for (int i = 0; i < 5; i++) {
 			addXWithReverse(ModItems.jade_nugget, ModItems.jade_ingot, i, i, 3);

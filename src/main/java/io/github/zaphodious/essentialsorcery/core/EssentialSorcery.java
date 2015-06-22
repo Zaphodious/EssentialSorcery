@@ -1,14 +1,16 @@
 package io.github.zaphodious.essentialsorcery.core;
 
-import cyano.basemetals.BaseMetals;
 import io.github.zaphodious.essentialsorcery.block.ModBlocks;
 import io.github.zaphodious.essentialsorcery.core.defaultconfigs.OreSpawnJSON;
 import io.github.zaphodious.essentialsorcery.crafting.RecRegister;
 import io.github.zaphodious.essentialsorcery.entity.RegisterMobs;
 import io.github.zaphodious.essentialsorcery.event.Events;
+import io.github.zaphodious.essentialsorcery.gen.WorldGen;
 import io.github.zaphodious.essentialsorcery.item.ModItems;
 import io.github.zaphodious.essentialsorcery.spellcasting.targeting.RegTargetingEntities;
 import io.github.zaphodious.essentialsorcery.tileentities.ModTileEntities;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -17,8 +19,8 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import cyano.basemetals.BaseMetals;
 
 @Mod(
 		modid = Reference.MODID,
@@ -61,7 +63,7 @@ public class EssentialSorcery {
 	public void init(FMLInitializationEvent e) {
 
 		System.out.println("called method: init");
-
+		GameRegistry.registerWorldGenerator(new WorldGen(), 1);
 		ModTileEntities.registerTileEntities();
 		RegisterMobs.registerMobs();
 		ModTileEntities.regGUIs();

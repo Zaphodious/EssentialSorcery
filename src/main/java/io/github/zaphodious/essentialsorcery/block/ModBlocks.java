@@ -24,6 +24,7 @@ public final class ModBlocks {
 	public static MoonSilverBlock moon_silver_block;
 	public static MagicField magic_field;
 	public static StarMetalOre star_metal_ore;
+	public static Block star_metal_block;
 
 	public static void createBlocks() {
 
@@ -47,6 +48,9 @@ public final class ModBlocks {
 
 		star_metal_ore = new StarMetalOre("star_metal_ore");
 		GameRegistry.registerBlock(star_metal_ore, "star_metal_ore");
+		
+		star_metal_block = new BasicBlock("star_metal_block");
+		GameRegistry.registerBlock(star_metal_block, "star_metal_block");
 
 	}
 
@@ -57,6 +61,7 @@ public final class ModBlocks {
 
 	public static void registerRenders() {
 		registerRender(rune_table);
+		registerRender(star_metal_block);
 		registerRender(star_metal_ore);
 		registerRenderMeta(dragon_tap, DragonTapState.PLACED.getID(), DragonTapState.PLACED);
 		registerRenderMeta(dragon_tap, DragonTapState.SET.getID(), DragonTapState.SET);
