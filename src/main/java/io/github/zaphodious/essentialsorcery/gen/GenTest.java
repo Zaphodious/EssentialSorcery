@@ -97,6 +97,10 @@ public class GenTest {
 
 		return true;
 	}
+	
+	public static boolean genTestStructure(World world, BlockPos pos){
+		return genTestStructure(null, null, world, pos, null, 0,0,0);
+	}
 
 	public static boolean genTestStructure(
 			ItemStack stack,

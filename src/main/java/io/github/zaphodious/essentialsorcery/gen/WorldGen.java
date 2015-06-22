@@ -1,7 +1,10 @@
 package io.github.zaphodious.essentialsorcery.gen;
 
+import io.github.zaphodious.essentialsorcery.block.ModBlocks;
+
 import java.util.Random;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
@@ -51,8 +54,13 @@ public class WorldGen implements IWorldGenerator {
 			World world,
 			IChunkProvider chunkGenerator,
 			IChunkProvider chunkProvider) {
-		for (int counter = 0; counter < 10; counter++) {
-			PuttingThingsPlaces.starmetalMeteorFall(world, null, new BlockPos(i*random.nextInt(16), 250, j*random.nextInt(16)), true);
+
+		for (int counter = 0; counter < 5; counter++) {
+
+
+				
+				world.setBlockState(new BlockPos(i*random.nextInt(16), 250, j*random.nextInt(16)), Blocks.glowstone.getDefaultState());
+
 		}
 
 	}

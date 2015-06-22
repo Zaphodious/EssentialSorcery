@@ -63,7 +63,7 @@ public class EssentialSorcery {
 	public void init(FMLInitializationEvent e) {
 
 		System.out.println("called method: init");
-		GameRegistry.registerWorldGenerator(new WorldGen(), 1);
+		GameRegistry.registerWorldGenerator(new WorldGen(), 8);
 		ModTileEntities.registerTileEntities();
 		RegisterMobs.registerMobs();
 		ModTileEntities.regGUIs();
