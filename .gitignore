@@ -1,9 +1,13 @@
 /*
 !/src
 !/Techne
+!/gradle
 !build.gradle
 !.gitignore
 !.gitattributes
 !*.md
 !.project
 !README.md
+!gradlew
+!gradlew.bat
+
