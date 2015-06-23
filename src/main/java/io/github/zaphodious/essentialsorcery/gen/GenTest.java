@@ -39,14 +39,8 @@ public class GenTest {
 	}
 
 	public static boolean makeASimpleBuilding(
-			ItemStack stack,
-			EntityPlayer player,
 			World world,
 			BlockPos pos,
-			EnumFacing side,
-			float hitX,
-			float hitY,
-			float hitZ,
 			int buildHeight,
 			int buildWidth,
 			int buildLength) {

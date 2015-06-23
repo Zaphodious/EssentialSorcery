@@ -1,5 +1,6 @@
 package io.github.zaphodious.essentialsorcery.core;
 
+import io.github.zaphodious.essentialsorcery.gen.EssentialWorldGen;
 import io.github.zaphodious.essentialsorcery.spellcasting.BiomeSorter;
 
 import java.util.Arrays;
@@ -18,6 +19,8 @@ public class Reference {
 	public static final BiomeSorter SORTER = new BiomeSorter();
 
 	public static final EssentialTab tabEssential = new EssentialTab("tabEssential");
+	
+	public static final EssentialWorldGen worldGen = new EssentialWorldGen();
 
 	public static final int[] MANA_COST_ARRAY = makeManaCosts();
 

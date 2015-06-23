@@ -5,7 +5,7 @@ import io.github.zaphodious.essentialsorcery.core.defaultconfigs.OreSpawnJSON;
 import io.github.zaphodious.essentialsorcery.crafting.RecRegister;
 import io.github.zaphodious.essentialsorcery.entity.RegisterMobs;
 import io.github.zaphodious.essentialsorcery.event.Events;
-import io.github.zaphodious.essentialsorcery.gen.WorldGen;
+import io.github.zaphodious.essentialsorcery.gen.EssentialWorldGen;
 import io.github.zaphodious.essentialsorcery.item.ModItems;
 import io.github.zaphodious.essentialsorcery.spellcasting.targeting.RegTargetingEntities;
 import io.github.zaphodious.essentialsorcery.tileentities.ModTileEntities;
@@ -52,6 +52,7 @@ public class EssentialSorcery {
 		Reference.SORTER.fillBiomeList();
 		FMLCommonHandler.instance().bus().register(events);
 		MinecraftForge.EVENT_BUS.register(events);
+		MinecraftForge.TERRAIN_GEN_BUS.register(events);
 
 		Reference.SORTER.fillBiomeList();
 		this.proxy.preInit(e);
@@ -63,7 +64,7 @@ public class EssentialSorcery {
 	public void init(FMLInitializationEvent e) {
 
 		System.out.println("called method: init");
-		GameRegistry.registerWorldGenerator(new WorldGen(), 8);
+		//GameRegistry.registerWorldGenerator(Reference.worldGen, 100);
 		ModTileEntities.registerTileEntities();
 		RegisterMobs.registerMobs();
 		ModTileEntities.regGUIs();

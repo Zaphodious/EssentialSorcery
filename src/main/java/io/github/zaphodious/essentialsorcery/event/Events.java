@@ -5,10 +5,11 @@ import io.github.zaphodious.essentialsorcery.item.ModItems;
 import io.github.zaphodious.essentialsorcery.spellcasting.RuneHelper;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.event.AnvilUpdateEvent;
+import net.minecraftforge.event.terraingen.BiomeEvent;
+import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
+import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -50,10 +51,20 @@ public class Events {
 		if (event.world.rand.nextFloat() < .000000002) {
 			int xOffset = event.world.rand.nextInt(40) - 20;
 			int zOffset = event.world.rand.nextInt(40) - 20;
-			PuttingThingsPlaces.starmetalMeteorFall(event.world, event.harvester, new BlockPos(event.pos.getX()
-					+ xOffset, event.pos.getY(), event.pos.getZ() + zOffset));
+			PuttingThingsPlaces.starmetalMeteorFall(event.world, event.harvester, event.pos);
 		}
 
+	}
+
+	@SubscribeEvent
+	public void putARoomHere(PopulateChunkEvent.Post event) {
+		if (event.world.rand.nextDouble() > .99) {
+			//PuttingThingsPlaces.putARoomHere(event.world, event.pos);
+		System.out.println("is this thing on");
+			PuttingThingsPlaces.putARoomHere(event.world, new BlockPos(event.chunkX*16, 240, event.chunkZ*16));
+			System.out.println("testing, 123");
+		}
+		
 	}
 
 }

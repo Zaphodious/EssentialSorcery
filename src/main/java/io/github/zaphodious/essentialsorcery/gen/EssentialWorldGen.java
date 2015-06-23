@@ -10,7 +10,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
-public class WorldGen implements IWorldGenerator {
+public class EssentialWorldGen implements IWorldGenerator {
 
 	@Override
 	public void generate(
@@ -55,13 +55,20 @@ public class WorldGen implements IWorldGenerator {
 			IChunkProvider chunkGenerator,
 			IChunkProvider chunkProvider) {
 
-		for (int counter = 0; counter < 5; counter++) {
+		/*int counter = 0;
+		while (counter < 4) {
+			
+			//do(stuff);
+			
+			counter++;
+		}*/
+		//for (int counter = 0; counter < 4; counter++) {
 
-
+		
 				
-				world.setBlockState(new BlockPos(i*random.nextInt(16), 250, j*random.nextInt(16)), Blocks.glowstone.getDefaultState());
+				world.setBlockState(new BlockPos(i*random.nextInt(16), 100, j*random.nextInt(16)), Blocks.glowstone.getDefaultState());
 
-		}
+		//}
 
 	}
 

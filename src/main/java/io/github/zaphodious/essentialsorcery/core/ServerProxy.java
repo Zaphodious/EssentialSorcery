@@ -1,6 +1,6 @@
 package io.github.zaphodious.essentialsorcery.core;
 
-import io.github.zaphodious.essentialsorcery.gen.WorldGen;
+import io.github.zaphodious.essentialsorcery.gen.EssentialWorldGen;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
